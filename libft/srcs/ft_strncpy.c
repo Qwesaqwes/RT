@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 15:07:44 by jichen-m          #+#    #+#             */
-/*   Updated: 2015/11/24 15:07:54 by jichen-m         ###   ########.fr       */
+/*   Created: 2014/11/03 17:03:44 by opandolf          #+#    #+#             */
+/*   Updated: 2014/11/07 15:25:20 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
 char	*ft_strncpy(char *dst, const char *src, size_t n)
 {
-	size_t	i;
+	size_t		i;
 
 	i = 0;
-	while (src[i] && i < n)
+	while (i < n && src[i] != '\0')
 	{
 		dst[i] = src[i];
 		i++;

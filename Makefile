@@ -3,58 +3,77 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+         #
+#    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/05/22 15:50:34 by jichen-m          #+#    #+#              #
-#    Updated: 2016/06/03 17:42:33 by jichen-m         ###   ########.fr        #
+#    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
+#    Updated: 2016/10/20 02:38:50 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = RTv1
+NAME		=	RT
+DIRSRC		=	./srcs/
+DIROBJ		=	./objs/
+INCLUDE		=	-I./includes/ -I./libft/includes/ -I./minilibx_macos/
+SUB_MAKE	=	./libft/
+INC_LIB		=	-L./libft -lft -L ./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit -lm
+SRC			=	compute_ray.c\
+				get_nearest_obj.c\
+				hook.c\
+				init_camera.c\
+				init_test.c\
+				main.c\
+				matrix.c\
+				normalizevec.c\
+				pixelput.c\
+				raytracing.c\
+				sphere.c
 
-HEAD = ./includes/minilibx_macos/
 
-LIB = -L ./libft/ -lft
+OBJ			=	$(SRC:.c=.o)
+OBJS		=	$(OBJ:%=$(DIROBJ)%)
 
-LIB2 = -L ./includes/minilibx_macos/ -lmlx -framework OpenGL -framework AppKit
+ifdef FLAGS
+	ifeq ($(FLAGS), no)
+CFLAGS		=
+	endif
+	ifeq ($(FLAGS), debug)
+CFLAGS		=	-Wall -Wextra -Werror -ansi -pedantic -g
+	endif
+else
+CFLAGS		=	-Wall -Wextra -Werror
+endif
 
-C_FILES = main.c\
-			hook.c\
-			objects.c\
-			lights.c\
-			raytracing.c\
-			init_event.c\
-			light2.c
+CC			=	/usr/bin/gcc
+RM			=	/bin/rm -f
+ECHO		=	/bin/echo -e
 
-SRC = $(addprefix ./srcs/,$(C_FILES))
+$(NAME)	:	$(OBJS)
+ifdef SUB_MAKE
+				@(cd $(SUB_MAKE) && $(MAKE))
+endif
 
-FLAGS = -Wall -Wextra -Werror
+				$(CC) $(INCLUDE) $(INC_LIB) $(CFLAGS) -o $(NAME) $(OBJS)
+				@$(ECHO) '> Compiled'
 
-CC = gcc
+clean	:
+				@(cd $(DIROBJ) && $(RM) $(OBJ))
+ifdef SUB_MAKE
+				@(cd $(SUB_MAKE) && $(MAKE) clean)
+endif
+				@$(ECHO) '> Directory cleaned'
 
-OBJ = $(SRC:.c=.o)
+all		:		$(NAME)
 
-.PHONY: all clean fclean re
+fclean	:		clean
+ifdef SUB_MAKE
+				@(cd $(SUB_MAKE) && $(MAKE) fclean)
+endif
+				-@$(RM) $(NAME)
+				@$(ECHO) '> Remove executable'
 
-all: $(NAME)
+re		:		fclean all
 
-$(NAME): $(OBJ)
-		@echo "\033[1;32m"
-		@echo "Processing files..."
-		@make -C libft/
-		@$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIB) $(LIB2)
-		@echo "\033[1;32m"
-		@echo "$(NAME) has been created! :D"
+.PHONY	:		all clean re
 
-%.o: %.c
-		@$(CC) $(FLAGS) -o $@ -c $< -I $(HEAD) -I ./libft/includes/ -I ./includes/
-
-clean:
-		@rm -rf $(OBJ)
-		@echo "\033[1;32mObjects files have been removed successfully!"
-
-fclean: clean
-		@rm -rf $(NAME) ./libft/libft.a
-		@echo "\033[1;32m$(NAME) has been removed! All clean ^^!"
-
-re: fclean all
+$(DIROBJ)%.o		:		$(DIRSRC)%.c
+				$(CC) $(INCLUDE) $(CFLAGS) -o $@ -c $<

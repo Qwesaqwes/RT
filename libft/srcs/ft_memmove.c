@@ -3,28 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 14:08:59 by jichen-m          #+#    #+#             */
-/*   Updated: 2015/09/20 16:11:23 by jichen-m         ###   ########.fr       */
+/*   Created: 2014/11/05 16:58:30 by opandolf          #+#    #+#             */
+/*   Updated: 2014/11/05 17:18:50 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-void	*ft_memmove(void *s1, const void *s2, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*tmp1;
-	char	*tmp2;
+	size_t		n;
+	char		*s1;
+	const char	*s2;
 
-	tmp1 = (char *)s1;
-	tmp2 = (char *)s2;
-	while (len--)
+	s1 = dst;
+	s2 = src;
+	if (src > dst)
 	{
-		if (s2 > s1)
-			*tmp1++ = *tmp2++;
-		else
-			*(tmp1 + len) = *(tmp2 + len);
+		n = 0;
+		while (n < len)
+		{
+			s1[n] = s2[n];
+			n++;
+		}
 	}
-	return (s1);
+	else
+	{
+		n = len;
+		while (n != 0)
+		{
+			s1[n - 1] = s2[n - 1];
+			n--;
+		}
+	}
+	return (dst);
 }

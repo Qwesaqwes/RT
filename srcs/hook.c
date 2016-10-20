@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:50 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/10/19 02:19:45 by jichen-m         ###   ########.fr       */
+/*   Updated: 2016/10/20 02:14:21 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		expose_hook(t_env *e)
 {
 	raytracing(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->img.img_ptr, 0, 0);
+	return (0);
 }
 
 int		key_release(int keycode, t_env *e)

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:36:48 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/10/19 06:04:11 by jichen-m         ###   ########.fr       */
+/*   Updated: 2016/10/20 02:45:22 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,22 @@ t_no	get_nearest_obj(t_ray ray, t_list *list)
 	distno = -1;
 	while (tmp)
 	{
-		if ((t_obj)(tmp->content).type == 0)	//si obj = sphere
-			dist = sphere_dist(ray, tmp->content);
+		if (((t_obj*)tmp->content)->type == 0)	//si obj = sphere
+			dist = sphere_dist(ray, *((t_obj*)tmp->content));
+		ft_putchar('C');
 		if (dist >= 0)
 		{
 			if ((distno == -1) || (dist < distno))
 			{
 				distno = dist;
-				no.obj = (t_obj)(tmp->content);
+				no.obj = *((t_obj*)tmp->content);
 			}
 		}
+		ft_putchar('C');
 		tmp = tmp->next;
 	}
+	ft_putchar('D');
 	no.ip = set_inter_point(dist, ray);
+	ft_putchar('D');
 	return (no);
 }

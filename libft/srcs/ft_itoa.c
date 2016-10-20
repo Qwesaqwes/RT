@@ -3,63 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/11 16:23:23 by jichen-m          #+#    #+#             */
-/*   Updated: 2015/09/20 16:32:20 by jichen-m         ###   ########.fr       */
+/*   Created: 2014/11/06 15:26:54 by opandolf          #+#    #+#             */
+/*   Updated: 2014/11/08 17:58:09 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-static char		*ft_strrev(char *str)
+static int			ft_nbfigures(unsigned int nb)
 {
-	char	*tmp;
-	int		size;
-	int		i;
-	int		j;
-
-	i = 0;
-	size = ft_strlen(str);
-	j = size - 1;
-	tmp = (char *)malloc(sizeof(char *) * size);
-	if (tmp)
-	{
-		while (i < size)
-		{
-			tmp[i] = str[j];
-			i++;
-			j--;
-		}
-		tmp[i] = '\0';
-	}
-	return (tmp);
+	if (nb >= 10)
+		return (1 + ft_nbfigures(nb / 10));
+	else
+		return (1);
 }
 
-char			*ft_itoa(int n)
+static unsigned int	ft_sign_itoa(int n)
 {
-	char			*res;
-	int				neg;
-	int				i;
-	unsigned int	tmp;
-
-	i = 0;
-	neg = 0;
 	if (n < 0)
-		neg = 1;
-	tmp = (neg ? -(unsigned int)n : (unsigned int)n);
-	res = (char*)malloc(sizeof(char *) * 12);
-	if (!res)
+		return (-n);
+	return (n);
+}
+
+char				*ft_itoa(int n)
+{
+	char			*str;
+	int				nb_fig;
+	int				sign;
+	unsigned int	j;
+
+	sign = 0;
+	if (n < 0)
+		sign = 1;
+	j = ft_sign_itoa(n);
+	nb_fig = ft_nbfigures(j);
+	if(!(str = (char*)malloc(sizeof(char) * (nb_fig + sign + 1))))
 		return (NULL);
-	if (tmp == 0)
-		res[i++] = '0';
-	while (tmp != 0)
+	str[nb_fig + sign] = '\0';
+	if (sign == 1)
+		str[0] = '-';
+	if (n == 0)
+		str[0] = '0';
+	while (j >= 1)
 	{
-		res[i++] = (tmp % 10) + 48;
-		tmp = tmp / 10;
+		str[nb_fig - 1 + sign] = j % 10 + '0';
+		j = j / 10;
+		nb_fig--;
 	}
-	if (neg)
-		res[i++] = '-';
-	res[i] = '\0';
-	return (ft_strrev(res));
+	return (str);
 }

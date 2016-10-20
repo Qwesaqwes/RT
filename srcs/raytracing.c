@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:22:46 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/10/19 05:10:30 by jichen-m         ###   ########.fr       */
+/*   Updated: 2016/10/20 04:15:59 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_ray	set_ray(t_camera cam, t_vp vp, int i, int j)
 	t_vec3d		tmp;
 	t_ray		ray;
 
-	tmp.x = -(vp.width / 2) + (vp.width * i) / (W - 1);
+	tmp.z = (float)-(vp.width / 2) + (float)(vp.width * i) / (W - 1);
 	tmp.y = -(vp.height / 2) + (vp.height * j) / (H - 1);
-	tmp.z = vp.dist;
+	tmp.x = vp.dist;
 	ray.origin.x = tmp.x + cam.origin.x;
 	ray.origin.y = tmp.y + cam.origin.y;
 	ray.origin.z = tmp.z + cam.origin.z;
@@ -44,7 +44,7 @@ t_rgb	color_to_rgb(t_color old)
 	return (new);
 }
 
-void	raytracer(t_env *e)
+void	raytracing(t_env *e)
 {
 	int i;
 	int j;
@@ -52,11 +52,11 @@ void	raytracer(t_env *e)
 	t_rgb	color;
 	// appel de la fonction init_camera(...) qui renvoi un struct camera
 	set_camera(&(e->camera));
-	i = -1;
-	while (++i < H)
+	j = -1;
+	while (++j < H)
 	{
-		j = -1;
-		while (++j < W)
+		i = -1;
+		while (++i < W)
 		{
 			ray = set_ray(e->camera, e->vp, i, j);
 			color = color_to_rgb(compute_ray(ray, e->scene));

@@ -3,27 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 12:53:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2015/09/20 16:09:51 by jichen-m         ###   ########.fr       */
+/*   Created: 2014/11/05 16:16:39 by opandolf          #+#    #+#             */
+/*   Updated: 2014/11/07 15:10:11 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned char	*tmp1;
-	unsigned char	*tmp2;
+	size_t				i;
+	const unsigned char	*s1;
+	unsigned char		*s2;
+	unsigned char		c2;
 
-	tmp1 = (unsigned char *)s1;
-	tmp2 = (unsigned char *)s2;
-	while (n--)
+	s1 = (unsigned char*)src;
+	s2 = (unsigned char*)dst;
+	c2 = (unsigned char)c;
+	i = 0;
+	while (i < n)
 	{
-		*tmp1++ = *tmp2++;
-		if (*(tmp1 - 1) == (unsigned char)c)
-			return (tmp1);
+		s2[i] = s1[i];
+		if (s1[i] == c2)
+			return (dst + i + 1);
+		i++;
 	}
 	return (NULL);
 }

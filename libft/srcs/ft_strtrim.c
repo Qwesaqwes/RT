@@ -3,64 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 15:00:33 by jichen-m          #+#    #+#             */
-/*   Updated: 2015/09/20 16:33:42 by jichen-m         ###   ########.fr       */
+/*   Created: 2014/11/06 14:00:45 by opandolf          #+#    #+#             */
+/*   Updated: 2014/11/09 13:44:32 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*ft_strrev2(char *str)
+char	*ft_strtrim(char const *s)
 {
-	char	*tmp;
-	int		size;
-	int		i;
-	int		j;
+	unsigned int	start;
+	unsigned int	len;
+	unsigned int	lenstr;
 
-	i = 0;
-	size = ft_strlen(str);
-	j = size - 1;
-	tmp = (char *)malloc(sizeof(char *) * size);
-	if (tmp)
-	{
-		while (i < size)
-		{
-			tmp[i] = str[j];
-			i++;
-			j--;
-		}
-	}
-	tmp[i] = '\0';
-	return (tmp);
-}
-
-char			*ft_strtrim(char const *s)
-{
-	char	*str;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
 	if (!s)
 		return (NULL);
-	str = (char *)malloc(sizeof(ft_strlen(s) + 1));
-	if (!str)
-		return (NULL);
-	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-		i++;
-	while (s[i] != '\0')
+	start = 0;
+	while ((s[start] == ' ' || s[start] == '\n' || s[start] == '\t') &&
+s[start])
 	{
-		str[j] = s[i];
-		i++;
-		j++;
+		start++;
 	}
-	str[j] = '\0';
-	str = ft_strrev2(str);
-	while (*str == ' ' || *str == '\n' || *str == '\t')
-		str++;
-	str = ft_strrev2(str);
-	return (str);
+	lenstr = ft_strlen(s);
+	if (start == lenstr || lenstr == 0)
+		return (ft_strnew(1));
+	len = lenstr - 1;
+	while (s[len] == ' ' || s[len] == '\n' || s[len] == '\t')
+	{
+		len--;
+	}
+	return (ft_strsub(s, start, len - start + 1));
 }

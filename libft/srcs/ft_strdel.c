@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 17:06:42 by jichen-m          #+#    #+#             */
-/*   Updated: 2015/09/20 16:13:17 by jichen-m         ###   ########.fr       */
+/*   Created: 2014/11/05 17:45:34 by opandolf          #+#    #+#             */
+/*   Updated: 2014/11/08 17:15:39 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 void	ft_strdel(char **as)
 {
-	if (as && *as)
-	{
-		free(*as);
-		*as = NULL;
-	}
+	ft_memdel((void **)as);
 }

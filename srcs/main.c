@@ -6,13 +6,13 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:03 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/10/19 02:21:49 by jichen-m         ###   ########.fr       */
+/*   Updated: 2016/10/20 02:41:33 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-int	main(int ac, char **av)
+int	main(void)
 {
 	t_env e;
 
@@ -25,6 +25,9 @@ int	main(int ac, char **av)
 	if (!(e.img.buffer = (unsigned char *)mlx_get_data_addr(e.img.img_ptr, \
 		&e.img.bpp, &e.img.bpl, &e.img.endian)))
 		return (0);
+	init_cam(&e.camera);
+	init_vp(&e.vp);
+	e.scene.obj = init_test();
 	mlx_hook(e.win, 3, (1L << 1), &key_release, &e);
 	mlx_expose_hook(e.win, &expose_hook, &e);
 	mlx_loop(e.mlx);

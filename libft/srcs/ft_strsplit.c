@@ -3,60 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 14:17:13 by jichen-m          #+#    #+#             */
-/*   Updated: 2015/11/23 16:12:00 by jichen-m         ###   ########.fr       */
+/*   Created: 2014/11/06 14:25:59 by opandolf          #+#    #+#             */
+/*   Updated: 2014/11/09 13:42:14 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_words(char const *s, char c)
+static char	**ft_splitstr(char const *s, char c, char **tab)
 {
-	int		i;
-	size_t	size;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	start;
+	size_t			len;
 
 	i = 0;
-	size = 0;
-	while (s[i] && s[i] == c)
-		i++;
+	j = 0;
 	while (s[i])
 	{
-		while (s[i] && s[i] == c)
+		while (s[i] == c && s[i] != '\0')
 			i++;
-		if (s[i])
+		start = i;
+		while (s[i] != c && s[i] != '\0')
+			i++;
+		len = i - start;
+		if ((s[i] != '\0' || len > 0) || c == '\0')
 		{
-			while (s[i] && s[i] != c)
-				i++;
-			size++;
+			tab[j] = ft_strsub(s, start, len);
+			j++;
 		}
 	}
-	return (size);
+	return (tab);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(char const *s, char c)
 {
-	char	**tab;
-	size_t	size;
-	int		i;
-	int		start;
+	int				nb_cases;
+	char			**tab;
 
-	if (!s || !(tab = (char **)malloc(sizeof(char *) * (ft_words(s, c) + 1))))
+	if (s != NULL)
+		nb_cases = ft_nbcells(s, c);
+	else
+		nb_cases = 1;
+	tab = (char **)ft_memalloc(sizeof(char *) * nb_cases);
+	if (!tab)
 		return (NULL);
-	i = 0;
-	size = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			start = i;
-			while (s[i] && s[i] != c)
-				i++;
-			tab[size++] = ft_strsub(s, start, i - start);
-		}
-	}
+	tab[nb_cases - 1] = NULL;
+	if (nb_cases == 1)
+		return (tab);
+	tab = ft_splitstr(s, c, tab);
 	return (tab);
 }
