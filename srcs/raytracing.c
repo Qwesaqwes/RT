@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:22:46 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/10/20 04:15:59 by jichen-m         ###   ########.fr       */
+/*   Updated: 2016/10/20 05:08:35 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ t_ray	set_ray(t_camera cam, t_vp vp, int i, int j)
 	t_vec3d		tmp;
 	t_ray		ray;
 
-	tmp.z = (float)-(vp.width / 2) + (float)(vp.width * i) / (W - 1);
-	tmp.y = -(vp.height / 2) + (vp.height * j) / (H - 1);
+	tmp.z = -((float)vp.width / 2.0f) + (float)(vp.width * i) / (float)(W - 1);
+	tmp.y = -((float)vp.height / 2.0f) + (float)(vp.height * j) / (float)(H - 1);
 	tmp.x = vp.dist;
 	ray.origin.x = tmp.x + cam.origin.x;
 	ray.origin.y = tmp.y + cam.origin.y;
@@ -38,9 +38,12 @@ t_rgb	color_to_rgb(t_color old)
 {
 	t_rgb	new;
 
-	new.red = (int)(old.red * 256);
-	new.green = (int)(old.green * 256);
-	new.blue = (int)(old.blue * 256);
+	// new.red = (int)(old.red * 256);
+	// new.green = (int)(old.green * 256);
+	// new.blue = (int)(old.blue * 256);
+	new.red = old.red * 255;
+	new.green = old.green * 255;
+	new.blue = old.blue * 255;
 	return (new);
 }
 
@@ -50,7 +53,7 @@ void	raytracing(t_env *e)
 	int j;
 	t_ray	ray;
 	t_rgb	color;
-	// appel de la fonction init_camera(...) qui renvoi un struct camera
+	// appel de la fonction set_camera(...) qui renvoi un struct camera
 	set_camera(&(e->camera));
 	j = -1;
 	while (++j < H)
@@ -60,6 +63,8 @@ void	raytracing(t_env *e)
 		{
 			ray = set_ray(e->camera, e->vp, i, j);
 			color = color_to_rgb(compute_ray(ray, e->scene));
+			if(color.red == 255)
+				printf("red3:255\n");
 			ft_pixel_put(i, j, color, *e);
 		}
 	}

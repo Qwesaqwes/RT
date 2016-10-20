@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/10/20 03:15:06 by jichen-m         ###   ########.fr       */
+/*   Updated: 2016/10/20 05:09:34 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 #include <stdio.h>
 
 
-# define H 480
-# define W 640
+# define H 600
+# define W 600
 # define ESC 53
 
 typedef struct		s_matrix
@@ -128,7 +128,7 @@ typedef struct		s_env
 }					t_env;
 
 t_color		compute_ray(t_ray ray, t_scene s);
-t_no		get_nearest_obj(t_ray ray, t_list *list);
+int			get_nearest_obj(t_ray ray, t_list *list, t_no *no);
 t_vec3d		rota_vect(t_vec3d old, float angleX, float angleY, float angleZ);
 t_vec3d		normalizevec(t_vec3d old);
 int			expose_hook(t_env *e);

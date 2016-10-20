@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 06:04:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/10/20 04:14:19 by jichen-m         ###   ########.fr       */
+/*   Updated: 2016/10/20 04:57:02 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ float	sphere_dist(t_ray r, t_obj o)
 	(r.origin.z - o.center.z) * (r.origin.z - o.center.z) -
 	(o.radius * o.radius);
 	d = b * b - 4 * a * c;
-	printf("b = %f\n", b);
-	printf("OX = %f, DX = %f\n", r.origin.x, r.dir.x);
-	printf("OY = %f, DY = %f\n", r.origin.y, r.dir.y);
-	printf("OZ = %f, DZ = %f\n\n\n", r.origin.z, r.dir.z);
+	// printf("b = %f\n", b);
+	// printf("OX = %f, DX = %f\n", r.origin.x, r.dir.x);
+	// printf("OY = %f, DY = %f\n", r.origin.y, r.dir.y);
+	// printf("OZ = %f, DZ = %f\n\n\n", r.origin.z, r.dir.z);
 	if (d >= 0)
 		return (compute_solution(a, b, d));
 	else

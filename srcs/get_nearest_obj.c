@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_nearest_obj.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:36:48 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/10/20 02:45:22 by jichen-m         ###   ########.fr       */
+/*   Updated: 2016/10/20 05:05:31 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ t_vec3d	set_inter_point(float dist, t_ray ray)
 	return (new);
 }
 
-t_no	get_nearest_obj(t_ray ray, t_list *list)
+int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 {
 	t_list	*tmp;
-	t_no	no;
+	// t_no	no;
 	float	distno;		//distance of nearest obj (minimum)
 	float	dist;
 
@@ -35,20 +35,19 @@ t_no	get_nearest_obj(t_ray ray, t_list *list)
 	{
 		if (((t_obj*)tmp->content)->type == 0)	//si obj = sphere
 			dist = sphere_dist(ray, *((t_obj*)tmp->content));
-		ft_putchar('C');
 		if (dist >= 0)
 		{
 			if ((distno == -1) || (dist < distno))
 			{
 				distno = dist;
-				no.obj = *((t_obj*)tmp->content);
+				no->obj = *((t_obj*)tmp->content);
+				printf("color red:%f", no->obj.color.red);
 			}
 		}
-		ft_putchar('C');
 		tmp = tmp->next;
 	}
-	ft_putchar('D');
-	no.ip = set_inter_point(dist, ray);
-	ft_putchar('D');
-	return (no);
+	if (distno == -1)
+		return (0);
+	no->ip = set_inter_point(dist, ray);
+	return (1);
 }
