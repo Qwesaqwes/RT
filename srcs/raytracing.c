@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:22:46 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/10/20 05:08:35 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/11/23 15:21:18 by JimmyChen        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	set_camera(t_camera *cam)
 {
-	cam->vectorU = rota_vect(cam->baseU, cam->angleX, cam->angleY, cam->angleZ);
-	cam->vectorV = rota_vect(cam->baseV, cam->angleX, cam->angleY, cam->angleZ);
-	cam->vectorW = rota_vect(cam->baseW, cam->angleX, cam->angleY, cam->angleZ);
+	cam->vectorU = rota_vect(cam->baseU, cam->rot);
+	cam->vectorV = rota_vect(cam->baseV, cam->rot);
+	cam->vectorW = rota_vect(cam->baseW, cam->rot);
 }
 
 t_ray	set_ray(t_camera cam, t_vp vp, int i, int j)
@@ -63,8 +63,6 @@ void	raytracing(t_env *e)
 		{
 			ray = set_ray(e->camera, e->vp, i, j);
 			color = color_to_rgb(compute_ray(ray, e->scene));
-			if(color.red == 255)
-				printf("red3:255\n");
 			ft_pixel_put(i, j, color, *e);
 		}
 	}

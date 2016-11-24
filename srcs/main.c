@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:03 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/10/20 02:41:33 by jichen-m         ###   ########.fr       */
+/*   Updated: 2016/11/23 18:36:41 by JimmyChen        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(void)
 	init_cam(&e.camera);
 	init_vp(&e.vp);
 	e.scene.obj = init_test();
+	// if (e.scene.obj == NULL)
+		// printf("B\n");
 	mlx_hook(e.win, 3, (1L << 1), &key_release, &e);
 	mlx_expose_hook(e.win, &expose_hook, &e);
 	mlx_loop(e.mlx);

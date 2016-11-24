@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute_ray.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:10:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/10/20 05:06:04 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/11/22 17:05:14 by JimmyChen        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ t_color		compute_ray(t_ray ray, t_scene s)
 		color = set_black_color();
 	else
 	{
-		ft_putchar('A');
+		//ft_putchar('A');
 		color = no.obj.color;
-		printf(" red2:%f", no.obj.color.red);
+		//printf(" red2:%f", no.obj.color.red);
 	}
 	return(color);
 }

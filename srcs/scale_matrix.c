@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normalizevec.c                                     :+:      :+:    :+:   */
+/*   scale_matrix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: JimmyChe <JimmyChe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/19 04:01:50 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/23 15:09:27 by JimmyChen        ###   ########.fr       */
+/*   Created: 2016/11/23 14:43:33 by JimmyChe          #+#    #+#             */
+/*   Updated: 2016/11/23 16:28:37 by JimmyChen        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_vec3d		normalizevec(t_vec3d old)
+t_matrix	scale_matrix(t_vec3d center)
 {
-	double	length;
-	t_vec3d	new;
+	t_matrix	new;
 
-	length = sqrt(old.x * old.x + old.y * old.y + old.z * old.z);
-	new.x = old.x / length;
-	new.y = old.y / length;
-	new.z = old.z / length;
-	new.w = 1;
+	new.a = center.x;
+	new.b = 0;
+	new.c = 0;
+	new.d = 0;
+	new.e = 0;
+	new.f = center.y;
+	new.g = 0;
+	new.h = 0;
+	new.i = 0;
+	new.j = 0;
+	new.k = center.z;
+	new.l = 0;
+	new.m = 0;
+	new.n = 0;
+	new.o = 0;
+	new.p = 1;
 	return (new);
 }

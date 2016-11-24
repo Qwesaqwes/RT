@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2016/10/20 02:38:50 by jichen-m         ###   ########.fr        #
+#    Updated: 2016/11/23 16:26:47 by JimmyChen        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,11 @@ SRC			=	compute_ray.c\
 				normalizevec.c\
 				pixelput.c\
 				raytracing.c\
-				sphere.c
+				sphere.c\
+				inver_matrix.c\
+				scale_matrix.c\
+				trans_matrix.c
+
 
 
 OBJ			=	$(SRC:.c=.o)
