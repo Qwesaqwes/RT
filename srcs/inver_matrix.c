@@ -6,7 +6,7 @@
 /*   By: JimmyChe <JimmyChe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/20 14:17:01 by JimmyChe          #+#    #+#             */
-/*   Updated: 2016/11/23 18:53:00 by JimmyChen        ###   ########.fr       */
+/*   Updated: 2016/11/25 15:44:49 by JimmyChen        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ t_matrix	inver_transl_matrix(t_matrix old)
 	inver.a = old.a;
 	inver.b = old.b;
 	inver.c = old.c;
-	inver.d = (old.d) * (-1);
+	inver.d = (old.d) * (-1.0f);
 	inver.e = old.e;
 	inver.f = old.f;
 	inver.g = old.g;
-	inver.h = (old.h) * (-1);
+	inver.h = (old.h) * (-1.0f);
 	inver.i = old.i;
 	inver.j = old.j;
 	inver.k = old.k;
-	inver.l = (old.l) * (-1);
+	inver.l = (old.l) * (-1.0f);
 	inver.m = old.m;
 	inver.n = old.n;
 	inver.o = old.o;
@@ -73,7 +73,7 @@ t_matrix	inver_scale_matrix(t_matrix old)
 	inver.i = old.i;
 	inver.j = old.j;
 	inver.k = (1.0f) / (old.k);
-	inver.l = old.h;
+	inver.l = old.l;
 	inver.m = old.m;
 	inver.n = old.n;
 	inver.o = old.o;

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:36:48 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/23 19:00:36 by JimmyChen        ###   ########.fr       */
+/*   Updated: 2016/11/25 17:18:41 by JimmyChen        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,18 @@ t_vec3d	inver_origin(t_vec3d origin, t_transform t)
 {
 	t_vec3d	new;
 
-	new = mult_matrix(inver_rot_matrix(rotationX(t.rot.x)), origin);
+	printf("origin0: %f, %f, %f\n", origin.x, origin.y, origin.z);
+	new = mult_matrix(inver_transl_matrix(trans_matrix(t.transl)), origin);
+	printf("new t: %f, %f, %f\n", new.x, new.y, new.z);
+	new = mult_matrix(inver_rot_matrix(rotationX(t.rot.x)), new);
+	// printf("new rx: %f, %f, %f\n", new.x, new.y, new.z);
 	new = mult_matrix(inver_rot_matrix(rotationY(t.rot.y)), new);
+	// printf("new ry: %f, %f, %f\n", new.x, new.y, new.z);
 	new = mult_matrix(inver_rot_matrix(rotationZ(t.rot.z)), new);
-	new = mult_matrix(inver_transl_matrix(trans_matrix(t.transl)), new);
+	printf("new rz: %f, %f, %f\n", new.x, new.y, new.z);
 	new = mult_matrix(inver_scale_matrix(scale_matrix(t.scale)), new);
+	printf("new s: %f, %f, %f\n", new.x, new.y, new.z);
+	printf("origin1 : %f,%f,%f\n", new.x, new.y, new.z);
 
 	return (new);
 }
@@ -39,10 +46,13 @@ t_vec3d inver_dir(t_vec3d dir, t_transform t)
 {
 	t_vec3d new;
 
-	new = mult_matrix(inver_scale_matrix(scale_matrix(t.scale)), dir);
-	new = mult_matrix(inver_rot_matrix(rotationX(t.rot.x)), new);
+	printf("dir0: %f, %f, %f\n", dir.x, dir.y, dir.z);
+	new = mult_matrix(inver_rot_matrix(rotationX(t.rot.x)), dir);
 	new = mult_matrix(inver_rot_matrix(rotationY(t.rot.y)), new);
 	new = mult_matrix(inver_rot_matrix(rotationZ(t.rot.z)), new);
+	new = mult_matrix(inver_scale_matrix(scale_matrix(t.scale)), new);
+	printf("dir1 : %f,%f,%f\n", new.x, new.y, new.z);
+
 	return (new);
 }
 
@@ -51,9 +61,9 @@ t_ray	imaginary_ray(t_ray ray, t_transform t)
 	t_ray	new;
 
 	new.origin = inver_origin(ray.origin, t);
-	printf("origin : %f,%f,%f\n", new.origin.x, new.origin.y, new.origin.z);
+	// printf("origin : %f,%f,%f\n", new.origin.x, new.origin.y, new.origin.z);
 	new.dir = inver_dir(ray.dir, t);
-	printf("dir : %f,%f,%f\n", new.dir.x, new.dir.y, new.dir.z);
+	// printf("dir : %f,%f,%f\n", new.dir.x, new.dir.y, new.dir.z);
 
 	return (new);
 }
@@ -66,6 +76,7 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 
 	tmp = list;
 	distno = -1;
+	dist = -1;
 	// printf("A\n");
 
 	while (tmp)
