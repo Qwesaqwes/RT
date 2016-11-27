@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 06:04:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/23 18:42:26 by JimmyChen        ###   ########.fr       */
+/*   Updated: 2016/11/27 16:15:45 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ float	sphere_dist(t_ray r)
 	double	c;
 	double	d;
 
-	// a = r.dir.x * r.dir.x + r.dir.y * r.dir.y + r.dir.z * r.dir.z;
 	// b = 2 * (r.origin.x - o.center.x) * r.dir.x +
 	// 2 * (r.origin.y - o.center.y) * r.dir.y +
 	// 2 * (r.origin.z - o.center.z) * r.dir.z;
@@ -53,16 +52,20 @@ float	sphere_dist(t_ray r)
 	// (r.origin.y - o.center.y) * (r.origin.y - o.center.y) +
 	// (r.origin.z - o.center.z) * (r.origin.z - o.center.z) -
 	// (o.radius * o.radius);
-	a = 1;
+	a = r.dir.x * r.dir.x + r.dir.y * r.dir.y + r.dir.z * r.dir.z;
 	b = 2 * (r.origin.x * r.dir.x) + 2 * (r.origin.y * r.dir.y) + 2 * (r.origin.z * r.dir.z);
 	c = (r.origin.x * r.origin.x) + (r.origin.y * r.origin.y) + (r.origin.z * r.origin.z) - 1;
-	d = b * b - 4 * a * c;
+	d = (b * b) - (4 * a * c);
+	printf("d: %f\n", d);
 	// printf("b = %f\n", b);
 	// printf("OX = %f, DX = %f\n", r.origin.x, r.dir.x);
 	// printf("OY = %f, DY = %f\n", r.osrigin.y, r.dir.y);
 	// printf("OZ = %f, DZ = %f\n\n\n", r.origin.z, r.dir.z);
 	if (d >= 0)
+	{
+		// printf("d: %f\n", d);
 		return (compute_solution(a, b, d));
+	}
 	else
 		return (-1);
 }

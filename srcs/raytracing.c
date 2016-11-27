@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:22:46 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/23 15:21:18 by JimmyChen        ###   ########.fr       */
+/*   Updated: 2016/11/27 16:01:37 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_ray	set_ray(t_camera cam, t_vp vp, int i, int j)
 	ray.origin.x = tmp.x + cam.origin.x;
 	ray.origin.y = tmp.y + cam.origin.y;
 	ray.origin.z = tmp.z + cam.origin.z;
+	ray.origin.w = 1;
 	ray.dir = normalizevec(tmp);
 	return (ray);
 }
