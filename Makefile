@@ -13,6 +13,7 @@
 NAME		=	RT
 DIRSRC		=	./srcs/
 DIROBJ		=	./objs/
+LIBA		=	./libft/libft.a
 INCLUDE		=	-I./includes/ -I./libft/includes/ -I./minilibx_macos/
 SUB_MAKE	=	./libft/
 INC_LIB		=	-L./libft -lft -L ./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit -lm
@@ -56,7 +57,7 @@ ifdef SUB_MAKE
 				@(cd $(SUB_MAKE) && $(MAKE))
 endif
 
-				$(CC) $(INCLUDE) $(INC_LIB) $(CFLAGS) -o $(NAME) $(OBJS)
+				$(CC) $(INCLUDE) $(INC_LIB) $(CFLAGS) -o $(NAME) $(LIBA) $(OBJS)
 				@$(ECHO) '> Compiled'
 
 clean	:
