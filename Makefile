@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2016/11/23 16:26:47 by JimmyChen        ###   ########.fr        #
+#    Updated: 2016/12/05 15:00:58 by opandolf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ SRC			=	compute_ray.c\
 				sphere.c\
 				inver_matrix.c\
 				scale_matrix.c\
-				trans_matrix.c
+				trans_matrix.c\
+				compute_normal_vec.c \
+				compute_color.c
 
 
 
@@ -39,7 +41,7 @@ OBJS		=	$(OBJ:%=$(DIROBJ)%)
 
 ifdef FLAGS
 	ifeq ($(FLAGS), no)
-CFLAGS		=
+CFLAGS		=	debug
 	endif
 	ifeq ($(FLAGS), debug)
 CFLAGS		=	-Wall -Wextra -Werror -ansi -pedantic -g
