@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:03 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/23 18:36:41 by JimmyChen        ###   ########.fr       */
+/*   Updated: 2016/12/05 16:22:11 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 
 	if (!(e.mlx = mlx_init()))
 		return (0);
-	if (!(e.win = mlx_new_window(e.mlx, W, H, "Rtv1")))
+	if (!(e.win = mlx_new_window(e.mlx, W, H, "RT")))
 		return (0);
 	if (!(e.img.img_ptr = (mlx_new_image(e.mlx, W, H))))
 		return (0);
@@ -27,9 +27,9 @@ int	main(void)
 		return (0);
 	init_cam(&e.camera);
 	init_vp(&e.vp);
+	e.scene.ia = 0.1;
 	e.scene.obj = init_test();
-	// if (e.scene.obj == NULL)
-		// printf("B\n");
+	e.scene.lum = init_test_lum();
 	mlx_hook(e.win, 3, (1L << 1), &key_release, &e);
 	mlx_expose_hook(e.win, &expose_hook, &e);
 	mlx_loop(e.mlx);

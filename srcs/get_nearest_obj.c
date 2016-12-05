@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:36:48 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/27 16:11:19 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/05 15:20:09 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ t_ray	imaginary_ray(t_ray ray, t_transform t)
 	t_ray	new;
 
 	new.origin = inver_origin(ray.origin, t);
-	printf("origin : %f,%f,%f\n", new.origin.x, new.origin.y, new.origin.z);
+	// printf("origin : %f,%f,%f\n", new.origin.x, new.origin.y, new.origin.z);
 	new.dir = inver_dir(ray.dir, t);
-	printf("dir : %f,%f,%f\n", new.dir.x, new.dir.y, new.dir.z);
+	// printf("dir : %f,%f,%f\n", new.dir.x, new.dir.y, new.dir.z);
 
 	return (new);
 }
@@ -73,38 +73,33 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 	t_list	*tmp;
 	float	distno;		//distance of nearest obj (minimum)
 	float	dist;
+	t_ray	img_ray;
+	t_obj	obj;
 
 	tmp = list;
 	distno = -1;
 	dist = -1;
-	// printf("A\n");
-
 	while (tmp)
 	{
-		// printf("A\n");
-		if (((t_obj*)tmp->content)->type == 0)	//si obj = sphere
-			{
-				dist = sphere_dist(imaginary_ray(ray, ((t_obj*)tmp->content)->transform));
-				// printf("B\n");
-				if (dist > 0)
-					printf("dist: %f\n", dist);
-			}
+		obj = *(t_obj*)(tmp->content);
+		if (obj.type == 0)	//si obj = sphere
+		{
+			img_ray = imaginary_ray(ray, obj.transform);
+			dist = sphere_dist(img_ray);
+		}
 		if (dist >= 0)
 		{
 			if ((distno == -1) || (dist < distno))
 			{
 				distno = dist;
-				no->obj = *((t_obj*)tmp->content);
-				//printf("color red:%f", no->obj.color.red);
+				no->obj = obj;
+				no->img_ray = img_ray;
 			}
 		}
 		tmp = tmp->next;
 	}
-	// printf("B\n");
-
 	if (distno == -1)
 		return (0);
 	no->ip = set_inter_point(dist, ray);
-	// get_light(t_no *no, t_ray ray);
 	return (1);
 }

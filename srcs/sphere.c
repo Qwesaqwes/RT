@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 06:04:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/27 16:15:45 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/05 15:38:36 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ float	compute_solution(double a, double b, double d)
 	{
 		t1 = (double)-b / (double)(2 * a);
 		if (t1 >= 0)
-			return (t1);
+				return (t1);
 		else
 			return (-1);
 	}
@@ -56,16 +56,21 @@ float	sphere_dist(t_ray r)
 	b = 2 * (r.origin.x * r.dir.x) + 2 * (r.origin.y * r.dir.y) + 2 * (r.origin.z * r.dir.z);
 	c = (r.origin.x * r.origin.x) + (r.origin.y * r.origin.y) + (r.origin.z * r.origin.z) - 1;
 	d = (b * b) - (4 * a * c);
-	printf("d: %f\n", d);
+	// printf("d: %f\n", d);
 	// printf("b = %f\n", b);
 	// printf("OX = %f, DX = %f\n", r.origin.x, r.dir.x);
 	// printf("OY = %f, DY = %f\n", r.osrigin.y, r.dir.y);
 	// printf("OZ = %f, DZ = %f\n\n\n", r.origin.z, r.dir.z);
 	if (d >= 0)
-	{
-		// printf("d: %f\n", d);
 		return (compute_solution(a, b, d));
-	}
 	else
 		return (-1);
+}
+
+t_vec3d	sphere_normal_vec(t_vec3d ip)
+{
+	t_vec3d normal;
+	//calcul normal_vec imaginaire (= IP en unit_sphere)
+	normal = ip;
+	return (normal);
 }

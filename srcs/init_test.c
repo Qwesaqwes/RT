@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/23 18:55:28 by JimmyChen        ###   ########.fr       */
+/*   Updated: 2016/12/05 16:22:23 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,37 @@ t_list 	*init_test(void)
 	obj1.color.red = 1;
 	obj1.color.green = 0;
 	obj1.color.blue = 0;
+	obj1.kd = 1;
+	obj1.i = 0;
 	ft_lstadd(&list, ft_lstnew(&obj1, sizeof(t_obj)));
-	// if (list == NULL)
-		// printf("A\n");
+	return (list);
+}
+
+t_list	*init_test_lum(void)
+{
+	t_list	*list;
+	t_obj	lum1;
+
+	list = NULL;
+	lum1.id = 0;
+	lum1.transform.scale.x = 1;
+	lum1.transform.scale.y = 1;
+	lum1.transform.scale.z = 1;
+	lum1.transform.scale.w = 1;
+	lum1.type = 0;
+	lum1.transform.transl.x = 1000;
+	lum1.transform.transl.y = 500;
+	lum1.transform.transl.z = 0;
+	lum1.transform.transl.w = 1;
+	lum1.transform.rot.x = 0;
+	lum1.transform.rot.y = 0;
+	lum1.transform.rot.z = 0;
+	lum1.transform.rot.w = 1;
+	lum1.color.red = 1;
+	lum1.color.green = 1;
+	lum1.color.blue = 1;
+	lum1.kd = 0;
+	lum1.i = 0.5;
+	ft_lstadd(&list, ft_lstnew(&lum1, sizeof(t_obj)));
 	return (list);
 }

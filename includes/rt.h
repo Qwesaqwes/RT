@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/23 17:02:12 by JimmyChen        ###   ########.fr       */
+/*   Updated: 2016/12/05 15:19:10 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ typedef struct		s_obj
 	int				id;
 	char			type;
 	t_color			color;
+	float			kd; //coefficient reflexion diffuse
+	float			i; //intensité lumiere
 	t_transform		transform;
 }					t_obj;
 
@@ -121,11 +123,14 @@ typedef struct		s_nearest_obj
 {
 	t_obj			obj;
 	t_vec3d			ip;			//intersection point with obj
+	t_ray			img_ray;
 }					t_no;
 
 typedef struct		s_scene
 {
 	t_list			*obj;
+	t_list			*lum;
+	float			ia; //intensité ambiante
 }					t_scene;
 
 typedef struct		s_env
@@ -139,6 +144,9 @@ typedef struct		s_env
 }					t_env;
 
 t_color		compute_ray(t_ray ray, t_scene s);
+t_vec3d		compute_normal_vec(t_no no);
+t_ray		imaginary_ray(t_ray ray, t_transform t);
+
 int			get_nearest_obj(t_ray ray, t_list *list, t_no *no);
 t_vec3d		rota_vect(t_vec3d old, t_vec3d rot);
 int			expose_hook(t_env *e);
@@ -146,6 +154,7 @@ int			key_release(int keycode, t_env *e);
 void 		ft_pixel_put(int i, int j, t_rgb color, t_env e);
 float		compute_solution(double a, double b, double d);
 float		sphere_dist(t_ray r);
+t_vec3d		sphere_normal_vec(t_vec3d ip);
 void 		init_vp(t_vp *vp);
 void 		init_cam(t_camera *cam);
 void		raytracing(t_env *e);
@@ -160,7 +169,11 @@ t_matrix	rotationY(float angle);
 t_matrix	rotationZ(float angle);
 t_vec3d		normalizevec(t_vec3d old);
 
+t_color		compute_color(t_no no, t_scene s, t_vec3d n);
+
 
 t_list 	*init_test(void);
+t_list	*init_test_lum(void);
+
 
 #endif

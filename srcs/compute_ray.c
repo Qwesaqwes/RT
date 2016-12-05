@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute_ray.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:10:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/22 17:05:14 by JimmyChen        ###   ########.fr       */
+/*   Updated: 2016/12/05 15:39:01 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,17 @@ t_color		compute_ray(t_ray ray, t_scene s)
 {
 	t_no	no;
 	t_color	color;
+	t_vec3d normal_vec;
 
 	if (get_nearest_obj(ray, s.obj, &no) == 0)
+	{
 		color = set_black_color();
+	}
 	else
 	{
-		//ft_putchar('A');
-		color = no.obj.color;
-		//printf(" red2:%f", no.obj.color.red);
+		normal_vec = compute_normal_vec(no);
+		color = compute_color(no, s, normal_vec);
+		//color = no.obj.color;
 	}
 	return(color);
 }
