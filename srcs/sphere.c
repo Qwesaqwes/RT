@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 06:04:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/05 15:38:36 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/06 08:58:43 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ float	sphere_dist(t_ray r)
 		return (-1);
 }
 
-t_vec3d	sphere_normal_vec(t_vec3d ip)
+t_vec3d	sphere_normal_vec(t_vec3d ip, t_vec3d t)
 {
 	t_vec3d normal;
 	//calcul normal_vec imaginaire (= IP en unit_sphere)
-	normal = ip;
+	normal = vector_sub(ip, t);
 	return (normal);
 }

@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 12:32:03 by opandolf          #+#    #+#             */
-/*   Updated: 2016/12/05 16:23:14 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/06 09:14:02 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,32 +40,48 @@ t_color	color_ambiant(float ia, float kd, t_color color)
 	return (res);
 }
 
-t_vec3d		vector_sub(t_vec3d a, t_vec3d b)
+t_vec3d		vector_add(t_vec3d a, t_vec3d b)
 {
-	t_vec3d res;
+	t_vec3d ret;
 
-	res.x = a.x - b.x;
-	res.y = a.y - b.y;
-	res.z = a.z - b.z;
-	res.w = 1;
-	return (res);
+	ret.x = a.x + b.x;
+	ret.y = a.y + b.y;
+	ret.z = a.z + b.z;
+	ret.w = 1;
+	return(ret);
 }
 
-int			get_intersection_obj(t_list *list, t_ray ray)
+t_vec3d		vector_sub(t_vec3d a, t_vec3d b)
+{
+	t_vec3d ret;
+
+	ret.x = a.x - b.x;
+	ret.y = a.y - b.y;
+	ret.z = a.z - b.z;
+	ret.w = 1;
+	return (ret);
+}
+
+int			get_intersection_obj(t_list *list, t_ray ray, char id, float dist_lum)
 {
 	t_list	*tmp;
 	t_ray	img_ray;
+	float	dist;
 
 
 	tmp = list;
 	while (tmp)
 	{
-		if (((t_obj*)tmp->content)->type == 0)	//si obj = sphere
+		if (((t_obj*)tmp->content)->id != id)
 		{
-			img_ray = imaginary_ray(ray, ((t_obj*)tmp->content)->transform);
-			if (sphere_dist(img_ray) > 0)
+			if (((t_obj*)tmp->content)->type == 0)	//si obj = sphere
 			{
-				return (1);
+				img_ray = imaginary_ray(ray, ((t_obj*)tmp->content)->transform);
+				dist = sphere_dist(img_ray);
+				if (dist >= 0 && dist <= dist_lum)
+				{
+					return (1);
+				}
 			}
 		}
 		tmp = tmp->next;
@@ -75,36 +91,40 @@ int			get_intersection_obj(t_list *list, t_ray ray)
 
 t_color		color_diffuse(t_vec3d n, t_scene s, t_obj o, t_vec3d ip)
 {
-	t_color		res;
+	t_color		cd;
 	t_list		*tmp;
 	t_obj		lum;
 	float		k;
-	t_ray		ray;
+	t_ray		light;
+	float		dist_lum;
 
 	tmp = s.lum;
-	res = color_mult(o.color, 0);
+	cd = color_mult(o.color, 0);
 	while(tmp)
 	{
 		lum = (*(t_obj*)tmp->content);
-		ray.origin = ip;
-		ray.dir = normalizevec(vector_sub(lum.transform.transl, ip));
-		if (get_intersection_obj(s.obj, ray) == 0)
+		light.origin = ip;
+		light.dir = vector_sub(lum.transform.transl, ip);
+		dist_lum = sqrt(light.dir.x * light.dir.x + light.dir.y * light.dir.y + light.dir.z * light.dir.z);
+		light.dir = normalizevec(light.dir);
+		if (get_intersection_obj(s.obj, light, o.id, dist_lum) == 0)
 		{
-			k = (n.x * ray.dir.x + n.y * ray.dir.y + n.z * ray.dir.z) * lum.i;
-			res = color_add(res, color_mult(o.color, k));
+			k = (n.x * light.dir.x + n.y * light.dir.y + n.z * light.dir.z) * lum.i;
+			cd = color_add(cd, color_mult(o.color, fmax(0, k)));
 		}
 		tmp = tmp->next;
 	}
-	res = color_mult(res, o.kd);
-	return (res);
+	cd = color_mult(cd, o.kd);
+	return (cd);
 }
 
-t_color		compute_color(t_no no, t_scene s, t_vec3d n)
+t_color		compute_color(t_no no, t_scene s, t_vec3d n, t_ray origin)
 {
 	t_color		ca;
 	t_color		cd;
 	t_color		color;
 
+	(void)origin;
 	ca = color_ambiant(s.ia, no.obj.kd, no.obj.color);
 	cd = color_diffuse(n, s, no.obj, no.ip);
 	color = color_add(ca, cd);

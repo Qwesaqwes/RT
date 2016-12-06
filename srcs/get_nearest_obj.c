@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:36:48 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/05 15:20:09 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/06 09:03:44 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_vec3d	set_inter_point(float dist, t_ray ray)
 	new.x = ray.origin.x + ray.dir.x * dist;
 	new.y = ray.origin.y + ray.dir.y * dist;
 	new.z = ray.origin.z + ray.dir.z * dist;
+	new.w = 1;
 	return (new);
 }
 
@@ -28,15 +29,20 @@ t_vec3d	inver_origin(t_vec3d origin, t_transform t)
 
 	// printf("origin0: %f, %f, %f, %f\n", origin.x, origin.y, origin.z, origin.w);
 	new = mult_matrix(inver_transl_matrix(trans_matrix(t.transl)), origin);
-	// printf("new t: %f, %f, %f\n", new.x, new.y, new.z);
+// if (origin.y < -350)
+// printf("new t: %f, %f, %f  tx: %f, t'x: %f\n", new.x, new.y, new.z, t.transl.x,inver_transl_matrix(trans_matrix(t.transl)).d);
 	new = mult_matrix(inver_rot_matrix(rotationX(t.rot.x)), new);
-	// printf("new rx: %f, %f, %f\n", new.x, new.y, new.z);
-	new = mult_matrix(inver_rot_matrix(rotationY(t.rot.y)), new);
-	// printf("new ry: %f, %f, %f\n", new.x, new.y, new.z);
+// if (origin.y < -350)
+// printf("new rx: %f, %f, %f\n", new.x, new.y, new.z);
+new = mult_matrix(inver_rot_matrix(rotationY(t.rot.y)), new);
+	// if (origin.y < -350)
+// printf("new ry: %f, %f, %f\n", new.x, new.y, new.z);
 	new = mult_matrix(inver_rot_matrix(rotationZ(t.rot.z)), new);
-	// printf("new rz: %f, %f, %f\n", new.x, new.y, new.z);
+// if (origin.y < -350)
+// printf("new rz: %f, %f, %f\n", new.x, new.y, new.z);
 	new = mult_matrix(inver_scale_matrix(scale_matrix(t.scale)), new);
-	// printf("new s: %f, %f, %f\n", new.x, new.y, new.z);
+// if (origin.y < -350)
+// printf("new s: %f, %f, %f\n", new.x, new.y, new.z);
 	// printf("origin1 : %f,%f,%f\n", new.x, new.y, new.z);
 
 	return (new);
@@ -87,7 +93,7 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 			img_ray = imaginary_ray(ray, obj.transform);
 			dist = sphere_dist(img_ray);
 		}
-		if (dist >= 0)
+		if (dist > 0)
 		{
 			if ((distno == -1) || (dist < distno))
 			{
@@ -100,6 +106,6 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 	}
 	if (distno == -1)
 		return (0);
-	no->ip = set_inter_point(dist, ray);
+	no->ip = set_inter_point(distno, ray);
 	return (1);
 }

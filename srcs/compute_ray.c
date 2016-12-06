@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:10:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/05 15:39:01 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/06 07:09:18 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_color		compute_ray(t_ray ray, t_scene s)
 	else
 	{
 		normal_vec = compute_normal_vec(no);
-		color = compute_color(no, s, normal_vec);
+		color = compute_color(no, s, normal_vec, ray);
 		//color = no.obj.color;
 	}
 	return(color);
