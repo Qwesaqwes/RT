@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:10:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/06 16:47:26 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/06 18:23:50 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,24 @@ t_color		set_black_color(void)
 	return(c);
 }
 
-t_color		compute_ray(t_ray ray, t_scene s)
+t_color		compute_ray(t_ray ray, t_scene s, int depth, char id_refl)
 {
 	t_no	no;
 	t_color	color;
 	t_vec3d normal_vec;
 
-	if (get_nearest_obj(ray, s.obj, &no) == 0)
+	if (get_nearest_obj(ray, s.obj, &no, id_refl) == 0)
 	{
 		color = set_black_color();
 	}
 	else
 	{
 		normal_vec = compute_normal_vec(no);
-		color = compute_color(no, s, normal_vec, ray.origin);
-		//color = no.obj.color;
+		color = compute_color(no, s, normal_vec, no.origin.origin);
+		if(depth < MAX_DEPTH)
+		{
+			color = color_add(color, color_mult(reflection(no, s, normal_vec, depth), no.obj.k.s));
+		}
 	}
 	return(color);
 }

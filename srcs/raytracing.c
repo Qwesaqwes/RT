@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:22:46 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/27 16:01:37 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/06 18:25:37 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	raytracing(t_env *e)
 		while (++i < W)
 		{
 			ray = set_ray(e->camera, e->vp, i, j);
-			color = color_to_rgb(compute_ray(ray, e->scene));
+			color = color_to_rgb(compute_ray(ray, e->scene, 0, -1));
 			ft_pixel_put(i, j, color, *e);
 		}
 	}

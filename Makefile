@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2016/12/05 15:00:58 by opandolf         ###   ########.fr        #
+#    Updated: 2016/12/06 18:17:42 by opandolf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRC			=	compute_ray.c\
 				scale_matrix.c\
 				trans_matrix.c\
 				compute_normal_vec.c \
-				compute_color.c
+				compute_color.c \
+				reflection.c
 
 
 

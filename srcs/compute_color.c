@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 12:32:03 by opandolf          #+#    #+#             */
-/*   Updated: 2016/12/06 16:46:26 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/06 17:37:49 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,33 +82,6 @@ float		vector_scalar_product(t_vec3d a, t_vec3d b)
 	return(a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
-// int			get_intersection_obj(t_list *list, t_ray ray, char id, float dist_lum)
-// {
-// 	t_list	*tmp;
-// 	t_ray	img_ray;
-// 	float	dist;
-//
-//
-// 	tmp = list;
-// 	while (tmp)
-// 	{
-// 		if (((t_obj*)tmp->content)->id != id)
-// 		{
-// 			if (((t_obj*)tmp->content)->type == 0)	//si obj = sphere
-// 			{
-// 				img_ray = imaginary_ray(ray, ((t_obj*)tmp->content)->transform);
-// 				dist = sphere_dist(img_ray);
-// 				if (dist >= 0 && dist <= dist_lum)
-// 				{
-// 					return (1);
-// 				}
-// 			}
-// 		}
-// 		tmp = tmp->next;
-// 	}
-// 	return (0);
-// }
-
 t_color		color_init(void)
 {
 	t_color		ret;
@@ -118,63 +91,6 @@ t_color		color_init(void)
 	ret.blue = 0;
 	return (ret);
 }
-//
-// t_color	color_ambiant(float ia, float kd, t_color color)
-// {
-// 	t_color		res;
-//
-// 	res = color_mult(color, ia * kd);
-// 	return (res);
-// }
-
-// t_color		color_lights(t_vec3d n, t_scene s, t_obj o, t_vec3d ip, t_vec3d view)
-// {
-// 	t_color		cd;
-// 	t_color		cs;
-// 	t_list		*tmp;
-// 	t_obj		lum;
-// 	t_ray		light;
-// 	float		dist_lum;
-// 	t_vec3d		halfway;
-//
-// 	tmp = s.lum;
-// 	cd = color_init();
-// 	cs = color_init();
-// 	while(tmp)
-// 	{
-// 		lum = (*(t_obj*)tmp->content);
-// 		light.origin = ip;
-// 		light.dir = vector_sub(lum.transform.transl, ip);
-// 		dist_lum = sqrt(light.dir.x * light.dir.x + light.dir.y * light.dir.y + light.dir.z * light.dir.z);
-// 		light.dir = normalizevec(light.dir);
-// 		if (get_intersection_obj(s.obj, light, o.id, dist_lum) == 0)
-// 		{
-// 			if (vector_scalar_product(n, light.dir) > 0)
-// 			{
-// 				cd = color_add(cd, color_fact(lum.color, fmax(0, vector_scalar_product(n, light.dir) * lum.i)));
-// 				halfway = normalizevec(vector_add(light.dir, view));
-// 				cs = color_add(cs, color_fact(lum.color, fmax(pow(vector_scalar_product(n, halfway), s.shininess), 0)));
-// 			}
-// 		}
-// 		tmp = tmp->next;
-// 	}
-// 	cd = color_mult(cd, o.kd);
-// 	cs = color_mult(cd, o.ks);
-// 	return (color_add(cd, cs));
-// }
-
-
-// t_color		compute_color(t_no no, t_scene s, t_vec3d n, t_ray origin)
-// {
-// 	t_color		ca;
-// 	t_color		cd;
-// 	t_color		color;
-//
-// 	ca = color_ambiant(s.ambiant, no.obj.kd, no.obj.color);
-// 	cd = color_lights(n, s, no.obj, no.ip, vector_fact(origin.dir, -1));
-// 	color = color_add(ca, cd);
-// 	return (color);
-// }
 
 float		vector_length(t_vec3d a)
 {

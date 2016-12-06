@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/06 16:46:55 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/06 18:26:31 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define H 600
 # define W 600
 # define ESC 53
+# define MAX_DEPTH 3
 
 typedef struct		s_matrix
 {
@@ -132,6 +133,7 @@ typedef struct		s_nearest_obj
 	t_obj			obj;
 	t_vec3d			ip;			//intersection point with obj
 	t_ray			img_ray;
+	t_ray			origin;
 }					t_no;
 
 typedef struct		s_scene
@@ -151,11 +153,11 @@ typedef struct		s_env
 	t_scene			scene;
 }					t_env;
 
-t_color		compute_ray(t_ray ray, t_scene s);
+t_color		compute_ray(t_ray ray, t_scene s, int depth, char id_refl);
 t_vec3d		compute_normal_vec(t_no no);
 t_ray		imaginary_ray(t_ray ray, t_transform t);
 
-int			get_nearest_obj(t_ray ray, t_list *list, t_no *no);
+int			get_nearest_obj(t_ray ray, t_list *list, t_no *no, char id_refl);
 t_vec3d		rota_vect(t_vec3d old, t_vec3d rot);
 int			expose_hook(t_env *e);
 int			key_release(int keycode, t_env *e);
@@ -181,6 +183,13 @@ t_vec3d		normalizevec(t_vec3d old);
 t_color		compute_color(t_no no, t_scene s, t_vec3d n, t_vec3d origin);
 
 t_vec3d		vector_sub(t_vec3d a, t_vec3d b);
+float		vector_scalar_product(t_vec3d a, t_vec3d b);
+t_vec3d		vector_fact(t_vec3d a, float k);
+t_color		color_add(t_color a, t_color b);
+t_color		color_mult(t_color a, t_color b);
+
+t_color		reflection(t_no no, t_scene s, t_vec3d n, int depth);
+
 
 t_list 	*init_test(void);
 t_list	*init_test_lum(void);
