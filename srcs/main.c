@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:03 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/05 18:14:39 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/06 16:50:12 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ int	main(void)
 		return (0);
 	init_cam(&e.camera);
 	init_vp(&e.vp);
-	e.scene.ia = 0.1;
-	e.scene.n = 5;
+	e.scene.ambiant.red = 0.2;
+	e.scene.ambiant.green = 0.2;
+	e.scene.ambiant.blue = 0.2;
 	e.scene.obj = init_test();
 	e.scene.lum = init_test_lum();
 	mlx_hook(e.win, 3, (1L << 1), &key_release, &e);

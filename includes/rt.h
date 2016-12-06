@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/06 09:00:08 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/06 16:46:55 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,21 @@ typedef struct		s_transform
 	t_vec3d			rot;
 }					t_transform;
 
+typedef struct		s_parameters
+{
+	t_color			a;
+	t_color			d;
+	t_color			s;
+}					t_param;
+
 typedef struct		s_obj
 {
 	int				id;
 	char			type;
 	t_color			color;
-	float			kd; //coefficient reflexion diffuse
-	float			ks; //coeff spec
-	float			i; //intensité lumiere
+	t_param			k;
+	t_param			i;
+	float			shininess;
 	t_transform		transform;
 }					t_obj;
 
@@ -131,8 +138,7 @@ typedef struct		s_scene
 {
 	t_list			*obj;
 	t_list			*lum;
-	float			ia; //intensité ambiante
-	float			n; //coeffspec
+	t_color			ambiant; //intensité ambiante
 }					t_scene;
 
 typedef struct		s_env
@@ -172,7 +178,7 @@ t_matrix	rotationY(float angle);
 t_matrix	rotationZ(float angle);
 t_vec3d		normalizevec(t_vec3d old);
 
-t_color		compute_color(t_no no, t_scene s, t_vec3d n, t_ray origin);
+t_color		compute_color(t_no no, t_scene s, t_vec3d n, t_vec3d origin);
 
 t_vec3d		vector_sub(t_vec3d a, t_vec3d b);
 
