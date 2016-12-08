@@ -28,6 +28,7 @@ SRC			=	compute_ray.c\
 				pixelput.c\
 				raytracing.c\
 				sphere.c\
+				cylindre.c\
 				inver_matrix.c\
 				scale_matrix.c\
 				trans_matrix.c\

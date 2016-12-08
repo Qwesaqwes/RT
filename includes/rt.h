@@ -164,7 +164,9 @@ int			key_release(int keycode, t_env *e);
 void 		ft_pixel_put(int i, int j, t_rgb color, t_env e);
 float		compute_solution(double a, double b, double d);
 float		sphere_dist(t_ray r);
-t_vec3d	sphere_normal_vec(t_vec3d ip, t_vec3d t);
+float		cylindre_dist(t_ray r);
+t_vec3d		sphere_normal_vec(t_vec3d ip, t_vec3d t);
+t_vec3d		cylindre_normal_vec(t_no no);
 
 void 		init_vp(t_vp *vp);
 void 		init_cam(t_camera *cam);

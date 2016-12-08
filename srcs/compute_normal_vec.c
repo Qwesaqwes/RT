@@ -20,6 +20,10 @@ t_vec3d	compute_normal_vec(t_no no)
 	{
 		normal = sphere_normal_vec(no.ip, no.obj.transform.transl);
 	}
+	else if (no.obj.type == 1)
+	{
+		normal = cylindre_normal_vec(no);
+	}
 	else
 	{
 		normal.x = 0;
