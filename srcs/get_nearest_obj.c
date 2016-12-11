@@ -95,10 +95,15 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no, char id_refl)
 				img_ray = imaginary_ray(ray, obj.transform);
 				dist = sphere_dist(img_ray);
 			}
-			if (obj.type == 1)	//si obj = sphere
+			if (obj.type == 1)	//si obj = cylindre
 			{
 				img_ray = imaginary_ray(ray, obj.transform);
 				dist = cylindre_dist(img_ray);
+			}
+			if (obj.type == 2)	//si obj = plane
+			{
+				img_ray = imaginary_ray(ray, obj.transform);
+				dist = plane_dist(obj, img_ray);
 			}
 			if (dist > 0)
 			{

@@ -151,6 +151,10 @@ int			get_intersection_obj(t_list *list, t_obj lum, t_no no)
 			{
 				dist = cylindre_dist(img_ray);
 			}
+			if (obj.type == 2)
+			{
+				dist = plane_dist(obj, img_ray);
+			}
 			if (dist > 0 && dist < dist_lum)
 				return (1);
 		}

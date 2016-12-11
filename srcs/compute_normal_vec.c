@@ -24,6 +24,10 @@ t_vec3d	compute_normal_vec(t_no no)
 	{
 		normal = cylindre_normal_vec(no);
 	}
+	else if (no.obj.type == 2)
+	{
+		normal = plane_normal_vec(no);
+	}
 	else
 	{
 		normal.x = 0;

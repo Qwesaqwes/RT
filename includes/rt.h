@@ -25,7 +25,7 @@
 # define H 600
 # define W 600
 # define ESC 53
-# define MAX_DEPTH 3
+# define MAX_DEPTH 10
 
 typedef struct		s_matrix
 {
@@ -165,6 +165,8 @@ void 		ft_pixel_put(int i, int j, t_rgb color, t_env e);
 float		compute_solution(double a, double b, double d);
 float		sphere_dist(t_ray r);
 float		cylindre_dist(t_ray r);
+float		plane_dist(t_obj obj, t_ray r);
+t_vec3d		plane_normal_vec(t_no);
 t_vec3d		sphere_normal_vec(t_vec3d ip, t_vec3d t);
 t_vec3d		cylindre_normal_vec(t_no no);
 
