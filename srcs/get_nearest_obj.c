@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:36:48 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/06 18:27:27 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/12 17:28:55 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_ray	imaginary_ray(t_ray ray, t_transform t)
 	return (new);
 }
 
-int		get_nearest_obj(t_ray ray, t_list *list, t_no *no, char id_refl)
+int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 {
 	t_list	*tmp;
 	float	distno;		//distance of nearest obj (minimum)
@@ -88,36 +88,33 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no, char id_refl)
 	while (tmp)
 	{
 		obj = *(t_obj*)(tmp->content);
-		if(obj.id != id_refl)
+		if (obj.type == 0)	//si obj = sphere
 		{
-			if (obj.type == 0)	//si obj = sphere
+			img_ray = imaginary_ray(ray, obj.transform);
+			dist = sphere_dist(img_ray);
+		}
+		if (obj.type == 1)	//si obj = cylindre
+		{
+			img_ray = imaginary_ray(ray, obj.transform);
+			dist = cylindre_dist(img_ray);
+		}
+		if (obj.type == 2)	//si obj = plane
+		{
+			img_ray = imaginary_ray(ray, obj.transform);
+			dist = plane_dist(obj, img_ray);
+		}
+		if (dist > SHADOW_BIAS)
+		{
+			if ((distno == -1) || (dist < distno))
 			{
-				img_ray = imaginary_ray(ray, obj.transform);
-				dist = sphere_dist(img_ray);
-			}
-			if (obj.type == 1)	//si obj = cylindre
-			{
-				img_ray = imaginary_ray(ray, obj.transform);
-				dist = cylindre_dist(img_ray);
-			}
-			if (obj.type == 2)	//si obj = plane
-			{
-				img_ray = imaginary_ray(ray, obj.transform);
-				dist = plane_dist(obj, img_ray);
-			}
-			if (dist > 0)
-			{
-				if ((distno == -1) || (dist < distno))
-				{
-					distno = dist;
-					no->obj = obj;
-					no->img_ray = img_ray;
-				}
+				distno = dist;
+				no->obj = obj;
+				no->img_ray = img_ray;
 			}
 		}
 		tmp = tmp->next;
 	}
-	if (distno == -1)
+	if (distno <= 0)
 		return (0);
 	no->ip = set_inter_point(distno, ray);
 	no->origin = ray;

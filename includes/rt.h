@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/06 18:26:31 by opandolf         ###   ########.fr       */
+/*   Updated: 2016/12/12 17:35:59 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 # define H 600
 # define W 600
 # define ESC 53
-# define MAX_DEPTH 10
+# define MAX_DEPTH 3
+# define SHADOW_BIAS 0.0001
 
 typedef struct		s_matrix
 {
@@ -115,6 +116,7 @@ typedef struct		s_parameters
 	t_color			a;
 	t_color			d;
 	t_color			s;
+	t_color			t;
 }					t_param;
 
 typedef struct		s_obj
@@ -122,25 +124,54 @@ typedef struct		s_obj
 	int				id;
 	char			type;
 	t_color			color;
-	t_param			k;
-	t_param			i;
+	float			ka;
+	float			kd;
+	float			ks;
+	float			i;
+	float			t;
 	float			shininess;
 	t_transform		transform;
+	float			refr_index;
 }					t_obj;
 
 typedef struct		s_nearest_obj
 {
 	t_obj			obj;
-	t_vec3d			ip;			//intersection point with obj
+	t_vec3d			ip;
 	t_ray			img_ray;
 	t_ray			origin;
+	t_vec3d			normal;
 }					t_no;
 
+typedef struct		s_calculated_values
+{
+	t_vec3d			normal;
+	t_vec3d			ip;
+	float			n1;
+	float			n2;
+	float			n;
+	float			cosI;
+	float			sinT2;
+	char			TIR;
+	float			cosT;
+	char			action;
+	char			sign;
+}					t_cv;
+
+typedef	struct		s_values
+{
+	int				depth;
+	char			id_refl;
+	t_list			**refr_index;
+	char			enter;
+}					t_values;
 typedef struct		s_scene
 {
 	t_list			*obj;
 	t_list			*lum;
-	t_color			ambiant; //intensité ambiante
+	t_color			ambiant;
+	float			refr_index;
+	t_color			background;
 }					t_scene;
 
 typedef struct		s_env
@@ -153,22 +184,22 @@ typedef struct		s_env
 	t_scene			scene;
 }					t_env;
 
-t_color		compute_ray(t_ray ray, t_scene s, int depth, char id_refl);
+t_color		compute_ray(t_ray ray, t_scene s, t_values v);
 t_vec3d		compute_normal_vec(t_no no);
 t_ray		imaginary_ray(t_ray ray, t_transform t);
 
-int			get_nearest_obj(t_ray ray, t_list *list, t_no *no, char id_refl);
+int			get_nearest_obj(t_ray ray, t_list *list, t_no *no);
 t_vec3d		rota_vect(t_vec3d old, t_vec3d rot);
 int			expose_hook(t_env *e);
 int			key_release(int keycode, t_env *e);
 void 		ft_pixel_put(int i, int j, t_rgb color, t_env e);
 float		compute_solution(double a, double b, double d);
 float		sphere_dist(t_ray r);
+t_vec3d	sphere_normal_vec(t_vec3d ip, t_vec3d t);
+t_vec3d		cylindre_normal_vec(t_no no);
+t_vec3d		plane_normal_vec(t_no);
 float		cylindre_dist(t_ray r);
 float		plane_dist(t_obj obj, t_ray r);
-t_vec3d		plane_normal_vec(t_no);
-t_vec3d		sphere_normal_vec(t_vec3d ip, t_vec3d t);
-t_vec3d		cylindre_normal_vec(t_no no);
 
 void 		init_vp(t_vp *vp);
 void 		init_cam(t_camera *cam);
@@ -187,13 +218,29 @@ t_vec3d		normalizevec(t_vec3d old);
 t_color		compute_color(t_no no, t_scene s, t_vec3d n, t_vec3d origin);
 
 t_vec3d		vector_sub(t_vec3d a, t_vec3d b);
-float		vector_scalar_product(t_vec3d a, t_vec3d b);
+float		vector_dot(t_vec3d a, t_vec3d b);
 t_vec3d		vector_fact(t_vec3d a, float k);
+t_vec3d		vector_add(t_vec3d a, t_vec3d b);
+
 t_color		color_add(t_color a, t_color b);
 t_color		color_mult(t_color a, t_color b);
+t_color		color_sub(t_color a, t_color b);
+t_color		color_fact(t_color a, float k);
 
-t_color		reflection(t_no no, t_scene s, t_vec3d n, int depth);
+t_color		reflection(t_no no, t_scene s, t_vec3d n, t_values v);
+t_color		refraction(t_no no, t_scene s, t_vec3d n, t_values v);
 
+t_color		set_black_color(void);
+t_color		set_white_color(void);
+
+void		init_calculed_values(t_cv *cv, float n1, float n2);
+t_ray		reflect(t_vec3d normal, t_vec3d incident, t_vec3d ip, t_cv cv);
+t_ray		refract(t_vec3d normal, t_vec3d incident, t_vec3d ip, t_cv cv);
+float		fresnel(t_cv cv);
+float		schlick(t_cv cv);
+
+void		modify_refr_list(t_cv *cv, t_list **list);
+void		ft_lstdelfirst(t_list **alst);
 
 t_list 	*init_test(void);
 t_list	*init_test_lum(void);

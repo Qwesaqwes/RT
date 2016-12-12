@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2016/12/06 18:17:42 by opandolf         ###   ########.fr        #
+#    Updated: 2016/12/12 17:03:51 by opandolf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,26 +28,26 @@ SRC			=	compute_ray.c\
 				pixelput.c\
 				raytracing.c\
 				sphere.c\
-				cylindre.c\
 				plane.c\
+				cylindre.c\
 				inver_matrix.c\
 				scale_matrix.c\
 				trans_matrix.c\
 				compute_normal_vec.c \
 				compute_color.c \
-				reflection.c
+				reflection_refraction_functions.c
 
-
+FLAGS		=	debug
 
 OBJ			=	$(SRC:.c=.o)
 OBJS		=	$(OBJ:%=$(DIROBJ)%)
 
 ifdef FLAGS
 	ifeq ($(FLAGS), no)
-CFLAGS		=	debug
+CFLAGS		=
 	endif
 	ifeq ($(FLAGS), debug)
-CFLAGS		=	-Wall -Wextra -Werror -ansi -pedantic -g
+CFLAGS		=	-Wall -Wextra -Werror -pedantic -g
 	endif
 else
 CFLAGS		=	-Wall -Wextra -Werror

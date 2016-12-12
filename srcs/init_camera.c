@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_camera.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:16:25 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/25 16:09:28 by JimmyChen        ###   ########.fr       */
+/*   Updated: 2016/12/12 15:49:09 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void 	init_vp(t_vp *vp)
 {
-	vp->dist = 100;
-	vp->width = 100;
-	vp->height = 100;
+	vp->dist = 1;
+	vp->width = 1;
+	vp->height = 1;
 }
 
 void 	init_cam(t_camera *cam)

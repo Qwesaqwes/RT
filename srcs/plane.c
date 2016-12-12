@@ -1,27 +1,23 @@
 #include "rt.h"
 
-float	plane_dist(t_obj obj, t_ray r)
+float    plane_dist(t_obj obj, t_ray r)
 {
-	t_vec3d new_inter_plane;
-	float t_coef;
+    t_vec3d new_inter_plane;
+    float t_coef;
 
-	t_coef = -1;
-	new_inter_plane = rota_vect(obj.transform.transl, obj.transform.rot);
-	if (r.dir.x != 0)
-	{
-		if (obj.transform.transl.x != 0) //if x != 0, x plane = X
-			t_coef = (new_inter_plane.x - r.origin.x) / r.dir.x;
-		else if (obj.transform.transl.y != 0)
-			t_coef = (new_inter_plane.y - r.origin.y) / r.dir.y;
-		else if (obj.transform.transl.z != 0)
-			t_coef = (new_inter_plane.z - r.origin.z) / r.dir.z;
-		if (t_coef >= 0)
-			return (t_coef);
-		else
-			return (-1);
-	}
-	else
-		return (-1);
+    t_coef = -1;
+    new_inter_plane = rota_vect(obj.transform.transl, obj.transform.rot);
+
+    if (obj.transform.transl.x != 0 && r.dir.x != 0)
+        t_coef = (new_inter_plane.x - r.origin.x) / r.dir.x;
+    else if (obj.transform.transl.y != 0 && r.dir.y != 0)
+        t_coef = (new_inter_plane.y - r.origin.y) / r.dir.y;
+    else if (obj.transform.transl.z != 0 && r.dir.z != 0)
+        t_coef = (new_inter_plane.z - r.origin.z) / r.dir.z;
+    if (t_coef >= 0)
+        return (t_coef);
+    else
+        return (-1);
 }
 
 t_vec3d		plane_normal_vec(t_no no)
