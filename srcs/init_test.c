@@ -22,7 +22,6 @@ t_list 	*init_test(void)
 	t_obj	obj5;
 	t_obj	obj6;
 	t_obj	obj7;
-	t_obj	obj8;
 
 	list = NULL;
 	obj1.id = 0;
@@ -133,8 +132,12 @@ t_list 	*init_test(void)
 	obj5.type = 2;
 	obj5.transform.transl.x = 50;
 	obj5.transform.transl.y = 0;
-	obj5.transform.transl.z = 0;
+	obj5.transform.transl.z = -20;
 	obj5.transform.transl.w = 1;
+	obj5.normal.x = 0;
+	obj5.normal.y = 0;
+	obj5.normal.z = 1;
+	obj5.normal.w = 1;
 	obj5.transform.rot.x = 0;
 	obj5.transform.rot.y = 0;
 	obj5.transform.rot.z = 0;
@@ -160,8 +163,12 @@ t_list 	*init_test(void)
 	obj6.transform.transl.y = -20;
 	obj6.transform.transl.z = 0;
 	obj6.transform.transl.w = 1;
+	obj6.normal.x = 0;
+	obj6.normal.y = 1;
+	obj6.normal.z = 0;
+	obj6.normal.w = 1;
 	obj6.transform.rot.x = 0;
-	obj6.transform.rot.y = 30;
+	obj6.transform.rot.y = 0;
 	obj6.transform.rot.z = 0;
 	obj6.transform.rot.w = 1;
 	obj6.color.red = 0.3;
@@ -200,31 +207,6 @@ t_list 	*init_test(void)
 	obj7.shininess = 50;
 	obj7.refr_index = 1.33;
 	//ft_lstadd(&list, ft_lstnew(&obj7, sizeof(t_obj)));
-	obj8.id = 7;
-	obj8.transform.scale.x = 1;
-	obj8.transform.scale.y = 1;
-	obj8.transform.scale.z = 1;
-	obj8.transform.scale.w = 1;
-	obj8.type = 2;
-	obj8.transform.transl.x = 0;
-	obj8.transform.transl.y = 20;
-	obj8.transform.transl.z = 0;
-	obj8.transform.transl.w = 1;
-	obj8.transform.rot.x = 0;
-	obj8.transform.rot.y = -30;
-	obj8.transform.rot.z = 0;
-	obj8.transform.rot.w = 1;
-	obj8.color.red = 0;
-	obj8.color.green = 0.5;
-	obj8.color.blue = 0.5;
-	obj8.ka = 0.2;
-	obj8.kd = 0.9;
-	obj8.ks = 0;
-	obj8.i = 0;
-	obj8.t = 0;
-	obj8.shininess = 50;
-	obj8.refr_index = 1.33;
-	ft_lstadd(&list, ft_lstnew(&obj8, sizeof(t_obj)));
 	return (list);
 }
 

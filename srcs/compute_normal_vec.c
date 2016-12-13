@@ -26,7 +26,7 @@ t_vec3d	compute_normal_vec(t_no no)
 	}
 	else if (no.obj.type == 2)
 	{
-		normal = plane_normal_vec(no);
+		normal = no.obj.normal;
 	}
 	else
 	{

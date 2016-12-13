@@ -132,6 +132,7 @@ typedef struct		s_obj
 	float			shininess;
 	t_transform		transform;
 	float			refr_index;
+	t_vec3d			normal;
 }					t_obj;
 
 typedef struct		s_nearest_obj
@@ -197,7 +198,6 @@ float		compute_solution(double a, double b, double d);
 float		sphere_dist(t_ray r);
 t_vec3d	sphere_normal_vec(t_vec3d ip, t_vec3d t);
 t_vec3d		cylindre_normal_vec(t_no no);
-t_vec3d		plane_normal_vec(t_no);
 float		cylindre_dist(t_ray r);
 float		plane_dist(t_obj obj, t_ray r);
 
