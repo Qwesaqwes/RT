@@ -36,9 +36,9 @@ t_vec3d	compute_normal_vec(t_no no)
 		normal.w = 1;
 	}
 	//calcul normal_vec (N = R * NI)
-	normal = mult_matrix(rotationX(no.obj.transform.rot.x), normal);
-	normal = mult_matrix(rotationY(no.obj.transform.rot.y), normal);
-	normal = mult_matrix(rotationZ(no.obj.transform.rot.z), normal);
+	//normal = mult_matrix(rotationX(no.obj.transform.rot.x), normal);
+	//normal = mult_matrix(rotationY(no.obj.transform.rot.y), normal);
+	//normal = mult_matrix(rotationZ(no.obj.transform.rot.z), normal);
 	normal = normalizevec(normal);
 	return (normal);
 }
