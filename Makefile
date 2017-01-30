@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
+#    By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2016/12/12 17:03:51 by opandolf         ###   ########.fr        #
+#    Updated: 2017/01/18 17:12:50 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,10 @@ LIBA		=	./libft/libft.a
 INCLUDE		=	-I./includes/ -I./libft/includes/ -I./minilibx_macos/
 SUB_MAKE	=	./libft/
 INC_LIB		=	-L./libft -lft -L ./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit -lm
+GTK_FLAG	=	$$(pkg-config --cflags gtk+-3.0)
+LD_FLAG		=	$$(pkg-config --libs gtk+-3.0)
 SRC			=	compute_ray.c\
 				get_nearest_obj.c\
-				hook.c\
 				init_camera.c\
 				init_test.c\
 				main.c\
@@ -62,7 +63,7 @@ ifdef SUB_MAKE
 				@(cd $(SUB_MAKE) && $(MAKE))
 endif
 
-				$(CC) $(INCLUDE) $(INC_LIB) $(CFLAGS) -o $(NAME) $(LIBA) $(OBJS)
+				$(CC) $(LD_FLAG) $(INCLUDE) $(INC_LIB) $(CFLAGS) -o $(NAME) $(LIBA) $(OBJS)
 				@$(ECHO) '> Compiled'
 
 clean	:
@@ -86,4 +87,4 @@ re		:		fclean all
 .PHONY	:		all clean re
 
 $(DIROBJ)%.o		:		$(DIRSRC)%.c
-				$(CC) $(INCLUDE) $(CFLAGS) -o $@ -c $<
+				$(CC) $(INCLUDE) $(GTK_FLAG) $(CFLAGS) -o $@ -c $<

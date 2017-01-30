@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:22:46 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/12 17:34:41 by opandolf         ###   ########.fr       */
+/*   Updated: 2017/01/17 15:52:28 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	raytracing(t_env *e)
 	t_values	v;
 	t_list		*first_el;
 	// appel de la fonction set_camera(...) qui renvoi un struct camera
+	// printf("%s\n", "A");
 	set_camera(&(e->camera));
 	j = -1;
 	while (++j < H)

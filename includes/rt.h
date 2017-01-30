@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/12 17:35:59 by opandolf         ###   ########.fr       */
+/*   Updated: 2017/01/29 17:18:52 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
 # include "libft.h"
 # include "mlx.h"
 # include <stdlib.h>
+# include <gtk/gtk.h>
 
 
 #include <stdio.h>
 
 
-# define H 600
-# define W 600
+# define H 500
+# define W 500
 # define ESC 53
 # define MAX_DEPTH 3
 # define SHADOW_BIAS 0.0001
@@ -88,15 +89,6 @@ typedef struct		s_camera
 	t_vec3d			baseW;
 	t_vec3d			rot;
 }					t_camera;
-
-typedef struct		s_img
-{
-	void 			*img_ptr;
-	unsigned char 			*buffer;
-	int				bpp;
-	int				bpl;
-	int				endian;
-}					t_img;
 
 typedef struct		s_ray
 {
@@ -175,14 +167,84 @@ typedef struct		s_scene
 	t_color			background;
 }					t_scene;
 
+typedef	struct		s_gtk
+{
+	GtkWidget		*window;
+	GtkWidget		*img;
+	GtkWidget		*label1;
+	GtkWidget		*zoom;
+	GtkWidget		*dezoom;
+	GtkWidget		*save;
+	GtkWidget		*globalbox;
+	GtkWidget		*vbox;
+	GtkWidget		*stopbox;
+	GtkWidget		*effect;
+	GtkWidget		*n_effect;
+	GtkWidget		*antial;
+	GtkWidget		*n_antial;
+	GtkWidget		*imgbox;
+	GtkWidget		*object;
+	GtkWidget		*add_object;
+
+	GtkWidget		*l_obj;		/*label for type of object (Combo_box)*/
+	GtkWidget		*l_nobj;	/*label for name of object*/
+	GtkWidget		*l_pos;		/*label for position of object (x, y, z)*/
+	GtkWidget		*l_scale;	/*label for scale of object (x, y, z)*/
+	GtkWidget		*l_rot;		/*label for rotation of object (x, y, z)*/
+	GtkWidget		*l_color;	/*label for color of object (wanna use a graf to put color)*/
+	GtkWidget		*l_shine;	/*label for shininess of object*/
+	GtkWidget		*l_reflex;	/*label for reflection of object*/
+	GtkWidget		*l_x;
+	GtkWidget		*l_y;
+	GtkWidget		*l_z;
+	GtkWidget		*l_x1;
+	GtkWidget		*l_y1;
+	GtkWidget		*l_z1;
+	GtkWidget		*l_x2;
+	GtkWidget		*l_y2;
+	GtkWidget		*l_z2;
+
+	GtkWidget		*c_obj;		/*Combo_box for object*/
+	GtkWidget		*e_nobj;	/*entry for type of object*/
+	GtkWidget		*e_posx;	/*entry for position of object (x, y, z)*/
+	GtkWidget		*e_posy;	/*entry for position of object (x, y, z)*/
+	GtkWidget		*e_posz;	/*entry for position of object (x, y, z)*/
+
+	GtkWidget		*e_scalex;	/*entry for scale of object (x, y, z)*/
+	GtkWidget		*e_scaley;	/*entry for scale of object (x, y, z)*/
+	GtkWidget		*e_scalez;	/*entry for scale of object (x, y, z)*/
+
+	GtkWidget		*e_rotx;		/*entry for rotation of object (x, y, z)*/
+	GtkWidget		*e_roty;		/*entry for rotation of object (x, y, z)*/
+	GtkWidget		*e_rotz;		/*entry for rotation of object (x, y, z)*/
+
+	GtkWidget		*e_color;	/*entry for color of object (wanna use a graf to put color)*/
+	GtkWidget		*e_shine;	/*entry for shininess of object*/
+	GtkWidget		*e_reflex;	/*entry for reflection of object*/
+
+	GtkWidget		*obj_box;	/*boxes for dialog of Add object*/
+	GtkWidget		*obj_box2;
+	GtkWidget		*obj_box3;
+	GtkWidget		*obj_box4;
+	GtkWidget		*obj_box5;
+	GtkWidget		*obj_box6;
+	GtkWidget		*obj_box7;
+	GtkWidget		*obj_box8;
+	GtkWidget		*obj_gbox;
+
+	GdkPixbuf		*buffer;
+	guchar			*pixel;
+}					t_gtk;
+
 typedef struct		s_env
 {
 	void			*mlx;
 	void			*win;
-	t_img			img;
+	// t_img			img;
 	t_camera		camera;
 	t_vp			vp;
 	t_scene			scene;
+	t_gtk			gtk;
 }					t_env;
 
 t_color		compute_ray(t_ray ray, t_scene s, t_values v);
