@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cylindre.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/03 14:51:50 by jichen-m          #+#    #+#             */
+/*   Updated: 2017/02/03 14:51:51 by jichen-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "rt.h"
 
 float	cylindre_dist(t_ray r)
@@ -32,7 +44,7 @@ t_vec3d		cylindre_normal_vec(t_no no)
 	zero_ip = mult_matrix(rotationY(-no.obj.transform.rot.y), zero_ip);
 	zero_ip = mult_matrix(rotationZ(-no.obj.transform.rot.z), zero_ip);
 
-	normal.x = zero_ip.x; 
+	normal.x = zero_ip.x;
 	normal.y = zero_ip.y;
 	normal.z = 0;
 	normal.w = 1;

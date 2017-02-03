@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/01/29 17:18:52 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/03 15:04:44 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct		s_parameters
 typedef struct		s_obj
 {
 	int				id;
+	const char		*name;
 	char			type;
 	t_color			color;
 	float			ka;
@@ -169,6 +170,9 @@ typedef struct		s_scene
 
 typedef	struct		s_gtk
 {
+	GdkRGBA			*color;
+	GdkPixbuf		*buffer;
+	guchar			*pixel;
 	GtkWidget		*window;
 	GtkWidget		*img;
 	GtkWidget		*label1;
@@ -184,7 +188,6 @@ typedef	struct		s_gtk
 	GtkWidget		*n_antial;
 	GtkWidget		*imgbox;
 	GtkWidget		*object;
-	GtkWidget		*add_object;
 
 	GtkWidget		*l_obj;		/*label for type of object (Combo_box)*/
 	GtkWidget		*l_nobj;	/*label for name of object*/
@@ -193,7 +196,12 @@ typedef	struct		s_gtk
 	GtkWidget		*l_rot;		/*label for rotation of object (x, y, z)*/
 	GtkWidget		*l_color;	/*label for color of object (wanna use a graf to put color)*/
 	GtkWidget		*l_shine;	/*label for shininess of object*/
-	GtkWidget		*l_reflex;	/*label for reflection of object*/
+	GtkWidget		*l_refrac;	/*label for reflection of object*/
+	GtkWidget		*l_ka;		/*label for ambient coefficient*/
+	GtkWidget		*l_kd;		/*label for diffuse coefficient*/
+	GtkWidget		*l_ks;		/*label for specular coefficient*/
+	GtkWidget		*l_i;		/*label for intensity of light*/
+	GtkWidget		*l_tr;		/*label for transparence*/
 	GtkWidget		*l_x;
 	GtkWidget		*l_y;
 	GtkWidget		*l_z;
@@ -220,7 +228,13 @@ typedef	struct		s_gtk
 
 	GtkWidget		*e_color;	/*entry for color of object (wanna use a graf to put color)*/
 	GtkWidget		*e_shine;	/*entry for shininess of object*/
-	GtkWidget		*e_reflex;	/*entry for reflection of object*/
+	GtkWidget		*e_refrac;	/*entry for reflection of object*/
+	GtkWidget		*e_ka;		/*entry for ambient coefficient*/
+	GtkWidget		*e_kd;		/*entry for diffuse coefficient*/
+	GtkWidget		*e_ks;		/*entry for specular coefficient*/
+	GtkWidget		*e_i;		/*entry for intensity of light*/
+	GtkWidget		*e_tr;		/*entry for transparence*/
+
 
 	GtkWidget		*obj_box;	/*boxes for dialog of Add object*/
 	GtkWidget		*obj_box2;
@@ -230,10 +244,14 @@ typedef	struct		s_gtk
 	GtkWidget		*obj_box6;
 	GtkWidget		*obj_box7;
 	GtkWidget		*obj_box8;
+	GtkWidget		*obj_box9;
+	GtkWidget		*obj_box10;
+	GtkWidget		*obj_box11;
 	GtkWidget		*obj_gbox;
 
-	GdkPixbuf		*buffer;
-	guchar			*pixel;
+	GtkWidget		*view_obj;
+	GtkWidget		*viewbox;
+	GtkWidget		*view_table;
 }					t_gtk;
 
 typedef struct		s_env
@@ -305,6 +323,28 @@ float		schlick(t_cv cv);
 
 void		modify_refr_list(t_cv *cv, t_list **list);
 void		ft_lstdelfirst(t_list **alst);
+
+void 		reset_img(t_gtk *gtk);
+void 		gtk_s_img(GtkWidget	*button, gpointer buffer);
+void 		gtk_zoom(GtkWidget *button, t_env *e);
+void 		gtk_dezoom(GtkWidget *button, t_env *e);
+void 		gtk_add_obj(GtkWidget *button, t_env *e);
+void 		put_box_inside_gbox(t_gtk	*gtk);
+void 		put_label_inside_box(t_gtk *gtk);
+void 		init_gtk(t_env *e);
+int			create_new_obj(int response, int clicked_ok, t_env *e);
+int			put_scale_obj(t_gtk *gtk, t_vec3d *scale);
+int		 	check_if_digit(const char * str);
+int			put_rotation_obj(t_gtk *gtk, t_vec3d *rot);
+void		put_color_obj(t_gtk *gtk, t_color *color);
+int			put_shininess_obj(t_gtk *gtk, float *shine);
+int			put_refraction_obj(t_gtk *gtk, float *refrac);
+int			put_amb_coe_obj(t_gtk *gtk, float *ka);
+int			put_dif_coe_obj(t_gtk *gtk, float *kd);
+int			put_spec_coe_obj(t_gtk *gtk, float *ks);
+int			put_i_light_obj(t_gtk *gtk, float *i);
+int			put_tr_obj(t_gtk *gtk, float *tr);
+float 		stof (const char *s);
 
 t_list 	*init_test(void);
 t_list	*init_test_lum(void);

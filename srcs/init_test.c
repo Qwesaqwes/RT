@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/12 18:31:42 by opandolf         ###   ########.fr       */
+/*   Updated: 2017/02/03 15:27:40 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_list 	*init_test(void)
 
 	list = NULL;
 	obj1.id = 0;
+	obj1.name = "sphere1";
 	obj1.transform.scale.x = 1;
 	obj1.transform.scale.y = 1;
 	obj1.transform.scale.z = 1;
@@ -52,7 +53,9 @@ t_list 	*init_test(void)
 	obj1.shininess = 50;
 	obj1.refr_index = 1;
 	ft_lstadd(&list, ft_lstnew(&obj1, sizeof(t_obj)));
+
 	obj2.id = 1;
+	obj2.name = "sphere2";
 	obj2.transform.scale.x = 1;
 	obj2.transform.scale.y = 1;
 	obj2.transform.scale.z = 1;
@@ -77,7 +80,9 @@ t_list 	*init_test(void)
 	obj2.shininess = 50;
 	obj2.refr_index = 1.33;
 	ft_lstadd(&list, ft_lstnew(&obj2, sizeof(t_obj)));
+
 	obj3.id = 2;
+	obj3.name = "sphere3";
 	obj3.transform.scale.x = 1;
 	obj3.transform.scale.y = 1;
 	obj3.transform.scale.z = 1;
@@ -102,7 +107,9 @@ t_list 	*init_test(void)
 	obj3.shininess = 50;
 	obj3.refr_index = 1.33;
 	ft_lstadd(&list, ft_lstnew(&obj3, sizeof(t_obj)));
+
 	obj4.id = 3;
+	obj4.name = "sphere4";
 	obj4.transform.scale.x = 1;
 	obj4.transform.scale.y = 1;
 	obj4.transform.scale.z = 1;
@@ -211,6 +218,7 @@ t_list 	*init_test(void)
 	obj8.refr_index = 1.33;
 	//ft_lstadd(&list, ft_lstnew(&obj8, sizeof(t_obj)));*/
 	obj9.id = 8;
+	obj9.name = "cone1";
 	obj9.transform.scale.x = 1;
 	obj9.transform.scale.y = 1;
 	obj9.transform.scale.z = 1;

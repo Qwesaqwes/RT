@@ -6,7 +6,7 @@
 #    By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/01/18 17:12:50 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/02/03 15:02:01 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,14 @@ SRC			=	compute_ray.c\
 				reflection_refraction_functions.c\
 				cone.c\
 				dist_to_figure.c\
+				gtk_options1.c\
+				gtk_add_obj1.c\
+				gtk_add_obj2.c\
+				gtk_add_obj3.c\
+				gtk_add_obj4.c\
+				gtk_add_obj5.c\
+				gtk_add_obj6.c\
+				gtk_set_box.c
 
 FLAGS		=	debug
 

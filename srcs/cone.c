@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cone.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/03 14:48:35 by jichen-m          #+#    #+#             */
+/*   Updated: 2017/02/03 14:48:38 by jichen-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "rt.h"
 
 float	cone_dist(t_ray r)
@@ -27,8 +39,8 @@ t_vec3d		cone_normal_vec(t_no no)
 	zero_ip = inter_point_to_zero(no.obj, no.ip);
 
 	centre_z = (zero_ip.x * zero_ip.x + zero_ip.y * zero_ip.y) / zero_ip.z + zero_ip.z; //zero.ip^2 car cord de vect = cord de inter_point
-	
-	normal.x = zero_ip.x; 
+
+	normal.x = zero_ip.x;
 	normal.y = zero_ip.y;
 	normal.z = zero_ip.z - centre_z;
 	normal.w = 1;
