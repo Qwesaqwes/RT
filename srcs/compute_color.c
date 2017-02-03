@@ -182,6 +182,10 @@ t_color			get_intersection_obj(t_list *list, t_obj lum, t_no no)
 			{
 				dist = plane_dist(obj, img_ray);
 			}
+			if (obj.type == 3)
+			{
+				dist = cone_dist(img_ray);
+			}
 			if (dist > SHADOW_BIAS && dist < dist_lum)
 				ret = color_fact(ret, obj.t);
 		}

@@ -36,7 +36,9 @@ SRC			=	compute_ray.c\
 				trans_matrix.c\
 				compute_normal_vec.c \
 				compute_color.c \
-				reflection_refraction_functions.c
+				reflection_refraction_functions.c\
+				cone.c\
+				dist_to_figure.c\
 
 FLAGS		=	debug
 

@@ -28,6 +28,10 @@ t_vec3d	compute_normal_vec(t_no no)
 	{
 		normal = no.obj.normal;
 	}
+	else if (no.obj.type == 3)
+	{
+		normal = cone_normal_vec(no);
+	}
 	else
 	{
 		normal.x = 0;

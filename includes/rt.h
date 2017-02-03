@@ -262,6 +262,8 @@ t_vec3d	sphere_normal_vec(t_vec3d ip, t_vec3d t);
 t_vec3d		cylindre_normal_vec(t_no no);
 float		cylindre_dist(t_ray r);
 float		plane_dist(t_obj obj, t_ray r);
+float		cone_dist(t_ray r);
+t_vec3d		cone_normal_vec(t_no no);
 
 void 		init_vp(t_vp *vp);
 void 		init_cam(t_camera *cam);
@@ -306,6 +308,8 @@ void		ft_lstdelfirst(t_list **alst);
 
 t_list 	*init_test(void);
 t_list	*init_test_lum(void);
+
+t_vec3d  inter_point_to_zero(t_obj obj, t_vec3d ip);
 
 
 #endif
