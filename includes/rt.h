@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/03 15:04:44 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/08 21:14:27 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 #include <stdio.h>
 
 
-# define H 500
-# define W 500
+# define H 600
+# define W 600
 # define ESC 53
 # define MAX_DEPTH 3
 # define SHADOW_BIAS 0.0001
@@ -187,7 +187,6 @@ typedef	struct		s_gtk
 	GtkWidget		*antial;
 	GtkWidget		*n_antial;
 	GtkWidget		*imgbox;
-	GtkWidget		*object;
 
 	GtkWidget		*l_obj;		/*label for type of object (Combo_box)*/
 	GtkWidget		*l_nobj;	/*label for name of object*/
@@ -250,9 +249,17 @@ typedef	struct		s_gtk
 	GtkWidget		*obj_gbox;
 
 	GtkWidget		*view_obj;
-	GtkWidget		*viewbox;
-	GtkWidget		*view_table;
+	GtkWidget		*windowscr;
+	GtkWidget		*gtklist;
+
 }					t_gtk;
+
+enum
+{
+	OBJ_COLUMN,
+	TYPE_COLUMN,
+	N_COLUMNS
+};
 
 typedef struct		s_env
 {
@@ -328,9 +335,9 @@ void 		reset_img(t_gtk *gtk);
 void 		gtk_s_img(GtkWidget	*button, gpointer buffer);
 void 		gtk_zoom(GtkWidget *button, t_env *e);
 void 		gtk_dezoom(GtkWidget *button, t_env *e);
-void 		gtk_add_obj(GtkWidget *button, t_env *e);
-void 		put_box_inside_gbox(t_gtk	*gtk);
-void 		put_label_inside_box(t_gtk *gtk);
+void 		gtk_add_obj(t_env *e, int resp);
+void 		put_box_inside_gbox(t_gtk	*gtk, int resp);
+void 		put_label_inside_box(t_gtk *gtk, int resp);
 void 		init_gtk(t_env *e);
 int			create_new_obj(int response, int clicked_ok, t_env *e);
 int			put_scale_obj(t_gtk *gtk, t_vec3d *scale);
@@ -345,6 +352,15 @@ int			put_spec_coe_obj(t_gtk *gtk, float *ks);
 int			put_i_light_obj(t_gtk *gtk, float *i);
 int			put_tr_obj(t_gtk *gtk, float *tr);
 float 		stof (const char *s);
+void 		gtk_view_obj(GtkWidget *button, t_env *e);
+void 		view_delete_obj(int response, int clicked_del, t_env *e, GtkWidget *view);
+int			view_modif_obj(int response, int clic_mod, t_env *e, GtkWidget *dialog);
+void 		init_add_obj_l_e(t_gtk *gtk, int resp);
+void 		init_add_obj_box(t_gtk *gtk, int resp);
+
+
+
+
 
 t_list 	*init_test(void);
 t_list	*init_test_lum(void);

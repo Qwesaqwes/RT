@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gtk_options3.c                                     :+:      :+:    :+:   */
+/*   gtk_add_obj2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:12:42 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/01 18:32:45 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/08 17:03:09 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ void 	put_label_inside_box2(t_gtk *gtk)
 
 }
 
-void 	put_label_inside_box(t_gtk *gtk)
+void 	put_label_inside_box(t_gtk *gtk, int clicked)
 {
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box), gtk->l_obj, 0, 0, 10);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box), gtk->c_obj, 0, 0, 0);
+	if (clicked == -10)
+	{
+		gtk_box_pack_start(GTK_BOX(gtk->obj_box), gtk->l_obj, 0, 0, 10);
+		gtk_box_pack_start(GTK_BOX(gtk->obj_box), gtk->c_obj, 0, 0, 0);
+	}
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box2), gtk->l_nobj, 0, 0, 10);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box2), gtk->e_nobj, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box3), gtk->l_pos, 0, 0, 11);
@@ -64,9 +67,10 @@ void 	put_label_inside_box(t_gtk *gtk)
 	put_label_inside_box2(gtk);
 }
 
-void 	put_box_inside_gbox(t_gtk	*gtk)
+void 	put_box_inside_gbox(t_gtk	*gtk, int clicked)
 {
-	gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box, 0, 0, 0);
+	if (clicked == -10)
+		gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box2, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box3, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box4, 0, 0, 0);

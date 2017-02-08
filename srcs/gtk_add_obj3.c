@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:33:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/03 15:28:28 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/08 16:08:31 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		put_name_obj(t_gtk *gtk, const char **name, t_list *obj, int *i)
 
 	tmp = obj;
 	*name = ft_strdup(gtk_entry_get_text(GTK_ENTRY(gtk->e_nobj)));
-	if (name[0][0] == 0 || obj == NULL)
+	if (name[0][0] == 0)
 	{
 		g_print("Plis put a name\n");
 		return (1);
@@ -138,8 +138,6 @@ int		create_new_obj(int response, int clicked_ok, t_env *e)
 			put_tr_obj(&e->gtk, &new_obj.t) == 1)
 			return (1); //error
 		put_color_obj(&e->gtk, &new_obj.color);
-		// printf("%s\n", new_obj.name);
-		// printf("%f\n", new_obj.ka);
 		ft_lstadd(&e->scene.obj, ft_lstnew(&new_obj, sizeof(t_obj)));
 		gtk_widget_destroy(e->gtk.img);
 		raytracing(e);

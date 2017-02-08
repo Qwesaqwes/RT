@@ -6,7 +6,7 @@
 #    By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/02/03 15:02:01 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/02/08 16:32:08 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,9 @@ SRC			=	compute_ray.c\
 				gtk_add_obj4.c\
 				gtk_add_obj5.c\
 				gtk_add_obj6.c\
+				gtk_view_obj1.c\
+				gtk_delete_obj1.c\
+				gtk_modif_obj1.c\
 				gtk_set_box.c
 
 FLAGS		=	debug

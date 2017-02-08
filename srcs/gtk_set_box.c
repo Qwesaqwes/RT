@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:06:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/03 15:05:20 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/08 17:05:10 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,12 @@ void 	top_box(t_env *e)
 	gtk_box_pack_start(GTK_BOX(e->gtk.globalbox), e->gtk.vbox, 0, 0, 0);
 }
 
-void 	add_obj_box(t_env *e)
+void 	add_view_box(t_env *e)
 {
-	/*Creation of button "Add Object"*/
-	e->gtk.object = gtk_button_new_with_label("Add Object");
-
-	/*signal to call function 'gtk_add_obj' when Click in the button "Add Object"*/
-	g_signal_connect(e->gtk.object, "clicked", G_CALLBACK(gtk_add_obj), e);
-
-	/*put button inside the box "second top box"*/
-	gtk_box_pack_start(GTK_BOX(e->gtk.stopbox), e->gtk.object, FALSE, FALSE, 0);
+	e->gtk.view_obj = gtk_button_new_with_label("View of Objects");
+	g_signal_connect(e->gtk.view_obj, "clicked", G_CALLBACK(gtk_view_obj), e);
+	gtk_box_pack_start(GTK_BOX(e->gtk.stopbox), e->gtk.view_obj,
+	FALSE, FALSE, 0);
 }
 
 void 	sec_top_box(t_env *e)
@@ -86,18 +82,10 @@ void 	sec_top_box(t_env *e)
 	gtk_box_pack_start(GTK_BOX(e->gtk.stopbox), e->gtk.antial, 0, 0, 10);
 	gtk_box_pack_start(GTK_BOX(e->gtk.stopbox), e->gtk.n_antial,
 	FALSE, FALSE, 0);
-	add_obj_box(e);
+	// add_obj_box(e);
+	add_view_box(e);
 	gtk_box_pack_start(GTK_BOX(e->gtk.globalbox), e->gtk.stopbox, 0, 0, 0);
 }
-
-// void 	add_view_box(t_env *e)
-// {
-// 	e->gtk.viewbox = gtk_box_new(0, 0);
-// 	e->gtk.view_table =
-// 	g_signal_connect(e->gtk.view_obj, "clicked", G_CALLBACK(gtk_view_obj), e);
-// 	gtk_box_pack_start(GTK_BOX(e->gtk.stopbox), e->gtk.view_obj,
-// 	FALSE, FALSE, 0);
-// }
 
 void 	init_gtk(t_env *e)
 {
@@ -114,8 +102,10 @@ void 	init_gtk(t_env *e)
 	// e->gtk.gtk_name = init_obj_widget(e->scene.obj);
 	top_box(e);
 	sec_top_box(e);
+	// printf("%s\n", "A");
+	// printf("%s\n", "B");
+
 	e->gtk.img = gtk_image_new_from_pixbuf(e->gtk.buffer);
 	gtk_box_pack_start(GTK_BOX(e->gtk.imgbox), e->gtk.img, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(e->gtk.globalbox), e->gtk.imgbox, 0, 0, 0);
-	// add_view_box(e);
 }

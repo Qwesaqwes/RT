@@ -6,15 +6,16 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:09:30 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/03 13:01:55 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/08 21:00:19 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-void 	init_add_obj_box(t_gtk *gtk)
+void 	init_add_obj_box(t_gtk *gtk, int clicked)
 {
-	gtk->obj_box = gtk_box_new(0, 0);
+	if (clicked == -10)
+		gtk->obj_box = gtk_box_new(0, 0);
 	gtk->obj_box2 = gtk_box_new(0, 0);
 	gtk->obj_box3 = gtk_box_new(0, 0);
 	gtk->obj_box4 = gtk_box_new(0, 0);
@@ -57,9 +58,10 @@ void 	init_add_obj_l_e2(t_gtk *gtk)
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(gtk->c_obj), "3", "Plan");
 }
 
-void 	init_add_obj_l_e(t_gtk *gtk)
+void 	init_add_obj_l_e(t_gtk *gtk, int clicked)
 {
-	gtk->l_obj = gtk_label_new("Type of Object -->");
+	if (clicked == -10)
+		gtk->l_obj = gtk_label_new("Type of Object -->");
 	gtk->l_nobj = gtk_label_new("Name of Object -->");
 	gtk->l_pos = gtk_label_new("Position of Object -->");
 	gtk->l_scale = gtk_label_new("Scale of Object -->");
@@ -82,45 +84,23 @@ void 	init_add_obj_l_e(t_gtk *gtk)
 	gtk->e_color = gtk_color_button_new();
 }
 
-void 	gtk_add_obj(GtkWidget *button, t_env *e)
+void 	gtk_add_obj(t_env *e, int clic_add)
 {
 	GtkWidget	*dialog;
 	GtkWidget	*area;
 	gint 		response;
 
-	(void)button;
-	init_add_obj_l_e(&e->gtk);
-	init_add_obj_box(&e->gtk);
-	dialog = gtk_dialog_new_with_buttons("Add Object", GTK_WINDOW(e->gtk.window),
-	GTK_DIALOG_MODAL, ("CANCEL"), GTK_RESPONSE_REJECT, ("OK"), GTK_RESPONSE_ACCEPT, NULL);
+	init_add_obj_l_e(&e->gtk, clic_add);
+	init_add_obj_box(&e->gtk, clic_add);
+	dialog = gtk_dialog_new_with_buttons("Add Object",
+	GTK_WINDOW(e->gtk.window), GTK_DIALOG_MODAL, ("CANCEL"),
+	GTK_RESPONSE_REJECT, ("OK"), GTK_RESPONSE_ACCEPT, NULL);
 	area = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
-	/*put label and entry in Global_BOX*/
-	put_label_inside_box(&e->gtk);
-	put_box_inside_gbox(&e->gtk);
+	put_label_inside_box(&e->gtk, clic_add);
+	put_box_inside_gbox(&e->gtk, clic_add);
 	gtk_container_add(GTK_CONTAINER(area), e->gtk.obj_gbox);
 	gtk_widget_show_all(dialog);
 	response = gtk_dialog_run(GTK_DIALOG(dialog));
 	create_new_obj(response, GTK_RESPONSE_ACCEPT, e);
-
-	//
-	// t_obj *tmp_obj;
-	// t_list *tmp;
-	//
-	// tmp = e->scene.obj;
-	// while (e->scene.obj->next != NULL)
-	// {
-	// 	tmp_obj = (t_obj *)e->scene.obj->content;
-	// 	// printf("%d\n", tmp_obj->id);
-	// 	printf("%s\n", tmp_obj->name);
-	// 	e->scene.obj = e->scene.obj->next;
-	// 	// printf("%d\n", j);
-	// }
-	// e->scene.obj = tmp;
-	//
-	//
-	//
-
-
-
 	gtk_widget_destroy(dialog);
 }
