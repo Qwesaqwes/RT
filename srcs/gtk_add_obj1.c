@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:09:30 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/08 21:00:19 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/09 21:05:50 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,14 @@ void 	init_add_obj_box(t_gtk *gtk, int clicked)
 
 void 	init_add_obj_l_e2(t_gtk *gtk)
 {
-	gtk->l_x = gtk_label_new("x: ");
-	gtk->l_x1 = gtk_label_new("x: ");
-	gtk->l_x2 = gtk_label_new("x: ");
-	gtk->l_y = gtk_label_new("y: ");
-	gtk->l_y1 = gtk_label_new("y: ");
-	gtk->l_y2 = gtk_label_new("y: ");
-	gtk->l_z = gtk_label_new("z: ");
-	gtk->l_z1 = gtk_label_new("z: ");
-	gtk->l_z2 = gtk_label_new("z: ");
+	gtk->l_obj = gtk_label_new("Type of Object -->");
+	gtk->e_ka = gtk_entry_new();
+	gtk->e_kd = gtk_entry_new();
+	gtk->e_ks = gtk_entry_new();
+	gtk->e_i = gtk_entry_new();
+	gtk->e_tr = gtk_entry_new();
+	gtk->e_refrac = gtk_entry_new();
+	gtk->e_color = gtk_color_button_new();
 	gtk->e_nobj = gtk_entry_new();
 	gtk->e_posx = gtk_entry_new();
 	gtk->e_posy = gtk_entry_new();
@@ -61,7 +60,7 @@ void 	init_add_obj_l_e2(t_gtk *gtk)
 void 	init_add_obj_l_e(t_gtk *gtk, int clicked)
 {
 	if (clicked == -10)
-		gtk->l_obj = gtk_label_new("Type of Object -->");
+		init_add_obj_l_e2(gtk);
 	gtk->l_nobj = gtk_label_new("Name of Object -->");
 	gtk->l_pos = gtk_label_new("Position of Object -->");
 	gtk->l_scale = gtk_label_new("Scale of Object -->");
@@ -74,14 +73,16 @@ void 	init_add_obj_l_e(t_gtk *gtk, int clicked)
 	gtk->l_ks = gtk_label_new("Specular coefficient -->");
 	gtk->l_i = gtk_label_new("Intensity of light -->");
 	gtk->l_tr = gtk_label_new("Transparence -->");
-	gtk->e_ka = gtk_entry_new();
-	gtk->e_kd = gtk_entry_new();
-	gtk->e_ks = gtk_entry_new();
-	gtk->e_i = gtk_entry_new();
-	gtk->e_tr = gtk_entry_new();
-	gtk->e_refrac = gtk_entry_new();
-	init_add_obj_l_e2(gtk);
-	gtk->e_color = gtk_color_button_new();
+	gtk->l_x = gtk_label_new("x: ");
+	gtk->l_x1 = gtk_label_new("x: ");
+	gtk->l_x2 = gtk_label_new("x: ");
+	gtk->l_y = gtk_label_new("y: ");
+	gtk->l_y1 = gtk_label_new("y: ");
+	gtk->l_y2 = gtk_label_new("y: ");
+	gtk->l_z = gtk_label_new("z: ");
+	gtk->l_z1 = gtk_label_new("z: ");
+	gtk->l_z2 = gtk_label_new("z: ");
+
 }
 
 void 	gtk_add_obj(t_env *e, int clic_add)

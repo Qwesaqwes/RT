@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gtk_options6.c                                     :+:      :+:    :+:   */
+/*   gtk_add_obj5.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 17:42:21 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/02 14:08:44 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/09 21:03:57 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		put_dif_coe_obj(t_gtk *gtk, float *kd)
 		g_print("Put the right diffuse coefficient\n");
 		return (1);
 	}
-	*kd = (float)ft_atoi(tmp_kd);
+	*kd = stof(tmp_kd);
 	return (0);
 }
 
@@ -50,7 +50,7 @@ int		put_spec_coe_obj(t_gtk *gtk, float *ks)
 		g_print("Put the right specular coefficient\n");
 		return (1);
 	}
-	*ks = (float)ft_atoi(tmp_ks);
+	*ks = stof(tmp_ks);
 	return (0);
 }
 
@@ -64,7 +64,7 @@ int		put_i_light_obj(t_gtk *gtk, float *i)
 		g_print("Put the right Intensity of light\n");
 		return (1);
 	}
-	*i = (float)ft_atoi(tmp_i);
+	*i = stof(tmp_i);
 	return (0);
 }
 
@@ -78,6 +78,6 @@ int		put_tr_obj(t_gtk *gtk, float *tr)
 		g_print("Put the right Transparence\n");
 		return (1);
 	}
-	*tr = (float)ft_atoi(tmp_tr);
+	*tr = stof(tmp_tr);
 	return (0);
 }

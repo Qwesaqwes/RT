@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:33:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/08 16:08:31 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/09 21:03:24 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,9 @@ void 	put_id_ob(t_list *obj, int *i)
 	while (tmp != NULL)
 	{
 		tmp_obj = (t_obj *)tmp->content;
-		// printf("%d\n", tmp_obj->id);
 		if (j == tmp_obj->id)
 			j++;
 		tmp = tmp->next;
-		// printf("%d\n", j);
 	}
 	*i = j;
 }
@@ -109,9 +107,9 @@ int 	put_pos_obj(t_gtk *gtk, t_vec3d *pos)
 		g_print("Put the right position\n");
 		return (1);
 	}
-	pos->x = (float)ft_atoi(posx);
-	pos->y = (float)ft_atoi(posy);
-	pos->z = (float)ft_atoi(posz);
+	pos->x = stof(posx);
+	pos->y = stof(posy);
+	pos->z = stof(posz);
 	pos->w = 1;
 	return (0);
 }

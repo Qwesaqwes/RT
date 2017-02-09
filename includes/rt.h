@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/08 21:14:27 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/09 22:19:44 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,6 +343,9 @@ int			create_new_obj(int response, int clicked_ok, t_env *e);
 int			put_scale_obj(t_gtk *gtk, t_vec3d *scale);
 int		 	check_if_digit(const char * str);
 int			put_rotation_obj(t_gtk *gtk, t_vec3d *rot);
+int			put_name_obj(t_gtk *gtk, const char **name, t_list *obj, int *i);
+int			put_pos_obj(t_gtk *gtk, t_vec3d *pos);
+void		put_id_ob(t_list *obj, int *i);
 void		put_color_obj(t_gtk *gtk, t_color *color);
 int			put_shininess_obj(t_gtk *gtk, float *shine);
 int			put_refraction_obj(t_gtk *gtk, float *refrac);
@@ -357,6 +360,12 @@ void 		view_delete_obj(int response, int clicked_del, t_env *e, GtkWidget *view)
 int			view_modif_obj(int response, int clic_mod, t_env *e, GtkWidget *dialog);
 void 		init_add_obj_l_e(t_gtk *gtk, int resp);
 void 		init_add_obj_box(t_gtk *gtk, int resp);
+const char	*itof(float nb);
+void		ft_list_remove_if(t_list **begin_list, const char *data_ref,
+			int (*cmp)());
+
+
+
 
 
 

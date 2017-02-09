@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gtk_options5.c                                     :+:      :+:    :+:   */
+/*   gtk_add_obj4.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 14:06:23 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/01 17:42:06 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/09 21:15:33 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int		put_scale_obj(t_gtk *gtk, t_vec3d *scale)
 		g_print("Put the right scale\n");
 		return (1);
 	}
-	scale->x = (float)ft_atoi(scalex);
-	scale->y = (float)ft_atoi(scaley);
-	scale->z = (float)ft_atoi(scalez);
+	scale->x = stof(scalex);
+	scale->y = stof(scaley);
+	scale->z = stof(scalez);
 	scale->w = 1;
 	return (0);
 }
@@ -49,9 +49,9 @@ int		put_rotation_obj(t_gtk *gtk, t_vec3d *rot)
 		g_print("Put the right rotation\n");
 		return (1);
 	}
-	rot->x = (float)ft_atoi(rotx);
-	rot->y = (float)ft_atoi(roty);
-	rot->z = (float)ft_atoi(rotz);
+	rot->x = stof(rotx);
+	rot->y = stof(roty);
+	rot->z = stof(rotz);
 	rot->w = 1;
 	return (0);
 }
@@ -61,11 +61,6 @@ void	put_color_obj(t_gtk *gtk, t_color *color)
 	gtk->color = NULL;
 	gtk->color = malloc(sizeof(GdkRGBA));
 	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(gtk->e_color), gtk->color);
-	// if (gtk->color == NULL)
-	// {
-	// 	g_print("Choose a color plis\n");
-	// 	return (1);
-	// }
 	color->red = gtk->color->red;
 	color->green = gtk->color->green;
 	color->blue = gtk->color->blue;
@@ -81,7 +76,7 @@ int		put_shininess_obj(t_gtk *gtk, float *shine)
 		g_print("Put the right shininess\n");
 		return (1);
 	}
-	*shine = (float)ft_atoi(tmp_shi);
+	*shine = stof(tmp_shi);
 	return (0);
 }
 
@@ -95,6 +90,6 @@ int		put_refraction_obj(t_gtk *gtk, float *refrac)
 		g_print("Put the right refraction\n");
 		return (1);
 	}
-	*refrac = (float)ft_atoi(tmp_refrac);
+	*refrac = stof(tmp_refrac);
 	return (0);
 }
