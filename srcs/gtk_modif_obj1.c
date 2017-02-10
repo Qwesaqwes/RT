@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 16:19:34 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/09 22:24:12 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/10 15:44:41 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,29 +115,29 @@ const char	*get_selected_row(t_env *e, t_list 	*list)
 	return (NULL);
 }
 
-void 	get_type(char *type, t_list *list, const char *object)
-{
-	t_list	*tmp;
-	t_obj	*tmp_obj;
-
-	tmp = list;
-	while (tmp != NULL)
-	{
-		tmp_obj = (t_obj*)tmp->content;
-		if (ft_strcmp(tmp_obj->name, object) == 0)
-		{
-			*type = tmp_obj->type;
-			break;
-		}
-		tmp = tmp->next;
-	}
-}
+// void 	get_type(char *type, t_list *list, const char *object)
+// {
+// 	t_list	*tmp;
+// 	t_obj	*tmp_obj;
+//
+// 	tmp = list;
+// 	while (tmp != NULL)
+// 	{
+// 		tmp_obj = (t_obj*)tmp->content;
+// 		if (ft_strcmp(tmp_obj->name, object) == 0)
+// 		{
+// 			*type = tmp_obj->type;
+// 			break;
+// 		}
+// 		tmp = tmp->next;
+// 	}
+// }
 
 int 	update_obj(t_env *e, const char *object)
 {
 	t_obj	new_obj;
 
-	get_type(&new_obj.type, e->scene.obj, object);
+	// get_type(&new_obj.type, e->scene.obj, object);
 	ft_list_remove_if(&e->scene.obj, object, &ft_strcmp);
 	if (put_name_obj(&e->gtk, &new_obj.name, e->scene.obj, &new_obj.id) == 1 ||
 		put_pos_obj(&e->gtk, &new_obj.transform.transl) == 1 ||
@@ -152,7 +152,7 @@ int 	update_obj(t_env *e, const char *object)
 		put_tr_obj(&e->gtk, &new_obj.t) == 1)
 		return (1);
 	put_color_obj(&e->gtk, &new_obj.color);
-	ft_lstadd(&e->scene.obj, ft_lstnew(&new_obj, sizeof(t_obj)));
+	ft_lstaddend(&e->scene.obj, ft_lstnew(&new_obj, sizeof(t_obj)));
 	gtk_widget_destroy(e->gtk.img);
 	raytracing(e);
 	reset_img(&e->gtk);

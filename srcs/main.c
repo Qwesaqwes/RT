@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:03 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/03 14:49:30 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/10 18:29:50 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ int	main(int ac, char **av)
 	e.scene.lum = init_test_lum();
 	init_gtk(&e);
 	raytracing(&e);
-	g_signal_connect(e.gtk.window, "delete-event", G_CALLBACK(gtk_main_quit), NULL);
-	gtk_container_add(GTK_CONTAINER(e.gtk.window), e.gtk.globalbox);
-	// gtk_container_add(GTK_CONTAINER(e.gtk.window), e.gtk.back_img);
-	gtk_widget_show_all(e.gtk.window);
+	
 	gtk_main();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/02 14:01:50 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/09 20:53:53 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/10 15:20:55 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ float	stof (const char *s)
 	return (stof2(s, rez, fact, point_seen));
 }
 
-void	reverse(char *str, int len)
+void reverse(char *str, int len)
 {
 	int		i;
 	int		j;
@@ -61,6 +61,8 @@ void	reverse(char *str, int len)
 
 	i = 0;
 	j = len - 1;
+	if (str[0] == '-')
+		i++;
 	while (i < j)
 	{
 		temp = str[i];
@@ -71,11 +73,17 @@ void	reverse(char *str, int len)
 	}
 }
 
-int		intostr(int x, char *str, int d)
+int		intostr(int x, char *str, int d, int check)
 {
 	int		i;
 
 	i = 0;
+	if (x < 0)
+	{
+		x *= -1;
+		if (check == 0)
+			str[i++] = '-';
+	}
 	while (x)
 	{
 		str[i++] = (x % 10) + '0';
@@ -95,18 +103,18 @@ const char		*itof(float nb)
 	char		*res;
 	int			i;
 
-	if (nb == 0)
-		return ("0");
 	ipart = (int)nb;
 	fpart = nb - (float)ipart;
 	if (!(res = malloc(sizeof(const char*) * 20)))
 		return (NULL);
-	i = intostr(ipart, res, 0);
+	if (nb == 0)
+		return ("0");
+	i = intostr(ipart, res, 0, 0);
 	if(fpart != 0)
 	{
 		res[i] = '.';
 		fpart = fpart * pow(10, 6);
-		intostr((int)fpart, res + i + 1, 6);
+		intostr((int)fpart, res + i + 1, 6, 1);
 	}
 	return ((const char*)res);
 }

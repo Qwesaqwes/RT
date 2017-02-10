@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/09 22:19:44 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/10 18:24:42 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,10 @@ typedef	struct		s_gtk
 	GdkPixbuf		*buffer;
 	guchar			*pixel;
 	GtkWidget		*window;
+	GtkWidget		*layout;
 	GtkWidget		*img;
+	GtkWidget		*imgbox;
+	GtkWidget		*back_img;
 	GtkWidget		*label1;
 	GtkWidget		*zoom;
 	GtkWidget		*dezoom;
@@ -186,7 +189,6 @@ typedef	struct		s_gtk
 	GtkWidget		*n_effect;
 	GtkWidget		*antial;
 	GtkWidget		*n_antial;
-	GtkWidget		*imgbox;
 
 	GtkWidget		*l_obj;		/*label for type of object (Combo_box)*/
 	GtkWidget		*l_nobj;	/*label for name of object*/
@@ -252,12 +254,15 @@ typedef	struct		s_gtk
 	GtkWidget		*windowscr;
 	GtkWidget		*gtklist;
 
+	GtkWidget		*choose_f;
+
 }					t_gtk;
 
 enum
 {
 	OBJ_COLUMN,
 	TYPE_COLUMN,
+	ID_COLUMN,
 	N_COLUMNS
 };
 
@@ -363,6 +368,7 @@ void 		init_add_obj_box(t_gtk *gtk, int resp);
 const char	*itof(float nb);
 void		ft_list_remove_if(t_list **begin_list, const char *data_ref,
 			int (*cmp)());
+void		gtk_choose_f(GtkWidget *button, t_env *e);
 
 
 

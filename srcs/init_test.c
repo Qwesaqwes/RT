@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/03 15:27:40 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:56:27 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_list 	*init_test(void)
 	obj1.t = 0;
 	obj1.shininess = 50;
 	obj1.refr_index = 1;
-	ft_lstadd(&list, ft_lstnew(&obj1, sizeof(t_obj)));
+	ft_lstaddend(&list, ft_lstnew(&obj1, sizeof(t_obj)));
 
 	obj2.id = 1;
 	obj2.name = "sphere2";
@@ -79,7 +79,7 @@ t_list 	*init_test(void)
 	obj2.t = 0;
 	obj2.shininess = 50;
 	obj2.refr_index = 1.33;
-	ft_lstadd(&list, ft_lstnew(&obj2, sizeof(t_obj)));
+	ft_lstaddend(&list, ft_lstnew(&obj2, sizeof(t_obj)));
 
 	obj3.id = 2;
 	obj3.name = "sphere3";
@@ -106,7 +106,7 @@ t_list 	*init_test(void)
 	obj3.t = 0;
 	obj3.shininess = 50;
 	obj3.refr_index = 1.33;
-	ft_lstadd(&list, ft_lstnew(&obj3, sizeof(t_obj)));
+	ft_lstaddend(&list, ft_lstnew(&obj3, sizeof(t_obj)));
 
 	obj4.id = 3;
 	obj4.name = "sphere4";
@@ -133,7 +133,7 @@ t_list 	*init_test(void)
 	obj4.t = 0.8;
 	obj4.shininess = 50;
 	obj4.refr_index = 1.33;
-	ft_lstadd(&list, ft_lstnew(&obj4, sizeof(t_obj)));
+	ft_lstaddend(&list, ft_lstnew(&obj4, sizeof(t_obj)));
 	/*obj5.id = 4;
 	obj5.transform.scale.x = 1;
 	obj5.transform.scale.y = 1;
@@ -217,7 +217,7 @@ t_list 	*init_test(void)
 	obj8.shininess = 50;
 	obj8.refr_index = 1.33;
 	//ft_lstadd(&list, ft_lstnew(&obj8, sizeof(t_obj)));*/
-	obj9.id = 8;
+	obj9.id = 4;
 	obj9.name = "cone1";
 	obj9.transform.scale.x = 1;
 	obj9.transform.scale.y = 1;
@@ -242,7 +242,7 @@ t_list 	*init_test(void)
 	obj9.t = 0;
 	obj9.shininess = 50;
 	obj9.refr_index = 1.33;
-	ft_lstadd(&list, ft_lstnew(&obj9, sizeof(t_obj)));
+	ft_lstaddend(&list, ft_lstnew(&obj9, sizeof(t_obj)));
 	return (list);
 }
 
@@ -276,7 +276,7 @@ t_list	*init_test_lum(void)
 	lum1.i = 1;
 	lum1.t = 0;
 	lum1.shininess = 0;
-	ft_lstadd(&list, ft_lstnew(&lum1, sizeof(t_obj)));
+	ft_lstaddend(&list, ft_lstnew(&lum1, sizeof(t_obj)));
 
 	// lum2.id = 1;
 	// lum2.transform.scale.x = 1;

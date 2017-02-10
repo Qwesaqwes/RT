@@ -6,7 +6,7 @@
 /*   By: JimmyChe <JimmyChe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 19:51:40 by JimmyChe          #+#    #+#             */
-/*   Updated: 2017/02/08 21:13:50 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/10 14:44:08 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void 	add_to_list(GtkListStore *store, t_list *obj_list)
 		tmp_obj = (t_obj*)tmp->content;
 		gtk_list_store_append(store, &iter);
 		gtk_list_store_set(store, &iter, OBJ_COLUMN, tmp_obj->name, TYPE_COLUMN,
-		put_type(tmp_obj->type), -1);
+		put_type(tmp_obj->type), ID_COLUMN, itof((float)tmp_obj->id), -1);
 		tmp = tmp->next;
 	}
 }
@@ -69,6 +69,11 @@ void 	init_gtk_list(t_gtk *gtk, t_list *obj_list)
 	renderer = gtk_cell_renderer_text_new ();
 	column = gtk_tree_view_column_new_with_attributes("Types",
 	renderer, "text", TYPE_COLUMN, NULL);
+	gtk_tree_view_column_set_resizable(column, TRUE);
+	gtk_tree_view_append_column(GTK_TREE_VIEW(gtk->gtklist), column);
+	renderer = gtk_cell_renderer_text_new ();
+	column = gtk_tree_view_column_new_with_attributes("Id",
+	renderer, "text", ID_COLUMN, NULL);
 	gtk_tree_view_append_column(GTK_TREE_VIEW(gtk->gtklist), column);
 	gtk_container_add(GTK_CONTAINER(gtk->windowscr), gtk->gtklist);
 }

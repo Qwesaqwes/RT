@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:33:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/09 21:03:24 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/10 15:47:21 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ void 	put_id_ob(t_list *obj, int *i)
 	while (tmp != NULL)
 	{
 		tmp_obj = (t_obj *)tmp->content;
-		if (j == tmp_obj->id)
-			j++;
+		if (j <= tmp_obj->id)
+			j = tmp_obj->id;
 		tmp = tmp->next;
 	}
-	*i = j;
+	// printf("%d\n",j );
+	*i = j + 1;
 }
 
 int		put_name_obj(t_gtk *gtk, const char **name, t_list *obj, int *i)
@@ -83,7 +84,8 @@ int 	check_if_digit(const char * str)
 	int	i;
 
 	i = 0;
-	while(str[i] == ',' || str[i] == '.' || (str[i] >= '0' && str[i] <= '9'))
+	while(str[i] == ',' || str[i] == '.' ||
+		str[i] == '-' || (str[i] >= '0' && str[i] <= '9'))
 		i++;
 	if (i == 0)
 		return (1);
@@ -136,7 +138,7 @@ int		create_new_obj(int response, int clicked_ok, t_env *e)
 			put_tr_obj(&e->gtk, &new_obj.t) == 1)
 			return (1); //error
 		put_color_obj(&e->gtk, &new_obj.color);
-		ft_lstadd(&e->scene.obj, ft_lstnew(&new_obj, sizeof(t_obj)));
+		ft_lstaddend(&e->scene.obj, ft_lstnew(&new_obj, sizeof(t_obj)));
 		gtk_widget_destroy(e->gtk.img);
 		raytracing(e);
 		reset_img(&e->gtk);
