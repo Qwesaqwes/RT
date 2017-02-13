@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/02/10 17:59:19 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/02/13 18:18:20 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,8 @@ NAME		=	RT
 DIRSRC		=	./srcs/
 DIROBJ		=	./objs/
 LIBA		=	./libft/libft.a
-INCLUDE		=	-I./includes/ -I./libft/includes/ -I./minilibx_macos/
+INCLUDE		=	-I./includes/ -I./libft/includes/
 SUB_MAKE	=	./libft/
-INC_LIB		=	-L./libft -lft -L ./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit -lm
 GTK_FLAG	=	$$(pkg-config --cflags gtk+-3.0)
 LD_FLAG		=	$$(pkg-config --libs gtk+-3.0)
 SRC			=	compute_ray.c\
@@ -50,6 +49,7 @@ SRC			=	compute_ray.c\
 				gtk_delete_obj1.c\
 				gtk_modif_obj1.c\
 				gtk_choose_file.c\
+				gtk_effect.c\
 				gtk_set_box.c
 
 FLAGS		=	debug
@@ -77,7 +77,7 @@ ifdef SUB_MAKE
 				@(cd $(SUB_MAKE) && $(MAKE))
 endif
 
-				$(CC) $(LD_FLAG) $(INCLUDE) $(INC_LIB) $(CFLAGS) -o $(NAME) $(LIBA) $(OBJS)
+				$(CC) $(LD_FLAG) $(INCLUDE) $(CFLAGS) -o $(NAME) $(LIBA) $(OBJS)
 				@$(ECHO) '> Compiled'
 
 clean	:

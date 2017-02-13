@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:06:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/10 19:03:10 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/13 18:34:51 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@ void 	top_box(t_env *e)
 	e->gtk.vbox = gtk_box_new(0, 0);
 
 	/*Creation of buttons*/
-	e->gtk.zoom = gtk_button_new_with_label("ZOOM");
-	// e->gtk.dezoom = gtk_button_new_with_label("DEZOOM");
-	e->gtk.save = gtk_button_new_with_label("SAVE");
+	e->gtk.zoom = gtk_button_new();
 	e->gtk.dezoom = gtk_button_new();
-	image = gtk_image_new_from_file("/Users/jichen-m/Desktop/zoom.jpg");
+	e->gtk.save = gtk_button_new();
+	image = gtk_image_new_from_file("./images/zoom1.png");
+	gtk_button_set_image(GTK_BUTTON(e->gtk.zoom), image);
+	image = gtk_image_new_from_file("./images/unzoom.png");
 	gtk_button_set_image(GTK_BUTTON(e->gtk.dezoom), image);
+	image = gtk_image_new_from_file("./images/save.png");
+	gtk_button_set_image(GTK_BUTTON(e->gtk.save), image);
+
 	/*signal to call function 'gtk_s_img' when Click on the button "SAVE" */
 	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img), e->gtk.buffer);
 
@@ -72,7 +76,7 @@ void 	sec_top_box(t_env *e)
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(e->gtk.n_effect),
 	"1", "Sepia");
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(e->gtk.n_effect), "2",
-	"Cartoon");
+	"GreyScale");
 
 	/*......................................."Antialiasing"*/
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(e->gtk.n_antial), "0", "None");
@@ -85,6 +89,7 @@ void 	sec_top_box(t_env *e)
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(e->gtk.n_antial), "4",
 	"16x AA");
 
+	g_signal_connect(e->gtk.n_effect, "changed", G_CALLBACK(gtk_effect), e);
 	/*Put "Second top box" inside "Global box"*/
 	gtk_box_pack_start(GTK_BOX(e->gtk.stopbox), e->gtk.effect, 0, 0, 10);
 	gtk_box_pack_start(GTK_BOX(e->gtk.stopbox), e->gtk.n_effect,

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/10 18:24:42 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/13 18:21:05 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ typedef struct		s_scene
 
 typedef	struct		s_gtk
 {
+	int				nb_effect;
 	GdkRGBA			*color;
 	GdkPixbuf		*buffer;
 	guchar			*pixel;
@@ -369,6 +370,8 @@ const char	*itof(float nb);
 void		ft_list_remove_if(t_list **begin_list, const char *data_ref,
 			int (*cmp)());
 void		gtk_choose_f(GtkWidget *button, t_env *e);
+void		gtk_effect(GtkWidget *button, t_env *e);
+
 
 
 
