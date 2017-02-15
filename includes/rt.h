@@ -15,7 +15,6 @@
 
 # include <math.h>
 # include "libft.h"
-# include "mlx.h"
 # include <stdlib.h>
 # include <gtk/gtk.h>
 
