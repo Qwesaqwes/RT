@@ -6,18 +6,12 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:04:19 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/01 19:05:40 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/17 15:21:01 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-void 	reset_img(t_gtk *gtk)
-{
-	gtk->img = gtk_image_new_from_pixbuf(gtk->buffer);
-	gtk_box_pack_start(GTK_BOX(gtk->imgbox), gtk->img, 0, 0, 0);
-	gtk_widget_show_all(gtk->window);
-}
 /* Function to Save img when click*/
 void 	gtk_s_img(GtkWidget	*button, gpointer buffer)
 {
@@ -32,17 +26,15 @@ void 	gtk_s_img(GtkWidget	*button, gpointer buffer)
 void 	gtk_zoom(GtkWidget *button, t_env *e)
 {
 	(void)button;
-	gtk_widget_destroy(e->gtk.img);
 	e->vp.dist += 0.5;
 	raytracing(e);
-	reset_img(&e->gtk);
+	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), e->gtk.buffer);
 }
 
 /* Function to dezoom when click in the button*/
 void 	gtk_dezoom(GtkWidget *button, t_env *e)
 {
 	(void)button;
-	gtk_widget_destroy(e->gtk.img);
 	e->vp.dist -= 0.5;
 	if (e->vp.dist <= 0)
 	{
@@ -50,5 +42,5 @@ void 	gtk_dezoom(GtkWidget *button, t_env *e)
 		g_print("No more Dezoom available\n");
 	}
 	raytracing(e);
-	reset_img(&e->gtk);
+	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), e->gtk.buffer);
 }

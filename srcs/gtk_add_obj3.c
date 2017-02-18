@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:33:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/10 15:47:21 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/15 17:18:17 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,9 +139,8 @@ int		create_new_obj(int response, int clicked_ok, t_env *e)
 			return (1); //error
 		put_color_obj(&e->gtk, &new_obj.color);
 		ft_lstaddend(&e->scene.obj, ft_lstnew(&new_obj, sizeof(t_obj)));
-		gtk_widget_destroy(e->gtk.img);
 		raytracing(e);
-		reset_img(&e->gtk);
+		gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), e->gtk.buffer);
 		// t_obj *tmp_obj;
 		// t_list *tmp;
 		//

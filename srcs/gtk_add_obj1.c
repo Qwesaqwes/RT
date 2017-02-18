@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:09:30 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/09 21:05:50 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/18 15:54:03 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void 	init_add_obj_l_e(t_gtk *gtk, int clicked)
 	gtk->l_scale = gtk_label_new("Scale of Object -->");
 	gtk->l_rot = gtk_label_new("Rotation of Object -->");
 	gtk->l_color = gtk_label_new("Color of Object -->");
-	gtk->l_shine = gtk_label_new("Shininess of Obeject -->");
+	gtk->l_shine = gtk_label_new("Shininess of Object -->");
 	gtk->l_refrac = gtk_label_new("Refraction of Object -->");
 	gtk->l_ka = gtk_label_new("Ambient coefficient -->");
 	gtk->l_kd = gtk_label_new("Diffuse coefficient -->");

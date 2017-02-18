@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 15:49:48 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/10 14:56:55 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/18 15:46:05 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,8 @@ void 	view_delete_obj(int response, int clicked_del, t_env *e, GtkWidget *view)
 		if (res == GTK_RESPONSE_ACCEPT)
 		{
 			delete_obj1(&e->scene.obj, &e->gtk);
-			gtk_widget_destroy(e->gtk.img);
 			raytracing(e);
-			reset_img(&e->gtk);
+			gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), e->gtk.buffer);
 		}
 		gtk_widget_destroy(dialog);
 	}

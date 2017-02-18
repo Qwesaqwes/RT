@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/10 14:56:27 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/18 15:18:21 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list 	*init_test(void)
 	t_obj	obj1;
 	t_obj	obj2;
 	t_obj	obj3;
-	t_obj	obj4;
+	// t_obj	obj4;
 	//t_obj	obj5;
 	//t_obj	obj6;
 	//t_obj	obj7;
@@ -108,32 +108,32 @@ t_list 	*init_test(void)
 	obj3.refr_index = 1.33;
 	ft_lstaddend(&list, ft_lstnew(&obj3, sizeof(t_obj)));
 
-	obj4.id = 3;
-	obj4.name = "sphere4";
-	obj4.transform.scale.x = 1;
-	obj4.transform.scale.y = 1;
-	obj4.transform.scale.z = 1;
-	obj4.transform.scale.w = 1;
-	obj4.type = 0;
-	obj4.transform.transl.x = 7;
-	obj4.transform.transl.y = 0;
-	obj4.transform.transl.z = 0;
-	obj4.transform.transl.w = 1;
-	obj4.transform.rot.x = 0;
-	obj4.transform.rot.y = 0;
-	obj4.transform.rot.z = 0;
-	obj4.transform.rot.w = 1;
-	obj4.color.red = 1;
-	obj4.color.green = 1;
-	obj4.color.blue = 1;
-	obj4.ka = 0.2;
-	obj4.kd = 0.9;
-	obj4.ks = 1;
-	obj4.i = 0;
-	obj4.t = 0.8;
-	obj4.shininess = 50;
-	obj4.refr_index = 1.33;
-	ft_lstaddend(&list, ft_lstnew(&obj4, sizeof(t_obj)));
+	// obj4.id = 3;
+	// obj4.name = "sphere4";
+	// obj4.transform.scale.x = 1;
+	// obj4.transform.scale.y = 1;
+	// obj4.transform.scale.z = 1;
+	// obj4.transform.scale.w = 1;
+	// obj4.type = 0;
+	// obj4.transform.transl.x = 7;
+	// obj4.transform.transl.y = 0;
+	// obj4.transform.transl.z = 0;
+	// obj4.transform.transl.w = 1;
+	// obj4.transform.rot.x = 0;
+	// obj4.transform.rot.y = 0;
+	// obj4.transform.rot.z = 0;
+	// obj4.transform.rot.w = 1;
+	// obj4.color.red = 1;
+	// obj4.color.green = 1;
+	// obj4.color.blue = 1;
+	// obj4.ka = 0.2;
+	// obj4.kd = 0.9;
+	// obj4.ks = 1;
+	// obj4.i = 0;
+	// obj4.t = 0.8;
+	// obj4.shininess = 50;
+	// obj4.refr_index = 1.33;
+	// ft_lstaddend(&list, ft_lstnew(&obj4, sizeof(t_obj)));
 	/*obj5.id = 4;
 	obj5.transform.scale.x = 1;
 	obj5.transform.scale.y = 1;

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:06:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/13 18:34:51 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/16 20:28:24 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,32 @@ void 	choose_file(t_env *e)
 	gtk_box_pack_end(GTK_BOX(e->gtk.stopbox), e->gtk.choose_f, FALSE, FALSE, 0);
 }
 
+void 	init_combo_box_effect(GtkWidget *n_effect)
+{
+	char	*effec[] = {"None", "Sepia", "GreyScale", "Sobel", "Cartoon", "Blur"};
+	int		nb;
+
+	nb = 0;
+	while (nb < 6)
+	{
+		gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(n_effect), effec[nb]);
+		nb++;
+	}
+}
+
+void 	init_combo_box_anti(GtkWidget *n_antial)
+{
+	char	*anti[] = {"None", "2x AA", "4x AA", "8x AA", "16x AA"};
+	int		nb;
+
+	nb = 0;
+	while (nb < 5)
+	{
+		gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(n_antial), anti[nb]);
+		nb++;
+	}
+}
+
 void 	sec_top_box(t_env *e)
 {
 	/*Creation of "Second top box"(stopbox)*/
@@ -72,22 +98,9 @@ void 	sec_top_box(t_env *e)
 	e->gtk.n_antial = gtk_combo_box_text_new();
 
 	/*Puting Options inside the Combo_box of "Effect"*/
-	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(e->gtk.n_effect), "0", "None");
-	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(e->gtk.n_effect),
-	"1", "Sepia");
-	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(e->gtk.n_effect), "2",
-	"GreyScale");
-
+	init_combo_box_effect(e->gtk.n_effect);
 	/*......................................."Antialiasing"*/
-	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(e->gtk.n_antial), "0", "None");
-	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(e->gtk.n_antial), "1",
-	"2x AA");
-	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(e->gtk.n_antial), "2",
-	"4x AA");
-	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(e->gtk.n_antial), "3",
-	"8x AA");
-	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(e->gtk.n_antial), "4",
-	"16x AA");
+	init_combo_box_anti(e->gtk.n_antial);
 
 	g_signal_connect(e->gtk.n_effect, "changed", G_CALLBACK(gtk_effect), e);
 	/*Put "Second top box" inside "Global box"*/
