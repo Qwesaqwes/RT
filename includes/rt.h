@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/15 17:16:34 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/18 16:20:50 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <math.h>
 # include "libft.h"
-# include "mlx.h"
 # include <stdlib.h>
 # include <gtk/gtk.h>
 
