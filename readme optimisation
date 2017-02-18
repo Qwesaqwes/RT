@@ -1,0 +1,5 @@
+space partitioning
+
+preprocess : decoupe la scene en un octree de cells vide, pleine ou partiellement remplies. Les cells partiellements remplis sont decoupes en 8 et ainsi de suite sur 8 niveau de profondeur.
+classify : trouve la plus petite cell dans laquelle est le point envoyee.
+intersect : parcour l'octree de l'origin jusqu'a l'intersection.
