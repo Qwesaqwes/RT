@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/18 15:18:21 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/18 16:37:36 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ t_list 	*init_test(void)
 	t_obj	obj2;
 	t_obj	obj3;
 	// t_obj	obj4;
-	//t_obj	obj5;
+	t_obj	obj5;
 	//t_obj	obj6;
 	//t_obj	obj7;
 	//t_obj	obj8;*/
-	t_obj	obj9;
+	// t_obj	obj9;
 	//t_obj	obj10;
 
 	list = NULL;
@@ -134,26 +134,27 @@ t_list 	*init_test(void)
 	// obj4.shininess = 50;
 	// obj4.refr_index = 1.33;
 	// ft_lstaddend(&list, ft_lstnew(&obj4, sizeof(t_obj)));
-	/*obj5.id = 4;
+	obj5.id = 5;
+	obj5.name = "plane1";
 	obj5.transform.scale.x = 1;
 	obj5.transform.scale.y = 1;
 	obj5.transform.scale.z = 1;
 	obj5.transform.scale.w = 1;
 	obj5.type = 2;
-	obj5.transform.transl.x = 0;
-	obj5.transform.transl.y = 2;
+	obj5.transform.transl.x = 50;
+	obj5.transform.transl.y = 0;
 	obj5.transform.transl.z = 0;
 	obj5.transform.transl.w = 1;
-	obj5.normal.x = 0;
-	obj5.normal.y = 1;
+	obj5.normal.x = -1;
+	obj5.normal.y = 0;
 	obj5.normal.z = 0;
 	obj5.normal.w = 1;
 	obj5.transform.rot.x = 0;
 	obj5.transform.rot.y = 0;
 	obj5.transform.rot.z = 0;
 	obj5.transform.rot.w = 1;
-	obj5.color.red = 0.2;
-	obj5.color.green = 0.8;
+	obj5.color.red = 0;
+	obj5.color.green = 0;
 	obj5.color.blue = 0;
 	obj5.ka = 0.2;
 	obj5.kd = 0.9;
@@ -162,7 +163,7 @@ t_list 	*init_test(void)
 	obj5.t = 0;
 	obj5.shininess = 50;
 	obj5.refr_index = 1.33;
-	ft_lstadd(&list, ft_lstnew(&obj5, sizeof(t_obj)));*/
+	ft_lstadd(&list, ft_lstnew(&obj5, sizeof(t_obj)));
 	/*obj7.id = 6;
 	obj7.transform.scale.x = 1;
 	obj7.transform.scale.y = 1;
@@ -217,32 +218,32 @@ t_list 	*init_test(void)
 	obj8.shininess = 50;
 	obj8.refr_index = 1.33;
 	//ft_lstadd(&list, ft_lstnew(&obj8, sizeof(t_obj)));*/
-	obj9.id = 4;
-	obj9.name = "cone1";
-	obj9.transform.scale.x = 1;
-	obj9.transform.scale.y = 1;
-	obj9.transform.scale.z = 1;
-	obj9.transform.scale.w = 1;
-	obj9.type = 3; // cone
- 	obj9.transform.transl.x = 15;
-	obj9.transform.transl.y = 0;
-	obj9.transform.transl.z = 0;
-	obj9.transform.transl.w = 1;
-	obj9.transform.rot.x = 70;
-	obj9.transform.rot.y = 0;
-	obj9.transform.rot.z = 0;
-	obj9.transform.rot.w = 1;
-	obj9.color.red = 1;
-	obj9.color.green = 0.8;
-	obj9.color.blue = 0;
-	obj9.ka = 0.2;
-	obj9.kd = 0.9;
-	obj9.ks = 0.1;
-	obj9.i = 0;
-	obj9.t = 0;
-	obj9.shininess = 50;
-	obj9.refr_index = 1.33;
-	ft_lstaddend(&list, ft_lstnew(&obj9, sizeof(t_obj)));
+	// obj9.id = 4;
+	// obj9.name = "cone1";
+	// obj9.transform.scale.x = 1;
+	// obj9.transform.scale.y = 1;
+	// obj9.transform.scale.z = 1;
+	// obj9.transform.scale.w = 1;
+	// obj9.type = 3; // cone
+ // 	obj9.transform.transl.x = 15;
+	// obj9.transform.transl.y = 0;
+	// obj9.transform.transl.z = 0;
+	// obj9.transform.transl.w = 1;
+	// obj9.transform.rot.x = 70;
+	// obj9.transform.rot.y = 0;
+	// obj9.transform.rot.z = 0;
+	// obj9.transform.rot.w = 1;
+	// obj9.color.red = 1;
+	// obj9.color.green = 0.8;
+	// obj9.color.blue = 0;
+	// obj9.ka = 0.2;
+	// obj9.kd = 0.9;
+	// obj9.ks = 0.1;
+	// obj9.i = 0;
+	// obj9.t = 0;
+	// obj9.shininess = 50;
+	// obj9.refr_index = 1.33;
+	// ft_lstaddend(&list, ft_lstnew(&obj9, sizeof(t_obj)));
 	return (list);
 }
 

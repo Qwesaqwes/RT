@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 16:19:34 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/18 16:04:47 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/18 17:01:47 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,34 @@ void 	get_type(char *type, t_list *list, const char *object)
 	}
 }
 
+void	get_normal(t_vec3d *normal, t_list *list, const char *object)
+{
+	t_list	*tmp;
+	t_obj	*tmp_obj;
+
+	tmp = list;
+	while (tmp != NULL)
+	{
+		tmp_obj = (t_obj*)tmp->content;
+		if (ft_strcmp(tmp_obj->name, object) == 0)
+		{
+			normal->x = tmp_obj->normal.x;
+			normal->y = tmp_obj->normal.y;
+			normal->z = tmp_obj->normal.z;
+			normal->w = tmp_obj->normal.w;
+			break;
+		}
+		tmp = tmp->next;
+	}
+}
+
 int 	update_obj(t_env *e, const char *object)
 {
 	t_obj	new_obj;
 
 	get_type(&new_obj.type, e->scene.obj, object);
+	if (new_obj.type == 2)
+		get_normal(&new_obj.normal, e->scene.obj, object);
 	ft_list_remove_if(&e->scene.obj, object, &ft_strcmp);
 	if (put_name_obj(&e->gtk, &new_obj.name, e->scene.obj, &new_obj.id) == 1 ||
 		put_pos_obj(&e->gtk, &new_obj.transform.transl) == 1 ||

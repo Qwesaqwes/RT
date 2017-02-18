@@ -6,7 +6,7 @@
 /*   By: JimmyChe <JimmyChe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 19:51:40 by JimmyChe          #+#    #+#             */
-/*   Updated: 2017/02/10 14:44:08 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/18 16:36:12 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ const char	*put_type(char type)
 	else if (type == 1)
 		return ("Cylindre");
 	else if (type == 2)
-		return ("Plane");
+		return ("Plan");
 	else
 		return ("Cone");
 }
