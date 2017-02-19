@@ -17,9 +17,10 @@
 # include "libft.h"
 # include <stdlib.h>
 # include <gtk/gtk.h>
+# include <pthread.h>
 
 
-#include <stdio.h>
+# include <stdio.h>
 
 
 # define H 600
@@ -27,6 +28,7 @@
 # define ESC 53
 # define MAX_DEPTH 3
 # define SHADOW_BIAS 0.0001
+# define NB_THREAD 16
 
 typedef struct		s_matrix
 {
@@ -276,6 +278,13 @@ typedef struct		s_env
 	t_scene			scene;
 	t_gtk			gtk;
 }					t_env;
+
+typedef struct	s_thread_data
+{
+   int h_start;
+   int h_end;
+   t_env *e;
+}				t_thread_data;
 
 t_color		compute_ray(t_ray ray, t_scene s, t_values v);
 t_vec3d		compute_normal_vec(t_no no);

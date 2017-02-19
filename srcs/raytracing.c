@@ -56,31 +56,90 @@ t_rgb	color_to_rgb(t_color old)
 	return (new);
 }
 
-void	raytracing(t_env *e)
+void	raytracing_column(t_env *e, t_list *first_el, int h_start)
 {
-	int			i;
-	int			j;
 	t_ray		ray;
 	t_rgb		color;
 	t_values	v;
-	t_list		*first_el;
-	// appel de la fonction set_camera(...) qui renvoi un struct camera
-	// printf("%s\n", "A");
-	set_camera(&(e->camera));
-	j = -1;
-	while (++j < H)
+	int 		i;
+
+	i = 0;
+
+	while(i < W)
 	{
-		i = -1;
-		while (++i < W)
-		{
-			ray = set_ray(e->camera, e->vp, i, j);
-			v.depth = 0;
-			v.id_refl = -1;
-			first_el = ft_lstnew(&e->scene.refr_index, sizeof(float));
-			v.refr_index = &first_el;
-			v.enter = 0;
-			color = color_to_rgb(compute_ray(ray, e->scene, v));
-			ft_pixel_put(i, j, color, *e);
-		}
+		ray = set_ray(e->camera, e->vp, i, h_start);
+		v.depth = 0;
+		v.id_refl = -1;
+		first_el = ft_lstnew(&e->scene.refr_index, sizeof(float));
+		v.refr_index = &first_el;
+		v.enter = 0;
+		color = color_to_rgb(compute_ray(ray, e->scene, v));
+		ft_pixel_put(i, h_start, color, *e);
+		i++;
 	}
+}
+
+static void	*ft_task(void *p_data)
+{
+	t_thread_data		*data;
+	t_list				*first_el;
+
+	data = p_data;
+	first_el = NULL;
+	while (data->h_start < data->h_end)
+	{
+		raytracing_column(data->e, first_el, data->h_start);
+		data->h_start++;
+	}
+	return NULL;
+}
+
+
+void	data_for_thread(t_thread_data *data, t_env *e)
+{
+	int	i;
+	int	h_start;
+	int	h_end;
+	int h_part;
+
+	i = 0;
+	h_start = 0;
+	h_part = H / NB_THREAD;
+	h_end = h_part;
+	while(i < NB_THREAD)
+	{
+		data[i].h_start = h_start;
+		data[i].h_end = h_end;
+		data[i].e = e;
+		h_start += h_part;
+		h_end += h_part;
+		i++;
+	}
+}
+
+void	raytracing(t_env *e)
+{
+	pthread_t			*task; //multi-thread
+   	t_thread_data 		*data;
+   	int					i;
+
+   	i = 0;
+	task = (pthread_t *)malloc(sizeof(pthread_t) * NB_THREAD);
+	data = (t_thread_data *)malloc(sizeof(t_thread_data) * NB_THREAD);
+	set_camera(&(e->camera));
+	data_for_thread(data, e);
+	while(i < NB_THREAD)
+	{
+		pthread_create(&task[i], NULL, ft_task, &data[i]);
+		i++;
+	}
+	i = 0;
+	while(i < NB_THREAD)
+	{
+   		pthread_join(task[i], NULL);
+		i++;
+	}
+	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), e->gtk.buffer);
+   	free(data);
+   	free(task);
 }

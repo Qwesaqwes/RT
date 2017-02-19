@@ -41,7 +41,7 @@ void	sepia_effect(t_rgb *color, t_gtk *gtk, int col, int line)
 	pixel[get_pos(line, col, gtk)] = i > 255 ? 255 : i;
 	pixel[get_pos(line, col, gtk) + 1] = j > 255 ? 255 : j;
 	pixel[get_pos(line, col, gtk) + 2] = k > 255 ? 255 : k;
-	gtk_image_set_from_pixbuf(GTK_IMAGE(gtk->img), gtk->buffer);
+	//gtk_image_set_from_pixbuf(GTK_IMAGE(gtk->img), gtk->buffer);
 }
 
 void	gray_scale_effect(t_rgb *color, t_gtk *gtk, int col, int line)
@@ -57,7 +57,7 @@ void	gray_scale_effect(t_rgb *color, t_gtk *gtk, int col, int line)
 	pixel[tmp] = res > 255 ? 255 : res;
 	pixel[tmp + 1] = res > 255 ? 255 : res;
 	pixel[tmp + 2] = res > 255 ? 255 : res;
-	gtk_image_set_from_pixbuf(GTK_IMAGE(gtk->img), gtk->buffer);
+	//gtk_image_set_from_pixbuf(GTK_IMAGE(gtk->img), gtk->buffer);
 }
 
 void	no_effect(t_rgb *color, t_gtk *gtk, int col, int line)
@@ -71,7 +71,7 @@ void	no_effect(t_rgb *color, t_gtk *gtk, int col, int line)
 	pixel[tmp] = color->red;
 	pixel[tmp + 1] = color->green;
 	pixel[tmp + 2] = color->blue;
-	gtk_image_set_from_pixbuf(GTK_IMAGE(gtk->img), gtk->buffer);
+	//gtk_image_set_from_pixbuf(GTK_IMAGE(gtk->img), gtk->buffer);
 }
 
 int		xgrad(guchar *pixel, int line, int col, t_gtk *gtk)
@@ -141,7 +141,7 @@ void	sobel_effect(int col, int line, t_gtk *gtk)
 	pixel[get_pos(line, col, gtk)] = sum;
 	pixel[get_pos(line, col, gtk) + 1] = sum;
 	pixel[get_pos(line, col, gtk) + 2] = sum;
-	gtk_image_set_from_pixbuf(GTK_IMAGE(gtk->img), gtk->buffer);
+	//gtk_image_set_from_pixbuf(GTK_IMAGE(gtk->img), gtk->buffer);
 }
 
 int		limit_color(int col)
@@ -188,7 +188,7 @@ void	cartoon_effect(t_rgb *color, int col, int line, t_gtk *gtk)
 		pixel[get_pos(line, col, gtk) + 1] = sum;
 		pixel[get_pos(line, col, gtk) + 2] = sum;
 	}
-	gtk_image_set_from_pixbuf(GTK_IMAGE(gtk->img), gtk->buffer);
+	//gtk_image_set_from_pixbuf(GTK_IMAGE(gtk->img), gtk->buffer);
 }
 
 // t_rgb	*kernel_blur(guchar *pixel, int col, int line, t_gtk *gtk)
@@ -267,11 +267,16 @@ void	blur_effect(t_rgb *color, int col, int line, t_gtk *gtk)
 	pixel[get_pos(line, col, gtk) + 2] = color->blue > 255 ? 255 : color->blue;
 
 
-	gtk_image_set_from_pixbuf(GTK_IMAGE(gtk->img), gtk->buffer);
+	//gtk_image_set_from_pixbuf(GTK_IMAGE(gtk->img), gtk->buffer);
 }
 
-void	ft_pixel_put(int i, int j, t_rgb color, t_env e)
+void	ft_pixel_put(int i, int j, t_rgb color_dec, t_env e_dec)
 {
+	t_env	e;
+	t_rgb	color;
+
+	e = e_dec;
+	color = color_dec;
 	if (e.gtk.nb_effect == 0)
 		no_effect(&color, &e.gtk, i, j);
 	else if(e.gtk.nb_effect == 1)
