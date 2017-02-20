@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/02/13 18:18:20 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/02/20 22:01:28 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,11 @@ SRC			=	compute_ray.c\
 				gtk_delete_obj1.c\
 				gtk_modif_obj1.c\
 				gtk_choose_file.c\
-				gtk_effect.c\
+				gtk_effect1.c\
+				gtk_effect2.c\
+				gtk_effect3.c\
+				gtk_effect4.c\
+				gtk_effect5.c\
 				gtk_set_box.c
 
 FLAGS		=	debug

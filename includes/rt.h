@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/18 16:20:50 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/20 21:56:50 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -378,7 +378,15 @@ void		ft_list_remove_if(t_list **begin_list, const char *data_ref,
 			int (*cmp)());
 void		gtk_choose_f(GtkWidget *button, t_env *e);
 void		gtk_effect(GtkWidget *button, t_env *e);
-
+int			get_pos(int line, int col, t_gtk *gtk);
+void		sepia_effect(t_env *e);
+void		greyscale_effect(t_env *e);
+void		sobel_effect(t_env *e);
+void		cartoon_effect(t_env *e);
+void		motion_effec(t_env *e);
+int			ygrad(guchar *pixel, int line, int col, t_gtk *gtk);
+int			xgrad(guchar *pixel, int line, int col, t_gtk *gtk);
+t_rgb		get_color_pixel(guchar *pixel, t_gtk *gtk, int line, int col);
 
 
 
