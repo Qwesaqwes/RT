@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:06:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/16 20:28:24 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/21 14:51:32 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void 	top_box(t_env *e)
 {
 	GtkWidget *image;
-	/*Creation of "TOP_BOX"*/
-	e->gtk.vbox = gtk_box_new(0, 0);
 
-	/*Creation of buttons*/
+	e->gtk.vbox = gtk_box_new(0, 0);
 	e->gtk.zoom = gtk_button_new();
 	e->gtk.dezoom = gtk_button_new();
 	e->gtk.save = gtk_button_new();
@@ -28,20 +26,13 @@ void 	top_box(t_env *e)
 	gtk_button_set_image(GTK_BUTTON(e->gtk.dezoom), image);
 	image = gtk_image_new_from_file("./images/save.png");
 	gtk_button_set_image(GTK_BUTTON(e->gtk.save), image);
-
-	/*signal to call function 'gtk_s_img' when Click on the button "SAVE" */
-	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img), e->gtk.buffer);
-
-	/*signal to call function 'gtk_zoom' when click on the button "ZOOM"*/
+	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img),
+	e->gtk.buffer);
 	g_signal_connect(e->gtk.zoom, "clicked", G_CALLBACK(gtk_zoom), e);
 	g_signal_connect(e->gtk.dezoom, "clicked", G_CALLBACK(gtk_dezoom), e);
-
-	/*Put buttons inside the "TOP_BOX"*/
 	gtk_box_pack_start(GTK_BOX(e->gtk.vbox), e->gtk.zoom, FALSE, FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(e->gtk.vbox), e->gtk.dezoom, FALSE, FALSE, 0);
 	gtk_box_pack_end(GTK_BOX(e->gtk.vbox), e->gtk.save, FALSE, FALSE, 0);
-
-	/*put the "TOP_BOX" inside the "GLOBAL_BOX" */
 	gtk_box_pack_start(GTK_BOX(e->gtk.globalbox), e->gtk.vbox, 0, 0, 0);
 }
 
@@ -62,11 +53,12 @@ void 	choose_file(t_env *e)
 
 void 	init_combo_box_effect(GtkWidget *n_effect)
 {
-	char	*effec[] = {"None", "Sepia", "GreyScale", "Sobel", "Cartoon", "Blur"};
+	char	*effec[] = {"None", "Sepia", "GreyScale", "Sobel", "Cartoon",
+	"Motion Blur", "Motion Blur 2"};
 	int		nb;
 
 	nb = 0;
-	while (nb < 6)
+	while (nb < 7)
 	{
 		gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(n_effect), effec[nb]);
 		nb++;
@@ -88,22 +80,14 @@ void 	init_combo_box_anti(GtkWidget *n_antial)
 
 void 	sec_top_box(t_env *e)
 {
-	/*Creation of "Second top box"(stopbox)*/
 	e->gtk.stopbox = gtk_box_new(0, 0);
-
-	/*Creation of Combo_box of "Effect" & "Antialiasing"*/
 	e->gtk.effect = gtk_label_new("Effect:");
 	e->gtk.n_effect = gtk_combo_box_text_new();
 	e->gtk.antial = gtk_label_new("Antialiasing:");
 	e->gtk.n_antial = gtk_combo_box_text_new();
-
-	/*Puting Options inside the Combo_box of "Effect"*/
 	init_combo_box_effect(e->gtk.n_effect);
-	/*......................................."Antialiasing"*/
 	init_combo_box_anti(e->gtk.n_antial);
-
 	g_signal_connect(e->gtk.n_effect, "changed", G_CALLBACK(gtk_effect), e);
-	/*Put "Second top box" inside "Global box"*/
 	gtk_box_pack_start(GTK_BOX(e->gtk.stopbox), e->gtk.effect, 0, 0, 10);
 	gtk_box_pack_start(GTK_BOX(e->gtk.stopbox), e->gtk.n_effect,
 	FALSE, FALSE, 0);
@@ -117,7 +101,6 @@ void 	sec_top_box(t_env *e)
 
 void 	init_gtk(t_env *e)
 {
-	/*Creation of WINDOW, BUFFER, IMG, TITLE OF FILE, GLOBAL_BOX, IMG_BOX*/
 	e->gtk.window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_default_size(GTK_WINDOW(e->gtk.window), W, H + 100);
 	gtk_window_set_position(GTK_WINDOW(e->gtk.window), GTK_WIN_POS_CENTER);
@@ -134,7 +117,8 @@ void 	init_gtk(t_env *e)
 	e->gtk.img = gtk_image_new_from_pixbuf(e->gtk.buffer);
 	gtk_box_pack_start(GTK_BOX(e->gtk.imgbox), e->gtk.img, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(e->gtk.globalbox), e->gtk.imgbox, 0, 0, 0);
-	g_signal_connect(e->gtk.window, "delete-event", G_CALLBACK(gtk_main_quit), NULL);
+	g_signal_connect(e->gtk.window, "delete-event", G_CALLBACK(gtk_main_quit),
+	NULL);
 	gtk_layout_put(GTK_LAYOUT(e->gtk.layout), e->gtk.globalbox, 0, 0);
 	gtk_container_add(GTK_CONTAINER(e->gtk.window), e->gtk.layout);
 	gtk_widget_show_all(e->gtk.window);

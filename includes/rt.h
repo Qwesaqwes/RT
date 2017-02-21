@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/20 21:56:50 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/21 16:43:29 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define MAX_DEPTH 3
 # define SHADOW_BIAS 0.0001
 # define NB_THREAD 16
+# define MOTION_KERNEL 20
+# define BLUR_KERNEL 15
 
 typedef struct		s_matrix
 {
@@ -172,6 +174,8 @@ typedef struct		s_scene
 typedef	struct		s_gtk
 {
 	int				nb_effect;
+	float			kernel[MOTION_KERNEL][MOTION_KERNEL];
+	float			kernel1[BLUR_KERNEL][BLUR_KERNEL];
 	GdkRGBA			*color;
 	GdkPixbuf		*buffer;
 	guchar			*pixel;
@@ -384,6 +388,7 @@ void		greyscale_effect(t_env *e);
 void		sobel_effect(t_env *e);
 void		cartoon_effect(t_env *e);
 void		motion_effec(t_env *e);
+void		blur_effec(t_env *e);
 int			ygrad(guchar *pixel, int line, int col, t_gtk *gtk);
 int			xgrad(guchar *pixel, int line, int col, t_gtk *gtk);
 t_rgb		get_color_pixel(guchar *pixel, t_gtk *gtk, int line, int col);

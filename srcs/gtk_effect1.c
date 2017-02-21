@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 18:16:51 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/20 21:58:42 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/21 15:15:17 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,7 @@ void	no_effect(t_env *e)
 
 void	gtk_effect1(t_env *e, int active)
 {
-	if (active == 2)
-	{
-		e->gtk.nb_effect = active;
-		greyscale_effect(e);
-	}
-	else if (active == 3)
+	if (active == 3)
 	{
 		e->gtk.nb_effect = active;
 		sobel_effect(e);
@@ -62,6 +57,11 @@ void	gtk_effect1(t_env *e, int active)
 	{
 		e->gtk.nb_effect = active;
 		motion_effec(e);
+	}
+	else if (active ==  6)
+	{
+		e->gtk.nb_effect = active;
+		blur_effec(e);
 	}
 }
 
@@ -82,6 +82,11 @@ void	gtk_effect(GtkWidget *button, t_env *e)
 		{
 			e->gtk.nb_effect = active;
 			sepia_effect(e);
+		}
+		else if (active == 2)
+		{
+			e->gtk.nb_effect = active;
+			greyscale_effect(e);
 		}
 		gtk_effect1(e, active);
 	}
