@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 11:56:33 by opandolf          #+#    #+#             */
-/*   Updated: 2016/12/06 09:00:32 by opandolf         ###   ########.fr       */
+/*   Updated: 2017/02/24 18:54:18 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ t_vec3d	compute_normal_vec(t_no no)
 	else if (no.obj.type == 3)
 	{
 		normal = cone_normal_vec(no);
+	}
+	else if (no.obj.type == 4)
+	{
+		normal = no.obj.faces->normal;
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/21 16:43:29 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/24 20:33:45 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 
 # define H 600
-# define W 600
+# define W 900
 # define ESC 53
 # define MAX_DEPTH 3
 # define SHADOW_BIAS 0.0001
@@ -69,8 +69,8 @@ typedef struct		s_color
 typedef	struct		s_viewplane
 {
 	float			dist;
-	int				width;
-	int				height;
+	float				width;
+	float				height;
 }					t_vp;
 
 typedef struct		s_vec3d
@@ -114,6 +114,19 @@ typedef struct		s_parameters
 	t_color			t;
 }					t_param;
 
+typedef struct		s_vertex
+{
+	t_vec3d			coord;
+	struct s_vertex	*next;
+}					t_vertex;
+
+typedef struct		s_face
+{
+	t_vertex		*vertex;
+	t_vec3d			normal;
+	struct s_face	*next;
+}					t_face;
+
 typedef struct		s_obj
 {
 	int				id;
@@ -129,6 +142,7 @@ typedef struct		s_obj
 	t_transform		transform;
 	float			refr_index;
 	t_vec3d			normal;
+	t_face			*faces;
 }					t_obj;
 
 typedef struct		s_nearest_obj
@@ -178,6 +192,7 @@ typedef	struct		s_gtk
 	float			kernel1[BLUR_KERNEL][BLUR_KERNEL];
 	GdkRGBA			*color;
 	GdkPixbuf		*buffer;
+	GdkPixbuf		*tmp_buf;
 	guchar			*pixel;
 	GtkWidget		*window;
 	GtkWidget		*layout;
@@ -306,6 +321,11 @@ t_vec3d		cylindre_normal_vec(t_no no);
 float		cylindre_dist(t_ray r);
 float		plane_dist(t_obj obj, t_ray r);
 float		cone_dist(t_ray r);
+t_vec3d		set_inter_point(float dist, t_ray ray);
+
+
+float	triangle_dist(t_ray ray, t_obj obj);
+
 t_vec3d		cone_normal_vec(t_no no);
 
 void 		init_vp(t_vp *vp);
@@ -383,16 +403,18 @@ void		ft_list_remove_if(t_list **begin_list, const char *data_ref,
 void		gtk_choose_f(GtkWidget *button, t_env *e);
 void		gtk_effect(GtkWidget *button, t_env *e);
 int			get_pos(int line, int col, t_gtk *gtk);
+void		no_effect(t_env *e);
 void		sepia_effect(t_env *e);
 void		greyscale_effect(t_env *e);
 void		sobel_effect(t_env *e);
 void		cartoon_effect(t_env *e);
 void		motion_effec(t_env *e);
 void		blur_effec(t_env *e);
+void		stereo_effect(t_env *e);
+
 int			ygrad(guchar *pixel, int line, int col, t_gtk *gtk);
 int			xgrad(guchar *pixel, int line, int col, t_gtk *gtk);
 t_rgb		get_color_pixel(guchar *pixel, t_gtk *gtk, int line, int col);
-
 
 
 

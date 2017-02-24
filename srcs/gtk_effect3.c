@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 21:59:41 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/20 21:59:54 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/24 15:55:49 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	cartoon_effect(t_env *e)
 		while(++col < W - 1)
 			cartoon_effect1(&e->gtk, buf, line, col);
 	}
+	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img),
+	buf);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), buf);
 }
 
@@ -108,5 +110,7 @@ void	sobel_effect(t_env *e)
 		while(++col < W - 1)
 			sobel_effect1(&e->gtk, buf, line, col);
 	}
+	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img),
+	buf);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), buf);
 }

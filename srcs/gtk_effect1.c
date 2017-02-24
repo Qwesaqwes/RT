@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 18:16:51 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/21 15:15:17 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/24 15:53:43 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	no_effect(t_env *e)
 		while(++col < W)
 			no_effect1(&e->gtk, buf, line, col);
 	}
+	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img),
+	buf);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), buf);
 }
 
@@ -62,6 +64,12 @@ void	gtk_effect1(t_env *e, int active)
 	{
 		e->gtk.nb_effect = active;
 		blur_effec(e);
+	}
+	else if (active ==  7)
+	{
+		e->gtk.nb_effect = active;
+		// e->gtk.pass = 1;
+		stereo_effect(e);
 	}
 }
 

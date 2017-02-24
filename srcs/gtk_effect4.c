@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 22:00:10 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/21 16:52:41 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/24 15:55:48 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,7 @@ void	motion_effec(t_env *e)
 		while(++col < W - ((MOTION_KERNEL) - 1))
 			motion_effec1(&e->gtk, buf, line, col);
 	}
+	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img),
+	buf);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), buf);
 }

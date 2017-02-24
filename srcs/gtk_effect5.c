@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 15:13:41 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/21 16:45:59 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/24 15:55:47 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	blur_effec1(t_gtk *gtk, GdkPixbuf *buf, int line, int col)
 		}
 	}
 	pixel[get_pos(line, col, gtk)] = (color.red) > 255 ? 255 : color.red;
-	pixel[get_pos(line, col, gtk) + 1] = (color.green) > 255 ? 255 : color.green;
+	pixel[get_pos(line, col, gtk) + 1] = (color.green) > 255 ? 255 :
+	color.green;
 	pixel[get_pos(line, col, gtk) + 2] = (color.blue) > 255 ? 255 : color.blue;
 }
 
@@ -76,5 +77,7 @@ void	blur_effec(t_env *e)
 		while(++col < (W - (BLUR_KERNEL) - 1))
 			blur_effec1(&e->gtk, buf, line, col);
 	}
+	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img),
+	buf);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), buf);
 }

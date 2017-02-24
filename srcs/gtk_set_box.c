@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:06:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/21 14:51:32 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/24 15:53:47 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void 	top_box(t_env *e)
 	gtk_button_set_image(GTK_BUTTON(e->gtk.dezoom), image);
 	image = gtk_image_new_from_file("./images/save.png");
 	gtk_button_set_image(GTK_BUTTON(e->gtk.save), image);
-	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img),
-	e->gtk.buffer);
+	// g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img),
+	// e->gtk.buffer);
 	g_signal_connect(e->gtk.zoom, "clicked", G_CALLBACK(gtk_zoom), e);
 	g_signal_connect(e->gtk.dezoom, "clicked", G_CALLBACK(gtk_dezoom), e);
 	gtk_box_pack_start(GTK_BOX(e->gtk.vbox), e->gtk.zoom, FALSE, FALSE, 0);
@@ -54,11 +54,11 @@ void 	choose_file(t_env *e)
 void 	init_combo_box_effect(GtkWidget *n_effect)
 {
 	char	*effec[] = {"None", "Sepia", "GreyScale", "Sobel", "Cartoon",
-	"Motion Blur", "Motion Blur 2"};
+	"Motion Blur", "Motion Blur 2", "Stereoscopie"};
 	int		nb;
 
 	nb = 0;
-	while (nb < 7)
+	while (nb < 8)
 	{
 		gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(n_effect), effec[nb]);
 		nb++;

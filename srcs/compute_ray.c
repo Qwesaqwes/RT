@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compute_ray.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:10:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/12 18:18:00 by opandolf         ###   ########.fr       */
+/*   Updated: 2017/02/24 17:37:46 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,21 @@ t_color		set_white_color(void)
 	return(c);
 }
 
-void printlist(t_list **list, char depth, char action)
-{
-	t_list *tmp;
-
-	tmp = *list;
-	printf("depth: %d, action: %d, list: {", depth, action);
-	while(tmp != NULL)
-	{
-		printf("%f", *(float*)tmp->content);
-		if (tmp->next)
-			printf(", ");
-		tmp = tmp->next;
-	}
-	printf("}\n");
-}
+// void printlist(t_list **list, char depth, char action)
+// {
+// 	t_list *tmp;
+//
+// 	tmp = *list;
+// 	printf("depth: %d, action: %d, list: {", depth, action);
+// 	while(tmp != NULL)
+// 	{
+// 		printf("%f", *(float*)tmp->content);
+// 		if (tmp->next)
+// 			printf(", ");
+// 		tmp = tmp->next;
+// 	}
+// 	printf("}\n");
+// }
 
 t_color		indirect_color(t_scene s, t_values v, t_cv cv, t_no no)
 {
@@ -105,9 +105,7 @@ t_color		compute_ray(t_ray ray, t_scene s, t_values v)
 	if(v.depth < MAX_DEPTH)
 	{
 		if (get_nearest_obj(ray, s.obj, &no) == 0)
-		{
 			color = s.background;
-		}
 		else
 		{
 			no.normal = compute_normal_vec(no);
@@ -116,16 +114,14 @@ t_color		compute_ray(t_ray ray, t_scene s, t_values v)
 			if (cv.cosI < 0)
 			{
 				if (v.enter == 0)
-				{
-					ft_lstadd(v.refr_index, ft_lstnew(&no.obj.refr_index, sizeof(float)));
-				}
+					ft_lstadd(v.refr_index, ft_lstnew(&no.obj.refr_index,
+					sizeof(float)));
 				cv.sign = -1;
 				no.normal = vector_fact(no.normal, -1);
 				cv.cosI = -vector_dot(no.normal, no.origin.dir);
 			}
 			else
 				cv.sign = 1;
-
 			color = color_add(color, indirect_color(s, v, cv, no));
 		}
 	}

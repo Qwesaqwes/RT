@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 12:32:03 by opandolf          #+#    #+#             */
-/*   Updated: 2016/12/09 09:39:41 by opandolf         ###   ########.fr       */
+/*   Updated: 2017/02/24 20:34:14 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,8 @@ t_color			get_intersection_obj(t_list *list, t_obj lum, t_no no)
 			{
 				dist = cone_dist(img_ray);
 			}
+			if (obj.type == 4)
+				dist = triangle_dist(ray, obj);
 			if (dist > SHADOW_BIAS && dist < dist_lum)
 				ret = color_fact(ret, obj.t);
 		}

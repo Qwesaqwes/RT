@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:22:46 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/01/17 15:52:28 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/23 22:18:10 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,29 +117,56 @@ void	data_for_thread(t_thread_data *data, t_env *e)
 	}
 }
 
+void	check_effect(t_env *e)
+{
+	if (e->gtk.nb_effect == 0)
+		no_effect(e);
+	else if (e->gtk.nb_effect == 1)
+		sepia_effect(e);
+	else if (e->gtk.nb_effect == 2)
+		greyscale_effect(e);
+	else if (e->gtk.nb_effect == 3)
+		sobel_effect(e);
+	else if (e->gtk.nb_effect == 4)
+		cartoon_effect(e);
+	else if (e->gtk.nb_effect == 5)
+		motion_effec(e);
+	else if (e->gtk.nb_effect ==  6)
+		blur_effec(e);
+	// else if (e->gtk.nb_effect ==  7)
+		// stereo_effect(e);
+}
+
+void	set_camera_stereo(t_camera *cam_origin, float fac)
+{
+	cam_origin->origin = vector_add(cam_origin->origin,
+	vector_fact(cam_origin->vectorW, fac));
+}
+
 void	raytracing(t_env *e)
 {
 	pthread_t			*task; //multi-thread
-   	t_thread_data 		*data;
-   	int					i;
+	t_thread_data 		*data;
+	int					i;
 
-   	i = 0;
+	i = -1;
 	task = (pthread_t *)malloc(sizeof(pthread_t) * NB_THREAD);
 	data = (t_thread_data *)malloc(sizeof(t_thread_data) * NB_THREAD);
 	set_camera(&(e->camera));
+	if (e->gtk.nb_effect == 7)
+	{
+		e->gtk.tmp_buf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, W, H);
+		set_camera_stereo(&e->camera, -0.2);
+	}
 	data_for_thread(data, e);
-	while(i < NB_THREAD)
-	{
+	while(++i < NB_THREAD)
 		pthread_create(&task[i], NULL, ft_task, &data[i]);
-		i++;
-	}
-	i = 0;
-	while(i < NB_THREAD)
-	{
-   		pthread_join(task[i], NULL);
-		i++;
-	}
-	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), e->gtk.buffer);
-   	free(data);
-   	free(task);
+	i = -1;
+	while(++i < NB_THREAD)
+		pthread_join(task[i], NULL);
+	check_effect(e);
+	if (e->gtk.nb_effect == 7)
+		set_camera_stereo(&e->camera, 0.2);
+	free(data);
+	free(task);
 }

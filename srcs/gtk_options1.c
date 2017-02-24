@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:04:19 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/17 15:21:01 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/23 15:47:59 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void 	gtk_zoom(GtkWidget *button, t_env *e)
 	(void)button;
 	e->vp.dist += 0.5;
 	raytracing(e);
-	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), e->gtk.buffer);
 }
 
 /* Function to dezoom when click in the button*/
@@ -42,5 +41,4 @@ void 	gtk_dezoom(GtkWidget *button, t_env *e)
 		g_print("No more Dezoom available\n");
 	}
 	raytracing(e);
-	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), e->gtk.buffer);
 }

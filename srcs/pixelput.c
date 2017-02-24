@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 04:57:58 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/20 21:56:40 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/23 20:22:19 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	ft_pixel_put(int i, int j, t_rgb color_dec, t_env e_dec)
 
 	e = e_dec;
 	color = color_dec;
-	pixel = gdk_pixbuf_get_pixels(e.gtk.buffer);
+	if (e.gtk.nb_effect == 7)
+		pixel = gdk_pixbuf_get_pixels(e.gtk.tmp_buf);
+	else
+		pixel = gdk_pixbuf_get_pixels(e.gtk.buffer);
 	tmp = get_pos(j, i, &e.gtk);
 	pixel[tmp] = color.red;
 	pixel[tmp + 1] = color.green;

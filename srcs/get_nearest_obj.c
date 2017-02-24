@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_nearest_obj.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:36:48 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/12/12 17:28:55 by opandolf         ###   ########.fr       */
+/*   Updated: 2017/02/24 20:33:34 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_vec3d	inver_origin(t_vec3d origin, t_transform t)
 	new = mult_matrix(inver_rot_matrix(rotationX(t.rot.x)), new);
 // if (origin.y < -350)
 // printf("new rx: %f, %f, %f\n", new.x, new.y, new.z);
-new = mult_matrix(inver_rot_matrix(rotationY(t.rot.y)), new);
+	new = mult_matrix(inver_rot_matrix(rotationY(t.rot.y)), new);
 	// if (origin.y < -350)
 // printf("new ry: %f, %f, %f\n", new.x, new.y, new.z);
 	new = mult_matrix(inver_rot_matrix(rotationZ(t.rot.z)), new);
@@ -101,12 +101,17 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 		if (obj.type == 2)	//si obj = plane
 		{
 			img_ray = imaginary_ray(ray, obj.transform);
-			dist = plane_dist(obj, img_ray);
+			dist = plane_dist(obj, ray);
 		}
 		if (obj.type == 3)	//si obj = cone
 		{
 			img_ray = imaginary_ray(ray, obj.transform);
 			dist = cone_dist(img_ray);;
+		}
+		if (obj.type == 4)
+		{
+			img_ray = imaginary_ray(ray, obj.transform);
+			dist = triangle_dist(ray, obj);
 		}
 		if (dist > SHADOW_BIAS)
 		{

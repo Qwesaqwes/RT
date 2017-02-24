@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/02/21 17:07:59 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/02/24 18:35:27 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC			=	compute_ray.c\
 				compute_color.c \
 				reflection_refraction_functions.c\
 				cone.c\
+				triangle.c\
 				dist_to_figure.c\
 				gtk_options1.c\
 				gtk_add_obj1.c\
@@ -55,6 +56,7 @@ SRC			=	compute_ray.c\
 				gtk_effect4.c\
 				gtk_effect5.c\
 				gtk_effect6.c\
+				gtk_effect7.c\
 				gtk_set_box.c
 
 FLAGS		=	debug

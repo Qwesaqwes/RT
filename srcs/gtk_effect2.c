@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 21:59:13 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/20 21:59:25 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/24 15:55:49 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	greyscale_effect(t_env *e)
 		while(++col < W)
 			greyscale_effect1(&e->gtk, buf, line, col);
 	}
+	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img),
+	buf);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), buf);
 }
 
@@ -73,5 +75,7 @@ void	sepia_effect(t_env *e)
 		while(++col < W)
 			sepia_effect1(&e->gtk, buf, line, col);
 	}
+	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img),
+	buf);
 	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), buf);
 }

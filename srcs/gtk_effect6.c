@@ -5,85 +5,125 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/20 22:00:51 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/21 16:48:13 by jichen-m         ###   ########.fr       */
+/*   Created: 2017/02/21 21:06:55 by jichen-m          #+#    #+#             */
+/*   Updated: 2017/02/24 16:07:56 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_rgb	get_color_pixel(guchar *pixel, t_gtk *gtk, int line, int col)
+void	merge_image(t_gtk *gtk, GdkPixbuf *buf, GdkPixbuf *buf1)
 {
-	t_rgb	color;
+	int			line;
+	int			col;
+	guchar		*l_pixel;
+	guchar		*r_pixel;
+	t_rgb		l_color;
+	t_rgb		r_color;
 
-	color.red = pixel[get_pos(line, col, gtk)];
-	color.green = pixel[get_pos(line, col, gtk) + 1];
-	color.blue = pixel[get_pos(line, col, gtk) + 2];
-	return (color);
-}
 
-int		get_pos1(guchar *pixel, int line, int col, t_gtk *gtk)
-{
-	int				tmp;
-	unsigned int	rowstride;
-	unsigned int	n_channels;
-
-	n_channels = gdk_pixbuf_get_n_channels(gtk->buffer);
-	rowstride = gdk_pixbuf_get_rowstride (gtk->buffer);
-	tmp = line * rowstride + col * n_channels;
-	return ((pixel[tmp] + pixel[tmp + 1] + pixel[tmp + 2]) / 3);
-}
-
-int		xgrad(guchar *pixel, int line, int col, t_gtk *gtk)
-{
-	int		j;
-	int		i;
-	int		res;
-	int		width[3][3];
-
-	j = -1;
-	res = 0;
-	width[0][0] = -1;
-	width[0][1] = 0;
-	width[0][2] = 1;
-	width[1][0] = -2;
-	width[1][1] = 0;
-	width[1][2] = 2;
-	width[2][0] = -1;
-	width[2][1] = 0;
-	width[2][2] = 1;
-	while (++j < 3)
+	line = -1;
+	l_pixel = gdk_pixbuf_get_pixels(buf);
+	r_pixel = gdk_pixbuf_get_pixels(buf1);
+	while (++line < H)
 	{
-		i = -1;
-		while (++i < 3)
-			res += width[j][i] * get_pos1(pixel, line + j, col + i, gtk);
+		col = -1;
+		while(++col < W)
+		{
+			l_color = get_color_pixel(l_pixel, gtk, line, col);
+			r_color = get_color_pixel(r_pixel, gtk, line, col);
+			l_color.red += r_color.red;
+			l_color.red = l_color.red < 0 ? 0 : l_color.red;
+			l_pixel[get_pos(line, col, gtk)] = l_color.red > 255 ? 255 :
+			l_color.red;
+			l_color.green += r_color.green;
+			l_color.green = l_color.green < 0 ? 0 : l_color.green;
+			l_pixel[get_pos(line, col, gtk) + 1] = l_color.green > 255 ? 255 :
+			l_color.green;
+			l_color.blue += r_color.blue;
+			l_color.blue = l_color.blue < 0 ? 0 : l_color.blue;
+			l_pixel[get_pos(line, col, gtk) + 2] = l_color.blue > 255 ? 255 :
+			l_color.blue;
+		}
 	}
-	return (res);
+
+
 }
 
-int		ygrad(guchar *pixel, int line, int col, t_gtk *gtk)
+void	right_image1(t_gtk *gtk, guchar *pixel, int line, int col)
 {
-	int		j;
-	int		i;
-	int		res;
-	int		height[3][3];
+	t_rgb		color;
+	int			i;
 
-	j = -1;
-	res = 0;
-	height[0][0] = -1;
-	height[0][1] = -2;
-	height[0][2] = -1;
-	height[1][0] = 0;
-	height[1][1] = 0;
-	height[1][2] = 0;
-	height[2][0] = 1;
-	height[2][1] = 2;
-	height[2][2] = 1;
-	while(++j < 3)
+	color = get_color_pixel(pixel, gtk, line, col);
+	i = (color.red * -0.011) + (color.green * -0.036) + (color.blue * -0.006);
+	i = i < 0 ? 0 : i;
+	pixel[get_pos(line, col, gtk)] = i > 255 ? 255 : i;
+	i = (color.red * 0.375) + (color.green * 0.733) + (color.blue * 0.011);
+	pixel[get_pos(line, col, gtk) + 1] = i > 255 ? 255 : i;
+	i = (color.red * -0.065) + (color.green * -0.128) + (color.blue * 1.297);
+	i = i < 0 ? 0 : i;
+	pixel[get_pos(line, col, gtk) + 2] = i > 255 ? 255 : i;
+}
+
+GdkPixbuf	*right_image(t_gtk *gtk)
+{
+	int			line;
+	int			col;
+	guchar		*pixel;
+	GdkPixbuf	*buf;
+
+
+	line = -1;
+	buf = gdk_pixbuf_copy(gtk->tmp_buf);
+	pixel = gdk_pixbuf_get_pixels(buf);
+	while (++line < H)
 	{
-		i = -1;
-		while(++i < 3)
-			res += height[j][i] * get_pos1(pixel, line + j, col + i, gtk);
+		col = -1;
+		while(++col < W)
+			right_image1(gtk, pixel, line, col);
 	}
-	return (res);
+	return (buf);
+}
+
+void	stereo_effect1(t_gtk *gtk, GdkPixbuf *buf, int line, int col)
+{
+	t_rgb		color;
+	guchar		*pixel;
+	int			i;
+
+	pixel = gdk_pixbuf_get_pixels(buf);
+	color = get_color_pixel(pixel, gtk, line, col);
+	i = (color.red * 0.415) + (color.green * 0.471) + (color.blue * 0.166);
+	pixel[get_pos(line, col, gtk)] = i > 255 ? 255 : i;
+	i = (color.red * -0.045) + (color.green * -0.048) + (color.blue * -0.025);
+	i = i < 0 ? 0 : i;
+	pixel[get_pos(line, col, gtk) + 1] = i > 255 ? 255 : i;
+	i = (color.red * -0.054) + (color.green * -0.062) + (color.blue * 0.012);
+	i = i < 0 ? 0 : i;
+	pixel[get_pos(line, col, gtk) + 2] = i > 255 ? 255 : i;
+}
+
+void	stereo_effect(t_env *e)
+{
+	GdkPixbuf	*buf;
+	GdkPixbuf	*buf1;
+	int			line;
+	int			col;
+
+
+	line = -1;
+	buf = gdk_pixbuf_copy(e->gtk.buffer);
+	while (++line < H)
+	{
+		col = -1;
+		while(++col < W)
+			stereo_effect1(&e->gtk, buf, line, col);
+	}
+	raytracing(e);
+	buf1 = right_image(&e->gtk);
+	merge_image(&e->gtk, buf, buf1);
+	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img),
+	buf);
+	gtk_image_set_from_pixbuf(GTK_IMAGE(e->gtk.img), buf);
 }

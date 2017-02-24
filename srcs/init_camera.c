@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:16:25 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/13 18:19:50 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/24 16:50:51 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void 	init_vp(t_vp *vp)
 {
-	vp->dist = 1.5;
+	vp->dist = 1;
 	vp->width = 1;
-	vp->height = 1;
+	vp->height = (float)H / (float)W;
 }
 
 void 	init_cam(t_camera *cam)
