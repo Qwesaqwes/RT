@@ -180,7 +180,7 @@ t_color			get_intersection_obj(t_list *list, t_obj lum, t_no no)
 			}
 			if (obj.type == 2)
 			{
-				dist = plane_dist(obj, img_ray);
+				dist = plane_dist(obj, ray);
 			}
 			if (obj.type == 3)
 			{

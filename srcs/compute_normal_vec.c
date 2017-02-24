@@ -26,7 +26,7 @@ t_vec3d	compute_normal_vec(t_no no)
 	}
 	else if (no.obj.type == 2)
 	{
-		normal = no.obj.normal;
+		normal = rota_vect(no.obj.normal, no.obj.transform.rot);
 	}
 	else if (no.obj.type == 3)
 	{

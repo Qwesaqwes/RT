@@ -105,7 +105,7 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 		}
 		if (obj.type == 3)	//si obj = cone
 		{
-			img_ray = imaginary_ray(ray, obj.transform);
+			img_ray = ray;
 			dist = cone_dist(img_ray);;
 		}
 		if (obj.type == 4)
