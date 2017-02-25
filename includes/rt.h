@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/24 20:33:45 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/25 00:19:24 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define ESC 53
 # define MAX_DEPTH 3
 # define SHADOW_BIAS 0.0001
-# define NB_THREAD 16
+# define NB_THREAD 8
 # define MOTION_KERNEL 20
 # define BLUR_KERNEL 15
 

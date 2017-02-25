@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:51:08 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/24 20:16:17 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/24 23:40:37 by JimmyChen        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 float    plane_dist(t_obj obj, t_ray r)
 {
-    float	t_coef;
-    float	normal_to_ray;
-    t_vec3d vect_to_point;
-    t_vec3d normal_rot;
+	float	t_coef;
+	float	normal_to_ray;
+	t_vec3d vect_to_point;
+	t_vec3d normal_rot;
 
-    t_coef = -1;
-    normal_rot = rota_vect(obj.normal, obj.transform.rot);
-    normal_to_ray = vector_dot(normal_rot, r.dir);
+	t_coef = -1;
+	normal_rot = rota_vect(obj.normal, obj.transform.rot);
+	normal_to_ray = vector_dot(normal_rot, r.dir);
 
-    if (normal_to_ray != 0)
-    {
-    	vect_to_point = vector_sub(obj.transform.transl, r.origin);
-    	t_coef = vector_dot(normal_rot, vect_to_point) / normal_to_ray;
-    }
-    if (t_coef > 0)
-        return (t_coef);
-    else
-        return (-1);
+	if (normal_to_ray != 0)
+	{
+		vect_to_point = vector_sub(obj.transform.transl, r.origin);
+		t_coef = vector_dot(normal_rot, vect_to_point) / normal_to_ray;
+	}
+	if (t_coef > 0)
+		return (t_coef);
+	else
+		return (-1);
 }

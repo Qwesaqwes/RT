@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/24 20:35:01 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/25 01:38:49 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ t_list 	*init_test(void)
 	obj2.transform.scale.w = 1;
 	obj2.type = 0;
 	obj2.transform.transl.x = 10;
-	obj2.transform.transl.y = 0;
-	obj2.transform.transl.z = 1;
+	obj2.transform.transl.y = 2;
+	obj2.transform.transl.z = 3;
 	obj2.transform.transl.w = 1;
 	obj2.transform.rot.x = 0;
 	obj2.transform.rot.y = 0;
@@ -150,7 +150,7 @@ t_list 	*init_test(void)
 	 obj5.normal.z = 0;
 	 obj5.normal.w = 1;
 	 obj5.transform.rot.x = 0;
-	 obj5.transform.rot.y = 0;
+	 obj5.transform.rot.y = 80;
 	 obj5.transform.rot.z = 0;
 	 obj5.transform.rot.w = 1;
 	 obj5.color.red = 0.6;
@@ -264,9 +264,9 @@ t_list 	*init_test(void)
 	obj10.faces->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
 	obj10.faces->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
 	obj10.faces->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	obj10.faces->vertex->coord = (t_vec3d){ 15, 1, 1, 1 };
-	obj10.faces->vertex->next->coord = (t_vec3d){ 15, -1, 1, 1 };
-	obj10.faces->vertex->next->next->coord = (t_vec3d){ 15, 1, 2, 1 };
+	obj10.faces->vertex->coord = (t_vec3d){ 15, 1, 4, 1 };
+	obj10.faces->vertex->next->coord = (t_vec3d){ 15, -1, 4, 1 };
+	obj10.faces->vertex->next->next->coord = (t_vec3d){ 15, 1, 5, 1 };
 	obj10.faces->vertex->next->next->next = NULL;
 	obj10.faces->normal = (t_vec3d){-1, 0, 0, 1};
 	obj10.normal = (t_vec3d){-1, 0, 0, 1};
@@ -280,7 +280,7 @@ t_list 	*init_test(void)
 	obj10.t = 0;
 	obj10.shininess = 50;
 	obj10.refr_index = 1.33;
-	// printf("coord x: %f\ncoord y: %f\ncoord z: %f\n\n", obj10.faces->vertex->coord.x, obj10.faces->vertex->coord.y, obj10.faces->vertex->coord.z);
+	printf("coord x: %f\ncoord y: %f\ncoord z: %f\n\n", obj10.faces->vertex->next->coord.x, obj10.faces->vertex->next->coord.y, obj10.faces->vertex->next->coord.z);
 	ft_lstaddend(&list, ft_lstnew(&obj10, sizeof(t_obj)));
 	return (list);
 }

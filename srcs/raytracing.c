@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:22:46 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/23 22:18:10 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/25 01:12:31 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_ray	set_ray(t_camera cam, t_vp vp, int i, int j)
 	t_ray		ray;
 
 	tmp.z = -((float)vp.width / 2.0f) + (float)(vp.width * i) / (float)(W - 1);
-	tmp.y = -((float)vp.height / 2.0f) + (float)(vp.height * j) / (float)(H - 1);
+	tmp.y = -((float)vp.height / 2.0f) + (float)(vp.height * (H - j)) / (float)(H - 1);
 	tmp.x = vp.dist;
 	tmp2 = vector_add3(vector_fact(cam.vectorU, tmp.x), vector_fact(cam.vectorV, tmp.y), vector_fact(cam.vectorW, tmp.z));
 	ray.origin = vector_add(tmp2, cam.origin);
