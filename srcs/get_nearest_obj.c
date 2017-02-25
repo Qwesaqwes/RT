@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:36:48 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/24 20:33:34 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/25 01:16:20 by dsusheno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,17 +100,15 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 		}
 		if (obj.type == 2)	//si obj = plane
 		{
-			img_ray = imaginary_ray(ray, obj.transform);
 			dist = plane_dist(obj, ray);
 		}
 		if (obj.type == 3)	//si obj = cone
 		{
-			img_ray = ray;
-			dist = cone_dist(img_ray);;
+			img_ray = imaginary_ray(ray, obj.transform);
+			dist = cone_dist(img_ray);
 		}
 		if (obj.type == 4)
 		{
-			img_ray = imaginary_ray(ray, obj.transform);
 			dist = triangle_dist(ray, obj);
 		}
 		if (dist > SHADOW_BIAS)
