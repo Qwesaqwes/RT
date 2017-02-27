@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 17:36:52 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/25 01:35:00 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/27 18:53:23 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,20 @@ int		inside_outside_test(t_vertex *vertex, int sign, t_vec3d point,
 	return (1);
 }
 
-float	triangle_dist(t_ray ray, t_obj obj)
+float	triangle_dist(t_ray ray, t_face obj)
 {
 	float		dist;
 	t_vec3d		point;
 	int			sign;
 
 	sign = 1;
-	dist = plane_dist(obj, ray);
+	dist = plane_dist2(obj, ray);
 	if (dist < SHADOW_BIAS)
 		return (dist);
 	point = set_inter_point(dist, ray);
-	if (vector_dot(obj.faces->normal, ray.dir) > 0)
+	if (vector_dot(obj.normal, ray.dir) > 0)
 		sign = -1;
-	if (inside_outside_test(obj.faces->vertex, sign, point, obj.faces->normal)
+	if (inside_outside_test(obj.vertex, sign, point, obj.normal)
 		== 1)
 		return(dist);
 	return (-1);

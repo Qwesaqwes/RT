@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/02/24 18:35:27 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/02/27 16:20:26 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRC			=	compute_ray.c\
 				reflection_refraction_functions.c\
 				cone.c\
 				triangle.c\
+				polygone.c\
+				face_cuting.c\
 				dist_to_figure.c\
 				gtk_options1.c\
 				gtk_add_obj1.c\

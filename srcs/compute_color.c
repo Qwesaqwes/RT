@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 12:32:03 by opandolf          #+#    #+#             */
-/*   Updated: 2017/02/24 20:34:14 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/27 18:52:59 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,11 @@ t_color			get_intersection_obj(t_list *list, t_obj lum, t_no no)
 				dist = cone_dist(img_ray);
 			}
 			if (obj.type == 4)
-				dist = triangle_dist(ray, obj);
+				dist = triangle_dist(ray, *obj.faces);
+			if 	(obj.type == 5 || obj.type == 6)
+			{
+				dist = polygone_dist(ray, obj).dist;
+			}
 			if (dist > SHADOW_BIAS && dist < dist_lum)
 				ret = color_fact(ret, obj.t);
 		}
@@ -229,6 +233,7 @@ t_color		compute_color(t_no no, t_scene s, t_vec3d n, t_vec3d origin)
 {
 	t_color		color_ambiant;
 
+	/*To modif to color face*/
 	color_ambiant = color_mult(no.obj.color, color_fact(s.ambiant, no.obj.ka * (1 - no.obj.t)));
 	return(color_add(color_ambiant, color_lights(s, no, n, origin)));
 }

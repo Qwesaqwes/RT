@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:36:48 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/25 01:16:20 by dsusheno         ###   ########.fr       */
+/*   Updated: 2017/02/27 18:52:24 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 	float	dist;
 	t_ray	img_ray;
 	t_obj	obj;
+	t_pret	poly;
 
 	tmp = list;
 	distno = -1;
@@ -108,8 +109,11 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 			dist = cone_dist(img_ray);
 		}
 		if (obj.type == 4)
+			dist = triangle_dist(ray, *obj.faces);
+		if (obj.type == 5 || obj.type == 6)
 		{
-			dist = triangle_dist(ray, obj);
+			poly = polygone_dist(ray, obj);
+			dist = poly.dist;
 		}
 		if (dist > SHADOW_BIAS)
 		{
@@ -118,6 +122,10 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 				distno = dist;
 				no->obj = obj;
 				no->img_ray = img_ray;
+				if (obj.type == 5 || obj.type == 6)
+					no->poly_face = poly.no;
+				else
+					no->poly_face = NULL;
 			}
 		}
 		tmp = tmp->next;

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/25 00:19:24 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/27 18:51:55 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,12 @@ typedef struct		s_face
 	struct s_face	*next;
 }					t_face;
 
+typedef	struct		s_poly_return
+{
+	float			dist;
+	t_face			*no;
+}					t_pret;
+
 typedef struct		s_obj
 {
 	int				id;
@@ -152,6 +158,7 @@ typedef struct		s_nearest_obj
 	t_ray			img_ray;
 	t_ray			origin;
 	t_vec3d			normal;
+	t_face			*poly_face;
 }					t_no;
 
 typedef struct		s_calculated_values
@@ -322,9 +329,11 @@ float		cylindre_dist(t_ray r);
 float		plane_dist(t_obj obj, t_ray r);
 float		cone_dist(t_ray r);
 t_vec3d		set_inter_point(float dist, t_ray ray);
+t_pret		polygone_dist(t_ray ray, t_obj obj);
+float		triangle_dist(t_ray ray, t_face obj);
 
+float    	plane_dist2(t_face obj, t_ray r);
 
-float	triangle_dist(t_ray ray, t_obj obj);
 
 t_vec3d		cone_normal_vec(t_no no);
 

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:06:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/24 15:53:47 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/27 17:01:30 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void 	init_gtk(t_env *e)
 	gtk_window_set_position(GTK_WINDOW(e->gtk.window), GTK_WIN_POS_CENTER);
 	e->gtk.buffer = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, W, H);
 	e->gtk.layout = gtk_layout_new(NULL, NULL);
-	e->gtk.back_img = gtk_image_new_from_file("./images/images.jpg");
+	e->gtk.back_img = gtk_image_new_from_file("./images/brick.jpg");
 	gtk_layout_put(GTK_LAYOUT(e->gtk.layout), e->gtk.back_img, 0, 0);
 	e->gtk.globalbox = gtk_box_new(1, 0);
 	e->gtk.imgbox = gtk_box_new(0, 0);
