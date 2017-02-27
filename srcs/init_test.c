@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/25 01:38:49 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/02/25 18:32:15 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,7 +280,6 @@ t_list 	*init_test(void)
 	obj10.t = 0;
 	obj10.shininess = 50;
 	obj10.refr_index = 1.33;
-	printf("coord x: %f\ncoord y: %f\ncoord z: %f\n\n", obj10.faces->vertex->next->coord.x, obj10.faces->vertex->next->coord.y, obj10.faces->vertex->next->coord.z);
 	ft_lstaddend(&list, ft_lstnew(&obj10, sizeof(t_obj)));
 	return (list);
 }
