@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/27 19:20:39 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/02 19:54:46 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ t_list 	*init_test(void)
 	obj1.color.red = 1;
 	obj1.color.green = 0;
 	obj1.color.blue = 0;
-	obj1.ka = 0.2;
-	obj1.kd = 0.9;
+	obj1.ka = 0;
+	obj1.kd = 0;
 	obj1.ks = 1;
 	obj1.i = 0;
 	obj1.t = 0;
@@ -150,7 +150,7 @@ t_list 	*init_test(void)
 	obj5.normal.z = 0;
 	obj5.normal.w = 1;
 	obj5.transform.rot.x = 0;
-	obj5.transform.rot.y = 90;
+	obj5.transform.rot.y = 60;
 	obj5.transform.rot.z = 0;
 	obj5.transform.rot.w = 1;
 	obj5.color.red = 0.6;
@@ -350,8 +350,8 @@ t_list 	*init_test(void)
 	obj10.faces->next->next->next->next->normal = (t_vec3d){0, 0, -1, 1};
 
 
-	obj10.faces->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
-	obj10.faces->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
 	obj10.faces->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
 	obj10.faces->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
 	obj10.faces->next->next->next->next->next->vertex->coord = (t_vec3d){ 15, -3, 0, 1 };
@@ -435,11 +435,11 @@ t_list 	*init_test(void)
 	obj10.kd = 0.9;
 	obj10.ks = 0.1;
 	obj10.i = 0;
-	obj10.t = 0;
+	obj10.t = 0.5;
 	obj10.shininess = 50;
 	obj10.refr_index = 1.33;
-	printf("coord x: %f, y: %f, z: %f\n\n", obj10.faces->next->vertex->coord.x,
-	obj10.faces->next->vertex->coord.y, obj10.faces->next->vertex->coord.z);
+	// printf("coord x: %f, y: %f, z: %f\n\n", obj10.faces->next->vertex->coord.x,
+	// obj10.faces->next->vertex->coord.y, obj10.faces->next->vertex->coord.z);
 	ft_lstaddend(&list, ft_lstnew(&obj10, sizeof(t_obj)));
 	return (list);
 }

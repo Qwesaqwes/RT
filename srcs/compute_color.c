@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 12:32:03 by opandolf          #+#    #+#             */
-/*   Updated: 2017/02/27 18:52:59 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/02 19:11:22 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,12 +113,12 @@ t_color		color_mult_fact(t_color a, t_color b, float k)
 	return (ret);
 }
 
-t_color		diffuse_color(t_obj obj, t_obj lum, float k)
+t_color		diffuse_color(t_no no, t_obj lum, float k)
 {
 	t_color		color;
 
-	color = color_fact(lum.color, obj.kd * (1 - obj.t) * k);
-	color = color_mult(color, obj.color);
+	color = color_fact(lum.color, no.obj.kd * (1 - no.obj.t) * k);
+	color = color_mult(color, no.color);
 	return (color);
 }
 
@@ -143,7 +143,7 @@ t_color		compute_color_light(t_obj lum, t_no no, t_vec3d n, t_vec3d origin)
 	{
 		view = normalizevec(vector_sub(origin, no.ip));
 		halfway = normalizevec(vector_add(view, light));
-		ret = color_add(ret, color_add(diffuse_color(no.obj, lum, vector_dot(light, n)), spec_color(no.obj, lum, pow(vector_dot(halfway, n), no.obj.shininess))));
+		ret = color_add(ret, color_add(diffuse_color(no, lum, vector_dot(light, n)), spec_color(no.obj, lum, pow(vector_dot(halfway, n), no.obj.shininess))));
 	}
 	return (ret);
 
@@ -234,6 +234,6 @@ t_color		compute_color(t_no no, t_scene s, t_vec3d n, t_vec3d origin)
 	t_color		color_ambiant;
 
 	/*To modif to color face*/
-	color_ambiant = color_mult(no.obj.color, color_fact(s.ambiant, no.obj.ka * (1 - no.obj.t)));
+	color_ambiant = color_mult(no.color, color_fact(s.ambiant, no.obj.ka * (1 - no.obj.t)));
 	return(color_add(color_ambiant, color_lights(s, no, n, origin)));
 }
