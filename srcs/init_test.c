@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/02 19:54:46 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/02 21:48:22 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,9 +149,9 @@ t_list 	*init_test(void)
 	obj5.normal.y = 0;
 	obj5.normal.z = 0;
 	obj5.normal.w = 1;
-	obj5.transform.rot.x = 0;
+	obj5.transform.rot.x = 60;
 	obj5.transform.rot.y = 60;
-	obj5.transform.rot.z = 0;
+	obj5.transform.rot.z = 60;
 	obj5.transform.rot.w = 1;
 	obj5.color.red = 0.6;
 	obj5.color.green = 0.7;
