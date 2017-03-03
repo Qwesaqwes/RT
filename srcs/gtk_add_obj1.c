@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:09:30 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/18 15:54:03 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/03 18:48:27 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,23 @@ void 	init_add_obj_box(t_gtk *gtk, int clicked)
 	gtk->obj_box9 = gtk_box_new(0, 0);
 	gtk->obj_box10 = gtk_box_new(0, 0);
 	gtk->obj_box11 = gtk_box_new(0, 0);
+	gtk->obj_box12 = gtk_box_new(0, 0);
+	gtk->obj_box13 = gtk_box_new(0, 0);
 	gtk->obj_gbox = gtk_box_new(1, 0);
+}
+
+void 	init_add_obj_l_e3(t_gtk *gtk)
+{
+	gtk->l_tex = gtk_label_new("Texture -->");
+	gtk->c_tex = gtk_combo_box_text_new();
+	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(gtk->c_tex), "0", "None");
+	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(gtk->c_tex), "1", "Checker");
+	gtk->l_che1 = gtk_label_new("Texture Color 1: ");
+	gtk->l_che2 = gtk_label_new("Texture Color 2: ");
+	gtk->l_square = gtk_label_new("Checker Square Size: ");
+	gtk->e_che1 = gtk_color_button_new();
+	gtk->e_che2 = gtk_color_button_new();
+	gtk->e_square = gtk_entry_new();
 }
 
 void 	init_add_obj_l_e2(t_gtk *gtk)
@@ -61,6 +77,7 @@ void 	init_add_obj_l_e(t_gtk *gtk, int clicked)
 {
 	if (clicked == -10)
 		init_add_obj_l_e2(gtk);
+	init_add_obj_l_e3(gtk);
 	gtk->l_nobj = gtk_label_new("Name of Object -->");
 	gtk->l_pos = gtk_label_new("Position of Object -->");
 	gtk->l_scale = gtk_label_new("Scale of Object -->");
@@ -89,7 +106,7 @@ void 	gtk_add_obj(t_env *e, int clic_add)
 {
 	GtkWidget	*dialog;
 	GtkWidget	*area;
-	gint 		response;
+	// gint 		response;
 
 	init_add_obj_l_e(&e->gtk, clic_add);
 	init_add_obj_box(&e->gtk, clic_add);
@@ -101,7 +118,8 @@ void 	gtk_add_obj(t_env *e, int clic_add)
 	put_box_inside_gbox(&e->gtk, clic_add);
 	gtk_container_add(GTK_CONTAINER(area), e->gtk.obj_gbox);
 	gtk_widget_show_all(dialog);
-	response = gtk_dialog_run(GTK_DIALOG(dialog));
-	create_new_obj(response, GTK_RESPONSE_ACCEPT, e);
+	// response = gtk_dialog_run(GTK_DIALOG(dialog));
+	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT)
+		create_new_obj(e);
 	gtk_widget_destroy(dialog);
 }

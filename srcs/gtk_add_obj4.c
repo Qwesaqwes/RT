@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 14:06:23 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/18 17:03:20 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/03 20:06:43 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	put_color_obj(t_gtk *gtk, t_color *color)
 	color->red = gtk->color->red;
 	color->green = gtk->color->green;
 	color->blue = gtk->color->blue;
+	g_free(gtk->color);
 }
 
 int		put_shininess_obj(t_gtk *gtk, float *shine)

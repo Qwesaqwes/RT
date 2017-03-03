@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/03/02 19:12:33 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/03/03 20:09:01 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,9 +49,11 @@ SRC			=	compute_ray.c\
 				gtk_add_obj4.c\
 				gtk_add_obj5.c\
 				gtk_add_obj6.c\
+				gtk_add_obj8.c\
 				gtk_view_obj1.c\
 				gtk_delete_obj1.c\
 				gtk_modif_obj1.c\
+				gtk_modif_obj2.c\
 				gtk_choose_file.c\
 				gtk_effect1.c\
 				gtk_effect2.c\

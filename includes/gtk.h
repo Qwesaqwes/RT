@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:29:11 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/01 17:45:14 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/03 18:16:19 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,14 @@ typedef	struct		s_gtk
 	GtkWidget		*l_x2;
 	GtkWidget		*l_y2;
 	GtkWidget		*l_z2;
+	GtkWidget		*l_tex;		/*label for texture*/
+	GtkWidget		*l_che1;	/*label for color checker*/
+	GtkWidget		*l_che2;	/*label for color checker*/
+	GtkWidget		*l_square;	/*label for square checker*/
+
 
 	GtkWidget		*c_obj;		/*Combo_box for object*/
+	GtkWidget		*c_tex;		/*Combo_box for texture*/
 	GtkWidget		*e_nobj;	/*entry for type of object*/
 	GtkWidget		*e_posx;	/*entry for position of object (x, y, z)*/
 	GtkWidget		*e_posy;	/*entry for position of object (x, y, z)*/
@@ -88,6 +94,9 @@ typedef	struct		s_gtk
 	GtkWidget		*e_ks;		/*entry for specular coefficient*/
 	GtkWidget		*e_i;		/*entry for intensity of light*/
 	GtkWidget		*e_tr;		/*entry for transparence*/
+	GtkWidget		*e_che1;	/*entry for color texture*/
+	GtkWidget		*e_che2;	/*entry for color texture*/
+	GtkWidget		*e_square;	/*entry for Square texture*/
 
 
 	GtkWidget		*obj_box;	/*boxes for dialog of Add object*/
@@ -101,6 +110,10 @@ typedef	struct		s_gtk
 	GtkWidget		*obj_box9;
 	GtkWidget		*obj_box10;
 	GtkWidget		*obj_box11;
+
+	GtkWidget		*obj_box12;
+	GtkWidget		*obj_box13;
+
 	GtkWidget		*obj_gbox;
 
 	GtkWidget		*view_obj;
@@ -113,10 +126,10 @@ typedef	struct		s_gtk
 
 enum
 {
-	OBJ_COLUMN,
-	TYPE_COLUMN,
-	ID_COLUMN,
-	N_COLUMNS
+					OBJ_COLUMN,
+					TYPE_COLUMN,
+					ID_COLUMN,
+					N_COLUMNS
 };
 
 

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/02 19:00:58 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/03 20:27:20 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void 		gtk_add_obj(t_env *e, int resp);
 void 		put_box_inside_gbox(t_gtk	*gtk, int resp);
 void 		put_label_inside_box(t_gtk *gtk, int resp);
 void 		init_gtk(t_env *e);
-int			create_new_obj(int response, int clicked_ok, t_env *e);
+int			create_new_obj(t_env *e);
 int			put_scale_obj(t_gtk *gtk, t_vec3d *scale);
 int		 	check_if_digit(const char * str);
 int			put_rotation_obj(t_gtk *gtk, t_vec3d *rot);
@@ -142,6 +142,12 @@ void		stereo_effect(t_env *e);
 int			ygrad(guchar *pixel, int line, int col, t_gtk *gtk);
 int			xgrad(guchar *pixel, int line, int col, t_gtk *gtk);
 t_rgb		get_color_pixel(guchar *pixel, t_gtk *gtk, int line, int col);
+const char	*get_selected_row(t_env *e, t_list 	*list);
+void 		init_modif_obj_e(t_gtk *gtk, const char *object, t_list **list);
+int			put_tex_obj(t_gtk *gtk, t_tex *texture);
+void		put_normal(t_vec3d *normal);
+
+
 
 
 t_color		texture_color(t_no no);

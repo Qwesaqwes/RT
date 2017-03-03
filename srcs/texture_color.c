@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 18:37:04 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/03 15:45:11 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/03 20:23:14 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,21 @@ int			pair(float x, float l)
 
 t_color		checker(t_no no)
 {
-	t_color		white;
-	t_color		black;
 	float		length;
 	t_vec3d		point;
 
-	white = set_white_color();
-	black = set_black_color();
-	length = 3;
+	length = no.obj.tex.square;
 	point = vector_sub(no.ip, no.obj.transform.transl);
 	point = mult_matrix(rotationX(no.obj.transform.rot.x), point);
 	point = mult_matrix(rotationY(no.obj.transform.rot.y), point);
 	point = mult_matrix(rotationZ(no.obj.transform.rot.z), point);
 	point = vector_add(point, no.obj.transform.transl);
 	if (pair(point.z, length))
-		return((pair(point.y, length) == 1 ? white : black));
+		return((pair(point.y, length) == 1 ? no.obj.tex.tex_col1 :
+		no.obj.tex.tex_col2));
 	else
-		return((pair(point.y, length) == 1 ? black : white));
+		return((pair(point.y, length) == 1 ? no.obj.tex.tex_col2 :
+		no.obj.tex.tex_col1));
 }
 
 t_color		procedural_texture(t_no no)
@@ -59,7 +57,7 @@ t_color		procedural_texture(t_no no)
 
 t_color		texture_color(t_no no)
 {
-	if (no.obj.texture == 1)
+	if (no.obj.tex.texture == 1)
 		return(procedural_texture(no));
 	return(no.obj.color);
 }

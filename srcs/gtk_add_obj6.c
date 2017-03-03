@@ -5,116 +5,103 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/02 14:01:50 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/10 15:20:55 by jichen-m         ###   ########.fr       */
+/*   Created: 2017/03/03 19:14:08 by jichen-m          #+#    #+#             */
+/*   Updated: 2017/03/03 20:34:53 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-float	stof2(const char *s, float rez, float fact, int point_seen)
+int	put_info_checker(t_gtk *gtk, t_tex *tex)
 {
-	int i;
-	int d;
-
-	i = -1;
-	while(s[++i] != '\0')
-	{
-		if (s[i] == '.')
+	tex->texture = 1;
+	gtk->color = NULL;
+	gtk->color = malloc(sizeof(GdkRGBA));
+	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(gtk->e_che1), gtk->color);
+	tex->tex_col1.red = gtk->color->red;
+	tex->tex_col1.green = gtk->color->green;
+	tex->tex_col1.blue = gtk->color->blue;
+	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(gtk->e_che2), gtk->color);
+	tex->tex_col2.red = gtk->color->red;
+	tex->tex_col2.green = gtk->color->green;
+	tex->tex_col2.blue = gtk->color->blue;
+	g_free(gtk->color);
+	if ((check_if_digit(gtk_entry_get_text(GTK_ENTRY(gtk->e_square)))) == 1)
 		{
-			point_seen = 1;
-			continue;
+			g_print("Put the right Size for the square\n");
+			return (1);
 		}
-		d = s[i] - '0';
-		if (d >= 0 && d <= 9)
-		{
-			if (point_seen)
-				fact /= 10.0f;
-			rez = rez * 10.0f + (float)d;
-		}
-	}
-	return (rez * fact);
+	tex->square = stof(gtk_entry_get_text(GTK_ENTRY(gtk->e_square)));
+	return (0);
 }
 
-float	stof (const char *s)
+int		put_tex_obj(t_gtk *gtk, t_tex *tex)
 {
-	float	rez;
-	float	fact;
-	int		point_seen;
+	int active;
 
-	rez = 0;
-	fact = 1;
-	if (*s == '-')
+	active = gtk_combo_box_get_active(GTK_COMBO_BOX(gtk->c_tex));
+	if (active > -1)
 	{
-		s++;
-		fact = -1;
+		if (active == 0)
+			tex->texture = 0;
+		else if (active == 1)
+			if (put_info_checker(gtk, tex) == 1)
+				return (1);
 	}
-	point_seen = 0;
-	return (stof2(s, rez, fact, point_seen));
+	else
+		tex->texture = 0;
+	return (0);
 }
 
-void reverse(char *str, int len)
+void	put_normal(t_vec3d *normal)
 {
-	int		i;
+	normal->x = -1;
+	normal->y = 0;
+	normal->z = 0;
+	normal->w = 1;
+}
+
+void 	put_id_ob(t_list *obj, int *i)
+{
 	int		j;
-	int		temp;
+	t_obj *tmp_obj;
+	t_list *tmp;
 
-	i = 0;
-	j = len - 1;
-	if (str[0] == '-')
-		i++;
-	while (i < j)
+	j = 0;
+	tmp = obj;
+	while (tmp != NULL)
 	{
-		temp = str[i];
-		str[i] = str[j];
-		str[j] = temp;
-		i++;
-		j--;
+		tmp_obj = (t_obj *)tmp->content;
+		if (j <= tmp_obj->id)
+			j = tmp_obj->id;
+		tmp = tmp->next;
 	}
+	// printf("%d\n",j );
+	*i = j + 1;
 }
 
-int		intostr(int x, char *str, int d, int check)
+int		put_name_obj(t_gtk *gtk, const char **name, t_list *obj, int *i)
 {
-	int		i;
+	t_list	*tmp;
+	t_obj	*tmp_obj;
 
-	i = 0;
-	if (x < 0)
+	tmp = obj;
+	*name = ft_strdup(gtk_entry_get_text(GTK_ENTRY(gtk->e_nobj)));
+	if (name[0][0] == 0)
 	{
-		x *= -1;
-		if (check == 0)
-			str[i++] = '-';
+		g_print("Plis put a name\n");
+		return (1);
 	}
-	while (x)
+	while (tmp != NULL)
 	{
-		str[i++] = (x % 10) + '0';
-		x = x / 10;
+		tmp_obj = (t_obj *)tmp->content;
+		if (ft_strcmp(*name, tmp_obj->name) == 0)
+		{
+			g_print("Already exist name, plis choose another one\n");
+			return (1);
+		}
+		tmp = tmp->next;
 	}
-	while (i < d)
-	str[i++] = '0';
-	reverse(str, i);
-	str[i] = '\0';
-	return i;
-}
-
-const char		*itof(float nb)
-{
-	int			ipart;
-	float		fpart;
-	char		*res;
-	int			i;
-
-	ipart = (int)nb;
-	fpart = nb - (float)ipart;
-	if (!(res = malloc(sizeof(const char*) * 20)))
-		return (NULL);
-	if (nb == 0)
-		return ("0");
-	i = intostr(ipart, res, 0, 0);
-	if(fpart != 0)
-	{
-		res[i] = '.';
-		fpart = fpart * pow(10, 6);
-		intostr((int)fpart, res + i + 1, 6, 1);
-	}
-	return ((const char*)res);
+	put_id_ob(obj, i);
+	return (0);
 }

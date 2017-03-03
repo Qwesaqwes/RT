@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:12:42 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/09 20:02:10 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/03 18:41:27 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,14 @@ void 	put_label_inside_box2(t_gtk *gtk)
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box10), gtk->e_i, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box11), gtk->l_tr, 0, 0, 10);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box11), gtk->e_tr, 0, 0, 0);
-
-
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box12), gtk->l_tex, 0, 0, 10);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box12), gtk->c_tex, 0, 0, 0);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->l_che1, 0, 0, 10);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->e_che1, 0, 0, 0);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->l_che2, 0, 0, 10);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->e_che2, 0, 0, 0);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->l_square, 0, 0, 10);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->e_square, 0, 0, 0);
 }
 
 void 	put_label_inside_box(t_gtk *gtk, int clicked)
@@ -81,4 +87,6 @@ void 	put_box_inside_gbox(t_gtk	*gtk, int clicked)
 	gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box9, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box10, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box11, 0, 0, 0);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box12, 0, 0, 0);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box13, 0, 0, 0);
 }

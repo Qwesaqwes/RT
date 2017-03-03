@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:47:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/03 15:36:22 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/03 20:03:34 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,15 @@ typedef	struct		s_poly_return
 	t_face			*no;
 }					t_pret;
 
+typedef struct		s_texture
+{
+	int				texture;	// texture == 0 si no texture
+	t_color			tex_col1;
+	t_color			tex_col2;
+	t_color			tex_col3;
+	float			square;
+}					t_tex;
+
 typedef struct		s_obj
 {
 	int				id;
@@ -130,7 +139,7 @@ typedef struct		s_obj
 	float			refr_index;
 	t_vec3d			normal;
 	t_face			*faces;
-	int				texture;	// texture == 0 si no texture
+	t_tex			tex;
 }					t_obj;
 
 typedef struct		s_nearest_obj

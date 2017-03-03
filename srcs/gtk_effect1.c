@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 18:16:51 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/24 15:53:43 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/03 17:32:29 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	gtk_effect1(t_env *e, int active)
 	else if (active ==  7)
 	{
 		e->gtk.nb_effect = active;
-		// e->gtk.pass = 1;
 		stereo_effect(e);
 	}
 }
@@ -79,23 +78,21 @@ void	gtk_effect(GtkWidget *button, t_env *e)
 
 	(void)button;
 	active = gtk_combo_box_get_active(GTK_COMBO_BOX(e->gtk.n_effect));
-	if (active > -1)
+	if (active == 0)
 	{
-		if (active == 0)
-		{
-			e->gtk.nb_effect = active;
-			no_effect(e);
-		}
-		else if (active == 1)
-		{
-			e->gtk.nb_effect = active;
-			sepia_effect(e);
-		}
-		else if (active == 2)
-		{
-			e->gtk.nb_effect = active;
-			greyscale_effect(e);
-		}
-		gtk_effect1(e, active);
+		e->gtk.nb_effect = active;
+		no_effect(e);
 	}
+	else if (active == 1)
+	{
+		e->gtk.nb_effect = active;
+		sepia_effect(e);
+	}
+	else if (active == 2)
+	{
+		e->gtk.nb_effect = active;
+		greyscale_effect(e);
+	}
+	else if (active > -1)
+		gtk_effect1(e, active);
 }
