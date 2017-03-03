@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/02 21:48:22 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/03 15:49:26 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_list 	*init_test(void)
 	obj1.t = 0;
 	obj1.shininess = 50;
 	obj1.refr_index = 1;
+	obj1.texture = 0;
 	ft_lstaddend(&list, ft_lstnew(&obj1, sizeof(t_obj)));
 
 	obj2.id = 1;
@@ -79,6 +80,7 @@ t_list 	*init_test(void)
 	obj2.t = 0;
 	obj2.shininess = 50;
 	obj2.refr_index = 1.33;
+	obj2.texture = 0;
 	ft_lstaddend(&list, ft_lstnew(&obj2, sizeof(t_obj)));
 
 	obj3.id = 2;
@@ -106,6 +108,7 @@ t_list 	*init_test(void)
 	obj3.t = 0;
 	obj3.shininess = 50;
 	obj3.refr_index = 1.33;
+	obj3.texture = 0;
 	ft_lstaddend(&list, ft_lstnew(&obj3, sizeof(t_obj)));
 
 	// obj4.id = 3;
@@ -149,9 +152,9 @@ t_list 	*init_test(void)
 	obj5.normal.y = 0;
 	obj5.normal.z = 0;
 	obj5.normal.w = 1;
-	obj5.transform.rot.x = 60;
+	obj5.transform.rot.x = 0;
 	obj5.transform.rot.y = 60;
-	obj5.transform.rot.z = 60;
+	obj5.transform.rot.z = 0;
 	obj5.transform.rot.w = 1;
 	obj5.color.red = 0.6;
 	obj5.color.green = 0.7;
@@ -163,6 +166,7 @@ t_list 	*init_test(void)
 	obj5.t = 0;
 	obj5.shininess = 50;
 	obj5.refr_index = 1.33;
+	obj5.texture = 1;
 	 ft_lstadd(&list, ft_lstnew(&obj5, sizeof(t_obj)));
 
 	// obj6.id = 6;
@@ -438,6 +442,7 @@ t_list 	*init_test(void)
 	obj10.t = 0.5;
 	obj10.shininess = 50;
 	obj10.refr_index = 1.33;
+	obj10.texture = 1;
 	// printf("coord x: %f, y: %f, z: %f\n\n", obj10.faces->next->vertex->coord.x,
 	// obj10.faces->next->vertex->coord.y, obj10.faces->next->vertex->coord.z);
 	ft_lstaddend(&list, ft_lstnew(&obj10, sizeof(t_obj)));

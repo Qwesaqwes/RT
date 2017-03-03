@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:16:25 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/02 22:16:09 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/03 15:33:20 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void 	init_cam(t_camera *cam)
 	cam->baseW.w = 1;
 	cam->origin.x = 0;
 	cam->origin.y = 0;
-	cam->origin.z = -3;
+	cam->origin.z = 0;
 	cam->origin.w = 1;
 	cam->rot.x = 0;
 	cam->rot.y = 0;

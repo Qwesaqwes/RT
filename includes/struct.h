@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:47:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/02 18:35:59 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/03 15:36:22 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ typedef struct		s_obj
 	float			refr_index;
 	t_vec3d			normal;
 	t_face			*faces;
+	int				texture;	// texture == 0 si no texture
 }					t_obj;
 
 typedef struct		s_nearest_obj
