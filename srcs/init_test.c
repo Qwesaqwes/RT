@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/03 22:26:53 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/07 00:10:47 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_list 	*init_test(void)
 	obj1.transform.scale.z = 1;
 	obj1.transform.scale.w = 1;
 	obj1.type = 0;
-	obj1.transform.transl.x = 20;
+	obj1.transform.transl.x = 10;
 	obj1.transform.transl.y = 0;
 	obj1.transform.transl.z = -1;
 	obj1.transform.transl.w = 1;
@@ -62,9 +62,9 @@ t_list 	*init_test(void)
 	obj2.transform.scale.z = 1;
 	obj2.transform.scale.w = 1;
 	obj2.type = 0;
-	obj2.transform.transl.x = 20;
+	obj2.transform.transl.x = 10;
 	obj2.transform.transl.y = 0;
-	obj2.transform.transl.z = 1;
+	obj2.transform.transl.z = 2;
 	obj2.transform.transl.w = 1;
 	obj2.transform.rot.x = 0;
 	obj2.transform.rot.y = 0;
@@ -80,7 +80,17 @@ t_list 	*init_test(void)
 	obj2.t = 0;
 	obj2.shininess = 50;
 	obj2.refr_index = 1.33;
-	obj2.tex.texture = 0;
+	obj2.tex.texture = 4;
+	obj2.tex.tex_col1.red = 0.77;
+	obj2.tex.tex_col1.green = 0.5;
+	obj2.tex.tex_col1.blue = 0.5;
+	obj2.tex.tex_col2.red = 0.4;
+	obj2.tex.tex_col2.green = 0.8;
+	obj2.tex.tex_col2.blue = 0.36;
+	obj2.tex.tex_col3.red = 1;
+	obj2.tex.tex_col3.green = 1;
+	obj2.tex.tex_col3.blue = 1;
+	obj2.tex.square = 0.2;
 	ft_lstaddend(&list, ft_lstnew(&obj2, sizeof(t_obj)));
 
 	obj3.id = 2;
@@ -90,7 +100,7 @@ t_list 	*init_test(void)
 	obj3.transform.scale.z = 1;
 	obj3.transform.scale.w = 1;
 	obj3.type = 0;
-	obj3.transform.transl.x = 20;
+	obj3.transform.transl.x = 10;
 	obj3.transform.transl.y = -1.75;
 	obj3.transform.transl.z = 0;
 	obj3.transform.transl.w = 1;
@@ -108,7 +118,16 @@ t_list 	*init_test(void)
 	obj3.t = 0;
 	obj3.shininess = 50;
 	obj3.refr_index = 1.33;
-	obj3.tex.texture = 0;
+	obj3.tex.texture = 3;
+	obj3.tex.tex_col1.red = 0;
+	obj3.tex.tex_col1.green = 0.4;
+	obj3.tex.tex_col1.blue = 0.4;
+	obj3.tex.tex_col2.red = 0;
+	obj3.tex.tex_col2.green = 0;
+	obj3.tex.tex_col2.blue = 0;
+	obj3.tex.tex_col3.red = 0.5;
+	obj3.tex.tex_col3.green = 0;
+	obj3.tex.tex_col3.blue = 0;
 	ft_lstaddend(&list, ft_lstnew(&obj3, sizeof(t_obj)));
 
 	// obj4.id = 3;
@@ -154,7 +173,7 @@ t_list 	*init_test(void)
 	obj5.normal.z = 0;
 	obj5.normal.w = 1;
 	obj5.transform.rot.x = 0;
-	obj5.transform.rot.y = 90;
+	obj5.transform.rot.y = 60;
 	obj5.transform.rot.z = 0;
 	obj5.transform.rot.w = 1;
 	obj5.color.red = 0.6;
@@ -168,12 +187,15 @@ t_list 	*init_test(void)
 	obj5.shininess = 50;
 	obj5.refr_index = 1.33;
 	obj5.tex.texture = 1;
-	obj5.tex.tex_col1.red = 1;
-	obj5.tex.tex_col1.green = 1;
-	obj5.tex.tex_col1.blue = 1;
-	obj5.tex.tex_col2.red = 0;
-	obj5.tex.tex_col2.green = 0;
-	obj5.tex.tex_col2.blue = 0;
+	obj5.tex.tex_col1.red = 0.4;
+	obj5.tex.tex_col1.green = 0.4;
+	obj5.tex.tex_col1.blue = 0.4;
+	obj5.tex.tex_col2.red = 0.5;
+	obj5.tex.tex_col2.green = 0.5;
+	obj5.tex.tex_col2.blue = 0.5;
+	obj5.tex.tex_col3.red = 0.8;
+	obj5.tex.tex_col3.green = 0.8;
+	obj5.tex.tex_col3.blue = 0.8;
 	obj5.tex.square = 3;
 	 ft_lstadd(&list, ft_lstnew(&obj5, sizeof(t_obj)));
 
