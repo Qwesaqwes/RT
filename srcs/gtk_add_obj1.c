@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:09:30 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/03 18:48:27 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/07 15:47:54 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,16 @@ void 	init_add_obj_l_e3(t_gtk *gtk)
 	gtk->c_tex = gtk_combo_box_text_new();
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(gtk->c_tex), "0", "None");
 	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(gtk->c_tex), "1", "Checker");
+	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(gtk->c_tex), "2", "Perlin");
+	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(gtk->c_tex), "3", "Wood");
+	gtk_combo_box_text_append(GTK_COMBO_BOX_TEXT(gtk->c_tex), "4", "Marble");
 	gtk->l_che1 = gtk_label_new("Texture Color 1: ");
 	gtk->l_che2 = gtk_label_new("Texture Color 2: ");
+	gtk->l_che3 = gtk_label_new("Texture Color 3: ");
 	gtk->l_square = gtk_label_new("Checker Square Size: ");
 	gtk->e_che1 = gtk_color_button_new();
 	gtk->e_che2 = gtk_color_button_new();
+	gtk->e_che3 = gtk_color_button_new();
 	gtk->e_square = gtk_entry_new();
 }
 

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:12:42 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/03 18:41:27 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/07 15:46:07 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void 	put_label_inside_box2(t_gtk *gtk)
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->e_che1, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->l_che2, 0, 0, 10);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->e_che2, 0, 0, 0);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->l_che3, 0, 0, 10);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->e_che3, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->l_square, 0, 0, 10);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box13), gtk->e_square, 0, 0, 0);
 }

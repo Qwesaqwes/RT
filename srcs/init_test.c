@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/07 00:10:47 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/07 17:38:54 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_list 	*init_test(void)
 	obj2.type = 0;
 	obj2.transform.transl.x = 10;
 	obj2.transform.transl.y = 0;
-	obj2.transform.transl.z = 2;
+	obj2.transform.transl.z = 1;
 	obj2.transform.transl.w = 1;
 	obj2.transform.rot.x = 0;
 	obj2.transform.rot.y = 0;

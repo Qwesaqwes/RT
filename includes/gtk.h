@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:29:11 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/03 18:16:19 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/07 15:46:38 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef	struct		s_gtk
 	GtkWidget		*l_tex;		/*label for texture*/
 	GtkWidget		*l_che1;	/*label for color checker*/
 	GtkWidget		*l_che2;	/*label for color checker*/
+	GtkWidget		*l_che3;	/*label for color checker*/
 	GtkWidget		*l_square;	/*label for square checker*/
 
 
@@ -96,6 +97,7 @@ typedef	struct		s_gtk
 	GtkWidget		*e_tr;		/*entry for transparence*/
 	GtkWidget		*e_che1;	/*entry for color texture*/
 	GtkWidget		*e_che2;	/*entry for color texture*/
+	GtkWidget		*e_che3;	/*entry for color texture*/
 	GtkWidget		*e_square;	/*entry for Square texture*/
 
 

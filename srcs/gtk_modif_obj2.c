@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 19:01:25 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/03 21:56:07 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/07 17:38:20 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ void	init_modif_obj_e4(t_gtk *gtk, t_obj *obj)
 				ft_strlen(itof(obj->tex.square))));
 			// gtk->c_tex = gtk_combo_box_set_active_id(GTK_COMBO_BOX(gtk->c_tex), "1");
 		}
+	else
+	{
+		gtk->e_che1 = gtk_color_button_new_with_rgba(
+				get_color(&obj->tex.tex_col1));
+		gtk->e_che2 = gtk_color_button_new_with_rgba(
+				get_color(&obj->tex.tex_col2));
+		gtk->e_che3 = gtk_color_button_new_with_rgba(
+				get_color(&obj->tex.tex_col3));}
 }
 
 void 	init_modif_obj_e3(t_gtk *gtk, t_obj *obj)

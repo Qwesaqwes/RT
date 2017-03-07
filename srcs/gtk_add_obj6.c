@@ -6,32 +6,38 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 19:14:08 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/03 20:34:53 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/07 17:23:45 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-int	put_info_checker(t_gtk *gtk, t_tex *tex)
+void	get_color_texture(GtkWidget *tex_color, GdkRGBA *color, t_color *c)
 {
-	tex->texture = 1;
+	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(tex_color), color);
+	c->red = color->red;
+	c->green = color->green;
+	c->blue = color->blue;
+}
+
+int	put_info_tex(t_gtk *gtk, t_tex *tex)
+{
 	gtk->color = NULL;
 	gtk->color = malloc(sizeof(GdkRGBA));
-	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(gtk->e_che1), gtk->color);
-	tex->tex_col1.red = gtk->color->red;
-	tex->tex_col1.green = gtk->color->green;
-	tex->tex_col1.blue = gtk->color->blue;
-	gtk_color_chooser_get_rgba(GTK_COLOR_CHOOSER(gtk->e_che2), gtk->color);
-	tex->tex_col2.red = gtk->color->red;
-	tex->tex_col2.green = gtk->color->green;
-	tex->tex_col2.blue = gtk->color->blue;
-	g_free(gtk->color);
-	if ((check_if_digit(gtk_entry_get_text(GTK_ENTRY(gtk->e_square)))) == 1)
+	get_color_texture(gtk->e_che1, gtk->color, &tex->tex_col1);
+	get_color_texture(gtk->e_che2, gtk->color, &tex->tex_col2);
+	if (tex->texture == 1)
+	{
+		if ((check_if_digit(gtk_entry_get_text(GTK_ENTRY(gtk->e_square)))) == 1)
 		{
 			g_print("Put the right Size for the square\n");
 			return (1);
 		}
-	tex->square = stof(gtk_entry_get_text(GTK_ENTRY(gtk->e_square)));
+		tex->square = stof(gtk_entry_get_text(GTK_ENTRY(gtk->e_square)));
+	}
+	else
+		get_color_texture(gtk->e_che3, gtk->color, &tex->tex_col3);
+	g_free(gtk->color);
 	return (0);
 }
 
@@ -44,9 +50,13 @@ int		put_tex_obj(t_gtk *gtk, t_tex *tex)
 	{
 		if (active == 0)
 			tex->texture = 0;
-		else if (active == 1)
-			if (put_info_checker(gtk, tex) == 1)
+		else if (active == 1 || active == 2 || active == 3 || active == 4)
+		{
+			tex->texture = active == 1 ? 1 : ((active == 2) ? 2 :
+			((active == 3) ? 3 : 4));
+			if (put_info_tex(gtk, tex) == 1)
 				return (1);
+		}
 	}
 	else
 		tex->texture = 0;
