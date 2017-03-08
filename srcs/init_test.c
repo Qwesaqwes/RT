@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/07 17:38:54 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/08 21:30:04 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list 	*init_test(void)
 	t_obj	obj1;
 	t_obj	obj2;
 	t_obj	obj3;
-	// t_obj	obj4;
+	t_obj	obj4;
 	 t_obj	obj5;
 	// t_obj	obj6;
 	// t_obj	obj7;
@@ -35,7 +35,7 @@ t_list 	*init_test(void)
 	obj1.transform.scale.w = 1;
 	obj1.type = 0;
 	obj1.transform.transl.x = 10;
-	obj1.transform.transl.y = 0;
+	obj1.transform.transl.y = 1;
 	obj1.transform.transl.z = -1;
 	obj1.transform.transl.w = 1;
 	obj1.transform.rot.x = 90;
@@ -45,14 +45,15 @@ t_list 	*init_test(void)
 	obj1.color.red = 1;
 	obj1.color.green = 0;
 	obj1.color.blue = 0;
-	obj1.ka = 0;
-	obj1.kd = 0;
-	obj1.ks = 1;
+	obj1.ka = 0.2;
+	obj1.kd = 0.9;
+	obj1.ks = 0;
 	obj1.i = 0;
 	obj1.t = 0;
 	obj1.shininess = 50;
 	obj1.refr_index = 1;
-	obj1.tex.texture = 0;
+	obj1.tex.texture = 5;
+	obj1.map_buf = gdk_pixbuf_new_from_file("./maps/moon.jpg", NULL);
 	ft_lstaddend(&list, ft_lstnew(&obj1, sizeof(t_obj)));
 
 	obj2.id = 1;
@@ -63,7 +64,7 @@ t_list 	*init_test(void)
 	obj2.transform.scale.w = 1;
 	obj2.type = 0;
 	obj2.transform.transl.x = 10;
-	obj2.transform.transl.y = 0;
+	obj2.transform.transl.y = 1;
 	obj2.transform.transl.z = 1;
 	obj2.transform.transl.w = 1;
 	obj2.transform.rot.x = 0;
@@ -81,11 +82,11 @@ t_list 	*init_test(void)
 	obj2.shininess = 50;
 	obj2.refr_index = 1.33;
 	obj2.tex.texture = 4;
-	obj2.tex.tex_col1.red = 0.77;
-	obj2.tex.tex_col1.green = 0.5;
-	obj2.tex.tex_col1.blue = 0.5;
+	obj2.tex.tex_col1.red = 0.2;
+	obj2.tex.tex_col1.green = 0.2;
+	obj2.tex.tex_col1.blue = 0.2;
 	obj2.tex.tex_col2.red = 0.4;
-	obj2.tex.tex_col2.green = 0.8;
+	obj2.tex.tex_col2.green = 0.4;
 	obj2.tex.tex_col2.blue = 0.36;
 	obj2.tex.tex_col3.red = 1;
 	obj2.tex.tex_col3.green = 1;
@@ -101,8 +102,8 @@ t_list 	*init_test(void)
 	obj3.transform.scale.w = 1;
 	obj3.type = 0;
 	obj3.transform.transl.x = 10;
-	obj3.transform.transl.y = -1.75;
-	obj3.transform.transl.z = 0;
+	obj3.transform.transl.y = -1;
+	obj3.transform.transl.z = 1;
 	obj3.transform.transl.w = 1;
 	obj3.transform.rot.x = 0;
 	obj3.transform.rot.y = 0;
@@ -119,43 +120,54 @@ t_list 	*init_test(void)
 	obj3.shininess = 50;
 	obj3.refr_index = 1.33;
 	obj3.tex.texture = 3;
-	obj3.tex.tex_col1.red = 0;
+	obj3.tex.tex_col1.red = 0.4;
 	obj3.tex.tex_col1.green = 0.4;
 	obj3.tex.tex_col1.blue = 0.4;
 	obj3.tex.tex_col2.red = 0;
 	obj3.tex.tex_col2.green = 0;
 	obj3.tex.tex_col2.blue = 0;
 	obj3.tex.tex_col3.red = 0.5;
-	obj3.tex.tex_col3.green = 0;
-	obj3.tex.tex_col3.blue = 0;
+	obj3.tex.tex_col3.green = 0.42;
+	obj3.tex.tex_col3.blue = 0.14;
 	ft_lstaddend(&list, ft_lstnew(&obj3, sizeof(t_obj)));
 
-	// obj4.id = 3;
-	// obj4.name = "sphere4";
-	// obj4.transform.scale.x = 1;
-	// obj4.transform.scale.y = 1;
-	// obj4.transform.scale.z = 1;
-	// obj4.transform.scale.w = 1;
-	// obj4.type = 0;
-	// obj4.transform.transl.x = 7;
-	// obj4.transform.transl.y = 0;
-	// obj4.transform.transl.z = 0;
-	// obj4.transform.transl.w = 1;
-	// obj4.transform.rot.x = 0;
-	// obj4.transform.rot.y = 0;
-	// obj4.transform.rot.z = 0;
-	// obj4.transform.rot.w = 1;
-	// obj4.color.red = 1;
-	// obj4.color.green = 1;
-	// obj4.color.blue = 1;
-	// obj4.ka = 0.2;
-	// obj4.kd = 0.9;
-	// obj4.ks = 1;
-	// obj4.i = 0;
-	// obj4.t = 0.8;
-	// obj4.shininess = 50;
-	// obj4.refr_index = 1.33;
-	// ft_lstaddend(&list, ft_lstnew(&obj4, sizeof(t_obj)));
+	obj4.id = 2;
+	obj4.name = "sphere4";
+	obj4.transform.scale.x = 1;
+	obj4.transform.scale.y = 1;
+	obj4.transform.scale.z = 1;
+	obj4.transform.scale.w = 1;
+	obj4.type = 0;
+	obj4.transform.transl.x = 10;
+	obj4.transform.transl.y = -1;
+	obj4.transform.transl.z = -1;
+	obj4.transform.transl.w = 1;
+	obj4.transform.rot.x = 0;
+	obj4.transform.rot.y = 0;
+	obj4.transform.rot.z = 0;
+	obj4.transform.rot.w = 1;
+	obj4.color.red = 0;
+	obj4.color.green = 0;
+	obj4.color.blue = 1;
+	obj4.ka = 0.2;
+	obj4.kd = 0.9;
+	obj4.ks = 1;
+	obj4.i = 0;
+	obj4.t = 0;
+	obj4.shininess = 50;
+	obj4.refr_index = 1.33;
+	obj4.tex.texture = 2;
+	obj4.tex.tex_col1.red = 0;
+	obj4.tex.tex_col1.green = 0.4;
+	obj4.tex.tex_col1.blue = 0.4;
+	obj4.tex.tex_col2.red = 0;
+	obj4.tex.tex_col2.green = 0;
+	obj4.tex.tex_col2.blue = 0;
+	obj4.tex.tex_col3.red = 0.5;
+	obj4.tex.tex_col3.green = 0;
+	obj4.tex.tex_col3.blue = 0;
+	ft_lstaddend(&list, ft_lstnew(&obj4, sizeof(t_obj)));
+
 
 	obj5.id = 5;
 	obj5.name = "plane1";
@@ -485,12 +497,23 @@ t_list 	*init_test(void)
 	// obj10.kd = 0.9;
 	// obj10.ks = 0.1;
 	// obj10.i = 0;
-	// obj10.t = 0.5;
+	// obj10.t = 0;
 	// obj10.shininess = 50;
 	// obj10.refr_index = 1.33;
-	// obj10.texture = 1;
-	// // printf("coord x: %f, y: %f, z: %f\n\n", obj10.faces->next->vertex->coord.x,
-	// // obj10.faces->next->vertex->coord.y, obj10.faces->next->vertex->coord.z);
+	// obj10.tex.texture = 1;
+	// obj10.tex.tex_col1.red = 1;
+	// obj10.tex.tex_col1.green = 1;
+	// obj10.tex.tex_col1.blue = 1;
+	// obj10.tex.tex_col2.red = 0;
+	// obj10.tex.tex_col2.green = 0;
+	// obj10.tex.tex_col2.blue = 0;
+	// obj10.tex.tex_col3.red = 0.8;
+	// obj10.tex.tex_col3.green = 0.8;
+	// obj10.tex.tex_col3.blue = 0.8;
+	// obj10.tex.square = 0.2;
+	// obj10.map_buf = gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL);
+	// printf("coord x: %f, y: %f, z: %f\n\n", obj10.faces->next->vertex->coord.x,
+	// obj10.faces->next->vertex->coord.y, obj10.faces->next->vertex->coord.z);
 	// ft_lstaddend(&list, ft_lstnew(&obj10, sizeof(t_obj)));
 	return (list);
 }

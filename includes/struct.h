@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:47:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/06 21:51:03 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/08 18:41:58 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ typedef struct		s_texture
 	t_color			tex_col2;
 	t_color			tex_col3;
 	float			square;
+	char			*map;
+
 }					t_tex;
 
 typedef struct		s_obj
@@ -140,6 +142,7 @@ typedef struct		s_obj
 	t_vec3d			normal;
 	t_face			*faces;
 	t_tex			tex;
+	GdkPixbuf		*map_buf;
 }					t_obj;
 
 typedef struct		s_nearest_obj
