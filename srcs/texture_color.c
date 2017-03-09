@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 18:37:04 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/08 21:12:31 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/09 20:17:40 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,102 @@ t_color		get_pixel(int tmp, GdkPixbuf *map)
 	return (ret);
 }
 
+t_matrix	axe_angle_to_matrix(float angle, t_vec3d axe)
+{
+	t_matrix	ret;
+	float		j;
+	float		sint;
+
+	j = 1 - cos(angle);
+	sint = sin(angle);
+	ret.a = cos(angle) + axe.x * axe.x * j;
+	ret.b = axe.x * axe.y * j - axe.z * sint;
+	ret.c = axe.x * axe.z * j + axe.y * sint;
+	ret.d = 0;
+	ret.e = axe.y * axe.x * j + axe.z * sint;
+	ret.f = cos(angle) + axe.y * axe.y * j;
+	ret.g = axe.y * axe.z * j - axe.x * sint;
+	ret.h = 0;
+	ret.i = axe.x * axe.z * j - axe.y * sint;
+	ret.j = axe.y * axe.z * j + axe.x * sint;
+	ret.k = cos(angle) + axe.z * axe.z * j;
+	ret.l = 0;
+	ret.m = 0;
+	ret.n = 0;
+	ret.o = 0;
+	ret.p = 1;
+	return (ret);
+}
+
+t_vec3d		euler_angles(t_matrix m)
+{
+	t_vec3d		ret;
+
+	if (m.c < 1)
+	{
+		if (m.c > -1)
+		{
+			ret.x = atan2(-m.g, m.k);
+			ret.y = asin(m.c);
+			ret.z = atan2(-m.b, m.a);
+			ret.w = 0;
+		}
+		else
+		{
+			ret.x = -atan2(m.e, m.f);
+			ret.y = -M_PI / 2;
+			ret.z = 0;
+			ret.w = 0;
+		}
+	}
+	else
+	{
+		ret.x = atan2(m.e, m.f);
+		ret.y = M_PI / 2;
+		ret.z = 0;
+		ret.w = 0;
+	}
+	ret = vector_fact(ret, 180.0f / M_PI);
+	return (ret);
+}
+
+t_mapping	mapping(t_face face, t_vec3d rot)
+{
+	t_vertex	*tmp;
+	t_mapping	ret;
+	t_vec3d		point;
+
+	tmp = face.vertex;
+	while (tmp)
+	{
+		point = vector_sub(tmp->coord, face.vertex->coord);
+		point = mult_matrix(rotationX(-rot.x), point);
+		point = mult_matrix(rotationY(-rot.y), point);
+		point = mult_matrix(rotationZ(-rot.z), point);
+		if (tmp == face.vertex)
+		{
+			ret.y_min = point.y;
+			ret.y_max = point.y;
+			ret.z_min = point.z;
+			ret.z_max = point.z;
+		}
+		else
+		{
+			if (point.y < ret.y_min)
+				ret.y_min = point.y;
+			if (point.y >ret.y_max)
+				ret.y_max = point.y;
+			if (point.z < ret.z_min)
+				ret.z_min = point.z;
+			if (point.z > ret.z_max)
+				ret.z_max = point.z;
+		}
+		// printf("min: %f,  max: %f\n", ret.y_min, ret.y_max);
+		tmp = tmp->next;
+	}
+	return (ret);
+}
+
 t_color		texture_mapping(t_no no)
 {
 	int		map_w;
@@ -201,6 +297,11 @@ t_color		texture_mapping(t_no no)
 	int		rowstride;
 	float		u;
 	float		v;
+
+	float		angle;
+	t_vec3d		unit_vec;
+	t_vec3d		rot_angle;
+	t_mapping	map;
 
 	map_w = gdk_pixbuf_get_width(no.obj.map_buf);
 	map_h = gdk_pixbuf_get_height(no.obj.map_buf);
@@ -212,8 +313,23 @@ t_color		texture_mapping(t_no no)
 		n = normalizevec(vector_sub(no.obj.transform.transl, no.ip));
 		u = 0.5 + (float)atan2(n.z, n.x) / (float)(2 * M_PI);
 		v = 0.5 - (float)asin(n.y) / (float)M_PI;
-		return (get_pixel((int)(v * map_h) * rowstride +
-		(int)(u * map_w) * n_channels, no.obj.map_buf));
+		return (get_pixel((map_h - (int)(v * map_h)) * rowstride +
+		(map_w - (int)(u * map_w)) * n_channels, no.obj.map_buf));
+	}
+	else if (no.obj.type == 5)
+	{
+		angle = acos(vector_dot(no.poly_face->normal, (t_vec3d){1, 0, 0, 1}));
+		unit_vec = vector_cross(no.poly_face->normal, (t_vec3d){1, 0, 0, 1});
+		rot_angle = euler_angles(axe_angle_to_matrix(angle, unit_vec));
+		map = mapping(*no.poly_face, rot_angle);
+		n = vector_sub(no.ip, no.poly_face->vertex->coord);
+		n = mult_matrix(rotationX(-rot_angle.x), n);
+		n = mult_matrix(rotationY(-rot_angle.y), n);
+		n = mult_matrix(rotationZ(-rot_angle.z), n);
+		u = (float)(n.z - map.z_min) / (float)(map.z_max - map.z_min);
+		v = (float)(n.y - map.y_min) / (float)(map.y_max - map.y_min);
+		return (get_pixel((map_h - (int)(v * map_h)) * rowstride +
+		(map_w - (int)(u * map_w)) * n_channels, no.obj.map_buf));
 	}
 	return (set_black_color());
 }

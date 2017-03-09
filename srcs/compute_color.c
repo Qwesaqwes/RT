@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 12:32:03 by opandolf          #+#    #+#             */
-/*   Updated: 2017/03/02 19:11:22 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/09 21:04:48 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,43 +158,44 @@ t_color			get_intersection_obj(t_list *list, t_obj lum, t_no no)
 	t_ray	img_ray;
 	float	dist_lum;
 	t_color	ret;
+	t_pret	poly;
 
 	tmp = list;
 	ret = set_white_color();
+	ray.origin = no.ip;
+	ray.dir = normalizevec(vector_sub(lum.transform.transl, no.ip));
+	dist_lum = vector_length(vector_sub(lum.transform.transl, no.ip));
 	while(tmp)
 	{
-		ray.origin = no.ip;
-		ray.dir = normalizevec(vector_sub(lum.transform.transl, no.ip));
 		obj = *(t_obj*)tmp->content;
 		img_ray = imaginary_ray(ray, obj.transform);
-		dist_lum = vector_length(vector_sub(lum.transform.transl, no.ip));
-		if (obj.id != no.obj.id)
+		if (obj.type == 0)
 		{
-			if (obj.type == 0)
-			{
-				dist = sphere_dist(img_ray);
-			}
-			if (obj.type == 1)
-			{
-				dist = cylindre_dist(img_ray);
-			}
-			if (obj.type == 2)
-			{
-				dist = plane_dist(obj, ray);
-			}
-			if (obj.type == 3)
-			{
-				dist = cone_dist(img_ray);
-			}
-			if (obj.type == 4)
-				dist = triangle_dist(ray, *obj.faces);
-			if 	(obj.type == 5 || obj.type == 6)
-			{
-				dist = polygone_dist(ray, obj).dist;
-			}
-			if (dist > SHADOW_BIAS && dist < dist_lum)
-				ret = color_fact(ret, obj.t);
+			dist = sphere_dist(img_ray);
 		}
+		if (obj.type == 1)
+		{
+			dist = cylindre_dist(img_ray);
+		}
+		if (obj.type == 2)
+		{
+			dist = plane_dist(obj, ray);
+		}
+		if (obj.type == 3)
+		{
+			dist = cone_dist(img_ray);
+		}
+		if (obj.type == 4)
+			dist = triangle_dist(ray, *obj.faces);
+		if 	(obj.type == 5 || obj.type == 6)
+		{
+			poly = polygone_dist(ray, obj);
+			dist = poly.dist;
+			// if (dist > 0)
+			// 	printf("dist: %f, dist_lum: %f\n", dist, dist_lum);
+		}
+		if (dist > SHADOW_BIAS && dist < dist_lum)
+			ret = color_fact(ret, obj.t);
 		tmp = tmp->next;
 	}
 	return (ret);

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/06 21:53:02 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/09 19:11:20 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_vec3d		vector_sub(t_vec3d a, t_vec3d b);
 float		vector_dot(t_vec3d a, t_vec3d b);
 t_vec3d		vector_fact(t_vec3d a, float k);
 t_vec3d		vector_add(t_vec3d a, t_vec3d b);
+t_vec3d		vector_cross(t_vec3d a, t_vec3d b);
 
 t_color		color_add(t_color a, t_color b);
 t_color		color_mult(t_color a, t_color b);

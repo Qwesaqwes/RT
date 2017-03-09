@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:47:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/08 18:41:58 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/09 19:41:58 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,14 @@ typedef struct		s_texture
 	char			*map;
 
 }					t_tex;
+
+typedef	struct		s_mapping
+{
+	float			y_max;
+	float			y_min;
+	float			z_max;
+	float			z_min;
+}					t_mapping;
 
 typedef struct		s_obj
 {
