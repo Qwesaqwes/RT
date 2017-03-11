@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 17:36:52 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/09 22:10:38 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/11 23:01:33 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		inside_outside_test(t_vertex *vertex, int sign, t_vec3d point,
 			edge = vector_sub(vertex->coord, tmp->coord);
 		else
 			edge = vector_sub(tmp->next->coord, tmp->coord);
+		sign = 1;
 		if ((sign * vector_dot(normal, vector_cross(edge, c))) < 0)
 			return (0);
 		tmp = tmp->next;

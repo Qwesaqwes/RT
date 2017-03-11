@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 18:37:04 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/09 20:17:40 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/12 00:27:55 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,48 +288,50 @@ t_mapping	mapping(t_face face, t_vec3d rot)
 	return (ret);
 }
 
-t_color		texture_mapping(t_no no)
+void		uv_sphere(t_no no, float *u, float *v, t_vec3d *rot_angle)
 {
-	int		map_w;
-	int		map_h;
-	t_vec3d	n;
-	int		n_channels;
-	int		rowstride;
-	float		u;
-	float		v;
+	t_vec3d		n;
+	
+	*rot_angle = no.obj.transform.rot;
+	n = normalizevec(vector_sub(no.obj.transform.transl, no.ip));
+	*u = 0.5 + (float)atan2(n.z, n.x) / (float)(2 * M_PI);
+	*v = 0.5 - (float)asin(n.y) / (float)M_PI;
+}
 
+void 		uv_polygone(t_no no, float *u, float *v, t_vec3d *rot_angle)
+{
 	float		angle;
 	t_vec3d		unit_vec;
-	t_vec3d		rot_angle;
 	t_mapping	map;
+	t_vec3d		n;
 
-	map_w = gdk_pixbuf_get_width(no.obj.map_buf);
-	map_h = gdk_pixbuf_get_height(no.obj.map_buf);
-	// printf("W: %d, H: %d\n", map_w, map_h);
-	n_channels = gdk_pixbuf_get_n_channels(no.obj.map_buf);
-	rowstride = gdk_pixbuf_get_rowstride (no.obj.map_buf);
+	angle = acos(vector_dot(no.poly_face->normal, (t_vec3d){1, 0, 0, 1}));
+	unit_vec = vector_cross(no.poly_face->normal, (t_vec3d){1, 0, 0, 1});
+	*rot_angle = euler_angles(axe_angle_to_matrix(angle, unit_vec));
+	map = mapping(*no.poly_face, *rot_angle);
+	n = vector_sub(no.ip, no.poly_face->vertex->coord);
+	n = mult_matrix(rotationX(-rot_angle->x), n);
+	n = mult_matrix(rotationY(-rot_angle->y), n);
+	n = mult_matrix(rotationZ(-rot_angle->z), n);
+	*u = (float)(n.z - map.z_min) / (float)(map.z_max - map.z_min);
+	*v = (float)(n.y - map.y_min) / (float)(map.y_max - map.y_min);
+}
+
+t_color		texture_mapping(t_no no)
+{
+	float		u;
+	float		v;
+	t_vec3d		rot_angle;
+
 	if (no.obj.type == 0)
 	{
-		n = normalizevec(vector_sub(no.obj.transform.transl, no.ip));
-		u = 0.5 + (float)atan2(n.z, n.x) / (float)(2 * M_PI);
-		v = 0.5 - (float)asin(n.y) / (float)M_PI;
-		return (get_pixel((map_h - (int)(v * map_h)) * rowstride +
-		(map_w - (int)(u * map_w)) * n_channels, no.obj.map_buf));
+		uv_sphere(no, &u, &v, &rot_angle);
+		return (get_pixel(map_value(u, v, no.obj.map_buf), no.obj.map_buf));
 	}
 	else if (no.obj.type == 5)
 	{
-		angle = acos(vector_dot(no.poly_face->normal, (t_vec3d){1, 0, 0, 1}));
-		unit_vec = vector_cross(no.poly_face->normal, (t_vec3d){1, 0, 0, 1});
-		rot_angle = euler_angles(axe_angle_to_matrix(angle, unit_vec));
-		map = mapping(*no.poly_face, rot_angle);
-		n = vector_sub(no.ip, no.poly_face->vertex->coord);
-		n = mult_matrix(rotationX(-rot_angle.x), n);
-		n = mult_matrix(rotationY(-rot_angle.y), n);
-		n = mult_matrix(rotationZ(-rot_angle.z), n);
-		u = (float)(n.z - map.z_min) / (float)(map.z_max - map.z_min);
-		v = (float)(n.y - map.y_min) / (float)(map.y_max - map.y_min);
-		return (get_pixel((map_h - (int)(v * map_h)) * rowstride +
-		(map_w - (int)(u * map_w)) * n_channels, no.obj.map_buf));
+		uv_polygone(no, &u, &v, &rot_angle);
+		return (get_pixel(map_value(u, v, no.obj.map_buf), no.obj.map_buf));
 	}
 	return (set_black_color());
 }

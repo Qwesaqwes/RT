@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/03/03 20:09:01 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/03/11 21:59:49 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC			=	compute_ray.c\
 				face_cuting.c\
 				dist_to_figure.c\
 				texture_color.c\
+				bump_mapping.c\
 				gtk_options1.c\
 				gtk_add_obj1.c\
 				gtk_add_obj2.c\

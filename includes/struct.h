@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:47:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/09 19:41:58 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/11 22:00:18 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ typedef	struct		s_poly_return
 typedef struct		s_texture
 {
 	int				texture;	// texture == 0 si no texture
+	int				bump;	// texture == 0 si no texture
 	t_color			tex_col1;
 	t_color			tex_col2;
 	t_color			tex_col3;
@@ -151,6 +152,7 @@ typedef struct		s_obj
 	t_face			*faces;
 	t_tex			tex;
 	GdkPixbuf		*map_buf;
+	GdkPixbuf		*bump_buf;
 }					t_obj;
 
 typedef struct		s_nearest_obj

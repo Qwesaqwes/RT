@@ -6,11 +6,13 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/09 22:11:17 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/12 00:32:50 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+
+
 
 t_list 	*init_test(void)
 {
@@ -53,7 +55,11 @@ t_list 	*init_test(void)
 	obj1.shininess = 50;
 	obj1.refr_index = 1;
 	obj1.tex.texture = 5;
+	obj1.tex.bump = 1;
+
 	obj1.map_buf = gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL);
+	obj1.bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
+
 	ft_lstaddend(&list, ft_lstnew(&obj1, sizeof(t_obj)));
 
 	obj2.id = 1;
@@ -82,6 +88,7 @@ t_list 	*init_test(void)
 	obj2.shininess = 50;
 	obj2.refr_index = 1.33;
 	obj2.tex.texture = 4;
+	obj2.tex.bump = 0;
 	obj2.tex.tex_col1.red = 0.2;
 	obj2.tex.tex_col1.green = 0.2;
 	obj2.tex.tex_col1.blue = 0.2;
@@ -199,6 +206,7 @@ t_list 	*init_test(void)
 	obj5.shininess = 50;
 	obj5.refr_index = 1.33;
 	obj5.tex.texture = 1;
+	obj5.tex.bump = 0;
 	obj5.tex.tex_col1.red = 0.4;
 	obj5.tex.tex_col1.green = 0.4;
 	obj5.tex.tex_col1.blue = 0.4;
@@ -360,26 +368,26 @@ t_list 	*init_test(void)
 	obj10.transform.rot.y = 0;
 	obj10.transform.rot.z = 0;
 	obj10.transform.rot.w = 1;
-	// obj10.faces = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->vertex->coord = (t_vec3d){ 15, 0, 3, 1 };
-	// obj10.faces->vertex->next->coord = (t_vec3d){ 15, -3, 0, 1 };
-	// obj10.faces->vertex->next->next->coord = (t_vec3d){ 15, -3, 3, 1 };
-	// obj10.faces->vertex->next->next->next = NULL;
-	// obj10.faces->normal = (t_vec3d){-1, 0, 0, 1};
-	//
-	// obj10.faces->next = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->vertex->coord = (t_vec3d){ 15, 0, 3, 1 };
-	// obj10.faces->next->vertex->next->coord = (t_vec3d){ 15, 0, 0, 1 };
-	// obj10.faces->next->vertex->next->next->coord = (t_vec3d){ 15, -3, 0, 1 };
-	// obj10.faces->next->vertex->next->next->next = NULL;
-	// obj10.faces->next->normal = (t_vec3d){-1, 0, 0, 1};
-	//
+	obj10.faces = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->vertex->coord = (t_vec3d){ 15, 0, 3, 1 };
+	obj10.faces->vertex->next->coord = (t_vec3d){ 15, -3, 0, 1 };
+	obj10.faces->vertex->next->next->coord = (t_vec3d){ 15, -3, 3, 1 };
+	obj10.faces->vertex->next->next->next = NULL;
+	obj10.faces->normal = (t_vec3d){-1, 0, 0, 1};
+
+	obj10.faces->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->vertex->coord = (t_vec3d){ 15, 0, 3, 1 };
+	obj10.faces->next->vertex->next->coord = (t_vec3d){ 15, 0, 0, 1 };
+	obj10.faces->next->vertex->next->next->coord = (t_vec3d){ 15, -3, 0, 1 };
+	obj10.faces->next->vertex->next->next->next = NULL;
+	obj10.faces->next->normal = (t_vec3d){-1, 0, 0, 1};
+
 	// obj10.faces->next->next = (t_face*)ft_memalloc(sizeof(t_face));
 	// obj10.faces->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
 	// obj10.faces->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
@@ -489,40 +497,41 @@ t_list 	*init_test(void)
 	// obj10.faces->next->next->next->next->next->next->next->next->next->next->next->normal = (t_vec3d){0, -1, 0, 1};
 	// obj10.faces->next->next->next->next->next->next->next->next->next->next->next->next = NULL;
 
-	obj10.faces = (t_face*)ft_memalloc(sizeof(t_face));
-	obj10.faces->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	obj10.faces->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	obj10.faces->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	obj10.faces->vertex->coord = (t_vec3d){ 15, -3, 0, 1 };
-	obj10.faces->vertex->next->coord = (t_vec3d){ 18, -3, 0, 1 };
-	obj10.faces->vertex->next->next->coord = (t_vec3d){ 15, -3, 3, 1 };
-	obj10.faces->vertex->next->next->next = NULL;
-	obj10.faces->normal = (t_vec3d){0, -1, 0, 1};
-
-
-	obj10.faces->next = (t_face*)ft_memalloc(sizeof(t_face));
-	obj10.faces->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	obj10.faces->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	obj10.faces->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	obj10.faces->next->vertex->coord = (t_vec3d){ 15, -3, 3, 1 };
-	obj10.faces->next->vertex->next->coord = (t_vec3d){ 18, -3, 0, 1 };
-	obj10.faces->next->vertex->next->next->coord = (t_vec3d){ 18, -3, 3, 1 };
-	obj10.faces->next->vertex->next->next->next = NULL;
-	obj10.faces->next->normal = (t_vec3d){0, -1, 0, 1};
-	obj10.faces->next->next = NULL;
+	// obj10.faces = (t_face*)ft_memalloc(sizeof(t_face));
+	// obj10.faces->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	// obj10.faces->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	// obj10.faces->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	// obj10.faces->vertex->coord = (t_vec3d){ 15, -3, 0, 1 };
+	// obj10.faces->vertex->next->coord = (t_vec3d){ 18, -3, 0, 1 };
+	// obj10.faces->vertex->next->next->coord = (t_vec3d){ 15, -3, 3, 1 };
+	// obj10.faces->vertex->next->next->next = NULL;
+	// obj10.faces->normal = (t_vec3d){0, -1, 0, 1};
+	//
+	//
+	// obj10.faces->next = (t_face*)ft_memalloc(sizeof(t_face));
+	// obj10.faces->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	// obj10.faces->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	// obj10.faces->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	// obj10.faces->next->vertex->coord = (t_vec3d){ 15, -3, 3, 1 };
+	// obj10.faces->next->vertex->next->coord = (t_vec3d){ 18, -3, 0, 1 };
+	// obj10.faces->next->vertex->next->next->coord = (t_vec3d){ 18, -3, 3, 1 };
+	// obj10.faces->next->vertex->next->next->next = NULL;
+	// obj10.faces->next->normal = (t_vec3d){0, -1, 0, 1};
+	// obj10.faces->next->next = NULL;
 
 	obj10.normal = (t_vec3d){-1, 0, 0, 1};
-	obj10.color.red = 0;
-	obj10.color.green = 1;
-	obj10.color.blue = 1;
+	obj10.color.red = 0.5;
+	obj10.color.green = 0.5;
+	obj10.color.blue = 0.5;
 	obj10.ka = 0.2;
 	obj10.kd = 0.9;
-	obj10.ks = 0.1;
+	obj10.ks = 0;
 	obj10.i = 0;
 	obj10.t = 0;
 	obj10.shininess = 50;
 	obj10.refr_index = 1.33;
-	obj10.tex.texture = 0;
+	obj10.tex.texture = 5;
+	obj10.tex.bump = 1;
 	obj10.tex.tex_col1.red = 1;
 	obj10.tex.tex_col1.green = 1;
 	obj10.tex.tex_col1.blue = 1;
@@ -533,7 +542,9 @@ t_list 	*init_test(void)
 	obj10.tex.tex_col3.green = 0.8;
 	obj10.tex.tex_col3.blue = 0.8;
 	obj10.tex.square = 0.2;
+
 	obj10.map_buf = gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL);
+	obj10.bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/golf.jpg", NULL));
 	// printf("coord x: %f, y: %f, z: %f\n\n", obj10.faces->next->vertex->coord.x,
 	// obj10.faces->next->vertex->coord.y, obj10.faces->next->vertex->coord.z);
 	ft_lstaddend(&list, ft_lstnew(&obj10, sizeof(t_obj)));
@@ -553,9 +564,9 @@ t_list	*init_test_lum(void)
 	lum1.transform.scale.z = 1;
 	lum1.transform.scale.w = 1;
 	lum1.type = 0;
-	lum1.transform.transl.x = -20;
-	lum1.transform.transl.y = 0;
-	lum1.transform.transl.z = 0;
+	lum1.transform.transl.x = 0;
+	lum1.transform.transl.y = 15;
+	lum1.transform.transl.z = 15;
 	lum1.transform.transl.w = 1;
 	lum1.transform.rot.x = 0;
 	lum1.transform.rot.y = 0;

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:06:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/08 20:44:59 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/11 23:07:53 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ void 	init_gtk(t_env *e)
 	e->gtk.img = gtk_image_new_from_pixbuf(e->gtk.buffer);
 	// e->gtk.img = gtk_image_new_from_pixbuf(gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL));
 	gtk_box_pack_start(GTK_BOX(e->gtk.imgbox), e->gtk.img, 0, 0, 0);
+	// gtk_box_pack_start(GTK_BOX(e->gtk.imgbox), gray_scale(gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL));, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(e->gtk.globalbox), e->gtk.imgbox, 0, 0, 0);
 	g_signal_connect(e->gtk.window, "delete-event", G_CALLBACK(gtk_main_quit),
 	NULL);

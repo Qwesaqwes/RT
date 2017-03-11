@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:10:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/06 21:52:22 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/11 22:04:49 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ t_color		compute_ray(t_ray ray, t_scene s, t_values v)
 		{
 			no.normal = compute_normal_vec(no);
 			no.color = texture_color(no);
+			no.normal = bump_mapping(no);
 			color = compute_color(no, s, no.normal, ray.origin);
 			cv.cosI = -vector_dot(no.normal, no.origin.dir);
 			if (cv.cosI < 0)

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/09 19:11:20 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/12 00:28:14 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,12 @@ void		put_normal(t_vec3d *normal);
 
 
 t_color		texture_color(t_no no);
+int			map_value(float u, float v, GdkPixbuf *map);
+t_vec3d		bump_mapping(t_no no);
+void 		uv_polygone(t_no no, float *u, float *v, t_vec3d *rot_angle);
+void		uv_sphere(t_no no, float *u, float *v, t_vec3d *rot_angle);
 
+GdkPixbuf	*gray_scale(GdkPixbuf *old);
 
 
 t_list 	*init_test(void);
