@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/12 00:28:14 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/13 19:06:39 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,27 @@ t_matrix	rotationZ(float angle);
 t_vec3d		normalizevec(t_vec3d old);
 
 t_color		compute_color(t_no no, t_scene s, t_vec3d n, t_vec3d origin);
+float		dist_ip(t_obj obj, t_ray img_ray, t_ray ray);
+
 
 t_vec3d		vector_sub(t_vec3d a, t_vec3d b);
 float		vector_dot(t_vec3d a, t_vec3d b);
 t_vec3d		vector_fact(t_vec3d a, float k);
 t_vec3d		vector_add(t_vec3d a, t_vec3d b);
 t_vec3d		vector_cross(t_vec3d a, t_vec3d b);
+float		vector_length(t_vec3d a);
+
 
 t_color		color_add(t_color a, t_color b);
 t_color		color_mult(t_color a, t_color b);
 t_color		color_sub(t_color a, t_color b);
 t_color		color_fact(t_color a, float k);
+t_color		color_init(void);
+t_color		diffuse_color(t_no no, t_obj lum, float k);
+t_color		spec_color(t_obj obj, t_obj lum, float k);
+float		color_cmp(t_color a, t_color b);
+
+
 
 t_color		reflection(t_no no, t_scene s, t_vec3d n, t_values v);
 t_color		refraction(t_no no, t_scene s, t_vec3d n, t_values v);
@@ -120,6 +130,7 @@ int			put_dif_coe_obj(t_gtk *gtk, float *kd);
 int			put_spec_coe_obj(t_gtk *gtk, float *ks);
 int			put_i_light_obj(t_gtk *gtk, float *i);
 int			put_tr_obj(t_gtk *gtk, float *tr);
+int			put_info_tex(t_gtk *gtk, t_tex *tex);
 float 		stof (const char *s);
 void 		gtk_view_obj(GtkWidget *button, t_env *e);
 void 		view_delete_obj(int response, int clicked_del, t_env *e, GtkWidget *view);
@@ -147,17 +158,29 @@ const char	*get_selected_row(t_env *e, t_list 	*list);
 void 		init_modif_obj_e(t_gtk *gtk, const char *object, t_list **list);
 int			put_tex_obj(t_gtk *gtk, t_tex *texture);
 void		put_normal(t_vec3d *normal);
-
-
+void		merge_image(GdkPixbuf *buf, GdkPixbuf *buf1);
+t_rgb		get_color_pixel1(guchar *pixel, GdkPixbuf *buf, int line, int col);
+int			get_pos2(int line, int col, GdkPixbuf *buf);
+void		get_type(char *type, t_list *list, const char *object);
+GdkRGBA		*get_color(t_color *color);
+void		add_view_box(t_env *e);
+void		choose_file(t_env *e);
 
 
 t_color		texture_color(t_no no);
 int			map_value(float u, float v, GdkPixbuf *map);
+int			map_value_right(float u, float v, GdkPixbuf *map);
+int			map_value_down(float u, float v, GdkPixbuf *map);
 t_vec3d		bump_mapping(t_no no);
 void 		uv_polygone(t_no no, float *u, float *v, t_vec3d *rot_angle);
 void		uv_sphere(t_no no, float *u, float *v, t_vec3d *rot_angle);
-
 GdkPixbuf	*gray_scale(GdkPixbuf *old);
+t_color		perlin_deriv(t_no no);
+t_color		checker(t_no no);
+float		perlin_coef(float x, float y, float z);
+void		complete_vec(float a, float b, float c, t_vec3d *ret);
+t_matrix	axe_angle_to_matrix(float angle, t_vec3d axe);
+
 
 
 t_list 	*init_test(void);

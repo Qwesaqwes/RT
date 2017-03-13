@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:22:46 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/06 21:52:29 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/13 18:39:03 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ t_ray	set_ray(t_camera cam, t_vp vp, int i, int j)
 	tmp.x = vp.dist;
 	tmp2 = vector_add3(vector_fact(cam.vectorU, tmp.x), vector_fact(cam.vectorV, tmp.y), vector_fact(cam.vectorW, tmp.z));
 	ray.origin = vector_add(tmp2, cam.origin);
-	// ray.origin.x = tmp.x + cam.origin.x;
-	// ray.origin.y = tmp.y + cam.origin.y;
-	// ray.origin.z = tmp.z + cam.origin.z;
 	ray.origin.w = 1;
 	ray.dir = normalizevec(tmp2);
 	return (ray);
@@ -47,9 +44,6 @@ t_rgb	color_to_rgb(t_color old)
 {
 	t_rgb	new;
 
-	// new.red = (int)(old.red * 256);
-	// new.green = (int)(old.green * 256);
-	// new.blue = (int)(old.blue * 256);
 	new.red = old.red * 255;
 	new.green = old.green * 255;
 	new.blue = old.blue * 255;

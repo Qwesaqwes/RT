@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/03/11 21:59:49 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/03/13 20:44:31 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,43 +27,60 @@ SRC			=	compute_ray.c\
 				normalizevec.c\
 				pixelput.c\
 				raytracing.c\
-				sphere.c\
-				plane.c\
-				cylindre.c\
 				inver_matrix.c\
 				scale_matrix.c\
 				trans_matrix.c\
 				compute_normal_vec.c \
 				compute_color.c \
+				compute_color1.c \
 				reflection_refraction_functions.c\
-				cone.c\
-				triangle.c\
-				polygone.c\
-				face_cuting.c\
 				dist_to_figure.c\
-				texture_color.c\
-				bump_mapping.c\
-				gtk_options1.c\
-				gtk_add_obj1.c\
-				gtk_add_obj2.c\
-				gtk_add_obj3.c\
-				gtk_add_obj4.c\
-				gtk_add_obj5.c\
-				gtk_add_obj6.c\
-				gtk_add_obj8.c\
-				gtk_view_obj1.c\
-				gtk_delete_obj1.c\
-				gtk_modif_obj1.c\
-				gtk_modif_obj2.c\
-				gtk_choose_file.c\
-				gtk_effect1.c\
-				gtk_effect2.c\
-				gtk_effect3.c\
-				gtk_effect4.c\
-				gtk_effect5.c\
-				gtk_effect6.c\
-				gtk_effect7.c\
-				gtk_set_box.c
+				treat_colors.c\
+				treat_colors1.c\
+				treat_vector.c\
+				treat_vector1.c\
+				texture/texture_color.c\
+				texture/bump_mapping.c\
+				texture/bump_mapping1.c\
+				texture/bump_mapping2.c\
+				texture/procedural_mapping.c\
+				texture/texture_mapping.c\
+				texture/texture_mapping1.c\
+				texture/checker.c\
+				texture/perlin.c\
+				object/sphere.c\
+				object/plane.c\
+				object/cylindre.c\
+				object/cone.c\
+				object/triangle.c\
+				object/face_cuting.c\
+				object/polygone.c\
+				gtk/gtk_options1.c\
+				gtk/gtk_add_obj1.c\
+				gtk/gtk_add_obj2.c\
+				gtk/gtk_add_obj3.c\
+				gtk/gtk_add_obj4.c\
+				gtk/gtk_add_obj5.c\
+				gtk/gtk_add_obj6.c\
+				gtk/gtk_add_obj7.c\
+				gtk/gtk_add_obj8.c\
+				gtk/gtk_view_obj1.c\
+				gtk/gtk_delete_obj1.c\
+				gtk/gtk_modif_obj1.c\
+				gtk/gtk_modif_obj2.c\
+				gtk/gtk_modif_obj3.c\
+				gtk/gtk_choose_file.c\
+				gtk/gtk_effect1.c\
+				gtk/gtk_effect2.c\
+				gtk/gtk_effect3.c\
+				gtk/gtk_effect4.c\
+				gtk/gtk_effect5.c\
+				gtk/gtk_effect6.c\
+				gtk/gtk_effect6.1.c\
+				gtk/gtk_effect7.c\
+				gtk/gtk_set_box.c\
+				gtk/gtk_set_box2.c
+
 
 FLAGS		=	debug
 

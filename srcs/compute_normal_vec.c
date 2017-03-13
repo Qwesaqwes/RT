@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 11:56:33 by opandolf          #+#    #+#             */
-/*   Updated: 2017/02/27 17:39:59 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/13 19:19:20 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,6 @@ t_vec3d	compute_normal_vec(t_no no)
 		normal.z = 0;
 		normal.w = 1;
 	}
-	//calcul normal_vec (N = R * NI)
-	//normal = mult_matrix(rotationX(no.obj.transform.rot.x), normal);
-	//normal = mult_matrix(rotationY(no.obj.transform.rot.y), normal);
-	//normal = mult_matrix(rotationZ(no.obj.transform.rot.z), normal);
 	normal = normalizevec(normal);
 	return (normal);
 }
