@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:03 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/11 23:05:46 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/15 16:57:56 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int ac, char **av)
 	e.scene.refr_index = 1;
 	e.scene.obj = init_test();
 	e.scene.lum = init_test_lum();
+	e.scene.antialiasing = 1;
 	e.gtk.nb_effect = 0;
 	init_gtk(&e);
 	raytracing(&e);

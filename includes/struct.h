@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:47:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/11 22:00:18 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/15 17:12:50 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ typedef struct		s_texture
 {
 	int				texture;	// texture == 0 si no texture
 	int				bump;	// texture == 0 si no texture
+	int				transp;
 	t_color			tex_col1;
 	t_color			tex_col2;
 	t_color			tex_col3;
@@ -153,6 +154,7 @@ typedef struct		s_obj
 	t_tex			tex;
 	GdkPixbuf		*map_buf;
 	GdkPixbuf		*bump_buf;
+	GdkPixbuf		*transp_buf;
 }					t_obj;
 
 typedef struct		s_nearest_obj
@@ -164,6 +166,7 @@ typedef struct		s_nearest_obj
 	t_vec3d			normal;
 	t_face			*poly_face;
 	t_color			color;
+	float			t;
 }					t_no;
 
 typedef struct		s_calculated_values
@@ -195,6 +198,7 @@ typedef struct		s_scene
 	t_color			ambiant;
 	float			refr_index;
 	t_color			background;
+	int				antialiasing;
 }					t_scene;
 
 typedef struct		s_env

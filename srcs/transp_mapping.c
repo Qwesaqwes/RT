@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_vector1.c                                    :+:      :+:    :+:   */
+/*   transp_mapping.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/13 18:16:12 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/13 18:16:57 by jichen-m         ###   ########.fr       */
+/*   Created: 2017/03/15 17:01:21 by jichen-m          #+#    #+#             */
+/*   Updated: 2017/03/15 17:35:38 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_vec3d		vector_cross(t_vec3d a, t_vec3d b)
+float		transp_mapping(t_no no)
 {
-	t_vec3d		ret;
+	float u;
+	float v;
+	t_vec3d		rot_angle;
+	guchar		*pixel;
 
-	ret.x = a.y * b.z - a.z * b.y;
-	ret.y = a.z * b.x - a.x * b.z;
-	ret.z = a.x * b.y - a.y * b.x;
-	ret.w = 1;
-	return (ret);
+	if (no.obj.tex.transp == 0)
+		return (no.obj.t);
+	if (no.obj.type == 0)
+		uv_sphere(no, &u, &v, &rot_angle);
+	else
+		uv_polygone(no, &u, &v, &rot_angle);
+	pixel = gdk_pixbuf_get_pixels(no.obj.transp_buf);
+	return ((float)pixel[map_value(u, v, no.obj.transp_buf)] / 255.0f);
 }

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:06:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/13 15:58:13 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/15 22:49:44 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void	init_combo_box_effect(GtkWidget *n_effect)
 
 void	init_combo_box_anti(GtkWidget *n_antial)
 {
-	static char *anti[] = {"None", "2x AA", "4x AA", "8x AA", "16x AA"};
+	static char *anti[] = {"None", "2x AA", "3x AA", "4x AA"};
 	int			nb;
 
 	nb = 0;
-	while (nb < 5)
+	while (nb < 4)
 	{
 		gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(n_antial), anti[nb]);
 		nb++;
@@ -71,6 +71,7 @@ void	sec_top_box(t_env *e)
 	init_combo_box_effect(e->gtk.n_effect);
 	init_combo_box_anti(e->gtk.n_antial);
 	g_signal_connect(e->gtk.n_effect, "changed", G_CALLBACK(gtk_effect), e);
+	g_signal_connect(e->gtk.n_antial, "changed", G_CALLBACK(gtk_antial), e);
 	gtk_box_pack_start(GTK_BOX(e->gtk.stopbox), e->gtk.effect, 0, 0, 10);
 	gtk_box_pack_start(GTK_BOX(e->gtk.stopbox), e->gtk.n_effect,
 	FALSE, FALSE, 0);

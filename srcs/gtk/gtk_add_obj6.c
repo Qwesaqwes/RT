@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 19:14:08 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/13 16:01:38 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/15 22:44:49 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,36 @@ int		put_tex_obj(t_gtk *gtk, t_tex *tex)
 	if (active > -1)
 	{
 		if (active == 0)
+		{
 			tex->texture = 0;
+			tex->bump = 0;
+			tex->transp = 0;
+		}
 		else if (active == 1 || active == 2 || active == 3 || active == 4)
 		{
 			if (active == 1 || active == 2)
+			{
 				tex->texture = active == 1 ? 1 : 2;
+				tex->bump = 0;
+				tex->transp = 0;
+			}
 			else if (active == 3 || active == 4)
+			{
 				tex->texture = active == 3 ? 3 : 4;
+				tex->bump = 0;
+				tex->transp = 0;
+			}
 			if (put_info_tex(gtk, tex) == 1)
 				return (1);
 		}
 	}
 	else
+	{
 		tex->texture = 0;
+		tex->bump = 0;
+		tex->transp = 0;
+	}
+
 	return (0);
 }
 

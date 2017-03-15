@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/03/13 20:44:31 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/03/15 21:13:39 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,22 +32,11 @@ SRC			=	compute_ray.c\
 				trans_matrix.c\
 				compute_normal_vec.c \
 				compute_color.c \
-				compute_color1.c \
 				reflection_refraction_functions.c\
 				dist_to_figure.c\
-				treat_colors.c\
-				treat_colors1.c\
-				treat_vector.c\
-				treat_vector1.c\
-				texture/texture_color.c\
-				texture/bump_mapping.c\
-				texture/bump_mapping1.c\
-				texture/bump_mapping2.c\
-				texture/procedural_mapping.c\
-				texture/texture_mapping.c\
-				texture/texture_mapping1.c\
-				texture/checker.c\
-				texture/perlin.c\
+				texture_color.c\
+				bump_mapping.c\
+				transp_mapping.c\
 				object/sphere.c\
 				object/plane.c\
 				object/cylindre.c\
@@ -80,7 +69,6 @@ SRC			=	compute_ray.c\
 				gtk/gtk_effect7.c\
 				gtk/gtk_set_box.c\
 				gtk/gtk_set_box2.c
-
 
 FLAGS		=	debug
 
