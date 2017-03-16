@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/15 22:50:02 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/16 19:14:16 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ t_rgb		get_color_pixel(guchar *pixel, t_gtk *gtk, int line, int col);
 const char	*get_selected_row(t_env *e, t_list 	*list);
 void 		init_modif_obj_e(t_gtk *gtk, const char *object, t_list **list);
 int			put_tex_obj(t_gtk *gtk, t_tex *texture);
+// int			put_tex_obj(t_gtk *gtk, t_obj *obj, const char *object, t_list *l);
 void		put_normal(t_vec3d *normal);
 int			put_info_tex(t_gtk *gtk, t_tex *tex);
 void		get_type(char *type, t_list *list, const char *object);
@@ -157,6 +158,7 @@ int			get_pos2(int line, int col, GdkPixbuf *buf);
 void		add_view_box(t_env *e);
 void		choose_file(t_env *e);
 void		gtk_antial(GtkWidget *button, t_env *e);
+void		get_texture_bump_map(t_obj *new_obj, const char *obj, t_list *list);
 
 
 

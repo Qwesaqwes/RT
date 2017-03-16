@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 16:19:34 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/13 15:36:11 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/16 19:18:47 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int		update_obj(t_env *e, const char *object)
 		get_normal(&new_obj.normal, e->scene.obj, object);
 	if (put_tex_obj(&e->gtk, &new_obj.tex) == 1)
 		return (1);
+	if (new_obj.tex.texture == 0)
+		get_texture_bump_map(&new_obj, object, e->scene.obj);
 	ft_list_remove_if(&e->scene.obj, object, &ft_strcmp);
 	if (update_obj1(e, &new_obj) == 1)
 		return (1);

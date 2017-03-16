@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 21:59:41 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/13 14:59:43 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/16 19:47:27 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ int		limit_color(int col)
 
 void	cartoon_effect1(t_gtk *gtk, GdkPixbuf *buf, int line, int col)
 {
-	guchar	*pixel;
+	guchar	*pix;
 	int		sum;
 	t_rgb	color;
 
-	pixel = gdk_pixbuf_get_pixels(buf);
-	color = get_color_pixel(pixel, gtk, line, col);
-	sum = abs(xgrad(pixel, line, col, gtk)) + abs(ygrad(pixel, line, col, gtk));
-	sum = 255 - sum;
+	pix = gdk_pixbuf_get_pixels(buf);
+	color = get_color_pixel(pix, gtk, line, col);
+	sum = 255 - sqrt(xgrad(pix, line, col, gtk) * xgrad(pix, line, col, gtk) +
+	ygrad(pix, line, col, gtk) * ygrad(pix, line, col, gtk));
 	sum = sum > 255 ? 255 : sum;
 	sum = sum < 0 ? 0 : sum;
 	if (sum > 100)
@@ -47,15 +47,15 @@ void	cartoon_effect1(t_gtk *gtk, GdkPixbuf *buf, int line, int col)
 		color.red = limit_color(color.red);
 		color.green = limit_color(color.green);
 		color.blue = limit_color(color.blue);
-		pixel[get_pos(line, col, gtk)] = color.red;
-		pixel[get_pos(line, col, gtk) + 1] = color.green;
-		pixel[get_pos(line, col, gtk) + 2] = color.blue;
+		pix[get_pos(line, col, gtk)] = color.red;
+		pix[get_pos(line, col, gtk) + 1] = color.green;
+		pix[get_pos(line, col, gtk) + 2] = color.blue;
 	}
 	else
 	{
-		pixel[get_pos(line, col, gtk)] = sum;
-		pixel[get_pos(line, col, gtk) + 1] = sum;
-		pixel[get_pos(line, col, gtk) + 2] = sum;
+		pix[get_pos(line, col, gtk)] = sum;
+		pix[get_pos(line, col, gtk) + 1] = sum;
+		pix[get_pos(line, col, gtk) + 2] = sum;
 	}
 }
 
@@ -65,12 +65,12 @@ void	cartoon_effect(t_env *e)
 	int			line;
 	int			col;
 
-	line = 0;
+	line = -1;
 	buf = gdk_pixbuf_copy(e->gtk.buffer);
-	while (++line < H - 1)
+	while (++line < H)
 	{
-		col = 0;
-		while (++col < W - 1)
+		col = -1;
+		while (++col < W)
 			cartoon_effect1(&e->gtk, buf, line, col);
 	}
 	g_signal_connect(e->gtk.save, "clicked", G_CALLBACK(gtk_s_img),

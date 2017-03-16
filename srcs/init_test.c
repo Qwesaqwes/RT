@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/15 22:47:22 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/16 19:41:21 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_list 	*init_test(void)
 	// t_obj	obj7;
 	//t_obj	obj8;*/
 	// t_obj	obj9;
-	// t_obj	obj10;
+	t_obj	obj10;
 
 	list = NULL;
 	obj1.id = 0;
@@ -101,6 +101,7 @@ t_list 	*init_test(void)
 	obj2.tex.tex_col3.green = 1;
 	obj2.tex.tex_col3.blue = 1;
 	obj2.tex.square = 0.2;
+	// obj2.bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
 	ft_lstaddend(&list, ft_lstnew(&obj2, sizeof(t_obj)));
 
 	obj3.id = 2;
@@ -111,8 +112,8 @@ t_list 	*init_test(void)
 	obj3.transform.scale.w = 1;
 	obj3.type = 0;
 	obj3.transform.transl.x = 10;
-	obj3.transform.transl.y = -1;
-	obj3.transform.transl.z = 1;
+	obj3.transform.transl.y = 1;
+	obj3.transform.transl.z = 3;
 	obj3.transform.transl.w = 1;
 	obj3.transform.rot.x = 0;
 	obj3.transform.rot.y = 0;
@@ -360,149 +361,149 @@ t_list 	*init_test(void)
 	// obj9.refr_index = 1.33;
 	// ft_lstaddend(&list, ft_lstnew(&obj9, sizeof(t_obj)));
 
-	// obj10.id = 7;
-	// obj10.name = "triangle1";
-	// obj10.transform.scale.x = 1;
-	// obj10.transform.scale.y = 1;
-	// obj10.transform.scale.z = 1;
-	// obj10.transform.scale.w = 1;
-	// obj10.type = 5; // triangle
- // 	obj10.transform.transl.x = 15;
-	// obj10.transform.transl.y = 1;
-	// obj10.transform.transl.z = 1;
-	// obj10.transform.transl.w = 1;
-	// obj10.transform.rot.x = 0;
-	// obj10.transform.rot.y = 0;
-	// obj10.transform.rot.z = 0;
-	// obj10.transform.rot.w = 1;
-	// obj10.faces = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->vertex->coord = (t_vec3d){ 15, 0, 3, 1 };
-	// obj10.faces->vertex->next->coord = (t_vec3d){ 15, -3, 0, 1 };
-	// obj10.faces->vertex->next->next->coord = (t_vec3d){ 15, -3, 3, 1 };
-	// obj10.faces->vertex->next->next->next = NULL;
-	// obj10.faces->normal = (t_vec3d){-1, 0, 0, 1};
-	//
-	// obj10.faces->next = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->vertex->coord = (t_vec3d){ 15, 0, 3, 1 };
-	// obj10.faces->next->vertex->next->coord = (t_vec3d){ 15, 0, 0, 1 };
-	// obj10.faces->next->vertex->next->next->coord = (t_vec3d){ 15, -3, 0, 1 };
-	// obj10.faces->next->vertex->next->next->next = NULL;
-	// obj10.faces->next->normal = (t_vec3d){-1, 0, 0, 1};
+	obj10.id = 7;
+	obj10.name = "triangle1";
+	obj10.transform.scale.x = 1;
+	obj10.transform.scale.y = 1;
+	obj10.transform.scale.z = 1;
+	obj10.transform.scale.w = 1;
+	obj10.type = 5; // triangle
+ 	obj10.transform.transl.x = 15;
+	obj10.transform.transl.y = 1;
+	obj10.transform.transl.z = 1;
+	obj10.transform.transl.w = 1;
+	obj10.transform.rot.x = 0;
+	obj10.transform.rot.y = 0;
+	obj10.transform.rot.z = 0;
+	obj10.transform.rot.w = 1;
+	obj10.faces = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->vertex->coord = (t_vec3d){ 15, 0, 3, 1 };
+	obj10.faces->vertex->next->coord = (t_vec3d){ 15, -3, 0, 1 };
+	obj10.faces->vertex->next->next->coord = (t_vec3d){ 15, -3, 3, 1 };
+	obj10.faces->vertex->next->next->next = NULL;
+	obj10.faces->normal = (t_vec3d){-1, 0, 0, 1};
 
-	// obj10.faces->next->next = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->vertex->coord = (t_vec3d){ 15, 0, 0, 1 };
-	// obj10.faces->next->next->vertex->next->coord = (t_vec3d){ 18, 0, 3, 1 };
-	// obj10.faces->next->next->vertex->next->next->coord = (t_vec3d){ 18, 0, 0, 1 };
-	// obj10.faces->next->next->vertex->next->next->next = NULL;
-	// obj10.faces->next->next->normal = (t_vec3d){0, 1, 0, 1};
-	//
-	// obj10.faces->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->vertex->coord = (t_vec3d){ 15, 0, 0, 1 };
-	// obj10.faces->next->next->next->vertex->next->coord = (t_vec3d){ 15, 0, 3, 1 };
-	// obj10.faces->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, 0, 3, 1 };
-	// obj10.faces->next->next->next->vertex->next->next->next = NULL;
-	// obj10.faces->next->next->next->normal = (t_vec3d){0, 1, 0, 1};
+	obj10.faces->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->vertex->coord = (t_vec3d){ 15, 0, 3, 1 };
+	obj10.faces->next->vertex->next->coord = (t_vec3d){ 15, 0, 0, 1 };
+	obj10.faces->next->vertex->next->next->coord = (t_vec3d){ 15, -3, 0, 1 };
+	obj10.faces->next->vertex->next->next->next = NULL;
+	obj10.faces->next->normal = (t_vec3d){-1, 0, 0, 1};
 
+	obj10.faces->next->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->vertex->coord = (t_vec3d){ 15, 0, 0, 1 };
+	obj10.faces->next->next->vertex->next->coord = (t_vec3d){ 18, 0, 3, 1 };
+	obj10.faces->next->next->vertex->next->next->coord = (t_vec3d){ 18, 0, 0, 1 };
+	obj10.faces->next->next->vertex->next->next->next = NULL;
+	obj10.faces->next->next->normal = (t_vec3d){0, 1, 0, 1};
 
-	// obj10.faces->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->vertex->coord = (t_vec3d){ 15, 0, 0, 1 };
-	// obj10.faces->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, 0, 0, 1 };
-	// obj10.faces->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 15, -3, 0, 1 };
-	// obj10.faces->next->next->next->next->vertex->next->next->next = NULL;
-	// obj10.faces->next->next->next->next->normal = (t_vec3d){0, 0, -1, 1};
-	//
-	//
-	// obj10.faces->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->vertex->coord = (t_vec3d){ 15, -3, 0, 1 };
-	// obj10.faces->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, 0, 0, 1 };
-	// obj10.faces->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, -3, 0, 1 };
-	// obj10.faces->next->next->next->next->next->vertex->next->next->next = NULL;
-	// obj10.faces->next->next->next->next->next->normal = (t_vec3d){0, 0,-1, 1};
+	obj10.faces->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->vertex->coord = (t_vec3d){ 15, 0, 0, 1 };
+	obj10.faces->next->next->next->vertex->next->coord = (t_vec3d){ 15, 0, 3, 1 };
+	obj10.faces->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, 0, 3, 1 };
+	obj10.faces->next->next->next->vertex->next->next->next = NULL;
+	obj10.faces->next->next->next->normal = (t_vec3d){0, 1, 0, 1};
 
 
-	// obj10.faces->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->vertex->coord = (t_vec3d){ 15, 0, 3, 1 };
-	// obj10.faces->next->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 15, -3, 3, 1 };
-	// obj10.faces->next->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, 0, 3, 1 };
-	// obj10.faces->next->next->next->next->next->next->vertex->next->next->next = NULL;
-	// obj10.faces->next->next->next->next->next->next->normal = (t_vec3d){0, 0, 1, 1};
-	//
-	//
-	// obj10.faces->next->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->next->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->vertex->coord = (t_vec3d){ 15, -3, 3, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, -3, 3, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, 0, 3, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->vertex->next->next->next = NULL;
-	// obj10.faces->next->next->next->next->next->next->next->normal = (t_vec3d){0, 0, 1, 1};
+	obj10.faces->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->vertex->coord = (t_vec3d){ 15, 0, 0, 1 };
+	obj10.faces->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, 0, 0, 1 };
+	obj10.faces->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 15, -3, 0, 1 };
+	obj10.faces->next->next->next->next->vertex->next->next->next = NULL;
+	obj10.faces->next->next->next->next->normal = (t_vec3d){0, 0, -1, 1};
 
 
-	// obj10.faces->next->next->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->next->next->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->next->vertex->coord = (t_vec3d){ 18, 0, 0, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, -3, 3, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, 0, 3, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->next->vertex->next->next->next = NULL;
-	// obj10.faces->next->next->next->next->next->next->next->next->normal = (t_vec3d){1, 0, 0, 1};
-	//
-	//
-	// obj10.faces->next->next->next->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->next->next->next->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->next->next->vertex->coord = (t_vec3d){ 18, 0, 0, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, -3, 0, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, -3, 3, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->next->next->vertex->next->next->next = NULL;
-	// obj10.faces->next->next->next->next->next->next->next->next->next->normal = (t_vec3d){1, 0, 0, 1};
+	obj10.faces->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->vertex->coord = (t_vec3d){ 15, -3, 0, 1 };
+	obj10.faces->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, 0, 0, 1 };
+	obj10.faces->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, -3, 0, 1 };
+	obj10.faces->next->next->next->next->next->vertex->next->next->next = NULL;
+	obj10.faces->next->next->next->next->next->normal = (t_vec3d){0, 0,-1, 1};
 
 
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex->coord = (t_vec3d){ 15, -3, 0, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, -3, 0, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 15, -3, 3, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex->next->next->next = NULL;
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->normal = (t_vec3d){0, -1, 0, 1};
-	//
-	//
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex->coord = (t_vec3d){ 15, -3, 3, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, -3, 0, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, -3, 3, 1 };
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex->next->next->next = NULL;
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->next->normal = (t_vec3d){0, -1, 0, 1};
-	// obj10.faces->next->next->next->next->next->next->next->next->next->next->next->next = NULL;
+	obj10.faces->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->vertex->coord = (t_vec3d){ 15, 0, 3, 1 };
+	obj10.faces->next->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 15, -3, 3, 1 };
+	obj10.faces->next->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, 0, 3, 1 };
+	obj10.faces->next->next->next->next->next->next->vertex->next->next->next = NULL;
+	obj10.faces->next->next->next->next->next->next->normal = (t_vec3d){0, 0, 1, 1};
+
+
+	obj10.faces->next->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->vertex->coord = (t_vec3d){ 15, -3, 3, 1 };
+	obj10.faces->next->next->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, -3, 3, 1 };
+	obj10.faces->next->next->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, 0, 3, 1 };
+	obj10.faces->next->next->next->next->next->next->next->vertex->next->next->next = NULL;
+	obj10.faces->next->next->next->next->next->next->next->normal = (t_vec3d){0, 0, 1, 1};
+
+
+	obj10.faces->next->next->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->next->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->next->vertex->coord = (t_vec3d){ 18, 0, 0, 1 };
+	obj10.faces->next->next->next->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, -3, 3, 1 };
+	obj10.faces->next->next->next->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, 0, 3, 1 };
+	obj10.faces->next->next->next->next->next->next->next->next->vertex->next->next->next = NULL;
+	obj10.faces->next->next->next->next->next->next->next->next->normal = (t_vec3d){1, 0, 0, 1};
+
+
+	obj10.faces->next->next->next->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->next->next->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->next->next->vertex->coord = (t_vec3d){ 18, 0, 0, 1 };
+	obj10.faces->next->next->next->next->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, -3, 0, 1 };
+	obj10.faces->next->next->next->next->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, -3, 3, 1 };
+	obj10.faces->next->next->next->next->next->next->next->next->next->vertex->next->next->next = NULL;
+	obj10.faces->next->next->next->next->next->next->next->next->next->normal = (t_vec3d){1, 0, 0, 1};
+
+
+	obj10.faces->next->next->next->next->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex->coord = (t_vec3d){ 15, -3, 0, 1 };
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, -3, 0, 1 };
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 15, -3, 3, 1 };
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->vertex->next->next->next = NULL;
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->normal = (t_vec3d){0, -1, 0, 1};
+
+
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->next = (t_face*)ft_memalloc(sizeof(t_face));
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex->next->next = (t_vertex*)ft_memalloc(sizeof(t_vertex));
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex->coord = (t_vec3d){ 15, -3, 3, 1 };
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex->next->coord = (t_vec3d){ 18, -3, 0, 1 };
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex->next->next->coord = (t_vec3d){ 18, -3, 3, 1 };
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->next->vertex->next->next->next = NULL;
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->next->normal = (t_vec3d){0, -1, 0, 1};
+	obj10.faces->next->next->next->next->next->next->next->next->next->next->next->next = NULL;
 
 	// obj10.faces = (t_face*)ft_memalloc(sizeof(t_face));
 	// obj10.faces->vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
@@ -526,37 +527,37 @@ t_list 	*init_test(void)
 	// obj10.faces->next->normal = (t_vec3d){0, -1, 0, 1};
 	// obj10.faces->next->next = NULL;
 
-	// obj10.normal = (t_vec3d){-1, 0, 0, 1};
-	// obj10.color.red = 0.5;
-	// obj10.color.green = 0.5;
-	// obj10.color.blue = 0.5;
-	// obj10.ka = 0.2;
-	// obj10.kd = 0.9;
-	// obj10.ks = 0;
-	// obj10.i = 0;
-	// obj10.t = 1;
-	// obj10.shininess = 50;
-	// obj10.refr_index = 1;
-	// obj10.tex.texture = 5;
-	// obj10.tex.bump = 1;
-	// obj10.tex.transp = 1;
-	// obj10.tex.tex_col1.red = 1;
-	// obj10.tex.tex_col1.green = 1;
-	// obj10.tex.tex_col1.blue = 1;
-	// obj10.tex.tex_col2.red = 0;
-	// obj10.tex.tex_col2.green = 0;
-	// obj10.tex.tex_col2.blue = 0;
-	// obj10.tex.tex_col3.red = 0.8;
-	// obj10.tex.tex_col3.green = 0.8;
-	// obj10.tex.tex_col3.blue = 0.8;
-	// obj10.tex.square = 0.2;
-	//
-	// obj10.map_buf = gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL);
-	// obj10.bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/golf.jpg", NULL));
-	// obj10.transp_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
-	// // printf("coord x: %f, y: %f, z: %f\n\n", obj10.faces->next->vertex->coord.x,
-	// // obj10.faces->next->vertex->coord.y, obj10.faces->next->vertex->coord.z);
-	// ft_lstaddend(&list, ft_lstnew(&obj10, sizeof(t_obj)));
+	obj10.normal = (t_vec3d){-1, 0, 0, 1};
+	obj10.color.red = 0.5;
+	obj10.color.green = 0.5;
+	obj10.color.blue = 0.5;
+	obj10.ka = 0.2;
+	obj10.kd = 0.9;
+	obj10.ks = 0;
+	obj10.i = 0;
+	obj10.t = 0;
+	obj10.shininess = 50;
+	obj10.refr_index = 1;
+	obj10.tex.texture = 5;
+	obj10.tex.bump = 1;
+	obj10.tex.transp = 0;
+	obj10.tex.tex_col1.red = 1;
+	obj10.tex.tex_col1.green = 1;
+	obj10.tex.tex_col1.blue = 1;
+	obj10.tex.tex_col2.red = 0;
+	obj10.tex.tex_col2.green = 0;
+	obj10.tex.tex_col2.blue = 0;
+	obj10.tex.tex_col3.red = 0.8;
+	obj10.tex.tex_col3.green = 0.8;
+	obj10.tex.tex_col3.blue = 0.8;
+	obj10.tex.square = 0.2;
+
+	obj10.map_buf = gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL);
+	obj10.bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/golf.jpg", NULL));
+	obj10.transp_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
+	// printf("coord x: %f, y: %f, z: %f\n\n", obj10.faces->next->vertex->coord.x,
+	// obj10.faces->next->vertex->coord.y, obj10.faces->next->vertex->coord.z);
+	ft_lstaddend(&list, ft_lstnew(&obj10, sizeof(t_obj)));
 	return (list);
 }
 

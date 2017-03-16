@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 19:14:08 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/15 22:44:49 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/16 19:44:47 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int		put_tex_obj(t_gtk *gtk, t_tex *tex)
 		tex->bump = 0;
 		tex->transp = 0;
 	}
-
 	return (0);
 }
 
