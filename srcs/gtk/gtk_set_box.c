@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:06:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/15 22:49:44 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/17 23:08:26 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,30 @@
 
 void	top_box(t_env *e)
 {
-	GtkWidget *image;
+	GtkWidget	*reset;
 
 	e->gtk.vbox = gtk_box_new(0, 0);
 	e->gtk.zoom = gtk_button_new();
 	e->gtk.dezoom = gtk_button_new();
 	e->gtk.save = gtk_button_new();
-	image = gtk_image_new_from_file("./images/zoom1.png");
-	gtk_button_set_image(GTK_BUTTON(e->gtk.zoom), image);
-	image = gtk_image_new_from_file("./images/unzoom.png");
-	gtk_button_set_image(GTK_BUTTON(e->gtk.dezoom), image);
-	image = gtk_image_new_from_file("./images/save.png");
-	gtk_button_set_image(GTK_BUTTON(e->gtk.save), image);
+	reset = gtk_button_new();
+	gtk_button_set_image(GTK_BUTTON(reset),
+	gtk_image_new_from_file("./images/reset1.png"));
+	gtk_button_set_image(GTK_BUTTON(e->gtk.zoom),
+	gtk_image_new_from_file("./images/zoom1.png"));
+	gtk_button_set_image(GTK_BUTTON(e->gtk.dezoom),
+	gtk_image_new_from_file("./images/unzoom.png"));
+	gtk_button_set_image(GTK_BUTTON(e->gtk.save),
+	gtk_image_new_from_file("./images/save.png"));
+	g_signal_connect(reset, "clicked", G_CALLBACK(gtk_reset_cam), e);
 	g_signal_connect(e->gtk.zoom, "clicked", G_CALLBACK(gtk_zoom), e);
 	g_signal_connect(e->gtk.dezoom, "clicked", G_CALLBACK(gtk_dezoom), e);
 	gtk_box_pack_start(GTK_BOX(e->gtk.vbox), e->gtk.zoom, FALSE, FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(e->gtk.vbox), e->gtk.dezoom, FALSE, FALSE, 0);
+	movement_camera(e);
+	rot_camera(e);
 	gtk_box_pack_end(GTK_BOX(e->gtk.vbox), e->gtk.save, FALSE, FALSE, 0);
+	gtk_box_pack_end(GTK_BOX(e->gtk.vbox), reset, FALSE, FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(e->gtk.globalbox), e->gtk.vbox, 0, 0, 0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/16 19:41:21 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/17 23:08:55 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ t_list 	*init_test(void)
 	obj1.map_buf = gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL);
 	obj1.bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
 	obj1.transp_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
-
 	ft_lstaddend(&list, ft_lstnew(&obj1, sizeof(t_obj)));
 
 	obj2.id = 1;

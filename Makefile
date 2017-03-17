@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/03/15 21:13:39 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/03/17 22:35:01 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,10 @@ SRC			=	compute_ray.c\
 				gtk/gtk_effect6.1.c\
 				gtk/gtk_effect7.c\
 				gtk/gtk_set_box.c\
-				gtk/gtk_set_box2.c
+				gtk/gtk_set_box2.c\
+				gtk/gtk_cam_movement.c\
+				gtk/gtk_cam_movement1.c\
+				gtk/gtk_cam_rot.c
 
 FLAGS		=	debug
 

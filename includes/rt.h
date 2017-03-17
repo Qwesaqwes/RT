@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/16 19:14:16 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/17 23:06:52 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,11 @@ void		add_view_box(t_env *e);
 void		choose_file(t_env *e);
 void		gtk_antial(GtkWidget *button, t_env *e);
 void		get_texture_bump_map(t_obj *new_obj, const char *obj, t_list *list);
+
+void	movement_camera(t_env *e);
+void	movement_camera1(t_env *e);
+void	gtk_reset_cam(GtkWidget *button, t_env *e);
+void	rot_camera(t_env *e);
 
 
 
