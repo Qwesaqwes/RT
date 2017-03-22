@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:36:48 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/27 18:52:24 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/22 21:39:03 by dsusheno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 		if (obj.type == 0)	//si obj = sphere
 		{
 			img_ray = imaginary_ray(ray, obj.transform);
-			dist = sphere_dist(img_ray);
+			dist = sphere_dist(img_ray, obj);
 		}
 		if (obj.type == 1)	//si obj = cylindre
 		{
 			img_ray = imaginary_ray(ray, obj.transform);
-			dist = cylindre_dist(img_ray);
+			dist = cylindre_dist(img_ray, obj);
 		}
 		if (obj.type == 2)	//si obj = plane
 		{
@@ -106,7 +106,7 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 		if (obj.type == 3)	//si obj = cone
 		{
 			img_ray = imaginary_ray(ray, obj.transform);
-			dist = cone_dist(img_ray);
+			dist = cone_dist(img_ray, obj);
 		}
 		if (obj.type == 4)
 			dist = triangle_dist(ray, *obj.faces);
@@ -114,6 +114,10 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 		{
 			poly = polygone_dist(ray, obj);
 			dist = poly.dist;
+		}
+		if (obj.type == 7)
+		{
+			dist = circle_dist(ray, obj);
 		}
 		if (dist > SHADOW_BIAS)
 		{

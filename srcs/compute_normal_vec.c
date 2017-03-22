@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 11:56:33 by opandolf          #+#    #+#             */
-/*   Updated: 2017/02/27 17:39:59 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/19 19:34:11 by dsusheno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_vec3d	compute_normal_vec(t_no no)
 		normal = sphere_normal_vec(no.ip, no.obj.transform.transl);
 	else if (no.obj.type == 1)
 		normal = cylindre_normal_vec(no);
-	else if (no.obj.type == 2)
+	else if (no.obj.type == 2 || no.obj.type == 7)
 		normal = rota_vect(no.obj.normal, no.obj.transform.rot);
 	else if (no.obj.type == 3)
 		normal = cone_normal_vec(no);

@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 12:32:03 by opandolf          #+#    #+#             */
-/*   Updated: 2017/03/15 21:22:53 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/22 21:39:15 by dsusheno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,33 +190,40 @@ t_color			get_intersection_obj(t_list *list, t_obj lum, t_no no)
 	{
 		obj = *(t_obj*)tmp->content;
 		img_ray = imaginary_ray(ray, obj.transform);
-		if (obj.type == 0)
+		if (obj.id != no.obj.id)
 		{
-			dist = sphere_dist(img_ray);
+			if (obj.type == 0)
+			{
+				dist = sphere_dist(img_ray, obj);
+			}
+			if (obj.type == 1)
+			{
+				dist = cylindre_dist(img_ray, obj);
+			}
+			if (obj.type == 2)
+			{
+				dist = plane_dist(obj, ray);
+			}
+			if (obj.type == 3)
+			{
+				dist = cone_dist(img_ray, obj);
+			}
+			if (obj.type == 4)
+				dist = triangle_dist(ray, *obj.faces);
+			if 	(obj.type == 5 || obj.type == 6)
+			{
+				poly = polygone_dist(ray, obj);
+				dist = poly.dist;
+				// if (dist > 0)
+				// 	printf("dist: %f, dist_lum: %f\n", dist, dist_lum);
+			}
+			if (obj.type == 7)
+			{
+				dist = circle_dist(ray, obj);
+			}
+			if (dist > SHADOW_BIAS && dist < dist_lum)
+				ret = color_fact(ret, obj.t);
 		}
-		if (obj.type == 1)
-		{
-			dist = cylindre_dist(img_ray);
-		}
-		if (obj.type == 2)
-		{
-			dist = plane_dist(obj, ray);
-		}
-		if (obj.type == 3)
-		{
-			dist = cone_dist(img_ray);
-		}
-		if (obj.type == 4)
-			dist = triangle_dist(ray, *obj.faces);
-		if 	(obj.type == 5 || obj.type == 6)
-		{
-			poly = polygone_dist(ray, obj);
-			dist = poly.dist;
-			// if (dist > 0)
-			// 	printf("dist: %f, dist_lum: %f\n", dist, dist_lum);
-		}
-		if (dist > SHADOW_BIAS && dist < dist_lum)
-			ret = color_fact(ret, obj.t);
 		tmp = tmp->next;
 	}
 	return (ret);

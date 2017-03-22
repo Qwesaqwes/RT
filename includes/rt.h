@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/17 23:06:52 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/22 21:38:48 by dsusheno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define W 900
 # define ESC 53
 # define MAX_DEPTH 3
-# define SHADOW_BIAS 0.0001
+# define SHADOW_BIAS 0.001
 # define NB_THREAD 8
 
 t_color		compute_ray(t_ray ray, t_scene s, t_values v);
@@ -39,16 +39,19 @@ t_vec3d		rota_vect(t_vec3d old, t_vec3d rot);
 int			expose_hook(t_env *e);
 int			key_release(int keycode, t_env *e);
 void 		ft_pixel_put(int i, int j, t_rgb color, t_env e);
-float		compute_solution(double a, double b, double d);
-float		sphere_dist(t_ray r);
-t_vec3d	sphere_normal_vec(t_vec3d ip, t_vec3d t);
+float		compute_solution(t_dist dist, t_ray r, t_obj obj);
+float		sphere_dist(t_ray r, t_obj obj);
+t_vec3d		sphere_normal_vec(t_vec3d ip, t_vec3d t);
 t_vec3d		cylindre_normal_vec(t_no no);
-float		cylindre_dist(t_ray r);
+float		cylindre_dist(t_ray r, t_obj obj);
 float		plane_dist(t_obj obj, t_ray r);
-float		cone_dist(t_ray r);
+float		cone_dist(t_ray r, t_obj obj);
+float		circle_dist(t_ray ray, t_obj obj);
 t_vec3d		set_inter_point(float dist, t_ray ray);
 t_pret		polygone_dist(t_ray ray, t_obj obj);
 float		triangle_dist(t_ray ray, t_face obj);
+float 		t1_search(t_dist dist, t_obj obj, t_ray r);
+float 		t2_search(t_dist dist, t_obj obj, t_ray r);
 
 float    	plane_dist2(t_face obj, t_ray r);
 

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:47:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/15 17:12:50 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/21 21:47:50 by dsusheno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,35 @@ typedef struct		s_vec3d
 	float			z;
 	float			w;
 }					t_vec3d;
+
+typedef struct 		s_dist
+{
+	float			a;
+	float			b;
+	float			c;
+	float			d;
+}					t_dist;
+
+typedef struct		s_exist
+{
+	int 			x_min;
+	int 			x_max;
+	int				y_min;
+	int				y_max;
+	int				z_min;
+	int				z_max;
+}					t_exist;
+
+typedef struct		s_limit
+{
+	t_exist			exist;
+	float			x_min;
+	float			x_max;
+	float			y_min;
+	float			y_max;
+	float			z_min;
+	float			z_max;
+}					t_limit;
 
 typedef struct		s_camera
 {
@@ -152,6 +181,7 @@ typedef struct		s_obj
 	t_vec3d			normal;
 	t_face			*faces;
 	t_tex			tex;
+	t_limit			limit;
 	GdkPixbuf		*map_buf;
 	GdkPixbuf		*bump_buf;
 	GdkPixbuf		*transp_buf;
@@ -191,6 +221,7 @@ typedef	struct		s_values
 	t_list			**refr_index;
 	char			enter;
 }					t_values;
+
 typedef struct		s_scene
 {
 	t_list			*obj;

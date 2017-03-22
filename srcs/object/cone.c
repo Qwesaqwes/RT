@@ -6,27 +6,26 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:48:35 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/13 16:04:09 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/22 21:34:24 by dsusheno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-float		cone_dist(t_ray r)
+float	cone_dist(t_ray r, t_obj obj)
 {
-	double	a;
-	double	b;
-	double	c;
-	double	d;
+	t_dist		dist;
+	double t;
 
-	a = r.dir.x * r.dir.x + r.dir.y * r.dir.y - r.dir.z * r.dir.z;
-	b = 2 * (r.origin.x * r.dir.x) + 2 * (r.origin.y * r.dir.y) - 2 *
-	(r.origin.z * r.dir.z);
-	c = (r.origin.x * r.origin.x) + (r.origin.y * r.origin.y) -
-	(r.origin.z * r.origin.z);
-	d = (b * b) - (4 * a * c);
-	if (d >= 0)
-		return (compute_solution(a, b, d));
+	dist.a = r.dir.x * r.dir.x + r.dir.y * r.dir.y - r.dir.z * r.dir.z;
+	dist.b = 2 * (r.origin.x * r.dir.x) + 2 * (r.origin.y * r.dir.y) - 2 * (r.origin.z * r.dir.z);
+	dist.c = (r.origin.x * r.origin.x) + (r.origin.y * r.origin.y) - (r.origin.z * r.origin.z);
+	dist.d = (dist.b * dist.b) - (4 * dist.a * dist.c);
+	if (dist.d >= 0)
+	{
+		t = compute_solution(dist, r, obj);
+			return (t);
+	}
 	else
 		return (-1);
 }
