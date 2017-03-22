@@ -44,6 +44,7 @@ SRC			=	compute_ray.c\
 				object/triangle.c\
 				object/face_cuting.c\
 				object/polygone.c\
+				object/circle.c\
 				gtk/gtk_options1.c\
 				gtk/gtk_add_obj1.c\
 				gtk/gtk_add_obj2.c\
