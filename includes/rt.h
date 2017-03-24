@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/22 21:38:48 by dsusheno         ###   ########.fr       */
+/*   Updated: 2017/03/24 15:52:03 by dsusheno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int			get_nearest_obj(t_ray ray, t_list *list, t_no *no);
 t_vec3d		rota_vect(t_vec3d old, t_vec3d rot);
 int			expose_hook(t_env *e);
 int			key_release(int keycode, t_env *e);
-void 		ft_pixel_put(int i, int j, t_rgb color, t_env e);
+void		ft_pixel_put(int i, int j, t_rgb color, t_env e);
 float		compute_solution(t_dist dist, t_ray r, t_obj obj);
 float		sphere_dist(t_ray r, t_obj obj);
 t_vec3d		sphere_normal_vec(t_vec3d ip, t_vec3d t);
@@ -50,16 +50,16 @@ float		circle_dist(t_ray ray, t_obj obj);
 t_vec3d		set_inter_point(float dist, t_ray ray);
 t_pret		polygone_dist(t_ray ray, t_obj obj);
 float		triangle_dist(t_ray ray, t_face obj);
-float 		t1_search(t_dist dist, t_obj obj, t_ray r);
-float 		t2_search(t_dist dist, t_obj obj, t_ray r);
+float		t1_search(t_dist dist, t_obj obj, t_ray r);
+float		t2_search(t_dist dist, t_obj obj, t_ray r);
 
-float    	plane_dist2(t_face obj, t_ray r);
+float		plane_dist2(t_face obj, t_ray r);
 
 
 t_vec3d		cone_normal_vec(t_no no);
 
-void 		init_vp(t_vp *vp);
-void 		init_cam(t_camera *cam);
+void		init_vp(t_vp *vp);
+void		init_cam(t_camera *cam);
 void		raytracing(t_env *e);
 t_matrix	scale_matrix(t_vec3d center);
 t_matrix	trans_matrix(t_vec3d center);
@@ -102,16 +102,16 @@ void		modify_refr_list(t_cv *cv, t_list **list);
 void		ft_lstdelfirst(t_list **alst);
 
 
-void 		gtk_s_img(GtkWidget	*button, gpointer buffer);
-void 		gtk_zoom(GtkWidget *button, t_env *e);
-void 		gtk_dezoom(GtkWidget *button, t_env *e);
-void 		gtk_add_obj(t_env *e, int resp);
-void 		put_box_inside_gbox(t_gtk	*gtk, int resp);
-void 		put_label_inside_box(t_gtk *gtk, int resp);
-void 		init_gtk(t_env *e);
+void		gtk_s_img(GtkWidget	*button, gpointer buffer);
+void		gtk_zoom(GtkWidget *button, t_env *e);
+void		gtk_dezoom(GtkWidget *button, t_env *e);
+void		gtk_add_obj(t_env *e, int resp);
+void		put_box_inside_gbox(t_gtk	*gtk, int resp);
+void		put_label_inside_box(t_gtk *gtk, int resp);
+void		init_gtk(t_env *e);
 int			create_new_obj(t_env *e);
 int			put_scale_obj(t_gtk *gtk, t_vec3d *scale);
-int		 	check_if_digit(const char * str);
+int			check_if_digit(const char *str);
 int			put_rotation_obj(t_gtk *gtk, t_vec3d *rot);
 int			put_name_obj(t_gtk *gtk, const char **name, t_list *obj, int *i);
 int			put_pos_obj(t_gtk *gtk, t_vec3d *pos);
@@ -124,15 +124,17 @@ int			put_dif_coe_obj(t_gtk *gtk, float *kd);
 int			put_spec_coe_obj(t_gtk *gtk, float *ks);
 int			put_i_light_obj(t_gtk *gtk, float *i);
 int			put_tr_obj(t_gtk *gtk, float *tr);
-float 		stof (const char *s);
-void 		gtk_view_obj(GtkWidget *button, t_env *e);
-void 		view_delete_obj(int response, int clicked_del, t_env *e, GtkWidget *view);
-int			view_modif_obj(int response, int clic_mod, t_env *e, GtkWidget *dialog);
-void 		init_add_obj_l_e(t_gtk *gtk, int resp);
-void 		init_add_obj_box(t_gtk *gtk, int resp);
+float		stof (const char *s);
+void		gtk_view_obj(GtkWidget *button, t_env *e);
+void		view_delete_obj(int response, int clicked_del, t_env *e,
+		GtkWidget *view);
+int			view_modif_obj(int response, int clic_mod, t_env *e,
+		GtkWidget *dialog);
+void		init_add_obj_l_e(t_gtk *gtk, int resp);
+void		init_add_obj_box(t_gtk *gtk, int resp);
 const char	*itof(float nb);
 void		ft_list_remove_if(t_list **begin_list, const char *data_ref,
-			int (*cmp)());
+		int (*cmp)());
 void		gtk_choose_f(GtkWidget *button, t_env *e);
 void		gtk_effect(GtkWidget *button, t_env *e);
 int			get_pos(int line, int col, t_gtk *gtk);
@@ -148,7 +150,7 @@ int			ygrad(guchar *pixel, int line, int col, t_gtk *gtk);
 int			xgrad(guchar *pixel, int line, int col, t_gtk *gtk);
 t_rgb		get_color_pixel(guchar *pixel, t_gtk *gtk, int line, int col);
 const char	*get_selected_row(t_env *e, t_list 	*list);
-void 		init_modif_obj_e(t_gtk *gtk, const char *object, t_list **list);
+void		init_modif_obj_e(t_gtk *gtk, const char *object, t_list **list);
 int			put_tex_obj(t_gtk *gtk, t_tex *texture);
 // int			put_tex_obj(t_gtk *gtk, t_obj *obj, const char *object, t_list *l);
 void		put_normal(t_vec3d *normal);
@@ -173,16 +175,16 @@ void	rot_camera(t_env *e);
 t_color		texture_color(t_no no);
 int			map_value(float u, float v, GdkPixbuf *map);
 t_vec3d		bump_mapping(t_no no);
-void 		uv_polygone(t_no no, float *u, float *v, t_vec3d *rot_angle);
+void		uv_polygone(t_no no, float *u, float *v, t_vec3d *rot_angle);
 void		uv_sphere(t_no no, float *u, float *v, t_vec3d *rot_angle);
 float		transp_mapping(t_no no);
 
 GdkPixbuf	*gray_scale(GdkPixbuf *old);
 
 
-t_list 	*init_test(void);
-t_list	*init_test_lum(void);
+t_list		*init_test(void);
+t_list		*init_test_lum(void);
 
-t_vec3d  inter_point_to_zero(t_obj obj, t_vec3d ip);
+t_vec3d		inter_point_to_zero(t_obj obj, t_vec3d ip);
 
 #endif
