@@ -3,28 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   cone.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dsusheno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/03 14:48:35 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/22 21:34:24 by dsusheno         ###   ########.fr       */
+/*   Created: 2017/03/24 14:59:01 by dsusheno          #+#    #+#             */
+/*   Updated: 2017/03/24 14:59:12 by dsusheno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-float	cone_dist(t_ray r, t_obj obj)
+float		cone_dist(t_ray r, t_obj obj)
 {
 	t_dist		dist;
-	double t;
+	double		t;
 
 	dist.a = r.dir.x * r.dir.x + r.dir.y * r.dir.y - r.dir.z * r.dir.z;
-	dist.b = 2 * (r.origin.x * r.dir.x) + 2 * (r.origin.y * r.dir.y) - 2 * (r.origin.z * r.dir.z);
-	dist.c = (r.origin.x * r.origin.x) + (r.origin.y * r.origin.y) - (r.origin.z * r.origin.z);
+	dist.b = 2 * (r.origin.x * r.dir.x) + 2 * (r.origin.y * r.dir.y)
+	- 2 * (r.origin.z * r.dir.z);
+	dist.c = (r.origin.x * r.origin.x) + (r.origin.y * r.origin.y)
+	- (r.origin.z * r.origin.z);
 	dist.d = (dist.b * dist.b) - (4 * dist.a * dist.c);
 	if (dist.d >= 0)
 	{
 		t = compute_solution(dist, r, obj);
-			return (t);
+		return (t);
 	}
 	else
 		return (-1);
@@ -32,8 +34,8 @@ float	cone_dist(t_ray r, t_obj obj)
 
 t_vec3d		cone_normal_vec(t_no no)
 {
-	t_vec3d normal;
-	t_vec3d zero_ip;
+	t_vec3d	normal;
+	t_vec3d	zero_ip;
 	double	centre_z;
 
 	zero_ip = inter_point_to_zero(no.obj, no.ip);

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dsusheno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/19 06:04:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/22 21:38:16 by dsusheno         ###   ########.fr       */
+/*   Created: 2017/03/24 15:01:24 by dsusheno          #+#    #+#             */
+/*   Updated: 2017/03/24 15:06:29 by dsusheno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-float 	t1_search(t_dist dist, t_obj obj, t_ray r)
+float		t1_search(t_dist dist, t_obj obj, t_ray r)
 {
-	float 		t1;
+	float		t1;
 	t_vec3d		ip1;
 
 	t1 = (double)(-dist.b + sqrt(dist.d)) / (double)(2 * dist.a);
@@ -25,13 +25,13 @@ float 	t1_search(t_dist dist, t_obj obj, t_ray r)
 	|| (obj.limit.exist.y_max == 1 && ip1.y > obj.limit.y_max)
 	|| (obj.limit.exist.x_min == 1 && ip1.x < obj.limit.x_min)
 	|| (obj.limit.exist.x_max == 1 && ip1.x > obj.limit.x_max))
-		return(-1);
+		return (-1);
 	return (t1);
 }
 
-float 	t2_search(t_dist dist, t_obj obj, t_ray r)
+float		t2_search(t_dist dist, t_obj obj, t_ray r)
 {
-	float 		t2;
+	float		t2;
 	t_vec3d		ip2;
 
 	t2 = (double)(-dist.b - sqrt(dist.d)) / (double)(2 * dist.a);
@@ -42,11 +42,11 @@ float 	t2_search(t_dist dist, t_obj obj, t_ray r)
 	|| (obj.limit.exist.y_max == 1 && ip2.y > obj.limit.y_max)
 	|| (obj.limit.exist.x_min == 1 && ip2.x < obj.limit.x_min)
 	|| (obj.limit.exist.x_max == 1 && ip2.x > obj.limit.x_max))
-		return(-1);
+		return (-1);
 	return (t2);
 }
 
-float	compute_solution(t_dist dist, t_ray r, t_obj obj)
+float		compute_solution(t_dist dist, t_ray r, t_obj obj)
 {
 	float		t1;
 	float		t2;
@@ -66,16 +66,16 @@ float	compute_solution(t_dist dist, t_ray r, t_obj obj)
 	{
 		t1 = (double)-dist.b / (double)(2 * dist.a);
 		if (t1 >= 0)
-				return (t1);
+			return (t1);
 		else
 			return (-1);
 	}
 }
 
-float	sphere_dist(t_ray r, t_obj obj)
+float		sphere_dist(t_ray r, t_obj obj)
 {
 	t_dist		dist;
-	double 		t;
+	double		t;
 
 	dist.a = r.dir.x * r.dir.x + r.dir.y * r.dir.y + r.dir.z * r.dir.z;
 	dist.b = 2 * (r.origin.x * r.dir.x) + 2 * (r.origin.y * r.dir.y) + 2 *
@@ -92,7 +92,7 @@ float	sphere_dist(t_ray r, t_obj obj)
 		return (-1);
 }
 
-t_vec3d	sphere_normal_vec(t_vec3d ip, t_vec3d t)
+t_vec3d		sphere_normal_vec(t_vec3d ip, t_vec3d t)
 {
 	t_vec3d normal;
 

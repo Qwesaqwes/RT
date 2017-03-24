@@ -175,6 +175,7 @@ typedef struct		s_obj
 	float			ks;
 	float			i;
 	float			t;
+	float			radius;
 	float			shininess;
 	t_transform		transform;
 	float			refr_index;

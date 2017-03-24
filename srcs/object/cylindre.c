@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   cylindre.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dsusheno <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/03 14:51:50 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/22 21:34:30 by dsusheno         ###   ########.fr       */
+/*   Created: 2017/03/24 14:59:57 by dsusheno          #+#    #+#             */
+/*   Updated: 2017/03/24 15:00:11 by dsusheno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-float	cylindre_dist(t_ray r, t_obj obj)
+float		cylindre_dist(t_ray r, t_obj obj)
 {
 	t_dist		dist;
-	double 		t;
+	double		t;
 
 	dist.a = r.dir.x * r.dir.x + r.dir.y * r.dir.y;
 	dist.b = 2 * (r.origin.x * r.dir.x) + 2 * (r.origin.y * r.dir.y);
@@ -51,14 +51,3 @@ t_vec3d		cylindre_normal_vec(t_no no)
 	normal = mult_matrix(rotationZ(no.obj.transform.rot.z), normal);
 	return (normal);
 }
-
-/*t_vec3d	cylindre_normal_vec(t_vec3d ip, t_vec3d t)
-{
-	t_vec3d ret;
-
-	ret.x = ip.x - t.x;
-	ret.y = ip.y - t.y;
-	ret.z = ip.z - t.z;
-	ret.w = 1;
-	return (ret);
-}*/
