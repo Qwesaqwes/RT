@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:47:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/21 21:47:50 by dsusheno         ###   ########.fr       */
+/*   Updated: 2017/03/24 15:42:46 by dsusheno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct		s_color
 typedef	struct		s_viewplane
 {
 	float			dist;
-	float				width;
-	float				height;
+	float			width;
+	float			height;
 }					t_vp;
 
 typedef struct		s_vec3d
@@ -62,7 +62,7 @@ typedef struct		s_vec3d
 	float			w;
 }					t_vec3d;
 
-typedef struct 		s_dist
+typedef struct		s_dist
 {
 	float			a;
 	float			b;
@@ -72,8 +72,8 @@ typedef struct 		s_dist
 
 typedef struct		s_exist
 {
-	int 			x_min;
-	int 			x_max;
+	int				x_min;
+	int				x_max;
 	int				y_min;
 	int				y_max;
 	int				z_min;
@@ -145,8 +145,8 @@ typedef	struct		s_poly_return
 
 typedef struct		s_texture
 {
-	int				texture;	// texture == 0 si no texture
-	int				bump;	// texture == 0 si no texture
+	int				texture;
+	int				bump;
 	int				transp;
 	t_color			tex_col1;
 	t_color			tex_col2;
@@ -244,12 +244,11 @@ typedef struct		s_env
 	t_gtk			gtk;
 }					t_env;
 
-typedef struct	s_thread_data
+typedef struct		s_thread_data
 {
-   int h_start;
-   int h_end;
-   t_env *e;
+	int			h_start;
+	int			h_end;
+	t_env		*e;
 }				t_thread_data;
-
 
 #endif
