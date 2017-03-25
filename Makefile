@@ -6,13 +6,15 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/03/17 22:35:01 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/03/25 23:47:19 by dsusheno         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	RT
 DIRSRC		=	./srcs/
 DIROBJ		=	./objs/
+DIROBJECT	=	./objs/object/
+DIRGTK		=	./objs/gtk/
 LIBA		=	./libft/libft.a
 INCLUDE		=	-I./includes/ -I./libft/includes/
 SUB_MAKE	=	./libft/
@@ -93,8 +95,9 @@ endif
 CC			=	/usr/bin/gcc
 RM			=	/bin/rm -f
 ECHO		=	/bin/echo -e
+MKDIR		=	mkdir -p
 
-$(NAME)	:	$(OBJS)
+$(NAME)	: $(OBJS)
 ifdef SUB_MAKE
 				@(cd $(SUB_MAKE) && $(MAKE))
 endif
@@ -123,4 +126,7 @@ re		:		fclean all
 .PHONY	:		all clean re
 
 $(DIROBJ)%.o		:		$(DIRSRC)%.c
+				@if [ ! -d $(DIROBJ) ]; then $(MKDIR) $(DIROBJ); fi
+				@if [ ! -d $(DIROBJECT) ]; then $(MKDIR) $(DIROBJECT); fi
+				@if [ ! -d $(DIRGTK) ]; then $(MKDIR) $(DIRGTK); fi
 				$(CC) $(INCLUDE) $(GTK_FLAG) $(CFLAGS) -o $@ -c $<
