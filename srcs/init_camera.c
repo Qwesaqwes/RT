@@ -6,20 +6,20 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:16:25 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/17 16:23:06 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:40:51 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-void 	init_vp(t_vp *vp)
+void	init_vp(t_vp *vp)
 {
 	vp->dist = 1;
 	vp->width = 1;
 	vp->height = (float)H / (float)W;
 }
 
-void 	init_cam(t_camera *cam)
+void	init_cam(t_camera *cam)
 {
 	cam->baseU.x = 1;
 	cam->baseU.y = 0;

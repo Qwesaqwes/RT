@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:33:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/16 18:57:02 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:30:21 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ int		put_type_obj(t_gtk *gtk, char *type)
 	active = gtk_combo_box_get_active(GTK_COMBO_BOX(gtk->c_obj));
 	if (active > -1)
 	{
-		if (active == 0) 			//selected type of object "Sphere"
+		if (active == 0)
 			*type = 0;
-		else if (active == 1)	//selected type of object "Cone"
+		else if (active == 1)
 			*type = 3;
-		else if (active == 2)		//selected type of object "Cylindre"
+		else if (active == 2)
 			*type = 1;
-		else if (active == 3)		//selected type of object "Plan"
+		else if (active == 3)
 			*type = 2;
 		return (0);
 	}
 	else
-		g_print("You didn't choose an Object\n");
+		ft_putstr_fd("You didn't choose an Object\n", 2);
 	return (1);
 }
 
@@ -61,7 +61,7 @@ int		put_pos_obj(t_gtk *gtk, t_vec3d *pos)
 	if ((check_if_digit(posx)) == 1 || (check_if_digit(posy)) == 1 ||
 	(check_if_digit(posz)) == 1)
 	{
-		g_print("Put the right position\n");
+		ft_putstr_fd("Put the right position\n", 2);
 		return (1);
 	}
 	pos->x = stof(posx);
@@ -87,7 +87,7 @@ int		create_new_obj1(t_env *e, t_obj *new_obj)
 		put_i_light_obj(&e->gtk, &new_obj->i) == 1 ||
 		put_tr_obj(&e->gtk, &new_obj->t) == 1 ||
 		put_tex_obj(&e->gtk, &new_obj->tex) == 1)
-		return (1); //error
+		return (1);
 	return (0);
 }
 
@@ -96,7 +96,7 @@ int		create_new_obj(t_env *e)
 	t_obj	new_obj;
 
 	if (create_new_obj1(e, &new_obj) == 1)
-		return (1); //error
+		return (1);
 	if (new_obj.type == 2)
 		put_normal(&new_obj.normal);
 	put_color_obj(&e->gtk, &new_obj.color);

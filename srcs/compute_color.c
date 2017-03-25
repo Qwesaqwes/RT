@@ -6,13 +6,13 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 12:32:03 by opandolf          #+#    #+#             */
-/*   Updated: 2017/03/22 21:39:15 by dsusheno         ###   ########.fr       */
+/*   Updated: 2017/03/25 17:58:38 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_color	color_mult(t_color a, t_color b)
+t_color		color_mult(t_color a, t_color b)
 {
 	t_color res;
 
@@ -60,7 +60,7 @@ t_vec3d		vector_add(t_vec3d a, t_vec3d b)
 	ret.y = a.y + b.y;
 	ret.z = a.z + b.z;
 	ret.w = 1;
-	return(ret);
+	return (ret);
 }
 
 t_vec3d		vector_sub(t_vec3d a, t_vec3d b)
@@ -108,7 +108,7 @@ t_color		color_fact(t_color a, float k)
 
 float		vector_dot(t_vec3d a, t_vec3d b)
 {
-	return(a.x * b.x + a.y * b.y + a.z * b.z);
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
 t_color		color_init(void)
@@ -164,13 +164,15 @@ t_color		compute_color_light(t_obj lum, t_no no, t_vec3d n, t_vec3d origin)
 	{
 		view = normalizevec(vector_sub(origin, no.ip));
 		halfway = normalizevec(vector_add(view, light));
-		ret = color_add(ret, color_add(diffuse_color(no, lum, vector_dot(light, n)), spec_color(no.obj, lum, pow(vector_dot(halfway, n), no.obj.shininess))));
+		ret = color_add(ret, color_add(
+			diffuse_color(no, lum, vector_dot(light, n)),
+			spec_color(no.obj, lum,
+				pow(vector_dot(halfway, n), no.obj.shininess))));
 	}
 	return (ret);
-
 }
 
-t_color			get_intersection_obj(t_list *list, t_obj lum, t_no no)
+t_color		get_intersection_obj(t_list *list, t_obj lum, t_no no)
 {
 	t_list	*tmp;
 	t_obj	obj;
@@ -186,7 +188,7 @@ t_color			get_intersection_obj(t_list *list, t_obj lum, t_no no)
 	ray.origin = no.ip;
 	ray.dir = normalizevec(vector_sub(lum.transform.transl, no.ip));
 	dist_lum = vector_length(vector_sub(lum.transform.transl, no.ip));
-	while(tmp)
+	while (tmp)
 	{
 		obj = *(t_obj*)tmp->content;
 		img_ray = imaginary_ray(ray, obj.transform);
@@ -210,12 +212,10 @@ t_color			get_intersection_obj(t_list *list, t_obj lum, t_no no)
 			}
 			if (obj.type == 4)
 				dist = triangle_dist(ray, *obj.faces);
-			if 	(obj.type == 5 || obj.type == 6)
+			if (obj.type == 5 || obj.type == 6)
 			{
 				poly = polygone_dist(ray, obj);
 				dist = poly.dist;
-				// if (dist > 0)
-				// 	printf("dist: %f, dist_lum: %f\n", dist, dist_lum);
 			}
 			if (obj.type == 7)
 			{
@@ -246,12 +246,23 @@ t_color		color_lights(t_scene s, t_no no, t_vec3d n, t_vec3d origin)
 
 	ret = color_init();
 	tmp = s.lum;
-	while(tmp)
+	while (tmp)
 	{
 		lum = (*(t_obj*)tmp->content);
-		if ((color_cmp(k = get_intersection_obj(s.obj, lum, no), set_black_color()) > 0))
+		if (lum.type == 0)
 		{
-			ret = color_add(ret, color_mult(k, compute_color_light(lum, no, n, origin)));
+			if ((color_cmp(k = get_intersection_obj(s.obj, lum, no),
+				set_black_color()) > 0))
+			{
+				ret = color_add(ret, color_mult(k,
+					compute_color_light(lum, no, n, origin)));
+			}
+		}
+		else if (lum.type == 1)
+		{
+			// fonction to verif that ray(no.ip, -lum.normal)
+			// intersect spot lumineux (t_obj lum) si le resulta c'est oui
+			// je fais if (color_cmp .......)
 		}
 		tmp = tmp->next;
 	}
@@ -262,7 +273,7 @@ t_color		compute_color(t_no no, t_scene s, t_vec3d n, t_vec3d origin)
 {
 	t_color		color_ambiant;
 
-	/*To modif to color face*/
-	color_ambiant = color_mult(no.color, color_fact(s.ambiant, no.obj.ka * (1 - no.t)));
-	return(color_add(color_ambiant, color_lights(s, no, n, origin)));
+	color_ambiant = color_mult(no.color, color_fact(s.ambiant,
+		no.obj.ka * (1 - no.t)));
+	return (color_add(color_ambiant, color_lights(s, no, n, origin)));
 }

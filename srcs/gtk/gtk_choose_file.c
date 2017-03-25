@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 17:46:08 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/13 14:54:15 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:29:01 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	gtk_choose_f(GtkWidget *button, t_env *e)
 	if (gtk_dialog_run(GTK_DIALOG(dial)) == GTK_RESPONSE_ACCEPT)
 	{
 		c = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dial));
-		g_print("%s\n", c);
+		//parcing
 		g_free(c);
 	}
 	gtk_widget_destroy(dial);

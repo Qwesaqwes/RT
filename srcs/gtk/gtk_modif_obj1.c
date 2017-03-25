@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 16:19:34 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/16 19:18:47 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:29:31 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int		view_modif_obj(int response, int clic_mod, t_env *e, GtkWidget *view)
 		object = get_selected_row(e, e->scene.obj);
 		if (object == NULL)
 		{
-			g_print("No Object to Modif\n");
+			ft_putstr_fd("No Object to Modif\n", 2);
 			gtk_widget_destroy(dialog);
 			return (1);
 		}

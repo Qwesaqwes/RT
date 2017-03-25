@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 17:01:21 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/15 17:35:38 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:52:01 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 float		transp_mapping(t_no no)
 {
-	float u;
-	float v;
+	float		u;
+	float		v;
 	t_vec3d		rot_angle;
 	guchar		*pixel;
 

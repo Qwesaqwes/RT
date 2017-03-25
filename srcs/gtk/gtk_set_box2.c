@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 15:57:51 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/17 23:15:12 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:29:56 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		add_view_box(t_env *e)
 	FALSE, FALSE, 0);
 }
 
-void	choose_file(t_env *e)
+void		choose_file(t_env *e)
 {
 	e->gtk.choose_f = gtk_button_new_with_label("Change Scene");
 	g_signal_connect(e->gtk.choose_f, "clicked", G_CALLBACK(gtk_choose_f), e);

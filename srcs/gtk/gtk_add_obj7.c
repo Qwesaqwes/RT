@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 14:48:15 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/13 14:49:05 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:28:13 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		put_info_tex(t_gtk *gtk, t_tex *tex)
 	{
 		if ((check_if_digit(gtk_entry_get_text(GTK_ENTRY(gtk->e_square)))) == 1)
 		{
-			g_print("Put the right Size for the square\n");
+			ft_putstr_fd("Put the right Size for the square\n", 2);
 			return (1);
 		}
 		tex->square = stof(gtk_entry_get_text(GTK_ENTRY(gtk->e_square)));

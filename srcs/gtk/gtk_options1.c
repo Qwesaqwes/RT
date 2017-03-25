@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:04:19 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/13 15:52:45 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:29:23 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	gtk_dezoom(GtkWidget *button, t_env *e)
 	if (e->vp.dist <= 0)
 	{
 		e->vp.dist = 0.5;
-		g_print("No more Dezoom available\n");
+		ft_putstr_fd("No more Dezoom available\n", 2);
 	}
 	raytracing(e);
 }

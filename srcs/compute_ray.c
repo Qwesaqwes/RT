@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:10:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/21 22:29:26 by dsusheno         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:42:50 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_color		set_black_color(void)
 	c.red = 0;
 	c.green = 0;
 	c.blue = 0;
-	return(c);
+	return (c);
 }
 
 t_color		set_white_color(void)
@@ -29,24 +29,8 @@ t_color		set_white_color(void)
 	c.red = 1;
 	c.green = 1;
 	c.blue = 1;
-	return(c);
+	return (c);
 }
-
-// void printlist(t_list **list, char depth, char action)
-// {
-// 	t_list *tmp;
-//
-// 	tmp = *list;
-// 	printf("depth: %d, action: %d, list: {", depth, action);
-// 	while(tmp != NULL)
-// 	{
-// 		printf("%f", *(float*)tmp->content);
-// 		if (tmp->next)
-// 			printf(", ");
-// 		tmp = tmp->next;
-// 	}
-// 	printf("}\n");
-// }
 
 t_color		indirect_color(t_scene s, t_values v, t_cv cv, t_no no)
 {
@@ -54,10 +38,9 @@ t_color		indirect_color(t_scene s, t_values v, t_cv cv, t_no no)
 	t_color		color_refl;
 	t_color		color_trans;
 
-//ft_putchar('1');
 	v.depth += 1;
-	color_refl = compute_ray(reflect(no.normal, no.origin.dir, no.ip, cv), s, v);
-
+	color_refl = compute_ray(reflect(no.normal,
+		no.origin.dir, no.ip, cv), s, v);
 	color_refl = color_fact(color_refl, no.obj.ks);
 	cv.action = 0;
 	if (cv.sign < 0 && !(no.obj.type == 2 || no.obj.type == 5 ||
@@ -66,9 +49,8 @@ t_color		indirect_color(t_scene s, t_values v, t_cv cv, t_no no)
 		cv.action = 2;
 		ft_lstdelfirst(v.refr_index);
 	}
-//ft_putchar('a');
-	init_calculed_values(&cv, *(float*)(*v.refr_index)->content, no.obj.refr_index);
-
+	init_calculed_values(&cv, *(float*)(*v.refr_index)->content,
+		no.obj.refr_index);
 	if (cv.sinT2 > 1.0 || no.t == 0)
 	{
 		if (cv.action == 2 && !(no.obj.type == 2 || no.obj.type == 5 ||
@@ -85,19 +67,17 @@ t_color		indirect_color(t_scene s, t_values v, t_cv cv, t_no no)
 		cv.action = 1;
 		ft_lstadd(v.refr_index, ft_lstnew(&cv.n2, sizeof(float)));
 	}
-//ft_putchar('B');
-	color_trans = compute_ray(refract(no.normal, no.origin.dir, no.ip, cv), s, v);
+	color_trans = compute_ray(refract(no.normal, no.origin.dir,
+		no.ip, cv), s, v);
 	color_trans = color_mult(color_trans, no.obj.color);
 	color_trans = color_fact(color_trans, (1 - fresnel_coeff) * no.t);
-//ft_putchar('c');
 	if (cv.action == 1 && !(no.obj.type == 2 || no.obj.type == 5 ||
 		no.obj.type == 4))
 		ft_lstdelfirst(v.refr_index);
 	else if (cv.action == 2 && !(no.obj.type == 2 || no.obj.type == 5 ||
 		no.obj.type == 4))
 		ft_lstadd(v.refr_index, ft_lstnew(&cv.n1, sizeof(float)));
-//ft_putchar('d');
-	return(color_add(color_refl, color_trans));
+	return (color_add(color_refl, color_trans));
 }
 
 t_color		compute_ray(t_ray ray, t_scene s, t_values v)
@@ -107,7 +87,7 @@ t_color		compute_ray(t_ray ray, t_scene s, t_values v)
 	t_cv	cv;
 
 	color = set_black_color();
-	if(v.depth < MAX_DEPTH)
+	if (v.depth < MAX_DEPTH)
 	{
 		if (get_nearest_obj(ray, s.obj, &no) == 0)
 			color = s.background;
@@ -134,5 +114,5 @@ t_color		compute_ray(t_ray ray, t_scene s, t_values v)
 			color = color_add(color, indirect_color(s, v, cv, no));
 		}
 	}
-	return(color);
+	return (color);
 }

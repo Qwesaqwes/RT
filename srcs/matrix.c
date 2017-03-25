@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 03:32:59 by jichen-m          #+#    #+#             */
-/*   Updated: 2016/11/23 16:53:38 by JimmyChen        ###   ########.fr       */
+/*   Updated: 2017/03/25 17:09:41 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_matrix		rotationZ(float angle)
 	return (matrix);
 }
 
-t_vec3d		mult_matrix(t_matrix mat, t_vec3d old)
+t_vec3d			mult_matrix(t_matrix mat, t_vec3d old)
 {
 	t_vec3d		new;
 
@@ -95,7 +95,7 @@ t_vec3d		mult_matrix(t_matrix mat, t_vec3d old)
 	return (new);
 }
 
-t_vec3d				rota_vect(t_vec3d old, t_vec3d rot)
+t_vec3d			rota_vect(t_vec3d old, t_vec3d rot)
 {
 	t_vec3d		new;
 

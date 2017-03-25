@@ -6,25 +6,25 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/11 19:48:03 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/15 15:42:24 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:55:54 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-int		get_pos2(int line, int col, GdkPixbuf *buf)
+int			get_pos2(int line, int col, GdkPixbuf *buf)
 {
 	int				tmp;
 	unsigned int	rowstride;
 	unsigned int	n_channels;
 
 	n_channels = gdk_pixbuf_get_n_channels(buf);
-	rowstride = gdk_pixbuf_get_rowstride (buf);
+	rowstride = gdk_pixbuf_get_rowstride(buf);
 	tmp = line * rowstride + col * n_channels;
 	return (tmp);
 }
 
-t_rgb	get_color_pixel1(guchar *pixel, GdkPixbuf *buf, int line, int col)
+t_rgb		get_color_pixel1(guchar *pixel, GdkPixbuf *buf, int line, int col)
 {
 	t_rgb	color;
 
@@ -34,8 +34,7 @@ t_rgb	get_color_pixel1(guchar *pixel, GdkPixbuf *buf, int line, int col)
 	return (color);
 }
 
-
-void 		gray_scale1(GdkPixbuf *old, GdkPixbuf *new, int line, int col)
+void		gray_scale1(GdkPixbuf *old, GdkPixbuf *new, int line, int col)
 {
 	int		i;
 	guchar	*pixel;
@@ -60,13 +59,13 @@ GdkPixbuf	*gray_scale(GdkPixbuf *old)
 	while (++line < gdk_pixbuf_get_height(old))
 	{
 		col = -1;
-		while(++col < gdk_pixbuf_get_width(old))
+		while (++col < gdk_pixbuf_get_width(old))
 			gray_scale1(old, new, line, col);
 	}
 	return (new);
 }
 
-int		map_value(float u, float v, GdkPixbuf *map)
+int			map_value(float u, float v, GdkPixbuf *map)
 {
 	int		map_w;
 	int		map_h;
@@ -76,13 +75,12 @@ int		map_value(float u, float v, GdkPixbuf *map)
 	map_w = gdk_pixbuf_get_width(map);
 	map_h = gdk_pixbuf_get_height(map);
 	n_channels = gdk_pixbuf_get_n_channels(map);
-	rowstride = gdk_pixbuf_get_rowstride (map);
-
+	rowstride = gdk_pixbuf_get_rowstride(map);
 	return ((map_h - (int)(v * map_h)) * rowstride +
 	(map_w - (int)(u * map_w)) * n_channels);
 }
 
-int		map_value_right(float u, float v, GdkPixbuf *map)
+int			map_value_right(float u, float v, GdkPixbuf *map)
 {
 	int		map_w;
 	int		map_h;
@@ -92,15 +90,17 @@ int		map_value_right(float u, float v, GdkPixbuf *map)
 	map_w = gdk_pixbuf_get_width(map);
 	map_h = gdk_pixbuf_get_height(map);
 	n_channels = gdk_pixbuf_get_n_channels(map);
-	rowstride = gdk_pixbuf_get_rowstride (map);
+	rowstride = gdk_pixbuf_get_rowstride(map);
 	if (u * map_w + 1 > map_w)
+	{
 		return ((map_h - (int)(v * map_h)) * rowstride +
-		(map_w - (int)(u * map_w)) * n_channels);
+			(map_w - (int)(u * map_w)) * n_channels);
+	}
 	return ((map_h - (int)(v * map_h)) * rowstride +
-	(map_w - (int)(u * map_w + 1)) * n_channels);
+		(map_w - (int)(u * map_w + 1)) * n_channels);
 }
 
-int		map_value_down(float u, float v, GdkPixbuf *map)
+int			map_value_down(float u, float v, GdkPixbuf *map)
 {
 	int		map_w;
 	int		map_h;
@@ -110,18 +110,20 @@ int		map_value_down(float u, float v, GdkPixbuf *map)
 	map_w = gdk_pixbuf_get_width(map);
 	map_h = gdk_pixbuf_get_height(map);
 	n_channels = gdk_pixbuf_get_n_channels(map);
-	rowstride = gdk_pixbuf_get_rowstride (map);
+	rowstride = gdk_pixbuf_get_rowstride(map);
 	if (v * map_h + 1 > map_h)
+	{
 		return ((map_h - (int)(v * map_h)) * rowstride +
-		(map_w - (int)(u * map_w)) * n_channels);
+			(map_w - (int)(u * map_w)) * n_channels);
+	}
 	return ((map_h - (int)(v * map_h + 1)) * rowstride +
-	(map_w - (int)(u * map_w)) * n_channels);
+		(map_w - (int)(u * map_w)) * n_channels);
 }
 
 t_vec3d		bump_mapping(t_no no)
 {
-	float u;
-	float v;
+	float		u;
+	float		v;
 	t_vec3d		rot_angle;
 	guchar		*pixel;
 	float		bu;

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 04:57:58 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/02/23 20:22:19 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:43:44 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		get_pos(int line, int col, t_gtk *gtk)
 	unsigned int	n_channels;
 
 	n_channels = gdk_pixbuf_get_n_channels(gtk->buffer);
-	rowstride = gdk_pixbuf_get_rowstride (gtk->buffer);
+	rowstride = gdk_pixbuf_get_rowstride(gtk->buffer);
 	tmp = line * rowstride + col * n_channels;
 	return (tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/01 14:06:23 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/03 20:06:43 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:26:42 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		put_scale_obj(t_gtk *gtk, t_vec3d *scale)
 	if ((check_if_digit(scalex)) == 1 || (check_if_digit(scaley)) == 1 ||
 	(check_if_digit(scalez)) == 1)
 	{
-		g_print("Put the right scale\n");
+		ft_putstr_fd("Put the right scale\n", 2);
 		return (1);
 	}
 	scale->x = stof(scalex);
@@ -46,7 +46,7 @@ int		put_rotation_obj(t_gtk *gtk, t_vec3d *rot)
 	if ((check_if_digit(rotx)) == 1 || (check_if_digit(roty)) == 1 ||
 	(check_if_digit(rotz)) == 1)
 	{
-		g_print("Put the right rotation\n");
+		ft_putstr_fd("Put the right rotation\n", 2);
 		return (1);
 	}
 	rot->x = stof(rotx);
@@ -74,7 +74,7 @@ int		put_shininess_obj(t_gtk *gtk, float *shine)
 	tmp_shi = gtk_entry_get_text(GTK_ENTRY(gtk->e_shine));
 	if (check_if_digit(tmp_shi) == 1)
 	{
-		g_print("Put the right shininess\n");
+		ft_putstr_fd("Put the right shininess\n", 2);
 		return (1);
 	}
 	*shine = stof(tmp_shi);
@@ -88,7 +88,7 @@ int		put_refraction_obj(t_gtk *gtk, float *refrac)
 	tmp_refrac = gtk_entry_get_text(GTK_ENTRY(gtk->e_refrac));
 	if (check_if_digit(tmp_refrac) == 1)
 	{
-		g_print("Put the right refraction\n");
+		ft_putstr_fd("Put the right refraction\n", 2);
 		return (1);
 	}
 	*refrac = stof(tmp_refrac);

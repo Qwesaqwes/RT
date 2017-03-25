@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 19:14:08 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/16 19:44:47 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:28:03 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		put_name_obj(t_gtk *gtk, const char **name, t_list *obj, int *i)
 	*name = ft_strdup(gtk_entry_get_text(GTK_ENTRY(gtk->e_nobj)));
 	if (name[0][0] == 0)
 	{
-		g_print("Plis put a name\n");
+		ft_putstr_fd("Plis put a name\n", 2);
 		return (1);
 	}
 	while (tmp != NULL)
@@ -95,7 +95,7 @@ int		put_name_obj(t_gtk *gtk, const char **name, t_list *obj, int *i)
 		tmp_obj = (t_obj *)tmp->content;
 		if (ft_strcmp(*name, tmp_obj->name) == 0)
 		{
-			g_print("Already exist name, plis choose another one\n");
+			ft_putstr_fd("Already exist name, plis choose another one\n", 2);
 			return (1);
 		}
 		tmp = tmp->next;

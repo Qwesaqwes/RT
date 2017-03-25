@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 18:37:04 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/12 00:27:55 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/25 17:07:29 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ t_color		checker(t_no no)
 	point = mult_matrix(rotationZ(no.obj.transform.rot.z), point);
 	point = vector_add(point, no.obj.transform.transl);
 	if (pair(point.z, length))
-		return((pair(point.y, length) == 1 ? no.obj.tex.tex_col1 :
+		return ((pair(point.y, length) == 1 ? no.obj.tex.tex_col1 :
 		no.obj.tex.tex_col2));
 	else
-		return((pair(point.y, length) == 1 ? no.obj.tex.tex_col2 :
+		return ((pair(point.y, length) == 1 ? no.obj.tex.tex_col2 :
 		no.obj.tex.tex_col1));
 }
 
@@ -61,9 +61,9 @@ float		lerp(float t, float a, float b)
 
 float		grad(int hash, float x, float y, float z)
 {
-	int h;
-	float u;
-	float v;
+	int		h;
+	float	u;
+	float	v;
 
 	h = hash & 15;
 	u = h < 8 || h == 12 || h == 13 ? x : y;
@@ -73,16 +73,15 @@ float		grad(int hash, float x, float y, float z)
 
 float		perlin_coef(float x, float y, float z)
 {
-	int i;
+	int			i;
 	t_vec3d		unit_cube;
 	t_vec3d		fade_curves;
-	int		A;
-	int		AA;
-	int		AB;
-	int		B;
-	int		BA;
-	int		BB;
-
+	int			A;
+	int			AA;
+	int			AB;
+	int			B;
+	int			BA;
+	int			BB;
 	int p[512] = {151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53,
 	194, 233, 7, 225, 140, 36, 103, 30, 69, 142, 8, 99, 37, 240, 21, 10, 23,
 	190, 6, 148,
@@ -100,21 +99,19 @@ float		perlin_coef(float x, float y, float z)
 	249, 14, 239, 107, 49, 192, 214,  31, 181, 199, 106, 157, 184,  84, 204,
 	176, 115, 121, 50, 45, 127, 4, 150, 254, 138, 236, 205, 93, 222, 114, 67,
 	29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180};
+
 	i = -1;
-	while(++i < 256)
+	while (++i < 256)
 		p[256 + i] = p[i];
 	unit_cube.x = (int)floor(x) & 255;
 	unit_cube.y = (int)floor(y) & 255;
 	unit_cube.z = (int)floor(z) & 255;
-
 	x -= floor(x);
 	y -= floor(y);
 	z -= floor(z);
-
 	fade_curves.x = fade(x);
 	fade_curves.y = fade(y);
 	fade_curves.z = fade(z);
-
 	A = p[(int)unit_cube.x] + (int)unit_cube.y;
 	AA = p[A] + (int)unit_cube.z;
 	AB = p[A + 1] + (int)unit_cube.z;
@@ -130,7 +127,7 @@ float		perlin_coef(float x, float y, float z)
 			grad(p[BB + 1], x - 1, y - 1, z - 1)))));
 }
 
-float 		wood_coef(float x, float y, float z)
+float		wood_coef(float x, float y, float z)
 {
 	float v;
 
@@ -138,7 +135,7 @@ float 		wood_coef(float x, float y, float z)
 	return (v - floor(v));
 }
 
-float	marble_coef(float x, float y, float z)
+float		marble_coef(float x, float y, float z)
 {
 	return (cos(x + perlin_coef(x, y, z)));
 }
@@ -184,9 +181,7 @@ t_color		get_pixel(int tmp, GdkPixbuf *map)
 	guchar		*pixel;
 
 	pixel = gdk_pixbuf_get_pixels(map);
-
 	ret.red = (float)pixel[tmp] / (float)255;
-	// printf("%f\n", ret.red);
 	ret.green = (float)pixel[tmp + 1] / (float)255;
 	ret.blue = (float)pixel[tmp + 2] / (float)255;
 	return (ret);
@@ -275,14 +270,13 @@ t_mapping	mapping(t_face face, t_vec3d rot)
 		{
 			if (point.y < ret.y_min)
 				ret.y_min = point.y;
-			if (point.y >ret.y_max)
+			if (point.y > ret.y_max)
 				ret.y_max = point.y;
 			if (point.z < ret.z_min)
 				ret.z_min = point.z;
 			if (point.z > ret.z_max)
 				ret.z_max = point.z;
 		}
-		// printf("min: %f,  max: %f\n", ret.y_min, ret.y_max);
 		tmp = tmp->next;
 	}
 	return (ret);
@@ -291,14 +285,14 @@ t_mapping	mapping(t_face face, t_vec3d rot)
 void		uv_sphere(t_no no, float *u, float *v, t_vec3d *rot_angle)
 {
 	t_vec3d		n;
-	
+
 	*rot_angle = no.obj.transform.rot;
 	n = normalizevec(vector_sub(no.obj.transform.transl, no.ip));
 	*u = 0.5 + (float)atan2(n.z, n.x) / (float)(2 * M_PI);
 	*v = 0.5 - (float)asin(n.y) / (float)M_PI;
 }
 
-void 		uv_polygone(t_no no, float *u, float *v, t_vec3d *rot_angle)
+void		uv_polygone(t_no no, float *u, float *v, t_vec3d *rot_angle)
 {
 	float		angle;
 	t_vec3d		unit_vec;
@@ -339,7 +333,7 @@ t_color		texture_mapping(t_no no)
 t_color		procedural_texture(t_no no)
 {
 	if (no.obj.tex.texture == 1)
-		return(checker(no));
+		return (checker(no));
 	return (perlin_deriv(no));
 }
 
@@ -350,5 +344,5 @@ t_color		texture_color(t_no no)
 		return (procedural_texture(no));
 	else if (no.obj.tex.texture == 5)
 		return (texture_mapping(no));
-	return(no.obj.color);
+	return (no.obj.color);
 }

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/22 21:59:43 by dsusheno         ###   ########.fr       */
+/*   Updated: 2017/03/22 18:17:27 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ t_list 	*init_test(void)
 	// t_obj	obj6;
 	// t_obj	obj7;
 	//t_obj	obj8;*/
-	t_obj	obj9;
+	// t_obj	obj9;
 	t_obj	obj10;
-	t_obj 	obj11;
 
 	list = NULL;
 	obj1.id = 0;
@@ -45,12 +44,6 @@ t_list 	*init_test(void)
 	obj1.transform.rot.y = 0;
 	obj1.transform.rot.z = 0;
 	obj1.transform.rot.w = 1;
-	obj1.limit.exist.z_min = 0;
-	obj1.limit.exist.z_max = 0;
-	obj1.limit.exist.y_min = 0;
-	obj1.limit.exist.y_max = 0;
-	obj1.limit.exist.x_min = 0;
-	obj1.limit.exist.x_max = 0;
 	obj1.color.red = 1;
 	obj1.color.green = 1;
 	obj1.color.blue = 0;
@@ -84,12 +77,6 @@ t_list 	*init_test(void)
 	obj2.transform.rot.y = 0;
 	obj2.transform.rot.z = 0;
 	obj2.transform.rot.w = 1;
-	obj2.limit.exist.z_min = 0;
-	obj2.limit.exist.z_max = 0;
-	obj2.limit.exist.y_min = 0;
-	obj2.limit.exist.y_max = 0;
-	obj2.limit.exist.x_min = 0;
-	obj2.limit.exist.x_max = 0;
 	obj2.color.red = 0;
 	obj2.color.green = 1;
 	obj2.color.blue = 0;
@@ -131,13 +118,6 @@ t_list 	*init_test(void)
 	obj3.transform.rot.y = 0;
 	obj3.transform.rot.z = 0;
 	obj3.transform.rot.w = 1;
-	obj3.limit.exist.z_min = 1;
-	obj3.limit.exist.z_max = 0;
-	obj3.limit.exist.y_min = 0;
-	obj3.limit.exist.y_max = 0;
-	obj3.limit.exist.x_min = 0;
-	obj3.limit.exist.x_max = 0;
-	obj3.limit.z_min = 0.5;
 	obj3.color.red = 0;
 	obj3.color.green = 0;
 	obj3.color.blue = 1;
@@ -177,18 +157,12 @@ t_list 	*init_test(void)
 	obj4.transform.rot.y = 0;
 	obj4.transform.rot.z = 0;
 	obj4.transform.rot.w = 1;
-	obj4.limit.exist.z_min = 0;
-	obj4.limit.exist.z_max = 0;
-	obj4.limit.exist.y_min = 0;
-	obj4.limit.exist.y_max = 0;
-	obj4.limit.exist.x_min = 0;
-	obj4.limit.exist.x_max = 0;
-	obj4.color.red = 0.7;
-	obj4.color.green = 0.7;
-	obj4.color.blue = 0.7;
+	obj4.color.red = 0;
+	obj4.color.green = 0;
+	obj4.color.blue = 1;
 	obj4.ka = 0.2;
 	obj4.kd = 0.9;
-	obj4.ks = 0;
+	obj4.ks = 1;
 	obj4.i = 0;
 	obj4.t = 0;
 	obj4.shininess = 50;
@@ -385,45 +359,6 @@ t_list 	*init_test(void)
 	// obj9.shininess = 50;
 	// obj9.refr_index = 1.33;
 	// ft_lstaddend(&list, ft_lstnew(&obj9, sizeof(t_obj)));
-
-	obj9.id = 4;
-	obj9.name = "cylindre1";
-	obj9.transform.scale.x = 1;
-	obj9.transform.scale.y = 1;
-	obj9.transform.scale.z = 1;
-	obj9.transform.scale.w = 1;
-	obj9.type = 1;  //cylindre
-  	obj9.transform.transl.x = 8;
-	obj9.transform.transl.y = 0;
-	obj9.transform.transl.z = 0;
-	obj9.transform.transl.w = 1;
-	obj9.transform.rot.x = 30;
-	obj9.transform.rot.y = 30;
-	obj9.transform.rot.z = 0;
-	obj9.transform.rot.w = 1;
-	obj9.limit.exist.z_min = 1;
-	obj9.limit.exist.z_max = 1;
-	obj9.limit.exist.y_min = 0;
-	obj9.limit.exist.y_max = 0;
-	obj9.limit.exist.x_min = 0;
-	obj9.limit.exist.x_max = 0;
-	obj9.limit.z_min = -3;
-	obj9.limit.z_max = 1;
-	obj9.limit.y_max = 0.5;
-	obj9.color.red = 1;
-	obj9.color.green = 1;
-	obj9.color.blue = 1;
-	obj9.ka = 0.2;
-	obj9.kd = 0.9;
-	obj9.ks = 0;
-	obj9.i = 0;
-	obj9.t = 0;
-	obj9.shininess = 50;
-	obj9.refr_index = 1.33;
-	obj9.tex.texture = 0;
-	obj9.tex.bump = 0;
-	obj9.tex.transp = 0;
-	//ft_lstaddend(&list, ft_lstnew(&obj9, sizeof(t_obj)));
 
 	obj10.id = 7;
 	obj10.name = "triangle1";
@@ -622,40 +557,6 @@ t_list 	*init_test(void)
 	// printf("coord x: %f, y: %f, z: %f\n\n", obj10.faces->next->vertex->coord.x,
 	// obj10.faces->next->vertex->coord.y, obj10.faces->next->vertex->coord.z);
 	ft_lstaddend(&list, ft_lstnew(&obj10, sizeof(t_obj)));
-
-	obj11.id = 4;
-	obj11.name = "circle1";
-	obj11.transform.scale.x = 1;
-	obj11.transform.scale.y = 1;
-	obj11.transform.scale.z = 1;
-	obj11.transform.scale.w = 1;
-	obj11.type = 7;  //cone
-	obj11.transform.transl.x = 8;
-	obj11.transform.transl.y = -2;
-	obj11.transform.transl.z = -2;
-	obj11.transform.transl.w = 1;
-	obj11.normal.x = 0;
-	obj11.normal.y = 0;
-	obj11.normal.z = -1;
-	obj11.normal.w = 1;
-	obj11.transform.rot.x = 0;
-	obj11.transform.rot.y = 45;
-	obj11.transform.rot.z = 0;
-	obj11.transform.rot.w = 1;
-	obj11.color.red = 0.7;
-	obj11.color.green = 0.2;
-	obj11.color.blue = 0.3;
-	obj11.ka = 0.2;
-	obj11.kd = 0.9;
-	obj11.ks = 0;
-	obj11.i = 0;
-	obj11.t = 0;
-	obj11.shininess = 50;
-	obj11.refr_index = 1.33;
-	obj11.tex.texture = 0;
-	obj11.tex.bump = 0;
-	obj11.tex.transp = 0;
-	ft_lstaddend(&list, ft_lstnew(&obj11, sizeof(t_obj)));
 	return (list);
 }
 
@@ -663,7 +564,7 @@ t_list	*init_test_lum(void)
 {
 	t_list	*list;
 	t_obj	lum1;
-	// t_obj	lum2;
+	t_obj	lum2;
 
 	list = NULL;
 	lum1.id = 0;
@@ -691,6 +592,30 @@ t_list	*init_test_lum(void)
 	lum1.shininess = 0;
 	ft_lstaddend(&list, ft_lstnew(&lum1, sizeof(t_obj)));
 
+	lum2.id = 0;
+	lum2.transform.scale.x = 1;
+	lum2.transform.scale.y = 1;
+	lum2.transform.scale.z = 1;
+	lum2.transform.scale.w = 1;
+	lum2.type = 1;
+	lum2.transform.transl.x = 0;
+	lum2.transform.transl.y = 15;
+	lum2.transform.transl.z = 15;
+	lum2.transform.transl.w = 1;
+	lum2.transform.rot.x = 0;
+	lum2.transform.rot.y = 0;
+	lum2.transform.rot.z = 0;
+	lum2.transform.rot.w = 1;
+	lum2.color.red = 1;
+	lum2.color.green = 1;
+	lum2.color.blue = 1;
+	lum2.ka = 0;
+	lum2.kd = 0;
+	lum2.ks = 0;
+	lum2.i = 1;
+	lum2.t = 0;
+	lum2.shininess = 0;
+	ft_lstaddend(&list, ft_lstnew(&lum2, sizeof(t_obj)));
 	// lum2.id = 1;
 	// lum2.transform.scale.x = 1;
 	// lum2.transform.scale.y = 1;

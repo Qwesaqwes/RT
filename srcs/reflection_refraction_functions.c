@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 04:32:56 by opandolf          #+#    #+#             */
-/*   Updated: 2016/12/12 13:23:43 by opandolf         ###   ########.fr       */
+/*   Updated: 2017/03/25 16:47:18 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@ void		ft_lstdelfirst(t_list **alst)
 
 	tmp = *alst;
 	if (tmp == NULL)
-		return;
+		return ;
 	*alst = tmp->next;
-	free (tmp);
+	free(tmp);
 }
 
 void		init_calculed_values(t_cv *cv, float n1, float n2)
 {
 	cv->n1 = n1;
 	cv->n2 = n2;
-
 	if (cv->sign < 0)
 	{
 		cv->n1 = n2;
@@ -61,7 +60,8 @@ t_ray		refract(t_vec3d normal, t_vec3d incident, t_vec3d ip, t_cv cv)
 	t_ray	ret;
 
 	ret.origin = vector_sub(ip, vector_fact(normal, SHADOW_BIAS));
-	ret.dir = vector_add(vector_fact(incident, cv.n), vector_fact(normal, cv.n * cv.cosI - cv.cosT));
+	ret.dir = vector_add(vector_fact(incident, cv.n), vector_fact(normal,
+		cv.n * cv.cosI - cv.cosT));
 	return (ret);
 }
 
@@ -70,8 +70,10 @@ float		fresnel(t_cv cv)
 	float	ror;
 	float	rpa;
 
-	ror = (float)(cv.n1 * cv.cosI - cv.n2 * cv.cosT) / (float)(cv.n1 * cv.cosI + cv.n2 * cv.cosT);
-	rpa = (float)(cv.n2 * cv.cosI - cv.n1 * cv.cosT) / (float)(cv.n2 * cv.cosI + cv.n1 * cv.cosT);
+	ror = (float)(cv.n1 * cv.cosI - cv.n2 * cv.cosT) /
+		(float)(cv.n1 * cv.cosI + cv.n2 * cv.cosT);
+	rpa = (float)(cv.n2 * cv.cosI - cv.n1 * cv.cosT) /
+		(float)(cv.n2 * cv.cosI + cv.n1 * cv.cosT);
 	return ((float)(ror * ror + rpa * rpa) / (float)(2));
 }
 
