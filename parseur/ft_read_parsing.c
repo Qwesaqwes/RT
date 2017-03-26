@@ -41,11 +41,12 @@ void			ft_read_file(char *file, t_e *e)
 	while ((res = get_next_line(fd1, &line)) > 0)
 	{
 		e->nbr_line++;
-		free(line);
+		if (res == 1)
+			free(line);
 	}
-	free(line);
-	if (res == -1)
+	if (res == -1 || (res == 0 && e->nbr_line == 0))
 		ft_puterror("error file void");
+	// free(line);
 	if (e->nbr_line >= 1)
 		e->file = (char **)ft_memalloc(sizeof(char *) * e->nbr_line);
 	if ((fd2 = open(file, O_RDONLY)) < 0)
