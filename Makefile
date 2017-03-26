@@ -74,7 +74,15 @@ SRC			=	compute_ray.c\
 				gtk/gtk_set_box2.c\
 				gtk/gtk_cam_movement.c\
 				gtk/gtk_cam_movement1.c\
-				gtk/gtk_cam_rot.c
+				gtk/gtk_cam_rot.c\
+				../parseur/ft_fill_info_object.c\
+				../parseur/ft_parsing_lum.c\
+				../parseur/ft_parsing_object.c\
+				../parseur/ft_parsing_camera.c\
+				../parseur/ft_parsing_scene.c\
+				../parseur/ft_parsing.c\
+				../parseur/ft_read_parsing.c\
+				../parseur/parseur.c
 
 FLAGS		=	debug
 
