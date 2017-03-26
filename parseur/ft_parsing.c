@@ -22,7 +22,13 @@ int			ft_verif_scene_object(char *str)
 	return(0);
 }
 
-t_list		*ft_parsing_obj(t_e *e)
+static void 	ft_verif_source_exist(t_e *e, t_obj *obj)
+{
+	if (obj->tex.texture == 5 && e->source_exist == 0)
+		ft_puterror("no source given");
+}
+
+t_list			*ft_parsing_obj(t_e *e)
 {
 	t_list	*list;
 	t_obj 	obj;
@@ -40,11 +46,13 @@ t_list		*ft_parsing_obj(t_e *e)
 			if (e->split[0] && e->split[0][0] && (ft_strcmp(e->split[0], "object")) == 0)
 			{
 				e->id_o++;
+				ft_putendl("\n----------------\n");
 				obj = ft_parsing_obj_after(e, i);
 				obj.id = e->id_o;
 				// print_info_object(obj, e);
 				ft_lstadd(&list, ft_lstnew(&obj, sizeof(t_obj)));
 				i = e->line - 1;
+				ft_verif_source_exist(e, &obj);
 			}
 		}
 		i++;

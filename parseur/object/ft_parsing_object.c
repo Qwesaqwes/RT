@@ -177,6 +177,7 @@ t_obj				ft_parsing_obj_after(t_e *e, int i)
 	i++;
 	ft_verif_object(e);
 	ft_fill_info_brut(&tmp);
+	e->texture_5 = 0;
 	while (i < e->nbr_line && i != -1)
 	{
 		e->line = i;
@@ -184,6 +185,7 @@ t_obj				ft_parsing_obj_after(t_e *e, int i)
 		{
 			e->save_i = i;
 			e->split = ft_strsplit(e->file[i], '\t');
+			ft_putendl(e->split[0]);
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) ==  0)
 				ft_fill_info_object(&tmp, e);
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) !=  0)

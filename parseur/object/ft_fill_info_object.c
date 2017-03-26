@@ -57,7 +57,7 @@ void 		ft_fill_info_object_17(t_obj *obj, t_e *e)
 		e->vobject.tex_bump++;
 		e->tmp = atoi(e->split[1]);
 		if (e->tmp != 1 && e->tmp != 0)
-			ft_puterror("Wrong Info in Object - tex_texture");
+			ft_puterror("Wrong Info in Object - tex_bump");
 		obj->tex.bump = e->tmp;
 	}
 	else if (ft_strcmp(e->split[0], "tex_transp") == 0 && e->split[1] != NULL)
@@ -65,7 +65,7 @@ void 		ft_fill_info_object_17(t_obj *obj, t_e *e)
 		e->vobject.tex_transp++;
 		e->tmp = atoi(e->split[1]);
 		if (e->tmp != 1 && e->tmp != 0)
-			ft_puterror("Wrong Info in Object - tex_texture");
+			ft_puterror("Wrong Info in Object - tex_transp");
 		obj->tex.transp = e->tmp;
 	}
 	else if (ft_strcmp(e->split[0], "square") == 0 && e->split[1] != NULL)
@@ -83,19 +83,25 @@ void 		ft_fill_info_object_16(t_obj *obj, t_e *e)
 	int i;
 	if (ft_strcmp(e->split[0], "bump_buf") == 0 && e->split[1] != NULL)
 	{
-		e->file_name = ft_strjoin(e->source_jpeg, e->split[1]);
 		e->vobject.bump_buf++;
-		if ((i = open(e->file_name, O_RDONLY)) < 0)
-			ft_puterror("error file given - bump_buf");
-		obj->bump_buf = gdk_pixbuf_new_from_file(e->file_name, NULL);
+		if (e->source_exist == 1)
+		{
+			e->file_name = ft_strjoin(e->source_jpeg, e->split[1]);
+			if ((i = open(e->file_name, O_RDONLY)) < 0)
+				ft_puterror("error file given - bump_buf");
+			obj->bump_buf = gdk_pixbuf_new_from_file(e->file_name, NULL);
+		}
 	}
 	else if (ft_strcmp(e->split[0], "transp_buf") == 0 && e->split[1] != NULL)
 	{
-		e->file_name = ft_strjoin(e->source_jpeg, e->split[1]);
 		e->vobject.transp_buf++;
-		if ((i = open(e->file_name, O_RDONLY)) < 0)
-			ft_puterror("error file given - transp_buf");
-		obj->transp_buf = gdk_pixbuf_new_from_file(e->file_name, NULL);
+		if (e->source_exist == 1)
+		{
+			e->file_name = ft_strjoin(e->source_jpeg, e->split[1]);
+			if ((i = open(e->file_name, O_RDONLY)) < 0)
+				ft_puterror("error file given - transp_buf");
+			obj->transp_buf = gdk_pixbuf_new_from_file(e->file_name, NULL);
+		}
 	}
 	else
 		ft_fill_info_object_17(obj, e);
@@ -177,17 +183,22 @@ void 		ft_fill_info_object_11(t_obj *obj, t_e *e)
 	{
 		e->vobject.tex_texture++;
 		e->tmp = atoi(e->split[1]);
-		if (e->tmp < 0)
+		if (e->tmp < 0 || e->tmp > 5)
 			ft_puterror("Wrong Info in Object - tex_texture");
+		if (e->tmp == 5)
+			e->texture_5++;
 		obj->tex.texture = e->tmp;
 	}
 	else if (ft_strcmp(e->split[0], "map_buf") == 0 && e->split[1] != NULL)
 	{
-		e->file_name = ft_strjoin(e->source_jpeg, e->split[1]);
 		e->vobject.map_buf++;
-		if ((i = open(e->file_name, O_RDONLY)) < 0)
-			ft_puterror("error file given - map_buf");
-		obj->map_buf = gdk_pixbuf_new_from_file(e->file_name, NULL);
+		if (e->source_exist == 1)
+		{
+			e->file_name = ft_strjoin(e->source_jpeg, e->split[1]);
+			if ((i = open(e->file_name, O_RDONLY)) < 0)
+				ft_puterror("error file given - map_buf");
+			obj->map_buf = gdk_pixbuf_new_from_file(e->file_name, NULL);
+		}
 	}
 	else
 		ft_fill_info_object_12(obj, e);

@@ -70,6 +70,13 @@ typedef	struct		s_parsing
 	int				id_l;
 	char			*name;
 
+
+
+
+
+	int				source_exist;
+	int				texture_5;
+
 	char			*source_jpeg;
 	int				nbr_source;
 
@@ -113,7 +120,7 @@ void		ft_parsing_camera_after(t_env *rt, t_e *e, int i);
 void		ft_parsing_scene_after(t_env *rt, t_e *e, int i);
 void 		ft_parsing_scene(t_env *rt, t_e *e);
 void		ft_fill_parce(t_env *e, char *name);
-
+void 			ft_search_source(t_e *e, int i);
 
 
 
