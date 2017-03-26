@@ -44,6 +44,8 @@ void			ft_read_file(char *file, t_e *e)
 		free(line);
 	}
 	free(line);
+	if (res == -1)
+		ft_puterror("error file void");
 	if (e->nbr_line >= 1)
 		e->file = (char **)ft_memalloc(sizeof(char *) * e->nbr_line);
 	if ((fd2 = open(file, O_RDONLY)) < 0)
