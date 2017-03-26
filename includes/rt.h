@@ -20,6 +20,7 @@
 # include <pthread.h>
 # include "gtk.h"
 # include "struct.h"
+# include "parsing.h"
 
 # include <stdio.h>
 
