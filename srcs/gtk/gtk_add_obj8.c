@@ -105,7 +105,7 @@ const char		*itof(float nb)
 
 	ipart = (int)nb;
 	fpart = nb - (float)ipart;
-	if (!(res = malloc(sizeof(const char*) * 20)))
+	if (!(res = ft_memalloc(sizeof(const char*) * 20)))
 		return (NULL);
 	if (nb == 0)
 		return ("0");

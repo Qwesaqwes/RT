@@ -40,5 +40,7 @@ int	main(int ac, char **av)
 	init_gtk(&e);
 	raytracing(&e);
 	gtk_main();
+	ft_lstdel(&e.scene.obj, ft_free_obj);
+	ft_lstdel(&e.scene.lum, ft_free_obj);
 	return (0);
 }

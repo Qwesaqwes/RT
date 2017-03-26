@@ -26,9 +26,8 @@ void	gtk_choose_f(GtkWidget *button, t_env *e)
 	if (gtk_dialog_run(GTK_DIALOG(dial)) == GTK_RESPONSE_ACCEPT)
 	{
 		c = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dial));
-		//parcing
-		ft_fill_parce(e, c);
-		raytracing(e);
+		// ft_fill_parce(e, c);
+		// raytracing(e);
 		g_free(c);
 	}
 	gtk_widget_destroy(dial);

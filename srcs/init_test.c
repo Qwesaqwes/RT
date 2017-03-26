@@ -59,7 +59,7 @@ t_list 	*init_test(void)
 	obj1.tex.transp = 0;
 	obj1.map_buf = gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL);
 	obj1.bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
-	obj1.transp_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
+	// obj1.transp_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
 	ft_lstaddend(&list, ft_lstnew(&obj1, sizeof(t_obj)));
 
 	obj2.id = 1;
@@ -142,7 +142,7 @@ t_list 	*init_test(void)
 	obj3.tex.tex_col3.blue = 0.14;
 	ft_lstaddend(&list, ft_lstnew(&obj3, sizeof(t_obj)));
 
-	obj4.id = 2;
+	obj4.id = 3;
 	obj4.name = "sphere4";
 	obj4.transform.scale.x = 1;
 	obj4.transform.scale.y = 1;
@@ -182,7 +182,7 @@ t_list 	*init_test(void)
 	ft_lstaddend(&list, ft_lstnew(&obj4, sizeof(t_obj)));
 
 
-	obj5.id = 5;
+	obj5.id = 4;
 	obj5.name = "plane1";
 	obj5.transform.scale.x = 1;
 	obj5.transform.scale.y = 1;
@@ -224,7 +224,7 @@ t_list 	*init_test(void)
 	obj5.tex.tex_col3.green = 0.8;
 	obj5.tex.tex_col3.blue = 0.8;
 	obj5.tex.square = 3;
-	 ft_lstadd(&list, ft_lstnew(&obj5, sizeof(t_obj)));
+	 ft_lstaddend(&list, ft_lstnew(&obj5, sizeof(t_obj)));
 
 	// obj6.id = 6;
  // 	obj6.name = "plane2";
@@ -550,7 +550,6 @@ t_list 	*init_test(void)
 	obj10.tex.tex_col3.green = 0.8;
 	obj10.tex.tex_col3.blue = 0.8;
 	obj10.tex.square = 0.2;
-
 	obj10.map_buf = gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL);
 	obj10.bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/golf.jpg", NULL));
 	obj10.transp_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));

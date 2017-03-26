@@ -83,7 +83,8 @@ SRC			=	compute_ray.c\
 				../parseur/ft_parsing.c\
 				../parseur/reader/ft_read_parsing.c\
 				../parseur/source/source_search.c\
-				../parseur/parseur.c
+				../parseur/parseur.c\
+				free.c
 
 FLAGS		=	debug
 

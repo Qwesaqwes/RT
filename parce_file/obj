@@ -4,6 +4,7 @@
 #        	 NE COMPTE PAS
 #
 
+source		./maps/
 
 scene
 	ambiant_rgb				1		1		1
@@ -23,14 +24,14 @@ object
 	t						0
 	shininess				0
 	refraction_index		1.33
-	tex_texture				4
+	tex_texture				5
 	tex_bump				0
-	tex_transp				0
+	tex_transp				1
 	tex_col1				1		1		1
 	tex_col2				0		0		0
 	map_buf					monde.jpg
 	bump_buf				bumpsquare.jpg
-	transp_buf				monde.jpg
+	transp_buf				bumpsquare.jpg
 
 
 object

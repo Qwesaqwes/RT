@@ -82,6 +82,7 @@ void		raytracing_column_aa(t_env *e, t_list *first_el, int h_start)
 				v.enter = 0;
 				color = color_add_no_limit(compute_ray(ray, e->scene, v),
 				color);
+				ft_lstdel(v.refr_index, ft_free_float);
 			}
 		}
 		color = color_fact(color, 1.0f /
@@ -108,6 +109,7 @@ void		raytracing_column(t_env *e, t_list *first_el, int h_start)
 		v.refr_index = &first_el;
 		v.enter = 0;
 		color = color_to_rgb(compute_ray(ray, e->scene, v));
+		ft_lstdel(v.refr_index, ft_free_float);
 		ft_pixel_put(i, h_start, color, *e);
 		i++;
 	}

@@ -16,11 +16,19 @@ void		ft_lstdelfirst(t_list **alst)
 {
 	t_list	*tmp;
 
-	tmp = *alst;
-	if (tmp == NULL)
+	// tmp = *alst;
+	// if (tmp == NULL)
+	// 	return ;
+	// *alst = tmp->next;
+	// free(tmp);
+
+	if (*alst == NULL)
+	{
 		return ;
-	*alst = tmp->next;
-	free(tmp);
+	}
+	tmp = (*alst)->next;
+	ft_lstdelone(alst, ft_free_float);
+	*alst = tmp;
 }
 
 void		init_calculed_values(t_cv *cv, float n1, float n2)

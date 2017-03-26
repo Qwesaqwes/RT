@@ -24,7 +24,7 @@ void	ft_list_remove_if(t_list **begin, const char *data_ref, int (*cmp)())
 		{
 			tmp = *begin;
 			*begin = (*begin)->next;
-			free(tmp);
+			ft_lstdelone(&tmp, ft_free_obj);
 			ft_list_remove_if(begin, data_ref, cmp);
 		}
 		else

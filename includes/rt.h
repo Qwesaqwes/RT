@@ -188,4 +188,7 @@ t_list		*init_test_lum(void);
 
 t_vec3d		inter_point_to_zero(t_obj obj, t_vec3d ip);
 
+void 			ft_free_obj(void  *obj, size_t size);
+void 			ft_free_float(void *content, size_t size);
+
 #endif

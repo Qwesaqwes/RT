@@ -235,9 +235,6 @@ typedef struct		s_scene
 
 typedef struct		s_env
 {
-	void			*mlx;
-	void			*win;
-	// t_img			img;
 	t_camera		camera;
 	t_vp			vp;
 	t_scene			scene;
