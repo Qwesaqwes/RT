@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   face_cuting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 18:37:55 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/13 16:06:05 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/03/29 18:02:38 by opandolf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+
+void		add_after_vertex(t_vertex *el, t_face **list)
+{
+	t_vertex	*tmp;
+
+	tmp = *list;
+	if ((tmp = NULL))
+		*list = el;
+	else
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = el;
+	}
+}
 
 void		add_after_face(t_face *el, t_face **list)
 {
