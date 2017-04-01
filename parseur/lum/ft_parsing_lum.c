@@ -8,25 +8,6 @@ static void			ft_verif_lum(t_e *e)
 	e->vobject.scale_xyz = 0;
 	e->vobject.translate_xyz = 0;
 	e->vobject.rotation_xyz = 0;
-	e->vobject.k_ads = 0;
-	e->vobject.i = 0;
-	e->vobject.t = 0;
-	e->vobject.shininess = 0;
-	e->vobject.refraction_index = 0;
-}
-
-static void			ft_verif_nbr_lum_v2(t_e *e)
-{
-	if (e->vobject.rotation_xyz != 1)
-		ft_puterror(e, "Wrong Info Light");
-	if (e->vobject.k_ads != 1)
-		ft_puterror(e, "Wrong Info Light");
-	if (e->vobject.i != 1)
-		ft_puterror(e, "Wrong Info Light");
-	if (e->vobject.t != 1)
-		ft_puterror(e, "Wrong Info Light");
-	if (e->vobject.shininess != 1)
-		ft_puterror(e, "Wrong Info Light");
 }
 
 static void			ft_verif_nbr_lum(t_e *e)
@@ -41,9 +22,9 @@ static void			ft_verif_nbr_lum(t_e *e)
 		ft_puterror(e, "Wrong Info Light");
 	if (e->vobject.translate_xyz != 1)
 		ft_puterror(e, "Wrong Info Light");
-	ft_verif_nbr_lum_v2(e);
+	if (e->vobject.rotation_xyz != 1)
+		ft_puterror(e, "Wrong Info Light");
 }
-
 
 t_obj				ft_parsing_lum(t_e *e, int i)
 {
@@ -61,7 +42,7 @@ t_obj				ft_parsing_lum(t_e *e, int i)
 			e->save_i = i;
 			e->split = ft_strsplit(e->file[i], '\t');
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) ==  0)
-				ft_fill_info_object(&tmp, e);
+				ft_fill_info_lum(&tmp, e);
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) !=  0)
 				i = -2;
 			j = -1;

@@ -131,8 +131,6 @@ object
 	tex_col3				1		1		1
 
 
-
-
 object
 	name					plan
 	type					plane
@@ -180,10 +178,7 @@ light
 	scale					1
 	translate_xyz			0		5		-15
 	rotation_xyz			0		0		-20
-	k_ads					0		0		0
-	i						1
-	t						0
-	shininess				0
+
 
 light
 	name					green
@@ -192,10 +187,7 @@ light
 	scale					1
 	translate_xyz			0		5		15
 	rotation_xyz			0		0		-20
-	k_ads					0		0		0
-	i						1
-	t						0
-	shininess				0
+
 
 light
 	name					blue
@@ -204,7 +196,3 @@ light
 	scale					1
 	translate_xyz			0		5		0
 	rotation_xyz			0		0		-20
-	k_ads					0		0		0
-	i						1
-	t						0
-	shininess				0

@@ -34,6 +34,7 @@ int 	ft_fill_parce(t_env *rt, char *name)
 		tmp.scene.lum = ft_parseur(rt, &e, 3);
 	if (e.error == 0)
 	{
+		rt->scene = tmp.scene;
 		rt->camera = tmp.camera;
 		rt->vp = tmp.vp;
 		rt->scene.obj = tmp.scene.obj;

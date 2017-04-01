@@ -21,6 +21,8 @@ int			main(int ac, char **av)
 	gtk_init(&ac, &av);
 	if (ac > 2)
 	{
+		init_cam(&e.camera);
+		init_vp(&e.vp);
 		ft_putendl("So many file given");
 		exit (0);
 	}
