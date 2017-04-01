@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/24 15:52:03 by dsusheno         ###   ########.fr       */
+/*   Updated: 2017/04/01 16:52:43 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ float		circle_dist(t_ray ray, t_obj obj);
 t_vec3d		set_inter_point(float dist, t_ray ray);
 t_pret		polygone_dist(t_ray ray, t_obj obj);
 float		triangle_dist(t_ray ray, t_face obj);
+
+float		quadrics_dist(t_ray r, t_obj obj);
+t_vec3d		quadrics_normal_vec(t_vec3d ip, t_quadrics q);
+
+
 float		t1_search(t_dist dist, t_obj obj, t_ray r);
 float		t2_search(t_dist dist, t_obj obj, t_ray r);
 

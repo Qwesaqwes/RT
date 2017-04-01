@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 11:56:33 by opandolf          #+#    #+#             */
-/*   Updated: 2017/03/25 17:50:08 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/01 16:51:56 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_vec3d	compute_normal_vec(t_no no)
 		normal = no.obj.faces->normal;
 	else if (no.obj.type == 5 || no.obj.type == 6)
 		normal = no.poly_face->normal;
+	else if (no.obj.type == 8)
+		normal = quadrics_normal_vec(no.ip, no.obj.quadrics);
 	else
 	{
 		normal.x = 0;

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 17:02:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/25 17:56:50 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/01 17:57:15 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,11 @@ int		get_nearest_obj(t_ray ray, t_list *list, t_no *no)
 		if (obj.type == 7)
 		{
 			dist = circle_dist(ray, obj);
+		}
+		if (obj.type == 8)
+		{
+			img_ray = imaginary_ray(ray, obj.transform);
+			dist = quadrics_dist(img_ray, obj);
 		}
 		if (dist > SHADOW_BIAS)
 		{

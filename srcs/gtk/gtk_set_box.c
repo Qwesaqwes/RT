@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:06:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/17 23:08:26 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/01 15:25:53 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	init_gtk(t_env *e)
 	gtk_layout_put(GTK_LAYOUT(e->gtk.layout), e->gtk.back_img, 0, 0);
 	e->gtk.globalbox = gtk_box_new(1, 0);
 	e->gtk.imgbox = gtk_box_new(0, 0);
-	e->gtk.label1 = gtk_label_new("TITLE OF FILE");
+	e->gtk.label1 = gtk_label_new("HAVE FUN :D !");
 	gtk_box_pack_start(GTK_BOX(e->gtk.globalbox), e->gtk.label1, 0, 0, 10);
 	top_box(e);
 	sec_top_box(e);

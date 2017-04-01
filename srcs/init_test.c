@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/22 18:17:27 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/01 18:29:06 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ t_list 	*init_test(void)
 	list = NULL;
 	obj1.id = 0;
 	obj1.name = "sphere1";
-	obj1.transform.scale.x = 0.2;
-	obj1.transform.scale.y = 0.2;
-	obj1.transform.scale.z = 0.2;
+	obj1.transform.scale.x = 1;
+	obj1.transform.scale.y = 1;
+	obj1.transform.scale.z = 1;
 	obj1.transform.scale.w = 1;
 	obj1.type = 0;
 	obj1.transform.transl.x = 10;
@@ -44,6 +44,9 @@ t_list 	*init_test(void)
 	obj1.transform.rot.y = 0;
 	obj1.transform.rot.z = 0;
 	obj1.transform.rot.w = 1;
+	// obj1.limit.x_max = 0.3;
+	// obj1.limit.exist.x_max = 0;
+	obj1.limit.exist = (t_exist){0, 0, 0, 0, 0, 0};
 	obj1.color.red = 1;
 	obj1.color.green = 1;
 	obj1.color.blue = 0;
@@ -56,10 +59,10 @@ t_list 	*init_test(void)
 	obj1.refr_index = 1;
 	obj1.tex.texture = 5;
 	obj1.tex.bump = 1;
-	obj1.tex.transp = 1;
-	obj1.map_buf = gdk_pixbuf_new_from_file("./maps/moon.jpg", NULL);
+	obj1.tex.transp = 0;
+	obj1.map_buf = gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL);
 	obj1.bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
-	obj1.transp_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
+	// obj1.transp_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
 	ft_lstaddend(&list, ft_lstnew(&obj1, sizeof(t_obj)));
 
 	obj2.id = 1;
@@ -100,6 +103,7 @@ t_list 	*init_test(void)
 	obj2.tex.tex_col3.green = 1;
 	obj2.tex.tex_col3.blue = 1;
 	obj2.tex.square = 0.2;
+	// obj2.bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
 	ft_lstaddend(&list, ft_lstnew(&obj2, sizeof(t_obj)));
 
 	obj3.id = 2;
@@ -226,35 +230,36 @@ t_list 	*init_test(void)
 	 ft_lstaddend(&list, ft_lstnew(&obj5, sizeof(t_obj)));
 
 	// obj6.id = 6;
- // 	obj6.name = "plane2";
- // 	obj6.transform.scale.x = 1;
- // 	obj6.transform.scale.y = 1;
- // 	obj6.transform.scale.z = 1;
+ // 	obj6.name = "hyperboloide";
+ // 	obj6.transform.scale.x = 0.5;
+ // 	obj6.transform.scale.y = 0.5;
+ // 	obj6.transform.scale.z = 0.5;
  // 	obj6.transform.scale.w = 1;
- // 	obj6.type = 2;
- // 	obj6.transform.transl.x = 50;
+ // 	obj6.type = 8;
+ // 	obj6.transform.transl.x = 5;
  // 	obj6.transform.transl.y = 0;
- // 	obj6.transform.transl.z = 20;
+ // 	obj6.transform.transl.z = 0;
  // 	obj6.transform.transl.w = 1;
- // 	obj6.normal.x = -1;
- // 	obj6.normal.y = 0;
- // 	obj6.normal.z = 0;
- // 	obj6.normal.w = 1;
  // 	obj6.transform.rot.x = 0;
- // 	obj6.transform.rot.y = 90;
+ // 	obj6.transform.rot.y = 0;
  // 	obj6.transform.rot.z = 0;
  // 	obj6.transform.rot.w = 1;
  // 	obj6.color.red = 0.6;
  // 	obj6.color.green = 0.7;
  // 	obj6.color.blue = 0.3;
- // 	obj6.ka = 0.2;
+	// obj6.limit.z_min = -3;
+	// obj6.limit.z_max = 3;
+	// obj6.limit.exist = (t_exist){0, 0, 0, 0, 1, 1};
+	// obj6.ka = 0.2;
  // 	obj6.kd = 0.9;
  // 	obj6.ks = 0;
  // 	obj6.i = 0;
  // 	obj6.t = 0;
  // 	obj6.shininess = 50;
  // 	obj6.refr_index = 1.33;
- // 	obj6.tex.texture = 1;
+	// // obj6.quadrics = (t_quadrics){ 100, -25, 4, 0, 0, 0, -200, -100, -8, 104};
+	// obj6.quadrics = (t_quadrics){ 1, 1, -1, 0, 0, 0, 0, 0, 0, -1};
+ // 	obj6.tex.texture = 0;
  // 	obj6.tex.tex_col1.red = 0;
  // 	obj6.tex.tex_col1.green = 0;
  // 	obj6.tex.tex_col1.blue = 1;
@@ -562,7 +567,7 @@ t_list	*init_test_lum(void)
 {
 	t_list	*list;
 	t_obj	lum1;
-	t_obj	lum2;
+	// t_obj	lum2;
 
 	list = NULL;
 	lum1.id = 0;
@@ -571,7 +576,7 @@ t_list	*init_test_lum(void)
 	lum1.transform.scale.z = 1;
 	lum1.transform.scale.w = 1;
 	lum1.type = 0;
-	lum1.transform.transl.x = 0;
+	lum1.transform.transl.x = -15;
 	lum1.transform.transl.y = 15;
 	lum1.transform.transl.z = 15;
 	lum1.transform.transl.w = 1;
@@ -590,31 +595,31 @@ t_list	*init_test_lum(void)
 	lum1.shininess = 0;
 	ft_lstaddend(&list, ft_lstnew(&lum1, sizeof(t_obj)));
 
-	lum2.id = 0;
-	lum2.transform.scale.x = 1;
-	lum2.transform.scale.y = 1;
-	lum2.transform.scale.z = 1;
-	lum2.transform.scale.w = 1;
-	lum2.type = 1;
-	lum2.transform.transl.x = 0;
-	lum2.transform.transl.y = 15;
-	lum2.transform.transl.z = 15;
-	lum2.transform.transl.w = 1;
-	lum2.transform.rot.x = 0;
-	lum2.transform.rot.y = 0;
-	lum2.transform.rot.z = 0;
-	lum2.transform.rot.w = 1;
-	lum2.color.red = 1;
-	lum2.color.green = 1;
-	lum2.color.blue = 1;
-	lum2.ka = 0;
-	lum2.kd = 0;
-	lum2.ks = 0;
-	lum2.i = 1;
-	lum2.t = 0;
-	lum2.shininess = 0;
-	ft_lstaddend(&list, ft_lstnew(&lum2, sizeof(t_obj)));
-	// lum2.id = 1;
+	// lum2.id = 0;
+	// lum2.transform.scale.x = 1;
+	// lum2.transform.scale.y = 1;
+	// lum2.transform.scale.z = 1;
+	// lum2.transform.scale.w = 1;
+	// lum2.type = 1;
+	// lum2.transform.transl.x = 0;
+	// lum2.transform.transl.y = 15;
+	// lum2.transform.transl.z = 15;
+	// lum2.transform.transl.w = 1;
+	// lum2.transform.rot.x = 0;
+	// lum2.transform.rot.y = 0;
+	// lum2.transform.rot.z = 0;
+	// lum2.transform.rot.w = 1;
+	// lum2.color.red = 1;
+	// lum2.color.green = 1;
+	// lum2.color.blue = 1;
+	// lum2.ka = 0;
+	// lum2.kd = 0;
+	// lum2.ks = 0;
+	// lum2.i = 1;
+	// lum2.t = 0;
+	// lum2.shininess = 0;
+	// ft_lstaddend(&list, ft_lstnew(&lum2, sizeof(t_obj)));
+	// // lum2.id = 1;
 	// lum2.transform.scale.x = 1;
 	// lum2.transform.scale.y = 1;
 	// lum2.transform.scale.z = 1;

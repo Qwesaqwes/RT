@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 12:32:03 by opandolf          #+#    #+#             */
-/*   Updated: 2017/03/25 17:58:38 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/01 18:13:29 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,10 @@ t_color		get_intersection_obj(t_list *list, t_obj lum, t_no no)
 			if (obj.type == 7)
 			{
 				dist = circle_dist(ray, obj);
+			}
+			if (obj.type == 8)
+			{
+				dist = quadrics_dist(ray, obj);
 			}
 			if (dist > SHADOW_BIAS && dist < dist_lum)
 				ret = color_fact(ret, obj.t);

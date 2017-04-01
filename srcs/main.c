@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:03 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/25 16:43:06 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/01 15:26:45 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ int			main(int ac, char **av)
 	init_gtk(&e);
 	raytracing(&e);
 	gtk_main();
+	printf("ERROR1\n");
 	ft_lstdel(&e.scene.obj, ft_free_obj);
+	printf("ERROR2\n");
 	ft_lstdel(&e.scene.lum, ft_free_obj);
 	return (0);
 }
