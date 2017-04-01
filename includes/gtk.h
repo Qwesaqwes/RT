@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:29:11 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/07 15:46:38 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/01 16:24:28 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,14 @@ typedef	struct		s_gtk
 	GtkWidget		*l_che2;	/*label for color checker*/
 	GtkWidget		*l_che3;	/*label for color checker*/
 	GtkWidget		*l_square;	/*label for square checker*/
+	GtkWidget		*l_limit;
+	GtkWidget		*l_xmin;
+	GtkWidget		*l_xmax;
+	GtkWidget		*l_ymin;
+	GtkWidget		*l_ymax;
+	GtkWidget		*l_zmin;
+	GtkWidget		*l_zmax;
+
 
 
 	GtkWidget		*c_obj;		/*Combo_box for object*/
@@ -99,7 +107,12 @@ typedef	struct		s_gtk
 	GtkWidget		*e_che2;	/*entry for color texture*/
 	GtkWidget		*e_che3;	/*entry for color texture*/
 	GtkWidget		*e_square;	/*entry for Square texture*/
-
+	GtkWidget		*e_xmin;
+	GtkWidget		*e_xmax;
+	GtkWidget		*e_ymin;
+	GtkWidget		*e_ymax;
+	GtkWidget		*e_zmin;
+	GtkWidget		*e_zmax;
 
 	GtkWidget		*obj_box;	/*boxes for dialog of Add object*/
 	GtkWidget		*obj_box2;
@@ -112,9 +125,11 @@ typedef	struct		s_gtk
 	GtkWidget		*obj_box9;
 	GtkWidget		*obj_box10;
 	GtkWidget		*obj_box11;
-
 	GtkWidget		*obj_box12;
 	GtkWidget		*obj_box13;
+	GtkWidget		*obj_box14;
+	GtkWidget		*obj_box15;
+	GtkWidget		*obj_box16;
 
 	GtkWidget		*obj_gbox;
 

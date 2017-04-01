@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:09:30 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/13 14:39:41 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/01 15:52:03 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	init_add_obj_box(t_gtk *gtk, int clicked)
 	gtk->obj_box11 = gtk_box_new(0, 0);
 	gtk->obj_box12 = gtk_box_new(0, 0);
 	gtk->obj_box13 = gtk_box_new(0, 0);
+	gtk->obj_box14 = gtk_box_new(0, 0);
+	gtk->obj_box15 = gtk_box_new(0, 0);
+	gtk->obj_box16 = gtk_box_new(0, 0);
 	gtk->obj_gbox = gtk_box_new(1, 0);
 }
 
@@ -48,6 +51,19 @@ void	init_add_obj_l_e3(t_gtk *gtk)
 	gtk->e_che2 = gtk_color_button_new();
 	gtk->e_che3 = gtk_color_button_new();
 	gtk->e_square = gtk_entry_new();
+	gtk->l_limit = gtk_label_new("Limite -->");
+	gtk->l_xmin = gtk_label_new("Xmin: ");
+	gtk->l_xmax = gtk_label_new("Xmax: ");
+	gtk->l_ymin = gtk_label_new("Ymin: ");
+	gtk->l_ymax = gtk_label_new("Ymax: ");
+	gtk->l_zmin = gtk_label_new("Zmin: ");
+	gtk->l_zmax = gtk_label_new("Zmax: ");
+	gtk->e_xmin = gtk_entry_new();
+	gtk->e_xmax = gtk_entry_new();
+	gtk->e_ymin = gtk_entry_new();
+	gtk->e_ymax = gtk_entry_new();
+	gtk->e_zmin = gtk_entry_new();
+	gtk->e_zmax = gtk_entry_new();
 }
 
 void	init_add_obj_l_e2(t_gtk *gtk)

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:47:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/24 15:42:46 by dsusheno         ###   ########.fr       */
+/*   Updated: 2017/04/01 16:46:12 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,20 @@ typedef	struct		s_mapping
 	float			z_min;
 }					t_mapping;
 
+typedef struct		s_quadrics
+{
+	float			a;
+	float			b;
+	float			c;
+	float			d;
+	float			e;
+	float			f;
+	float			g;
+	float			h;
+	float			i;
+	float			j;
+}					t_quadrics;
+
 typedef struct		s_obj
 {
 	int				id;
@@ -183,6 +197,7 @@ typedef struct		s_obj
 	t_face			*faces;
 	t_tex			tex;
 	t_limit			limit;
+	t_quadrics		quadrics;
 	GdkPixbuf		*map_buf;
 	GdkPixbuf		*bump_buf;
 	GdkPixbuf		*transp_buf;
