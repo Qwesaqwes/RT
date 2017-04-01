@@ -41,9 +41,9 @@ t_obj				ft_parsing_lum(t_e *e, int i)
 		{
 			e->save_i = i;
 			e->split = ft_strsplit(e->file[i], '\t');
-			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) ==  0)
+			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) == 0)
 				ft_fill_info_lum(&tmp, e);
-			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) !=  0)
+			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) != 0)
 				i = -2;
 			j = -1;
 			while (e->split[++j])
