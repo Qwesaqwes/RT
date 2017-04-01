@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 04:32:56 by opandolf          #+#    #+#             */
-/*   Updated: 2017/03/25 16:47:18 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/01 13:35:32 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 void		ft_lstdelfirst(t_list **alst)
 {
 	t_list	*tmp;
-
-	// tmp = *alst;
-	// if (tmp == NULL)
-	// 	return ;
-	// *alst = tmp->next;
-	// free(tmp);
 
 	if (*alst == NULL)
 	{

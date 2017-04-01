@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_obj.c                                         :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsusheno <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dsusheno <dsusheno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/26 17:21:40 by dsusheno          #+#    #+#             */
-/*   Updated: 2017/03/26 17:21:42 by dsusheno         ###   ########.fr       */
+/*   Updated: 2017/04/01 15:37:26 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@ void	free_vertex(t_vertex **vertex)
 	t_vertex	*copy;
 	t_vertex	*nextlist;
 
+	printf("3\n");
 	copy = *vertex;
+	printf("4\n");
 	while (copy)
 	{
 		nextlist = copy->next;
 		free(copy);
 		copy = nextlist;
 	}
+	printf("5\n");
+
 	*vertex = NULL;
 	//verif init NULL
 }
@@ -48,7 +52,10 @@ void	ft_free_obj2(t_obj *obj)
 {
 	if (obj->type == 5 || obj->type == 6)
 	{
+		printf("1\n");
 		free_face(&obj->faces);
+		printf("2\n");
+
 	}
 	free(obj);
 }
