@@ -14,17 +14,19 @@
 
 void		add_after_vertex(t_vertex *el, t_face **list)
 {
-	t_vertex	*tmp;
-
-	tmp = *list;
-	if ((tmp = NULL))
-		*list = el;
-	else
-	{
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = el;
-	}
+	(void)el;
+	(void)list;
+	// t_vertex	*tmp;
+	//
+	// tmp = *list;
+	// if ((tmp = NULL))
+	// 	*list = el;
+	// else
+	// {
+	// 	while (tmp->next)
+	// 		tmp = tmp->next;
+	// 	tmp->next = el;
+	// }
 }
 
 void		add_after_face(t_face *el, t_face **list)
