@@ -76,6 +76,7 @@ SRC			=	compute_ray.c\
 				gtk/gtk_cam_movement1.c\
 				gtk/gtk_cam_rot.c\
 				../parseur/object/ft_fill_info_object.c\
+				../parseur/lum/ft_fill_lum.c\
 				../parseur/lum/ft_parsing_lum.c\
 				../parseur/object/ft_parsing_object.c\
 				../parseur/camera/ft_parsing_camera.c\
