@@ -37,6 +37,7 @@ typedef	struct		s_verif_object
 	int				tex_texture;
 	int				tex_bump;
 	int				tex_transp;
+	int				faces;
 	int				map_buf;
 	int				bump_buf;
 	int				transp_buf;
@@ -74,6 +75,7 @@ typedef	struct		s_parsing
 	int				id_l;
 	char			*name;
 	int 			error;
+	int				faceend;
 
 
 
@@ -128,6 +130,7 @@ void 		ft_parsing_scene(t_env *rt, t_e *e);
 int			ft_fill_parce(t_env *e, char *name);
 void 		ft_search_source(t_e *e, int i);
 void 		ft_fill_info_lum(t_obj *obj, t_e *e);
+t_face		*ft_parsing_face_after(t_e *e, int i);
 
 
 

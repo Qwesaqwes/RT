@@ -124,6 +124,7 @@ static void 		ft_fill_info_brut(t_obj *tmp)
 	tmp->normal.y = 0;
 	tmp->normal.z = 0;
 	tmp->normal.w = 1;
+	tmp->faces = NULL;
 }
 
 t_obj				ft_parsing_obj_after(t_e *e, int i)
@@ -143,8 +144,12 @@ t_obj				ft_parsing_obj_after(t_e *e, int i)
 		{
 			e->save_i = i;
 			e->split = ft_strsplit(e->file[i], '\t');
+			e->faceend = i;
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) ==  0)
+			{
 				ft_fill_info_object(&tmp, e);
+				i = e->faceend;
+			}
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) !=  0)
 				i = -2;
 			j = -1;

@@ -1,0 +1,15 @@
+dans ft_fill_info_brut mettre tmp->faces = NULL
+
+dans ft_fill_info_object## mettre
+
+dans ft_parsing_obj_after mettre ligne 193
+if (ft_strcmp(e->split[0], "face") == 0)
+	i = e->faceend;
+
+rajouter e->faceend dans le .h
+
+if (ft_strcmp(e->split[0], "face") == 0)
+{
+	e->vobject.faces++;
+	obj->faces = add_after_face(ft_parsing_face_after(e, i, obj), obj->faces);
+}
