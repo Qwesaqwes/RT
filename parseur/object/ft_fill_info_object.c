@@ -380,7 +380,10 @@ static char ft_verif_type(t_e *e, char *type)
 
 void		ft_fill_info_object(t_obj *obj, t_e *e)
 {
+	int i;
+
 	e->tmp = 0;
+	i = 0;
 	if (ft_strcmp(e->split[0], "name") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.name++;
@@ -390,6 +393,11 @@ void		ft_fill_info_object(t_obj *obj, t_e *e)
 	{
 		e->vobject.type++;
 		obj->type = ft_verif_type(e, e->split[1]);
+	}
+	else if (ft_strcmp(e->split[0], "face") == 0)
+	{
+		e->vobject.faces++;
+		add_after_face(ft_parsing_face_after(e, e->faceend), &obj->faces);
 	}
 	else
 		ft_fill_info_object_2(obj, e);
