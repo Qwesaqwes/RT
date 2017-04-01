@@ -11,13 +11,13 @@ static void			ft_verif_scene(t_e *e)
 static void			ft_verif_nbr_scene(t_e *e)
 {
 	if (e->vscene.ambiant_rgb != 1)
-		ft_puterror("Wrong Info Scene");
+		ft_puterror(e, "Wrong Info Scene ambiant_rgb");
 	if (e->vscene.refr_index != 1)
-		ft_puterror("Wrong Info Scene1");
+		ft_puterror(e, "Wrong Info Scene refr_index");
 	if (e->vscene.background_rgb != 1)
-		ft_puterror("Wrong Info Scene1");
+		ft_puterror(e, "Wrong Info Scene background_rgb");
 	if (e->vscene.antialiasing != 1)
-		ft_puterror("Wrong Info Scene1");
+		ft_puterror(e, "Wrong Info Scene antialiasing");
 }
 
 void				ft_next_fill_scene_2(t_scene *scene, t_e* e)
@@ -28,19 +28,19 @@ void				ft_next_fill_scene_2(t_scene *scene, t_e* e)
 		e->vscene.background_rgb++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in scene - background_red");
+			ft_puterror(e, "Wrong Info in scene - background_red");
 		scene->background.red = (e->tmp);
 		e->tmp = atof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in scene - background_green");
+			ft_puterror(e, "Wrong Info in scene - background_green");
 		scene->background.green = (e->tmp);
 		e->tmp = atof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in scene - background_blue");
+			ft_puterror(e, "Wrong Info in scene - background_blue");
 		scene->background.blue = (e->tmp);
 	}
 	else
-		ft_puterror("Wrong Info Scene");
+		ft_puterror(e, "Wrong Info Scene");
 }
 
 void				ft_next_fill_scene_1(t_scene *scene, t_e* e)
@@ -51,15 +51,15 @@ void				ft_next_fill_scene_1(t_scene *scene, t_e* e)
 		e->vscene.ambiant_rgb++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in scene - ambiant red");
+			ft_puterror(e, "Wrong Info in scene - ambiant red");
 		scene->ambiant.red = (e->tmp);
 		e->tmp = atof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in scene - ambiant green");
+			ft_puterror(e, "Wrong Info in scene - ambiant green");
 		scene->ambiant.green = (e->tmp);
 		e->tmp = atof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in scene - ambiant blue");
+			ft_puterror(e, "Wrong Info in scene - ambiant blue");
 		scene->ambiant.blue = (e->tmp);
 	}
 	else if (ft_strcmp(e->split[0], "refr_index") == 0  && e->split[1] != NULL)
@@ -67,7 +67,7 @@ void				ft_next_fill_scene_1(t_scene *scene, t_e* e)
 		e->vscene.refr_index++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in scene - refr_index");
+			ft_puterror(e, "Wrong Info in scene - refr_index");
 		scene->refr_index = (e->tmp);
 	}
 	else
@@ -81,7 +81,7 @@ void				ft_fill_info_scene(t_scene *scene, t_e *e)
 		e->vscene.refr_index++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in scene - refr_index");
+			ft_puterror(e, "Wrong Info in scene - refr_index");
 		scene->refr_index = (e->tmp);
 	}
 	else if (ft_strcmp(e->split[0], "antialiasing") == 0  && e->split[1] != NULL)
@@ -89,7 +89,7 @@ void				ft_fill_info_scene(t_scene *scene, t_e *e)
 		e->vscene.antialiasing++;
 		e->tmp = atoi(e->split[1]);
 		if (e->tmp < 1 || e->tmp > 4)
-			ft_puterror("Wrong Info in scene - antialiasing");
+			ft_puterror(e, "Wrong Info in scene - antialiasing");
 		scene->antialiasing = (e->tmp);
 	}
 	else

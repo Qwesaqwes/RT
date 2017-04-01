@@ -11,11 +11,11 @@ static void			ft_verif_camera(t_e *e)
 static void			ft_verif_nbr_camera(t_e *e)
 {
 	if (e->vcamera.origin_xyz != 1)
-		ft_puterror("Wrong Info Camera - origin_xyz");
+		ft_puterror(e, "Wrong Info Camera - origin_xyz");
 	if (e->vcamera.rotation_xyz != 1)
-		ft_puterror("Wrong Info Camera - rotation_xyz");
+		ft_puterror(e, "Wrong Info Camera - rotation_xyz");
 	if (e->vcamera.distance_viewplane != 1)
-		ft_puterror("Wrong Info Camera - distance_camera");
+		ft_puterror(e, "Wrong Info Camera - distance_camera");
 }
 
 static void 		ft_fill_info_brut(t_env *rt)
@@ -42,7 +42,7 @@ void 				ft_fill_info_camera(t_env *rt, t_e *e)
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		if (e->split[4] != NULL)
-			ft_puterror("Wrong Info in Camera - origin_xyz");
+			ft_puterror(e, "Wrong Info in Camera - origin_xyz");
 		e->vcamera.origin_xyz++;
 		e->tmp = atof(e->split[1]);
 		rt->camera.origin.x = (e->tmp);
@@ -55,19 +55,19 @@ void 				ft_fill_info_camera(t_env *rt, t_e *e)
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		if (e->split[4] != NULL)
-			ft_puterror("Wrong Info in Camera - rotation_xyz");
+			ft_puterror(e, "Wrong Info in Camera - rotation_xyz");
 		e->vcamera.rotation_xyz++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < -360 || e->tmp > 360)
-			ft_puterror("Wrong Info in Camera - rotation_x");
+			ft_puterror(e, "Wrong Info in Camera - rotation_x");
 		rt->camera.rot.x = (e->tmp);
 		e->tmp = atof(e->split[2]);
 		if (e->tmp < -360 || e->tmp > 360)
-			ft_puterror("Wrong Info in Camera - rotation_y");
+			ft_puterror(e, "Wrong Info in Camera - rotation_y");
 		rt->camera.rot.y = (e->tmp);
 		e->tmp = atof(e->split[3]);
 		if (e->tmp < -360 || e->tmp > 360)
-			ft_puterror("Wrong Info in Camera - rotation_z");
+			ft_puterror(e, "Wrong Info in Camera - rotation_z");
 		rt->camera.rot.z = (e->tmp);
 	}
 	else if (ft_strcmp(e->split[0], "distance_viewplane") == 0
@@ -76,7 +76,7 @@ void 				ft_fill_info_camera(t_env *rt, t_e *e)
 		e->vcamera.distance_viewplane++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp <= 0)
-			ft_puterror("Wrong Info in Camera - distance_viewplane");
+			ft_puterror(e, "Wrong Info in Camera - distance_viewplane");
 		rt->vp.dist = (e->tmp);
 		rt->vp.width = 1;
 		rt->vp.height = (float)H / (float)W;

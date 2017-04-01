@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   face_cuting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 18:37:55 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/29 18:02:38 by opandolf         ###   ########.fr       */
+/*   Updated: 2017/04/01 13:24:03 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-void		add_after_vertex(t_vertex *el, t_face **list)
+void		add_after_vertex(t_vertex *el, t_vertex **list)
 {
 	(void)el;
 	(void)list;

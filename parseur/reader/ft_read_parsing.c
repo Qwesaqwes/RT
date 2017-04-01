@@ -35,29 +35,30 @@ void			ft_read_file(char *file, t_e *e)
 	int fd2;
 
 	if ((fd1 = open(file, O_RDONLY)) < 0)
-		ft_puterror("error file given");
+		ft_puterror(e, "error file given");
 	res = 0;
 	e->nbr_line = 0;
-	while ((res = get_next_line(fd1, &line)) > 0)
+	while ((res = get_next_line(fd1, &line)) > 0 && e->error == 0)
 	{
 		e->nbr_line++;
 		if (res == 1)
 			free(line);
 	}
 	if (res == -1 || (res == 0 && e->nbr_line == 0))
-		ft_puterror("error file void");
+		ft_puterror(e, "error file void");
 	// free(line);
-	if (e->nbr_line >= 1)
+	if (e->nbr_line >= 1 && e->error == 0)
 		e->file = (char **)ft_memalloc(sizeof(char *) * e->nbr_line);
 	if ((fd2 = open(file, O_RDONLY)) < 0)
-		ft_puterror("error file given");
+		ft_puterror(e, "error file given");
 	close(fd1);
 	i = -1;
-	while ((res = get_next_line(fd2, &line)) > 0)
+	while ((res = get_next_line(fd2, &line)) > 0  && e->error == 0)
 		e->file[++i] = line;
 	if (res == -1)
-		ft_putendl("error gnl");
-	ft_change_space(e);
+		ft_puterror(e, "error gnl/fichier inexistant ou pas les droits");
+	if (e->error == 0)
+		ft_change_space(e);
 }
 
 void	ft_print_xx(char **tab)

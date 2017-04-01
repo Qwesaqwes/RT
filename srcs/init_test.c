@@ -31,9 +31,9 @@ t_list 	*init_test(void)
 	list = NULL;
 	obj1.id = 0;
 	obj1.name = "sphere1";
-	obj1.transform.scale.x = 1;
-	obj1.transform.scale.y = 1;
-	obj1.transform.scale.z = 1;
+	obj1.transform.scale.x = 0.2;
+	obj1.transform.scale.y = 0.2;
+	obj1.transform.scale.z = 0.2;
 	obj1.transform.scale.w = 1;
 	obj1.type = 0;
 	obj1.transform.transl.x = 10;
@@ -56,10 +56,10 @@ t_list 	*init_test(void)
 	obj1.refr_index = 1;
 	obj1.tex.texture = 5;
 	obj1.tex.bump = 1;
-	obj1.tex.transp = 0;
-	obj1.map_buf = gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL);
+	obj1.tex.transp = 1;
+	obj1.map_buf = gdk_pixbuf_new_from_file("./maps/moon.jpg", NULL);
 	obj1.bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
-	// obj1.transp_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
+	obj1.transp_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
 	ft_lstaddend(&list, ft_lstnew(&obj1, sizeof(t_obj)));
 
 	obj2.id = 1;
@@ -100,7 +100,6 @@ t_list 	*init_test(void)
 	obj2.tex.tex_col3.green = 1;
 	obj2.tex.tex_col3.blue = 1;
 	obj2.tex.square = 0.2;
-	// obj2.bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/bumpsquare.jpg", NULL));
 	ft_lstaddend(&list, ft_lstnew(&obj2, sizeof(t_obj)));
 
 	obj3.id = 2;

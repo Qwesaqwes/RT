@@ -1,0 +1,50 @@
+#
+#		QUAND IL Y A UN	'#' DANS
+#			   LA LIGNE, ELLE
+#        	 NE COMPTE PAS
+#
+
+scene
+	ambiant_rgb             0       1       1
+	refr_index	   			1
+	background_rgb			0		0		0
+	antialiasing			1
+
+object
+	name					sphere1
+	type					sphere
+	color_rgb				1		1		0
+	scale_xyz				1		1		1
+	translate_xyz			10		1		-1
+	rotation_xyz			90		0		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				0
+	refraction_index		1.33
+	tex_texture				5
+	tex_bump				1
+	tex_transp				1
+    tex_col1                1       1       1
+    tex_col2                0       0       0
+    tex_col3                0       0.5       0
+	map_buf					./maps/moon.jpg
+	bump_buf				./maps/moon.jpg
+	transp_buf				./maps/bumpsquare.jpg
+
+camera
+	origin_xyz				0		0		0
+	rotation_xyz			0		0		0
+	distance_viewplane		1
+
+light
+	name					salut
+	type					sphere
+	color_rgb				1		1		1
+	scale_xyz				1		1		1
+	translate_xyz			0		15		15
+	rotation_xyz			0		0		0
+	k_ads					0		0		0
+	i						1
+	t						0
+	shininess				0

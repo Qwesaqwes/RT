@@ -21,7 +21,7 @@ void 			ft_search_source(t_e *e, int i)
 					e->nbr_source++;
 				}
 				else
-					ft_puterror("Wrong info given in source");
+					ft_puterror(e, "Wrong info given in source");
 			}
 		}
 		i++;

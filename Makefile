@@ -96,10 +96,10 @@ ifdef FLAGS
 CFLAGS		=
 	endif
 	ifeq ($(FLAGS), debug)
-CFLAGS		=	-Wall -Wextra -Werror -pedantic -g
+CFLAGS		=	-Wall -Wextra -Werror -pedantic -g -ofast
 	endif
 else
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -ofast
 endif
 
 CC			=	/usr/bin/gcc

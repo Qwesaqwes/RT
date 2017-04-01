@@ -18,29 +18,29 @@ static void			ft_verif_lum(t_e *e)
 static void			ft_verif_nbr_lum_v2(t_e *e)
 {
 	if (e->vobject.rotation_xyz != 1)
-		ft_puterror("Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light");
 	if (e->vobject.k_ads != 1)
-		ft_puterror("Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light");
 	if (e->vobject.i != 1)
-		ft_puterror("Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light");
 	if (e->vobject.t != 1)
-		ft_puterror("Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light");
 	if (e->vobject.shininess != 1)
-		ft_puterror("Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light");
 }
 
 static void			ft_verif_nbr_lum(t_e *e)
 {
 	if (e->vobject.name != 1)
-		ft_puterror("Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light");
 	if (e->vobject.type != 1)
-		ft_puterror("Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light");
 	if (e->vobject.color_rgb != 1)
-		ft_puterror("Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light");
 	if (e->vobject.scale_xyz != 1)
-		ft_puterror("Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light");
 	if (e->vobject.translate_xyz != 1)
-		ft_puterror("Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light");
 	ft_verif_nbr_lum_v2(e);
 }
 

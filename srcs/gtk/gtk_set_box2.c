@@ -25,6 +25,7 @@ void		choose_file(t_env *e)
 	e->gtk.choose_f = gtk_button_new_with_label("Change Scene");
 	g_signal_connect(e->gtk.choose_f, "clicked", G_CALLBACK(gtk_choose_f), e);
 	gtk_box_pack_end(GTK_BOX(e->gtk.stopbox), e->gtk.choose_f, FALSE, FALSE, 0);
+
 }
 
 static void	gtk_antial1(t_env *e, int active)

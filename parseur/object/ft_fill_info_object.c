@@ -23,7 +23,7 @@ void 		ft_fill_info_object_19(t_obj *obj, t_e *e)
 		obj->limit.z_max = atof(e->split[1]);
 	}
 	else
-		ft_puterror(ft_strjoin("Wrong Info Object line ", ft_itoa(e->save_i + 1)));
+		ft_puterror(e, ft_strjoin("Wrong Info Object line ", ft_itoa(e->save_i + 1)));
 }
 
 void 		ft_fill_info_object_18(t_obj *obj, t_e *e)
@@ -57,7 +57,7 @@ void 		ft_fill_info_object_17(t_obj *obj, t_e *e)
 		e->vobject.tex_bump++;
 		e->tmp = atoi(e->split[1]);
 		if (e->tmp != 1 && e->tmp != 0)
-			ft_puterror("Wrong Info in Object - tex_bump");
+			ft_puterror(e, "Wrong Info in Object - tex_bump");
 		obj->tex.bump = e->tmp;
 	}
 	else if (ft_strcmp(e->split[0], "tex_transp") == 0 && e->split[1] != NULL)
@@ -65,13 +65,13 @@ void 		ft_fill_info_object_17(t_obj *obj, t_e *e)
 		e->vobject.tex_transp++;
 		e->tmp = atoi(e->split[1]);
 		if (e->tmp != 1 && e->tmp != 0)
-			ft_puterror("Wrong Info in Object - tex_transp");
+			ft_puterror(e, "Wrong Info in Object - tex_transp");
 		obj->tex.transp = e->tmp;
 	}
 	else if (ft_strcmp(e->split[0], "square") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.square++;
-		e->tmp = atoi(e->split[1]);
+		e->tmp = atof(e->split[1]);
 		obj->tex.square = e->tmp;
 	}
 	else
@@ -84,24 +84,24 @@ void 		ft_fill_info_object_16(t_obj *obj, t_e *e)
 	if (ft_strcmp(e->split[0], "bump_buf") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.bump_buf++;
-		if (e->source_exist == 1)
-		{
-			e->file_name = ft_strjoin(e->source_jpeg, e->split[1]);
-			if ((i = open(e->file_name, O_RDONLY)) < 0)
-				ft_puterror("error file given - bump_buf");
-			obj->bump_buf = gdk_pixbuf_new_from_file(e->file_name, NULL);
-		}
+		e->file_name = e->split[1];
+		if ((i = open(e->file_name, O_RDONLY)) < 0)
+			ft_puterror(e, "error file given - bump_buf");
+		if ((i = get_next_line(i, &e->tmpc)) < 0)
+			ft_puterror(e, "error file given - bump_buf");
+		close(i);
+		obj->bump_buf = gray_scale(gdk_pixbuf_new_from_file(e->file_name, NULL));
 	}
 	else if (ft_strcmp(e->split[0], "transp_buf") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.transp_buf++;
-		if (e->source_exist == 1)
-		{
-			e->file_name = ft_strjoin(e->source_jpeg, e->split[1]);
-			if ((i = open(e->file_name, O_RDONLY)) < 0)
-				ft_puterror("error file given - transp_buf");
-			obj->transp_buf = gdk_pixbuf_new_from_file(e->file_name, NULL);
-		}
+		e->file_name = e->split[1];
+		if ((i = open(e->file_name, O_RDONLY)) < 0)
+			ft_puterror(e, "error file given - transp_buf");
+		if ((i = get_next_line(i, &e->tmpc)) < 0)
+			ft_puterror(e, "error file given - bump_buf");
+		close(i);
+		obj->transp_buf = gray_scale(gdk_pixbuf_new_from_file(e->file_name, NULL));
 	}
 	else
 		ft_fill_info_object_17(obj, e);
@@ -112,17 +112,18 @@ void 		ft_fill_info_object_14(t_obj *obj, t_e *e)
 	if (ft_strcmp(e->split[0], "tex_col3") == 0 && e->split[1] != NULL
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
+		e->vobject.tex_col3++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - tex_col3_red");
+			ft_puterror(e, "Wrong Info in Object - tex_col3_red");
 		obj->tex.tex_col3.red = e->tmp;
 		e->tmp = atof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - tex_col3_green");
+			ft_puterror(e, "Wrong Info in Object - tex_col3_green");
 		obj->tex.tex_col3.green = e->tmp;
 		e->tmp = atof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - tex_col3_blue");
+			ft_puterror(e, "Wrong Info in Object - tex_col3_blue");
 		obj->tex.tex_col3.blue = e->tmp;
 	}
 	else
@@ -137,15 +138,15 @@ void 		ft_fill_info_object_13(t_obj *obj, t_e *e)
 		e->vobject.tex_col2++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - tex_col2_red");
+			ft_puterror(e, "Wrong Info in Object - tex_col2_red");
 		obj->tex.tex_col2.red = e->tmp;
 		e->tmp = atof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - tex_col2_green");
+			ft_puterror(e, "Wrong Info in Object - tex_col2_green");
 		obj->tex.tex_col2.green = e->tmp;
 		e->tmp = atof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - tex_col2_blue");
+			ft_puterror(e, "Wrong Info in Object - tex_col2_blue");
 		obj->tex.tex_col2.blue = e->tmp;
 	}
 	else
@@ -160,15 +161,15 @@ void 		ft_fill_info_object_12(t_obj *obj, t_e *e)
 		e->vobject.tex_col1++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - tex_col1_red");
+			ft_puterror(e, "Wrong Info in Object - tex_col1_red");
 		obj->tex.tex_col1.red = e->tmp;
 		e->tmp = atof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - tex_col1_green");
+			ft_puterror(e, "Wrong Info in Object - tex_col1_green");
 		obj->tex.tex_col1.green = e->tmp;
 		e->tmp = atof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - tex_col1_blue");
+			ft_puterror(e, "Wrong Info in Object - tex_col1_blue");
 		obj->tex.tex_col1.blue = e->tmp;
 	}
 	else
@@ -184,7 +185,7 @@ void 		ft_fill_info_object_11(t_obj *obj, t_e *e)
 		e->vobject.tex_texture++;
 		e->tmp = atoi(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 5)
-			ft_puterror("Wrong Info in Object - tex_texture");
+			ft_puterror(e, "Wrong Info in Object - tex_texture");
 		if (e->tmp == 5)
 			e->texture_5++;
 		obj->tex.texture = e->tmp;
@@ -192,13 +193,12 @@ void 		ft_fill_info_object_11(t_obj *obj, t_e *e)
 	else if (ft_strcmp(e->split[0], "map_buf") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.map_buf++;
-		if (e->source_exist == 1)
-		{
-			e->file_name = ft_strjoin(e->source_jpeg, e->split[1]);
-			if ((i = open(e->file_name, O_RDONLY)) < 0)
-				ft_puterror("error file given - map_buf");
-			obj->map_buf = gdk_pixbuf_new_from_file(e->file_name, NULL);
-		}
+		e->file_name = e->split[1];
+		if ((i = open(e->file_name, O_RDONLY)) < 0)
+			ft_puterror(e, "error file given - map_buf");
+		if ((i = get_next_line(i, &e->tmpc)) < 0)
+			ft_puterror(e, "error file given - bump_buf");
+		obj->map_buf = gdk_pixbuf_new_from_file(e->file_name, NULL);
 	}
 	else
 		ft_fill_info_object_12(obj, e);
@@ -212,7 +212,7 @@ void		ft_fill_info_object_10(t_obj *obj, t_e *e)
 		e->vobject.shininess++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 0)
-			ft_puterror("Wrong Info in Object - shininess");
+			ft_puterror(e, "Wrong Info in Object - shininess");
 		obj->shininess = e->tmp;
 	}
 	else if (ft_strcmp(e->split[0], "refraction_index") == 0 && e->split[1] != NULL)
@@ -220,7 +220,7 @@ void		ft_fill_info_object_10(t_obj *obj, t_e *e)
 		e->vobject.refraction_index++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 1)
-			ft_puterror("Wrong Info in Object - refraction_index");
+			ft_puterror(e, "Wrong Info in Object - refraction_index");
 		obj->refr_index = e->tmp;
 	}
 	else
@@ -234,7 +234,7 @@ void		ft_fill_info_object_9(t_obj *obj, t_e *e)
 		e->vobject.i++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - i");
+			ft_puterror(e, "Wrong Info in Object - i");
 		obj->i = e->tmp;
 	}
 	else if (ft_strcmp(e->split[0], "t") == 0 && e->split[1] != NULL)
@@ -242,7 +242,7 @@ void		ft_fill_info_object_9(t_obj *obj, t_e *e)
 		e->vobject.t++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - t");
+			ft_puterror(e, "Wrong Info in Object - t");
 		obj->t = e->tmp;
 	}
 	else
@@ -257,17 +257,17 @@ void		ft_fill_info_object_7(t_obj *obj, t_e *e)
 		e->vobject.k_ads++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - k_a");
+			ft_puterror(e, "Wrong Info in Object - k_a");
 		obj->ka = e->tmp;
 
 		e->tmp = atof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - k_d");
+			ft_puterror(e, "Wrong Info in Object - k_d");
 		obj->kd = e->tmp;
 
 		e->tmp = atof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - k_s");
+			ft_puterror(e, "Wrong Info in Object - k_s");
 		obj->ks = e->tmp;
 	}
 	else
@@ -282,15 +282,15 @@ void		ft_fill_info_object_6(t_obj *obj, t_e *e)
 		e->vobject.rotation_xyz++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < -360 || e->tmp > 360)
-			ft_puterror("Wrong Info in Object - rotation_x");
+			ft_puterror(e, "Wrong Info in Object - rotation_x");
 		obj->transform.rot.x = e->tmp;
 		e->tmp = atof(e->split[2]);
 		if (e->tmp < -360 || e->tmp > 360)
-			ft_puterror("Wrong Info in Object - rotation_y");
+			ft_puterror(e, "Wrong Info in Object - rotation_y");
 		obj->transform.rot.y = e->tmp;
 		e->tmp = atof(e->split[3]);
 		if (e->tmp < -360 || e->tmp > 360)
-			ft_puterror("Wrong Info in Object - rotation_z");
+			ft_puterror(e, "Wrong Info in Object - rotation_z");
 		obj->transform.rot.z = e->tmp;
 	}
 	else
@@ -305,16 +305,10 @@ void		ft_fill_info_object_4(t_obj *obj, t_e *e)
 	{
 		e->vobject.translate_xyz++;
 		e->tmp = atof(e->split[1]);
-		if (e->tmp <= -100)
-			ft_puterror("Wrong Info in Object - translate_x");
 		obj->transform.transl.x = e->tmp;
 		e->tmp = atof(e->split[2]);
-		if (e->tmp <= -100)
-			ft_puterror("Wrong Info in Object - translate_y");
 		obj->transform.transl.y = e->tmp;
 		e->tmp = atof(e->split[3]);
-		if (e->tmp <= -100)
-			ft_puterror("Wrong Info in Object - translate_z");
 		obj->transform.transl.z = e->tmp;
 	}
 	else
@@ -323,21 +317,16 @@ void		ft_fill_info_object_4(t_obj *obj, t_e *e)
 
 void		ft_fill_info_object_3(t_obj *obj, t_e *e)
 {
-	if (ft_strcmp(e->split[0], "scale_xyz") == 0 && e->split[1] != NULL
-		&& e->split[2] != NULL && e->split[3] != NULL)
+	if (ft_strcmp(e->split[0], "scale") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.scale_xyz++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp <= 0)
-			ft_puterror("Wrong Info in Object - scale_x");
+			ft_puterror(e, "Wrong Info in Object - scale");
+		if (e->tmp > 1.8)
+			e->tmp = 1.8;
 		obj->transform.scale.x = e->tmp;
-		e->tmp = atof(e->split[2]);
-		if (e->tmp <= 0)
-			ft_puterror("Wrong Info in Object - scale_y");
 		obj->transform.scale.y = e->tmp;
-		e->tmp = atof(e->split[3]);
-		if (e->tmp <= 0)
-			ft_puterror("Wrong Info in Object - scale_z");
 		obj->transform.scale.z = e->tmp;
 	}
 	else
@@ -352,22 +341,22 @@ void		ft_fill_info_object_2(t_obj *obj, t_e *e)
 		e->vobject.color_rgb++;
 		e->tmp = atof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - color_green");
+			ft_puterror(e, "Wrong Info in Object - color_green");
 		obj->color.red = e->tmp;
 		e->tmp = atof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - color_blue");
+			ft_puterror(e, "Wrong Info in Object - color_blue");
 		obj->color.green = e->tmp;
 		e->tmp = atof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
-			ft_puterror("Wrong Info in Object - color_red");
+			ft_puterror(e, "Wrong Info in Object - color_red");
 		obj->color.blue = (e->tmp);
 	}
 	else
 		ft_fill_info_object_3(obj, e);
 }
 
-static char ft_verif_type(char *type)
+static char ft_verif_type(t_e *e, char *type)
 {
 	if (ft_strcmp(type, "sphere") == 0)
 		return (0);
@@ -385,7 +374,7 @@ static char ft_verif_type(char *type)
 		return (6);
 	else if (ft_strcmp(type, "circle") == 0)
 		return (7);
-	ft_puterror("Wrong Info Object - Type");
+	ft_puterror(e, "Wrong Info Object - Type");
 	return (0);
 }
 
@@ -400,7 +389,7 @@ void		ft_fill_info_object(t_obj *obj, t_e *e)
 	else if (ft_strcmp(e->split[0], "type") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.type++;
-		obj->type = ft_verif_type(e->split[1]);
+		obj->type = ft_verif_type(e, e->split[1]);
 	}
 	else
 		ft_fill_info_object_2(obj, e);

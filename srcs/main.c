@@ -12,15 +12,24 @@
 
 #include "rt.h"
 
-int	main(int ac, char **av)
+
+int			main(int ac, char **av)
 {
 	t_env 	e;
+	int 	res;
 
 	gtk_init(&ac, &av);
 	if (ac > 2)
-		ft_puterror("So many file given");
+	{
+		ft_putendl("So many file given");
+		exit (0);
+	}
 	else if (ac == 2)
-		ft_fill_parce(&e, av[1]);
+	{
+		res = ft_fill_parce(&e, av[1]);
+		if (res != 0)
+			exit (0);
+	}
 	else if (ac == 1)
 	{
 		init_cam(&e.camera);
