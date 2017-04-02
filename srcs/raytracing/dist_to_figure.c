@@ -20,8 +20,8 @@ t_vec3d	inter_point_to_zero(t_obj obj, t_vec3d ip)
 	zero_ip.y = ip.y - obj.transform.transl.y;
 	zero_ip.z = ip.z - obj.transform.transl.z;
 	zero_ip.w = 1;
-	zero_ip = mult_matrix(rotationX(-obj.transform.rot.x), zero_ip);
-	zero_ip = mult_matrix(rotationY(-obj.transform.rot.y), zero_ip);
-	zero_ip = mult_matrix(rotationZ(-obj.transform.rot.z), zero_ip);
+	zero_ip = mult_matrix(rotation_x(-obj.transform.rot.x), zero_ip);
+	zero_ip = mult_matrix(rotation_y(-obj.transform.rot.y), zero_ip);
+	zero_ip = mult_matrix(rotation_z(-obj.transform.rot.z), zero_ip);
 	return (zero_ip);
 }

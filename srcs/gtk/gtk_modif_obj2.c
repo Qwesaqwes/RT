@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 19:01:25 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/13 15:51:37 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/02 15:47:39 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void			init_modif_obj_e4(t_gtk *gtk, t_obj *obj)
 		gtk->e_che3 = gtk_color_button_new_with_rgba(
 				get_color(&obj->tex.tex_col3));
 	}
+	init_modif_obj_limit(gtk, obj);
 }
 
 void			init_modif_obj_e3(t_gtk *gtk, t_obj *obj)

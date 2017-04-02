@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:33:16 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/25 16:30:21 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/01 19:57:54 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int		create_new_obj1(t_env *e, t_obj *new_obj)
 		put_pos_obj(&e->gtk, &new_obj->transform.transl) == 1 ||
 		put_scale_obj(&e->gtk, &new_obj->transform.scale) == 1 ||
 		put_rotation_obj(&e->gtk, &new_obj->transform.rot) == 1 ||
+		put_limit_obj(&e->gtk, &new_obj->limit) == 1 ||
 		put_shininess_obj(&e->gtk, &new_obj->shininess) == 1 ||
 		put_refraction_obj(&e->gtk, &new_obj->refr_index) == 1 ||
 		put_amb_coe_obj(&e->gtk, &new_obj->ka) == 1 ||

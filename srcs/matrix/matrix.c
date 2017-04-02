@@ -6,13 +6,13 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 03:32:59 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/25 17:09:41 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/02 20:23:39 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
 
-t_matrix		rotationX(float angle)
+t_matrix		rotation_x(float angle)
 {
 	t_matrix	matrix;
 
@@ -36,7 +36,7 @@ t_matrix		rotationX(float angle)
 	return (matrix);
 }
 
-t_matrix		rotationY(float angle)
+t_matrix		rotation_y(float angle)
 {
 	t_matrix	matrix;
 
@@ -60,7 +60,7 @@ t_matrix		rotationY(float angle)
 	return (matrix);
 }
 
-t_matrix		rotationZ(float angle)
+t_matrix		rotation_z(float angle)
 {
 	t_matrix	matrix;
 
@@ -99,9 +99,9 @@ t_vec3d			rota_vect(t_vec3d old, t_vec3d rot)
 {
 	t_vec3d		new;
 
-	new = mult_matrix(rotationX(rot.x), old);
-	new = mult_matrix(rotationY(rot.y), new);
-	new = mult_matrix(rotationZ(rot.z), new);
+	new = mult_matrix(rotation_x(rot.x), old);
+	new = mult_matrix(rotation_y(rot.y), new);
+	new = mult_matrix(rotation_z(rot.z), new);
 	new = normalizevec(new);
 	return (new);
 }

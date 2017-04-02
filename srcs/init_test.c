@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/01 18:29:06 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/02 18:32:24 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -576,8 +576,9 @@ t_list	*init_test_lum(void)
 	lum1.transform.scale.z = 1;
 	lum1.transform.scale.w = 1;
 	lum1.type = 0;
+	lum1.typel = 0;
 	lum1.transform.transl.x = -15;
-	lum1.transform.transl.y = 15;
+	lum1.transform.transl.y = 0;
 	lum1.transform.transl.z = 15;
 	lum1.transform.transl.w = 1;
 	lum1.transform.rot.x = 0;
@@ -595,15 +596,16 @@ t_list	*init_test_lum(void)
 	lum1.shininess = 0;
 	ft_lstaddend(&list, ft_lstnew(&lum1, sizeof(t_obj)));
 
-	// lum2.id = 0;
+	// lum2.id = 1;
 	// lum2.transform.scale.x = 1;
 	// lum2.transform.scale.y = 1;
 	// lum2.transform.scale.z = 1;
 	// lum2.transform.scale.w = 1;
-	// lum2.type = 1;
+	// lum2.type = 0;
+	// lum2.typel = 1;
 	// lum2.transform.transl.x = 0;
-	// lum2.transform.transl.y = 15;
-	// lum2.transform.transl.z = 15;
+	// lum2.transform.transl.y = -1.5;
+	// lum2.transform.transl.z = 1.5;
 	// lum2.transform.transl.w = 1;
 	// lum2.transform.rot.x = 0;
 	// lum2.transform.rot.y = 0;
@@ -612,6 +614,7 @@ t_list	*init_test_lum(void)
 	// lum2.color.red = 1;
 	// lum2.color.green = 1;
 	// lum2.color.blue = 1;
+	// lum2.normal = (t_vec3d){1, 0, 0, 1};
 	// lum2.ka = 0;
 	// lum2.kd = 0;
 	// lum2.ks = 0;

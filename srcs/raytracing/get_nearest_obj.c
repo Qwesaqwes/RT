@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/25 17:02:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/01 17:57:15 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/02 22:30:08 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ t_vec3d	inver_origin(t_vec3d origin, t_transform t)
 	t_vec3d	new;
 
 	new = mult_matrix(inver_transl_matrix(trans_matrix(t.transl)), origin);
-	new = mult_matrix(inver_rot_matrix(rotationX(t.rot.x)), new);
-	new = mult_matrix(inver_rot_matrix(rotationY(t.rot.y)), new);
-	new = mult_matrix(inver_rot_matrix(rotationZ(t.rot.z)), new);
+	new = mult_matrix(inver_rot_matrix(rotation_x(t.rot.x)), new);
+	new = mult_matrix(inver_rot_matrix(rotation_y(t.rot.y)), new);
+	new = mult_matrix(inver_rot_matrix(rotation_z(t.rot.z)), new);
 	new = mult_matrix(inver_scale_matrix(scale_matrix(t.scale)), new);
 	return (new);
 }
@@ -39,9 +39,9 @@ t_vec3d	inver_dir(t_vec3d dir, t_transform t)
 {
 	t_vec3d new;
 
-	new = mult_matrix(inver_rot_matrix(rotationX(t.rot.x)), dir);
-	new = mult_matrix(inver_rot_matrix(rotationY(t.rot.y)), new);
-	new = mult_matrix(inver_rot_matrix(rotationZ(t.rot.z)), new);
+	new = mult_matrix(inver_rot_matrix(rotation_x(t.rot.x)), dir);
+	new = mult_matrix(inver_rot_matrix(rotation_y(t.rot.y)), new);
+	new = mult_matrix(inver_rot_matrix(rotation_z(t.rot.z)), new);
 	new = mult_matrix(inver_scale_matrix(scale_matrix(t.scale)), new);
 	return (new);
 }

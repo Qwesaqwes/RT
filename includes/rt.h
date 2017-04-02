@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/01 16:52:43 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/02 20:40:32 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ t_matrix	inver_rot_matrix(t_matrix old);
 t_matrix	inver_transl_matrix(t_matrix old);
 t_matrix	inver_scale_matrix(t_matrix old);
 t_vec3d		mult_matrix(t_matrix mat, t_vec3d old);
-t_matrix	rotationX(float angle);
-t_matrix	rotationY(float angle);
-t_matrix	rotationZ(float angle);
+t_matrix	rotation_x(float angle);
+t_matrix	rotation_y(float angle);
+t_matrix	rotation_z(float angle);
 t_vec3d		normalizevec(t_vec3d old);
 
 t_color		compute_color(t_no no, t_scene s, t_vec3d n, t_vec3d origin);
@@ -85,12 +85,20 @@ float		vector_dot(t_vec3d a, t_vec3d b);
 t_vec3d		vector_fact(t_vec3d a, float k);
 t_vec3d		vector_add(t_vec3d a, t_vec3d b);
 t_vec3d		vector_cross(t_vec3d a, t_vec3d b);
+float		vector_length(t_vec3d a);
+
 
 t_color		color_add(t_color a, t_color b);
 t_color		color_mult(t_color a, t_color b);
 t_color		color_sub(t_color a, t_color b);
 t_color		color_fact(t_color a, float k);
 t_color		color_add_no_limit(t_color a, t_color b);
+float		color_cmp(t_color a, t_color b);
+t_color		color_init(void);
+t_color		color_mult_fact(t_color a, t_color b, float k);
+
+
+
 
 t_color		reflection(t_no no, t_scene s, t_vec3d n, t_values v);
 t_color		refraction(t_no no, t_scene s, t_vec3d n, t_values v);
@@ -137,6 +145,7 @@ void		view_delete_obj(int response, int clicked_del, t_env *e,
 int			view_modif_obj(int response, int clic_mod, t_env *e,
 		GtkWidget *dialog);
 void		init_add_obj_l_e(t_gtk *gtk, int resp);
+void		init_add_obj_l_e4(t_gtk *gtk);
 void		init_add_obj_box(t_gtk *gtk, int resp);
 const char	*itof(float nb);
 void		ft_list_remove_if(t_list **begin_list, const char *data_ref,
@@ -171,19 +180,37 @@ void		choose_file(t_env *e);
 void		gtk_antial(GtkWidget *button, t_env *e);
 void		get_texture_bump_map(t_obj *new_obj, const char *obj, t_list *list);
 
-void	movement_camera(t_env *e);
-void	movement_camera1(t_env *e);
-void	gtk_reset_cam(GtkWidget *button, t_env *e);
-void	rot_camera(t_env *e);
+void		movement_camera(t_env *e);
+void		movement_camera1(t_env *e);
+void		gtk_reset_cam(GtkWidget *button, t_env *e);
+void		rot_camera(t_env *e);
+
+int			put_limit_obj(t_gtk *gtk, t_limit *limit);
+void		init_modif_obj_limit(t_gtk *gtk, t_obj *obj);
+int			put_limit_zmax(GtkWidget *zmax, t_limit *limit);
+
+
 
 
 
 t_color		texture_color(t_no no);
+t_color		texture_mapping(t_no no);
+t_color		checker(t_no no);
+t_color		perlin_deriv(t_no no);
+float		perlin_coef(float x, float y, float z);
 int			map_value(float u, float v, GdkPixbuf *map);
+int			map_value_right(float u, float v, GdkPixbuf *map);
+int			map_value_down(float u, float v, GdkPixbuf *map);
 t_vec3d		bump_mapping(t_no no);
 void		uv_polygone(t_no no, float *u, float *v, t_vec3d *rot_angle);
 void		uv_sphere(t_no no, float *u, float *v, t_vec3d *rot_angle);
 float		transp_mapping(t_no no);
+t_vec3d		euler_angles(t_matrix m);
+t_matrix	axe_angle_to_matrix(float angle, t_vec3d axe);
+t_color		get_pixel(int tmp, GdkPixbuf *map);
+
+
+
 
 GdkPixbuf	*gray_scale(GdkPixbuf *old);
 

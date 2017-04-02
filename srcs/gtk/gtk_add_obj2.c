@@ -6,11 +6,29 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 17:12:42 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/01 16:21:48 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/02 17:31:38 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+
+void	put_label_inside_box4(t_gtk *gtk)
+{
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box6), gtk->l_limit, 0, 0, 10);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box6), gtk->l_xmin, 0, 0, 10);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box6), gtk->e_xmin, 0, 0, 0);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box6), gtk->l_xmax, 0, 0, 10);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box6), gtk->e_xmax, 0, 0, 0);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box7), gtk->l_ymin, 0, 0, 45);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box7), gtk->e_ymin, 0, 0, 0);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box7), gtk->l_ymax, 0, 0, 10);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box7), gtk->e_ymax, 0, 0, 0);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box7), gtk->l_info_limit, 0, 0, 45);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box8), gtk->l_zmin, 0, 0, 45);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box8), gtk->e_zmin, 0, 0, 0);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box8), gtk->l_zmax, 0, 0, 10);
+	gtk_box_pack_start(GTK_BOX(gtk->obj_box8), gtk->e_zmax, 0, 0, 0);
+}
 
 void	put_label_inside_box3(t_gtk *gtk)
 {
@@ -27,19 +45,7 @@ void	put_label_inside_box3(t_gtk *gtk)
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box16), gtk->e_che3, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box16), gtk->l_square, 0, 0, 10);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_box16), gtk->e_square, 0, 0, 0);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box6), gtk->l_limit, 0, 0, 10);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box6), gtk->l_xmin, 0, 0, 10);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box6), gtk->e_xmin, 0, 0, 0);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box6), gtk->l_xmax, 0, 0, 10);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box6), gtk->e_xmax, 0, 0, 0);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box7), gtk->l_ymin, 0, 0, 45);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box7), gtk->e_ymin, 0, 0, 0);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box7), gtk->l_ymax, 0, 0, 10);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box7), gtk->e_ymax, 0, 0, 0);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box8), gtk->l_zmin, 0, 0, 45);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box8), gtk->e_zmin, 0, 0, 0);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box8), gtk->l_zmax, 0, 0, 10);
-	gtk_box_pack_start(GTK_BOX(gtk->obj_box8), gtk->e_zmax, 0, 0, 0);
+	put_label_inside_box4(gtk);
 }
 
 void	put_label_inside_box2(t_gtk *gtk)
@@ -112,5 +118,4 @@ void	put_box_inside_gbox(t_gtk *gtk, int clicked)
 	gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box14, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box15, 0, 0, 0);
 	gtk_box_pack_start(GTK_BOX(gtk->obj_gbox), gtk->obj_box16, 0, 0, 0);
-
 }

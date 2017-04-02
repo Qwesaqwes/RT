@@ -45,8 +45,8 @@ t_vec3d		cone_normal_vec(t_no no)
 	normal.y = zero_ip.y;
 	normal.z = zero_ip.z - centre_z;
 	normal.w = 1;
-	normal = mult_matrix(rotationX(no.obj.transform.rot.x), normal);
-	normal = mult_matrix(rotationY(no.obj.transform.rot.y), normal);
-	normal = mult_matrix(rotationZ(no.obj.transform.rot.z), normal);
+	normal = mult_matrix(rotation_x(no.obj.transform.rot.x), normal);
+	normal = mult_matrix(rotation_y(no.obj.transform.rot.y), normal);
+	normal = mult_matrix(rotation_z(no.obj.transform.rot.z), normal);
 	return (normal);
 }
