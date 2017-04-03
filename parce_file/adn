@@ -1,0 +1,568 @@
+scene
+	ambiant_rgb				1		1		1
+	refr_index				1
+	background_rgb			0		0		0
+	antialiasing			1
+
+camera
+	origin_xyz				-3		7		0
+	rotation_xyz			0		0		-10
+	distance_viewplane		1
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		9.9		0
+	rotation_xyz			0		10		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		9.6		0
+	rotation_xyz			0		180		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		9.3		0
+	rotation_xyz			0		170		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		9		0
+	rotation_xyz			0		160		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		8.7		0
+	rotation_xyz			0		150		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		8.4		0
+	rotation_xyz			0		140		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		8.1		0
+	rotation_xyz			0		130		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		7.8		0
+	rotation_xyz			0		120		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		7.5		0
+	rotation_xyz			0		110		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		7.2		0
+	rotation_xyz			0		100		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	tex_col1				1		1		1
+	tex_col2				0		0		0
+	tex_col3				0.5		0.5		0.5
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		6.9		0
+	rotation_xyz			0		90		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		6.6		0
+	rotation_xyz			0		80		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		6.3		0
+	rotation_xyz			0		70		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		6		0
+	rotation_xyz			0		60		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				1		0		0
+	scale					0.09
+	translate_xyz			5		5.7		0
+	rotation_xyz			0		50		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+
+
+
+
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				0		0		1
+	scale					0.09
+	translate_xyz			5		5.4		0
+	rotation_xyz			0		40		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+
+object
+	name					verre_tronc
+	type					sphere
+	color_rgb				1		0		0
+	scale					0.15
+	translate_xyz			4.4		5.4		-0.6
+	rotation_xyz			0		20		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+
+object
+	name					verre_tronc
+	type					sphere
+	color_rgb				1		0		0
+	scale					0.15
+	translate_xyz			5.5		5.4		0.6
+	rotation_xyz			0		20		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				0		0		1
+	scale					0.09
+	translate_xyz			5		5.1		0
+	rotation_xyz			0		30		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	square					2
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					sphere
+	color_rgb				1		0		0
+	scale					0.15
+	translate_xyz			4.5		5.1		-0.5
+	rotation_xyz			0		20		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+
+object
+	name					verre_tronc
+	type					sphere
+	color_rgb				1		0		0
+	scale					0.15
+	translate_xyz			5.3		5.1		0.5
+	rotation_xyz			0		20		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				0		0		1
+	scale					0.09
+	translate_xyz			5		4.8		0
+	rotation_xyz			0		20		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					sphere
+	color_rgb				1		0		0
+	scale					0.15
+	translate_xyz			4.7		4.8		-0.5
+	rotation_xyz			0		20		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+
+object
+	name					verre_tronc
+	type					sphere
+	color_rgb				1		0		0
+	scale					0.15
+	translate_xyz			5.2		4.8		0.5
+	rotation_xyz			0		20		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+
+
+
+object
+	name					verre_tronc
+	type					cylindre
+	color_rgb				0		0		1
+	scale					0.09
+	translate_xyz			5		4.5		0
+	rotation_xyz			0		10		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	z_min					-7
+	z_max					7
+
+object
+	name					verre_tronc
+	type					sphere
+	color_rgb				1		0		0
+	scale					0.15
+	translate_xyz			4.9		4.5		-0.6
+	rotation_xyz			0		10		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+
+object
+	name					verre_tronc
+	type					sphere
+	color_rgb				1		0		0
+	scale					0.15
+	translate_xyz			5.1		4.5		0.6
+	rotation_xyz			0		10		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+
+
+object
+	name					plan
+	type					plane
+	color_rgb				0.2		0.7		0.3
+	scale					1
+	translate_xyz			0		0		0
+	rotation_xyz			0		180		90
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				0
+	refraction_index		1
+	tex_texture				1
+	tex_bump				0
+	tex_transp				0
+	tex_col1				1		1		1
+	tex_col2				0		0		0
+	tex_col3				0.5		0.5		0.5
+	square					2
+
+light
+	name					red
+	type					sphere
+	color_rgb				1		1		1
+	scale					1
+	translate_xyz			-5		10		-15
+	rotation_xyz			0		0		-20

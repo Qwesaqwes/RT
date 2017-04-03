@@ -161,5 +161,7 @@ t_obj				ft_parsing_obj_after(t_e *e, int i)
 	}
 	ft_verif_nbr_object(e, tmp);
 	ft_verif_limit_exist(e, &tmp);
+	if (e->vobject.faces != 0 && tmp.faces != NULL)
+		tmp.faces = face_cuting(tmp.faces);
 	return (tmp);
 }

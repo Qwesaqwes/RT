@@ -1,2 +1,67 @@
+scene
+	ambiant_rgb				1		1		1
+	refr_index				1
+	background_rgb			0		0		0
+	antialiasing			1
 
+camera
+	origin_xyz				-3		7		0
+	rotation_xyz			0		0		-10
+	distance_viewplane		1
 
+light
+	name					red
+	type					sphere
+	color_rgb				1		1		1
+	scale					1
+	translate_xyz			-5		10		-15
+	rotation_xyz			0		0		-20
+
+object
+	name					cube
+	type					polygone3d
+	color_rgb				1		1		0
+	scale					1
+	translate_xyz			10		1		-1
+	rotation_xyz			0		0		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				0
+	refraction_index		1.33
+	tex_texture				5
+	tex_bump				0
+	tex_transp				0
+	tex_col1				1		1		1
+	tex_col2				0		0		0
+	map_buf					./maps/monde.jpg
+	face
+		vertex				15		0		0
+		vertex				15		-3		0
+		vertex				15		-3		3
+		vertex				15		0		3
+	face
+		vertex				18		0		0
+		vertex				15		0		0
+		vertex				15		0		3
+		vertex				18		0		3
+	face
+		vertex				18		0		0
+		vertex				18		-3		0
+		vertex				15		-3		0
+		vertex				15		0		0
+	face
+		vertex				15		0		3
+		vertex				15		-3		3
+		vertex				18		-3		3
+		vertex				18		0		3
+	face
+		vertex				18		0		3
+		vertex				18		-3		3
+		vertex				18		-3		0
+		vertex				18		0		0
+	face
+		vertex				15		-3		0
+		vertex				18		-3		0
+		vertex				18		-3		3
+		vertex				15		-3		3

@@ -227,7 +227,6 @@ object
 	tex_col2				0		0.5		0
 	tex_col3				0.8		0		0
 
-
 object
 	name					plan
 	type					plane
@@ -238,8 +237,8 @@ object
 	k_ads					0.2		0.9		0
 	i						0
 	t						0
-	shininess				65
-	refraction_index		1.33
+	shininess				0
+	refraction_index		1
 	tex_texture				1
 	tex_bump				0
 	tex_transp				0

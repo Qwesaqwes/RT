@@ -198,6 +198,6 @@ void 			ft_free_float(void *content, size_t size);
 
 void		add_after_vertex(t_vertex *el, t_vertex **list);
 void		add_after_face(t_face *el, t_face **list);
-
+t_face		*face_cuting(t_face *old);
 
 #endif

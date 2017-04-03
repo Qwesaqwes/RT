@@ -368,18 +368,21 @@ static char ft_verif_type(t_e *e, char *type)
 		return (3);
 	else if (ft_strcmp(type, "triangle") == 0)
 		return (4);
-	else if (ft_strcmp(type, "polygone") == 0)
+	else if (ft_strcmp(type, "polygone3d") == 0)
 		return (5);
-	else if (ft_strcmp(type, "polygone") == 0)
+	else if (ft_strcmp(type, "polygone2d") == 0)
 		return (6);
 	else if (ft_strcmp(type, "circle") == 0)
 		return (7);
+	else if (ft_strcmp(type, "circle") == 0)
+		return (8);
 	ft_puterror(e, "Wrong Info Object - Type");
 	return (0);
 }
 
 void		ft_fill_info_object(t_obj *obj, t_e *e)
 {
+	ft_putendl(e->split[0]);
 	int i;
 
 	e->tmp = 0;
@@ -397,7 +400,7 @@ void		ft_fill_info_object(t_obj *obj, t_e *e)
 	else if (ft_strcmp(e->split[0], "face") == 0)
 	{
 		e->vobject.faces++;
-		add_after_face(ft_parsing_face_after(e, e->faceend), &obj->faces);
+		add_after_face(ft_parsing_face_after(e, e->faceend + 1), &obj->faces);
 	}
 	else
 		ft_fill_info_object_2(obj, e);
