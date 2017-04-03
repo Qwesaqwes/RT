@@ -6,7 +6,7 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 12:32:03 by opandolf          #+#    #+#             */
-/*   Updated: 2017/04/02 21:05:44 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/03 21:22:13 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_color		spec_color(t_obj obj, t_obj lum, float k)
 	return (color);
 }
 
-t_color		compute_color_light(t_obj lum, t_no no, t_vec3d n, t_vec3d origin)
+t_color		cc_l(t_obj lum, t_no no, t_vec3d n, t_vec3d origin)
 {
 	t_vec3d	light;
 	t_vec3d	halfway;
@@ -50,7 +50,7 @@ t_color		compute_color_light(t_obj lum, t_no no, t_vec3d n, t_vec3d origin)
 	return (ret);
 }
 
-float		get_intersection_one_obj(t_ray ray, t_obj obj)
+float		get_int_one_obj(t_ray ray, t_obj obj)
 {
 	t_ray	img_ray;
 	float	dist;
@@ -79,7 +79,7 @@ float		get_intersection_one_obj(t_ray ray, t_obj obj)
 	return (dist);
 }
 
-t_color		get_intersection_obj1(t_list *tmp, t_obj lum, t_no no)
+t_color		get_int_obj1(t_list *tmp, t_obj lum, t_no no)
 {
 	t_obj	obj;
 	float	dist;
@@ -96,7 +96,7 @@ t_color		get_intersection_obj1(t_list *tmp, t_obj lum, t_no no)
 		obj = *(t_obj*)tmp->content;
 		if (obj.id != no.obj.id)
 		{
-			dist = get_intersection_one_obj(ray, obj);
+			dist = get_int_one_obj(ray, obj);
 			if (dist > SHADOW_BIAS && dist < dist_lum)
 				ret = color_fact(ret, obj.t);
 		}
@@ -105,12 +105,21 @@ t_color		get_intersection_obj1(t_list *tmp, t_obj lum, t_no no)
 	return (ret);
 }
 
-t_color		get_intersection_obj(t_list *list, t_obj lum, t_no no)
+t_color		get_int_obj(t_list *list, t_obj lum, t_no no)
 {
 	t_list	*tmp;
 
 	tmp = list;
-	return (get_intersection_obj1(tmp, lum, no));
+	return (get_int_obj1(tmp, lum, no));
+}
+
+t_ray		fill_ray(t_vec3d origin, t_vec3d dir)
+{
+	t_ray	ray;
+
+	ray.origin = origin;
+	ray.dir = dir;
+	return (ray);
 }
 
 t_color		color_lights(t_scene s, t_no no, t_vec3d n, t_vec3d origin)
@@ -119,35 +128,17 @@ t_color		color_lights(t_scene s, t_no no, t_vec3d n, t_vec3d origin)
 	t_list	*tmp;
 	t_obj	lum;
 	t_color	k;
-	t_ray	ray;
 
 	ret = color_init();
 	tmp = s.lum;
 	while (tmp)
 	{
 		lum = (*(t_obj*)tmp->content);
-		if (lum.typel == 0)
+		if (lum.typel == 0 || (lum.typel == 1 && (get_int_one_obj(fill_ray(
+			no.ip, vector_fact(lum.normal, -1)), lum) > 0)))
 		{
-			if ((color_cmp(k = get_intersection_obj(s.obj, lum, no),
-				set_black_color()) > 0))
-			{
-				ret = color_add(ret, color_mult(k,
-					compute_color_light(lum, no, n, origin)));
-			}
-		}
-		else if (lum.typel == 1)
-		{
-			ray.origin = no.ip;
-			ray.dir = vector_fact(lum.normal, -1);
-			if (get_intersection_one_obj(ray, lum) > 0)
-			{
-				if ((color_cmp(k = get_intersection_obj(s.obj, lum, no),
-					set_black_color()) > 0))
-				{
-					ret = color_add(ret, color_mult(k,
-						compute_color_light(lum, no, n, origin)));
-				}
-			}
+			if ((color_cmp(k = get_int_obj(s.obj, lum, no), set_black()) > 0))
+				ret = color_add(ret, color_mult(k, cc_l(lum, no, n, origin)));
 		}
 		tmp = tmp->next;
 	}

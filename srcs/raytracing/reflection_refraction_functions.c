@@ -6,24 +6,11 @@
 /*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 04:32:56 by opandolf          #+#    #+#             */
-/*   Updated: 2017/04/01 13:35:32 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/03 18:02:24 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-void		ft_lstdelfirst(t_list **alst)
-{
-	t_list	*tmp;
-
-	if (*alst == NULL)
-	{
-		return ;
-	}
-	tmp = (*alst)->next;
-	ft_lstdelone(alst, ft_free_float);
-	*alst = tmp;
-}
 
 void		init_calculed_values(t_cv *cv, float n1, float n2)
 {

@@ -94,5 +94,5 @@ t_color		texture_mapping(t_no no)
 		uv_polygone(no, &u, &v, &rot_angle);
 		return (get_pixel(map_value(u, v, no.obj.map_buf), no.obj.map_buf));
 	}
-	return (set_black_color());
+	return (set_black());
 }
