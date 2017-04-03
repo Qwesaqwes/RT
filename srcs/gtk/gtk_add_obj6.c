@@ -6,11 +6,39 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 19:14:08 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/25 16:28:03 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/02 17:23:52 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
+
+int		put_tex_obj1(int active, t_tex *tex, t_gtk *gtk)
+{
+	if (active == 0)
+	{
+		tex->texture = 0;
+		tex->bump = 0;
+		tex->transp = 0;
+	}
+	else if (active == 1 || active == 2 || active == 3 || active == 4)
+	{
+		if (active == 1 || active == 2)
+		{
+			tex->texture = active == 1 ? 1 : 2;
+			tex->bump = 0;
+			tex->transp = 0;
+		}
+		else if (active == 3 || active == 4)
+		{
+			tex->texture = active == 3 ? 3 : 4;
+			tex->bump = 0;
+			tex->transp = 0;
+		}
+		if (put_info_tex(gtk, tex) == 1)
+			return (1);
+	}
+	return (0);
+}
 
 int		put_tex_obj(t_gtk *gtk, t_tex *tex)
 {
@@ -19,29 +47,8 @@ int		put_tex_obj(t_gtk *gtk, t_tex *tex)
 	active = gtk_combo_box_get_active(GTK_COMBO_BOX(gtk->c_tex));
 	if (active > -1)
 	{
-		if (active == 0)
-		{
-			tex->texture = 0;
-			tex->bump = 0;
-			tex->transp = 0;
-		}
-		else if (active == 1 || active == 2 || active == 3 || active == 4)
-		{
-			if (active == 1 || active == 2)
-			{
-				tex->texture = active == 1 ? 1 : 2;
-				tex->bump = 0;
-				tex->transp = 0;
-			}
-			else if (active == 3 || active == 4)
-			{
-				tex->texture = active == 3 ? 3 : 4;
-				tex->bump = 0;
-				tex->transp = 0;
-			}
-			if (put_info_tex(gtk, tex) == 1)
-				return (1);
-		}
+		if (put_tex_obj1(active, tex, gtk) == 1)
+			return (1);
 	}
 	else
 	{

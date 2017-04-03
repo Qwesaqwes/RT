@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:29:11 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/01 16:24:28 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/02 16:12:57 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ typedef	struct		s_gtk
 	GtkWidget		*l_ymax;
 	GtkWidget		*l_zmin;
 	GtkWidget		*l_zmax;
+	GtkWidget		*l_info_limit;
+
 
 
 

@@ -144,18 +144,20 @@ t_obj				ft_parsing_obj_after(t_e *e, int i)
 		{
 			e->save_i = i;
 			e->split = ft_strsplit(e->file[i], '\t');
-			e->faceend = i;
+			e->faceend = i + 1;
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) ==  0)
 			{
 				ft_fill_info_object(&tmp, e);
-				i = e->faceend;
+				i = e->faceend - 1;
 			}
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) !=  0)
 				i = -2;
 			j = -1;
-			while (e->split[++j])
+			while (e->split && e->split[++j])
 				free(e->split[j]);
-			free(e->split);
+			ft_putendl("salut");
+			if (e->split)
+				free(e->split);
 		}
 		i++;
 	}

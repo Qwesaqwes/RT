@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:47:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/01 16:46:12 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/02 19:02:48 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,16 @@ typedef struct		s_dist
 	float			c;
 	float			d;
 }					t_dist;
+
+typedef struct		s_perlin
+{
+	int			a;
+	int			aa;
+	int			ab;
+	int			b;
+	int			ba;
+	int			bb;
+}					t_perlin;
 
 typedef struct		s_exist
 {
@@ -183,6 +193,7 @@ typedef struct		s_obj
 	int				id;
 	const char		*name;
 	char			type;
+	char			typel;
 	t_color			color;
 	float			ka;
 	float			kd;

@@ -17,7 +17,7 @@ void		add_after_vertex(t_vertex *el, t_vertex **list)
 	t_vertex	*tmp;
 
 	tmp = *list;
-	if ((tmp = NULL))
+	if (tmp == NULL)
 		*list = el;
 	else
 	{
@@ -32,11 +32,11 @@ void		add_after_face(t_face *el, t_face **list)
 	t_face	*tmp;
 
 	tmp = *list;
-	if ((tmp = NULL))
+	if (tmp == NULL)
 		*list = el;
 	else
 	{
-		while (tmp->next)
+		while (tmp != NULL && tmp->next)
 			tmp = tmp->next;
 		tmp->next = el;
 	}

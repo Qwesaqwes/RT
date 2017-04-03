@@ -35,26 +35,29 @@ t_face		*ft_parsing_face_after(t_e *e, int i)
 	k = 0;
 	face = (t_face*)ft_memalloc(sizeof(t_face));
 	face->vertex = NULL;
-	while (i < e->nbr_line && k == -1)
+	face->next = NULL;
+	i++;
+	while (i < e->nbr_line && k != -2)
 	{
 		e->line = i;
 		if (e->file[i] && e->file[i][0] != '#' && (ft_strlen(e->file[i]) > 1))
 		{
-			e->save_i = i;
 			e->split = ft_strsplit(e->file[i], '\t');
-			ft_putendl(e->split[0]);
-			if (e->split[0] != NULL && (ft_strcmp(e->split[0], "vertex") == 0
-				|| ft_strcmp(e->split[0], "normal") == 0))
+			if (e->split[0] && (ft_strcmp(e->split[0], "vertex") == 0 || ft_strcmp(e->split[0], "normal") == 0))
 				ft_fill_info_face(face, e);
 			else
 				k = -2;
 			j = -1;
-			while (e->split[++j])
-				free(e->split[j]);
-			free(e->split);
+			if (k == 0 && e->split[0])
+			{
+				while (e->split[++j])
+					free(e->split[j]);
+				if (e->split)
+					free(e->split);
+			}
 		}
-		i++;
+			i++;
 	}
-	e->faceend = i;
+	e->faceend = i - 1;
 	return (face);
 }

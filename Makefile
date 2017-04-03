@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/04/01 18:47:35 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/04/02 20:46:57 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,30 +15,48 @@ DIRSRC		=	./srcs/
 DIROBJ		=	./objs/
 DIROBJECT	=	./objs/object/
 DIRGTK		=	./objs/gtk/
+DIRTEXTURE	=	./objs/texture
+DIRMATRIX	=	./objs/matrix
+DIRRAYTRAC	=	./objs/raytracing
+DIRFREE		=	./objs/free
+DIRCAM		=	./objs/camera
+DIRMISC		=	./objs/misc
+
 LIBA		=	./libft/libft.a
 INCLUDE		=	-I./includes/ -I./libft/includes/
 SUB_MAKE	=	./libft/
 GTK_FLAG	=	$$(pkg-config --cflags gtk+-3.0)
 LD_FLAG		=	$$(pkg-config --libs gtk+-3.0)
-SRC			=	compute_ray.c\
-				get_nearest_obj.c\
-				init_camera.c\
+SRC			=	main.c\
 				init_test.c\
-				main.c\
-				matrix.c\
-				normalizevec.c\
-				pixelput.c\
-				raytracing.c\
-				inver_matrix.c\
-				scale_matrix.c\
-				trans_matrix.c\
-				compute_normal_vec.c \
-				compute_color.c \
-				reflection_refraction_functions.c\
-				dist_to_figure.c\
-				texture_color.c\
-				bump_mapping.c\
-				transp_mapping.c\
+				camera/init_camera.c\
+				raytracing/reflection_refraction_functions.c\
+				raytracing/pixelput.c\
+				raytracing/normalizevec.c\
+				raytracing/dist_to_figure.c\
+				raytracing/get_nearest_obj.c\
+				raytracing/compute_ray.c\
+				raytracing/compute_normal_vec.c \
+				raytracing/compute_color.c \
+				raytracing/raytracing.c\
+				misc/color.c\
+				misc/color1.c\
+				misc/vector.c\
+				misc/vector1.c\
+				matrix/trans_matrix.c\
+				matrix/inver_matrix.c\
+				matrix/scale_matrix.c\
+				matrix/matrix.c\
+				texture/texture_color.c\
+				texture/transp_mapping.c\
+				texture/bump_mapping.c\
+				texture/map_values.c\
+				texture/grey_scale_bump_map.c\
+				texture/checker.c\
+				texture/texture_mapping.c\
+				texture/euler_angles.c\
+				texture/perlin_deriv.c\
+				texture/perlin_coef.c\
 				object/sphere.c\
 				object/plane.c\
 				object/cylindre.c\
@@ -50,6 +68,7 @@ SRC			=	compute_ray.c\
 				object/quadrics.c\
 				gtk/gtk_options1.c\
 				gtk/gtk_add_obj1.c\
+				gtk/gtk_add_obj1a.c\
 				gtk/gtk_add_obj2.c\
 				gtk/gtk_add_obj3.c\
 				gtk/gtk_add_obj4.c\
@@ -76,6 +95,9 @@ SRC			=	compute_ray.c\
 				gtk/gtk_cam_movement.c\
 				gtk/gtk_cam_movement1.c\
 				gtk/gtk_cam_rot.c\
+				gtk/gtk_add_obj_limit.c\
+				gtk/gtk_add_obj_limit1.c\
+				gtk/gtk_modif_obj_limit.c\
 				../parseur/object/ft_fill_info_object.c\
 				../parseur/lum/ft_fill_lum.c\
 				../parseur/faces/face.c\
@@ -87,7 +109,7 @@ SRC			=	compute_ray.c\
 				../parseur/reader/ft_read_parsing.c\
 				../parseur/source/source_search.c\
 				../parseur/parseur.c\
-				free.c
+				free/free.c
 
 FLAGS		=	debug
 
@@ -142,4 +164,10 @@ $(DIROBJ)%.o		:		$(DIRSRC)%.c
 				@if [ ! -d $(DIROBJ) ]; then $(MKDIR) $(DIROBJ); fi
 				@if [ ! -d $(DIROBJECT) ]; then $(MKDIR) $(DIROBJECT); fi
 				@if [ ! -d $(DIRGTK) ]; then $(MKDIR) $(DIRGTK); fi
+				@if [ ! -d $(DIRTEXTURE) ]; then $(MKDIR) $(DIRTEXTURE); fi
+				@if [ ! -d $(DIRMATRIX) ]; then $(MKDIR) $(DIRMATRIX); fi
+				@if [ ! -d $(DIRRAYTRAC) ]; then $(MKDIR) $(DIRRAYTRAC); fi
+				@if [ ! -d $(DIRFREE) ]; then $(MKDIR) $(DIRFREE); fi
+				@if [ ! -d $(DIRCAM) ]; then $(MKDIR) $(DIRCAM); fi
+				@if [ ! -d $(DIRMISC) ]; then $(MKDIR) $(DIRMISC); fi
 				$(CC) $(INCLUDE) $(GTK_FLAG) $(CFLAGS) -o $@ -c $<
