@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/03 18:01:54 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/03 21:48:25 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/04 17:56:13 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void		ft_lstdelfirst(t_list **alst)
 		return ;
 	}
 	tmp = (*alst)->next;
-	if (tmp != NULL)
+	if ((*alst)->next != NULL)
+	{
 		ft_lstdelone(alst, ft_free_float);
-	*alst = tmp;
+		*alst = tmp;
+	}
 }
