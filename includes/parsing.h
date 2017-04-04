@@ -60,6 +60,7 @@ typedef	struct		s_parsing
 	int				i;
 	char			**file;
 	char			**split;
+	char			**split_face;
 	char			*file_name;
 	char 			*file_name_bump;
 	char 			*file_name_transp;
