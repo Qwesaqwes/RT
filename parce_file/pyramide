@@ -4,16 +4,43 @@
 #        	 NE COMPTE PAS
 #
 
+camera
+	origin_xyz				-8		12		10
+	rotation_xyz			-10		30		-20
+	distance_viewplane		1
+
+light
+	name					red
+	type					sphere
+	typel					0
+	color_rgb				1		0		0
+	scale					1
+	translate_xyz			0		5		-15
+	rotation_xyz			0		0		-20
+
+light
+	name					green
+	type					sphere
+	typel					0
+	color_rgb				0		1		0
+	scale					1
+	translate_xyz			0		5		15
+	rotation_xyz			0		0		-20
+
+light
+	name					blue
+	type					sphere
+	typel					0
+	color_rgb				0		0		1
+	scale					1
+	translate_xyz			0		5		0
+	rotation_xyz			0		0		-20
+
 scene
 	ambiant_rgb				0.3		0.3		0.3
 	refr_index				1
 	background_rgb			0		0		0
 	antialiasing			1
-
-camera
-	origin_xyz				-8		10		0
-	rotation_xyz			0		0		-20
-	distance_viewplane		1
 
 object
 	name					sphere1
@@ -38,8 +65,8 @@ object
 	name					sphere2
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.5
-	translate_xyz			20		1.5		3
+	scale					1.8
+	translate_xyz			25		1.5		-4
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
 	i						0
@@ -52,51 +79,14 @@ object
 	tex_col1				0		0.4		0.4
 	tex_col2				0		0.5		0
 	tex_col3				0.8		0		0
+
 
 object
 	name					sphere3
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.2
-	translate_xyz			17		1		5.1
-	rotation_xyz			0		0		0
-	k_ads					0.2		0.9		1
-	i						0
-	t						0
-	shininess				40
-	refraction_index		1.33
-	tex_texture				2
-	tex_bump				0
-	tex_transp				0
-	tex_col1				0		0.4		0.4
-	tex_col2				0		0.5		0
-	tex_col3				0.8		0		0
-
-object
-	name					sphere4
-	type					sphere
-	color_rgb				0		0		1
-	scale					0.8
-	translate_xyz			12.5		1		5.2
-	rotation_xyz			0		0		0
-	k_ads					0.2		0.9		1
-	i						0
-	t						0
-	shininess				40
-	refraction_index		1.33
-	tex_texture				2
-	tex_bump				0
-	tex_transp				0
-	tex_col1				0		0.4		0.4
-	tex_col2				0		0.5		0
-	tex_col3				0.8		0		0
-
-object
-	name					sphere5
-	type					sphere
-	color_rgb				0		0		1
-	scale					0.6
-	translate_xyz			10		0.9		4
+	scale					1.8
+	translate_xyz			25		1.5		-8
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
 	i						0
@@ -115,8 +105,103 @@ object
 	name					sphere5
 	type					sphere
 	color_rgb				0		0		1
-	scale					0.4
-	translate_xyz			9		0.7		3
+	scale					1.8
+	translate_xyz			21		1.5		0
+	rotation_xyz			0		0		0
+	k_ads					0.2		0.9		1
+	i						0
+	t						0
+	shininess				40
+	refraction_index		1.33
+	tex_texture				2
+	tex_bump				0
+	tex_transp				0
+	tex_col1				0		0.4		0.4
+	tex_col2				0		0.5		0
+	tex_col3				0.8		0		0
+
+object
+	name					sphere6
+	type					sphere
+	color_rgb				0		0		1
+	scale					1.8
+	translate_xyz			21		1.5		-4
+	rotation_xyz			0		0		0
+	k_ads					0.2		0.9		1
+	i						0
+	t						0
+	shininess				40
+	refraction_index		1.33
+	tex_texture				2
+	tex_bump				0
+	tex_transp				0
+	tex_col1				0		0.4		0.4
+	tex_col2				0		0.5		0
+	tex_col3				0.8		0		0
+
+object
+	name					sphere7
+	type					sphere
+	color_rgb				0		0		1
+	scale					1.8
+	translate_xyz			21		1.5		-8
+	rotation_xyz			0		0		0
+	k_ads					0.2		0.9		1
+	i						0
+	t						0
+	shininess				40
+	refraction_index		1.33
+	tex_texture				2
+	tex_bump				0
+	tex_transp				0
+	tex_col1				0		0.4		0.4
+	tex_col2				0		0.5		0
+	tex_col3				0.8		0		0
+
+object
+	name					sphere8
+	type					sphere
+	color_rgb				0		0		1
+	scale					1.8
+	translate_xyz			17		1.5		0
+	rotation_xyz			0		0		0
+	k_ads					0.2		0.9		1
+	i						0
+	t						0
+	shininess				40
+	refraction_index		1.33
+	tex_texture				2
+	tex_bump				0
+	tex_transp				0
+	tex_col1				0		0.4		0.4
+	tex_col2				0		0.5		0
+	tex_col3				0.8		0		0
+
+object
+	name					sphere9
+	type					sphere
+	color_rgb				0		0		1
+	scale					1.8
+	translate_xyz			17		1.5		-4
+	rotation_xyz			0		0		0
+	k_ads					0.2		0.9		1
+	i						0
+	t						0
+	shininess				40
+	refraction_index		1.33
+	tex_texture				2
+	tex_bump				0
+	tex_transp				0
+	tex_col1				0		0.4		0.4
+	tex_col2				0		0.5		0
+	tex_col3				0.8		0		0
+
+object
+	name					sphere10
+	type					sphere
+	color_rgb				0		0		1
+	scale					1.8
+	translate_xyz			17		1.5		-8
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
 	i						0
@@ -132,11 +217,11 @@ object
 
 
 object
-	name					sphere2
+	name					sphere11
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.5
-	translate_xyz			20		1.5		-3
+	scale					1.8
+	translate_xyz			19		4.5		-2
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
 	i						0
@@ -151,11 +236,11 @@ object
 	tex_col3				0.8		0		0
 
 object
-	name					sphere3
+	name					sphere12
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.2
-	translate_xyz			17		1		-5.1
+	scale					1.8
+	translate_xyz			19		4.5		-6
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
 	i						0
@@ -170,11 +255,11 @@ object
 	tex_col3				0.8		0		0
 
 object
-	name					sphere4
+	name					sphere13
 	type					sphere
 	color_rgb				0		0		1
-	scale					0.8
-	translate_xyz			12.5		1		-5.2
+	scale					1.8
+	translate_xyz			23		4.5		-2
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
 	i						0
@@ -189,11 +274,11 @@ object
 	tex_col3				0.8		0		0
 
 object
-	name					sphere5
+	name					sphere14
 	type					sphere
 	color_rgb				0		0		1
-	scale					0.6
-	translate_xyz			10		0.9		-4
+	scale					1.8
+	translate_xyz			23		4.5		-6
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
 	i						0
@@ -206,14 +291,13 @@ object
 	tex_col1				0		0.4		0.4
 	tex_col2				0		0.5		0
 	tex_col3				0.8		0		0
-
 
 object
-	name					sphere5
+	name					sphere15
 	type					sphere
 	color_rgb				0		0		1
-	scale					0.4
-	translate_xyz			9		0.7		-3
+	scale					1.8
+	translate_xyz			20		7.5		-4
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
 	i						0
@@ -226,6 +310,8 @@ object
 	tex_col1				0		0.4		0.4
 	tex_col2				0		0.5		0
 	tex_col3				0.8		0		0
+
+
 
 object
 	name					plan
@@ -237,8 +323,8 @@ object
 	k_ads					0.2		0.9		0
 	i						0
 	t						0
-	shininess				0
-	refraction_index		1
+	shininess				50
+	refraction_index		1.33
 	tex_texture				1
 	tex_bump				0
 	tex_transp				0
@@ -246,33 +332,3 @@ object
 	tex_col2				0		0		0
 	tex_col3				0.5		0.5		0.5
 	square					2
-
-
-light
-	name					red
-	type					sphere
-	typel					0
-	color_rgb				1		0		0
-	scale					1
-	translate_xyz			0		5		-15
-	rotation_xyz			0		0		-20
-
-
-light
-	name					green
-	type					sphere
-	typel					0
-	color_rgb				0		1		0
-	scale					1
-	translate_xyz			0		5		15
-	rotation_xyz			0		0		-20
-
-
-light
-	name					blue
-	type					sphere
-	typel					0
-	color_rgb				0		0		1
-	scale					1
-	translate_xyz			0		5		0
-	rotation_xyz			0		0		-20
