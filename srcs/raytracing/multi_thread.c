@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/03 18:36:23 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/03 23:19:40 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/04 16:08:00 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		raytracing_column_aa(t_env *e, t_list *first_el, int h_start,
 			p[2] = -1;
 			while (++p[2] < p[3])
 			{
-				fil_values(first_el, &v, e);
+				fil_values(&v);
 				first_el = ft_lstnew(&e->scene.refr_index, sizeof(float));
 				v.refr_index = &first_el;
 				color = color_add_no_limit(compute_ray(set_ray(e->camera, e->vp,
