@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_read_parsing.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gahubaul <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/04 22:56:49 by gahubaul          #+#    #+#             */
+/*   Updated: 2017/04/04 22:56:56 by gahubaul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/parsing.h"
 
-int		ft_verif_line(char *str, int x)
+static int		ft_verif_line(char *str, int x)
 {
 	while (str[++x])
 		if (str[x] == '#')
@@ -8,7 +20,7 @@ int		ft_verif_line(char *str, int x)
 	return (0);
 }
 
-void	ft_change_space(t_e *e)
+static void		ft_change_space(t_e *e)
 {
 	int y;
 	int x;
@@ -26,19 +38,32 @@ void	ft_change_space(t_e *e)
 	}
 }
 
+void			ft_read_file_2(t_e *e)
+{
+	int			i;
+	char		*line;
+	int			res;
+
+	close(e->fd1);
+	i = -1;
+	while ((res = get_next_line(e->fd2, &line)) > 0 && e->error == 0)
+		e->file[++i] = line;
+	if (res == -1)
+		ft_puterror(e, "error gnl/fichier inexistant ou pas les droits");
+	if (e->error == 0)
+		ft_change_space(e);
+}
+
 void			ft_read_file(char *file, t_e *e)
 {
-	int i;
-	int res;
-	char *line;
-	int fd1;
-	int fd2;
+	int			res;
+	char		*line;
 
-	if ((fd1 = open(file, O_RDONLY)) < 0)
+	if ((e->fd1 = open(file, O_RDONLY)) < 0)
 		ft_puterror(e, "error file given");
 	res = 0;
 	e->nbr_line = 0;
-	while ((res = get_next_line(fd1, &line)) > 0 && e->error == 0)
+	while ((res = get_next_line(e->fd1, &line)) > 0 && e->error == 0)
 	{
 		e->nbr_line++;
 		if (res == 1)
@@ -49,26 +74,7 @@ void			ft_read_file(char *file, t_e *e)
 	free(line);
 	if (e->nbr_line >= 1 && e->error == 0)
 		e->file = (char **)ft_memalloc(sizeof(char *) * e->nbr_line);
-	if ((fd2 = open(file, O_RDONLY)) < 0)
+	if ((e->fd2 = open(file, O_RDONLY)) < 0)
 		ft_puterror(e, "error file given");
-	close(fd1);
-	i = -1;
-	while ((res = get_next_line(fd2, &line)) > 0  && e->error == 0)
-		e->file[++i] = line;
-	if (res == -1)
-		ft_puterror(e, "error gnl/fichier inexistant ou pas les droits");
-	if (e->error == 0)
-		ft_change_space(e);
-}
-
-void	ft_print_xx(char **tab)
-{
-	int y;
-
-	y = -1;
-	while (tab[++y])
-	{
-		ft_putnbr(y);ft_putchar(' ');
-		ft_putendl(tab[y]);
-	}
+	ft_read_file_2(e);
 }

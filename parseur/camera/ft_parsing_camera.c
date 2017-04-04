@@ -57,7 +57,7 @@ static void			ft_free_parse(t_e *e)
 	free(e->split);
 }
 
-int				ft_parsing_camera_after(t_env *rt, t_e *e, int i)
+int					ft_parsing_camera_after(t_env *rt, t_e *e, int i)
 {
 	int				verif;
 

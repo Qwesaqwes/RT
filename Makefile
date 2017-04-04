@@ -116,10 +116,10 @@ SRC			=	main.c\
 				../parseur/object/ft_fill_info_object_2.c\
 				../parseur/object/ft_fill_info_object_3.c\
 				../parseur/object/ft_fill_info_object_4.c\
-				../parseur/scene/ft_parsing_scene.c\
-				../parseur/ft_parsing.c\
 				../parseur/reader/ft_read_parsing.c\
-				../parseur/source/source_search.c\
+				../parseur/scene/ft_parsing_scene.c\
+				../parseur/scene/ft_parsing_scene_2.c\
+				../parseur/ft_parsing.c\
 				../parseur/parseur.c\
 				free/free.c
 

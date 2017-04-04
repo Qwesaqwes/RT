@@ -63,6 +63,8 @@ typedef	struct		s_parsing
 	char			**file;
 	char			**split;
 	char			**split_face;
+	int				fd1;
+	int				fd2;
 	char			*file_name;
 	char			*fn;
 	char 			*file_name_bump;
@@ -81,6 +83,7 @@ typedef	struct		s_parsing
 	int 			error;
 	int				faceend;
 	int				ii;
+	int				verif;
 
 
 
@@ -138,44 +141,31 @@ void				ft_fill_info_object_6(t_obj *obj, t_e *e);
 void				ft_fill_info_object_12(t_obj *obj, t_e *e);
 void				ft_fill_info_object_18(t_obj *obj, t_e *e);
 
-
-
-
-
+/*
+**		reader
+*/
+void				ft_read_file(char *file, t_e *e);
 
 /*
-**		main.c
+**		source
 */
-void			ft_puterror(t_e *e, char*str);
-int			ft_verif_scene_object(char	*str);
-void			ft_read_file(char *file, t_e *e);
-int			main(int	argc,	char	**argv);
-void			ft_split_parsing(t_e *e, char *line);
-float		ft_atof(char	*str);
-t_scene		ft_parsing(t_e	*e);
+void				ft_parsing_scene_after(t_env *rt, t_e *e, int i);
+void				ft_fill_info_scene(t_scene *scene, t_e *e);
 
-t_obj		ft_parsing_lum(t_e	*e,	int	i);
+/*
+**		parseur
+*/
+int					ft_fill_parce(t_env *rt, char *name);
+int					ft_verif_scene_object(char *str);
+void				ft_puterror(t_e *e, char *str);
 
-void			ft_fill_info_scene(t_scene	*scene,	t_e	*e);
-void			ft_print_xx(char	**tab);
-int			ft_verif_line(char	*str,	int	x);
-void 		print_info_object(t_obj obj, t_e *e);
-
-t_list		*ft_parseur(t_env *rt, t_e *e, int type);
-t_list		*ft_parsing_obj(t_e *e);
-void 		ft_parsing_camera(t_env *rt, t_e *e);
-t_list		*ft_parsing_light(t_e *e);
-
-void			ft_parsing_scene_after(t_env *rt, t_e *e, int i);
-void 		ft_parsing_scene(t_env *rt, t_e *e);
-int			ft_fill_parce(t_env *e, char *name);
-void 		ft_search_source(t_e *e, int i);
-void 		ft_fill_info_lum(t_obj *obj, t_e *e);
-
-
-
-
-
+/*
+**		parsin_file
+*/
+t_list				*ft_parsing_obj(t_e *e);
+void				ft_parsing_scene(t_env *rt, t_e *p);
+void				ft_parsing_camera(t_env *rt, t_e *e);
+t_list				*ft_parsing_light(t_e *e);
 
 #endif
 

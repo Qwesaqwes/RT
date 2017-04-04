@@ -1,91 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gahubaul <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/04 23:29:46 by gahubaul          #+#    #+#             */
+/*   Updated: 2017/04/04 23:29:48 by gahubaul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/parsing.h"
-
-
-void		ft_puterror(t_e *e, char *str)
-{
-	e->error++;
-	write(2, str, ft_strlen(str));
-	write(2, "\n", 1);
-}
-
-int			ft_verif_scene_object(char *str)
-{
-	if (str && (ft_strcmp(str, "scene")) == 0)
-		return (1);
-	if (str && (ft_strcmp(str, "object")) == 0)
-		return (1);
-	if (str && (ft_strcmp(str, "light")) == 0)
-		return (1);
-	if (str && (ft_strcmp(str, "camera")) == 0)
-		return (1);
-	return(0);
-}
-
 
 t_list			*ft_parsing_obj(t_e *e)
 {
-	t_list	*list;
-	t_obj 	obj;
-	int 	i;
+	t_list		*list;
+	t_obj		obj;
 
-	i = 0;
+	e->ii = 0;
 	list = NULL;
 	e->split = NULL;
 	e->id_o = -1;
-	while (e->file[i] && i < e->nbr_line)
+	while (e->file[e->ii] && e->ii < e->nbr_line)
 	{
-		if (e->file[i] && e->file[i][0] != '#')
+		if (e->file[e->ii] && e->file[e->ii][0] != '#')
 		{
-			e->split = ft_strsplit(e->file[i], '\t');
+			e->split = ft_strsplit(e->file[e->ii], '\t');
 			if (e->split[0] && e->split[0][0] &&
 				(ft_strcmp(e->split[0], "object")) == 0)
 			{
 				e->id_o++;
-				obj = ft_parsing_obj_after(e, i);
+				obj = ft_parsing_obj_after(e, e->ii);
 				obj.id = e->id_o;
 				ft_lstadd(&list, ft_lstnew(&obj, sizeof(t_obj)));
-				i = e->line - 1;
+				e->ii = e->line - 1;
 			}
 		}
-		i++;
+		e->ii++;
 	}
 	return (list);
 }
 
-
-void		ft_parsing_scene(t_env *rt, t_e *p)
+void			ft_parsing_scene(t_env *rt, t_e *p)
 {
-	int 	i;
-
-	i = 0;
+	p->ii = 0;
 	p->line = 0;
 	p->split = NULL;
 	p->nb_scene = 0;
-	while (p->file[i] && i < p->nbr_line)
+	while (p->file[p->ii] && p->ii < p->nbr_line)
 	{
-		if (p->file[i] && p->file[i][0] != '#')
+		if (p->file[p->ii] && p->file[p->ii][0] != '#')
 		{
-			p->split = ft_strsplit(p->file[i], '\t');
+			p->split = ft_strsplit(p->file[p->ii], '\t');
 			if (p->split[0] && p->split[0][0]
 				&& (ft_strcmp(p->split[0], "scene")) == 0 && p->nb_scene == 0)
 			{
 				p->nb_scene++;
-				ft_parsing_scene_after(rt, p, i);
-				i = p->line - 1;
+				ft_parsing_scene_after(rt, p, p->ii);
+				p->ii = p->line - 1;
 			}
 			else if (p->split[0] && p->split[0][0]
 				&& (ft_strcmp(p->split[0], "scene")) == 0 && p->nb_scene == 1)
 				ft_puterror(p, "Too much given scene");
 		}
-		i++;
+		p->ii++;
 	}
 }
 
-
-
-void		ft_parsing_camera(t_env *rt, t_e *e)
+void			ft_parsing_camera(t_env *rt, t_e *e)
 {
-	int 	i;
+	int			i;
 
 	i = 0;
 	e->line = 0;
@@ -112,33 +96,31 @@ void		ft_parsing_camera(t_env *rt, t_e *e)
 		ft_puterror(e, "Too much given camera");
 }
 
-
-t_list		*ft_parsing_light(t_e *e)
+t_list			*ft_parsing_light(t_e *e)
 {
-	t_list	*list;
-	t_obj 	obj;
-	int 	i;
+	t_list		*list;
+	t_obj		obj;
 
-	i = 0;
+	e->ii = 0;
 	e->split = NULL;
 	e->id_l = -1;
 	list = NULL;
-	while (e->file[i] && i < e->nbr_line)
+	while (e->file[e->ii] && e->ii < e->nbr_line)
 	{
-		if (e->file[i] && e->file[i][0] != '#')
+		if (e->file[e->ii] && e->file[e->ii][0] != '#')
 		{
-			e->split = ft_strsplit(e->file[i], '\t');
+			e->split = ft_strsplit(e->file[e->ii], '\t');
 			if (e->split[0] && e->split[0][0] &&
 				(ft_strcmp(e->split[0], "light")) == 0)
 			{
 				e->id_l++;
-				obj = ft_parsing_lum(e, i);
+				obj = ft_parsing_lum(e, e->ii);
 				obj.id = e->id_l;
 				ft_lstadd(&list, ft_lstnew(&obj, sizeof(t_obj)));
-				i = e->line - 1;
+				e->ii = e->line - 1;
 			}
 		}
-		i++;
+		e->ii++;
 	}
 	return (list);
 }
