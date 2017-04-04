@@ -5,8 +5,8 @@ scene
 	antialiasing			1
 
 camera
-	origin_xyz				-10		3		0
-	rotation_xyz			0		0		-10
+	origin_xyz				-10		10		4
+	rotation_xyz			0		0		-20
 	distance_viewplane		1
 
 light

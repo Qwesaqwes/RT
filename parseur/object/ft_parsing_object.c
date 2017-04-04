@@ -29,6 +29,7 @@ static void			ft_verif_object(t_e *e)
 	e->vobject.y_max = 0;
 	e->vobject.z_min = 0;
 	e->vobject.z_max = 0;
+	e->vobject.quadrics = 0;
 }
 
 static void 		ft_verif_object_texture_4(t_e *e, int i)
@@ -107,6 +108,8 @@ static void 		ft_verif_limit_exist(t_e *e, t_obj *tmp)
 			ft_puterror(e, "Wrong Info Object  z_min must to be less than z_max");
 	if (tmp->tex.bump == 1 && tmp->tex.transp == 1)
 		tmp->refr_index = 1;
+	if (tmp->type == 8 && e->vobject.quadrics != 1)
+		ft_puterror(e, "Wrong Info Object - quadrics");
 }
 
 static void 		ft_fill_info_brut(t_obj *tmp)

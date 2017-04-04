@@ -2,6 +2,23 @@
 // else
 // 	ft_puterror(ft_strjoin("Wrong Info Object line ", ft_itoa(e->save_i + 1)));
 
+void 		ft_fill_info_object_20(t_obj *obj, t_e *e)
+{
+	if (ft_strcmp(e->split[0], "quadrics") == 0 && e->split[1] != NULL 
+	&& e->split[2] != NULL && e->split[3] != NULL && e->split[4] != NULL 
+	&& e->split[5] != NULL && e->split[6] != NULL && e->split[7] != NULL && 
+	e->split[8] != NULL && e->split[9] != NULL && e->split[10] != NULL)
+	{
+		e->vobject.quadrics++;
+		obj->quadrics = (t_quadrics){ atof(e->split[1]), atof(e->split[2]),
+		 atof(e->split[3]), atof(e->split[4]), atof(e->split[5]), 
+		 atof(e->split[6]), atof(e->split[7]), atof(e->split[8]), 
+		 atof(e->split[9]), atof(e->split[10])};
+	}
+	else
+		ft_puterror(e, ft_strjoin("Wrong Info Object line ", ft_itoa(e->save_i + 1)));
+}
+
 void 		ft_fill_info_object_19(t_obj *obj, t_e *e)
 {
 	if (ft_strcmp(e->split[0], "y_max") == 0 && e->split[1] != NULL)
@@ -23,7 +40,7 @@ void 		ft_fill_info_object_19(t_obj *obj, t_e *e)
 		obj->limit.z_max = atof(e->split[1]);
 	}
 	else
-		ft_puterror(e, ft_strjoin("Wrong Info Object line ", ft_itoa(e->save_i + 1)));
+		ft_fill_info_object_20(obj, e);
 }
 
 void 		ft_fill_info_object_18(t_obj *obj, t_e *e)
@@ -374,7 +391,7 @@ static char ft_verif_type(t_e *e, char *type)
 		return (6);
 	else if (ft_strcmp(type, "circle") == 0)
 		return (7);
-	else if (ft_strcmp(type, "circle") == 0)
+	else if (ft_strcmp(type, "quadrics") == 0)
 		return (8);
 	ft_puterror(e, "Wrong Info Object - Type");
 	return (0);

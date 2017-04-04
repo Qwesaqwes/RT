@@ -52,6 +52,7 @@ typedef	struct		s_verif_object
 	int				y_max;
 	int				z_min;
 	int				z_max;
+	int				quadrics;
 }					t_verif_object;
 
 
