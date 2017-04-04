@@ -251,6 +251,7 @@ object
 light
 	name					red
 	type					sphere
+	typel					0
 	color_rgb				1		0		0
 	scale					1
 	translate_xyz			0		5		-15
@@ -260,6 +261,7 @@ light
 light
 	name					green
 	type					sphere
+	typel					0
 	color_rgb				0		1		0
 	scale					1
 	translate_xyz			0		5		15
@@ -269,6 +271,7 @@ light
 light
 	name					blue
 	type					sphere
+	typel					0
 	color_rgb				0		0		1
 	scale					1
 	translate_xyz			0		5		0

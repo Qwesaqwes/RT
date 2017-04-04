@@ -4,6 +4,7 @@ static void			ft_verif_lum(t_e *e)
 {
 	e->vobject.name = 0;
 	e->vobject.type = 0;
+	e->vobject.typel = 0;
 	e->vobject.color_rgb = 0;
 	e->vobject.scale_xyz = 0;
 	e->vobject.translate_xyz = 0;
@@ -13,17 +14,19 @@ static void			ft_verif_lum(t_e *e)
 static void			ft_verif_nbr_lum(t_e *e)
 {
 	if (e->vobject.name != 1)
-		ft_puterror(e, "Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light - name");
 	if (e->vobject.type != 1)
-		ft_puterror(e, "Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light - type");
+	if (e->vobject.typel != 1)
+		ft_puterror(e, "Wrong Info Light - typel");
 	if (e->vobject.color_rgb != 1)
-		ft_puterror(e, "Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light - color_rgb");
 	if (e->vobject.scale_xyz != 1)
-		ft_puterror(e, "Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light - scale_xyz");
 	if (e->vobject.translate_xyz != 1)
-		ft_puterror(e, "Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light - translate_xyz");
 	if (e->vobject.rotation_xyz != 1)
-		ft_puterror(e, "Wrong Info Light");
+		ft_puterror(e, "Wrong Info Light - rotation_xyz");
 }
 
 t_obj				ft_parsing_lum(t_e *e, int i)

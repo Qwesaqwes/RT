@@ -138,6 +138,7 @@ camera
 light
 	name					salut
 	type					sphere
+	typel					0
 	color_rgb				1		1		1
 	scale					1
 	translate_xyz			5		5		0
@@ -146,6 +147,7 @@ light
 light
 	name					salut
 	type					sphere
+	typel					0
 	color_rgb				1		1		1
 	scale					1
 	translate_xyz			5		5		0
@@ -157,6 +159,7 @@ light
 light
 	name					salut
 	type					sphere
+	typel					0
 	color_rgb				1		1		1
 	scale					1
 	translate_xyz			-10		15		-3

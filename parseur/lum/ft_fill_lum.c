@@ -99,6 +99,14 @@ void		ft_fill_info_lum(t_obj *obj, t_e *e)
 		e->vobject.type++;
 		obj->type = ft_verif_type(e, e->split[1]);
 	}
+	else if (ft_strcmp(e->split[0], "typel") == 0 && e->split[1] != NULL)
+	{
+		e->vobject.typel++;
+		e->tmp = atoi(e->split[1]);
+		if (e->tmp != 1 && e->tmp != 0)
+			ft_puterror(e, "Wrong Info in Light - typel");
+		obj->typel = e->tmp;
+	}
 	else if (ft_strcmp(e->split[0], "scale") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.scale_xyz++;

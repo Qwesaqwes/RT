@@ -25,6 +25,7 @@ typedef	struct		s_verif_object
 {
 	int				name;
 	int				type;
+	int				typel;
 	int				color_rgb;
 	int				scale_xyz;
 	int				translate_xyz;

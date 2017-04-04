@@ -12,6 +12,7 @@ camera
 light
 	name					red
 	type					sphere
+	typel					0
 	color_rgb				1		1		1
 	scale					1
 	translate_xyz			-5		10		0

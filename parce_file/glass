@@ -7,7 +7,7 @@
 scene
 	ambiant_rgb				1		1		1
 	refr_index				1
-	background_rgb			1		1		1
+	background_rgb			0		0		0
 	antialiasing			1
 
 camera
@@ -35,7 +35,7 @@ object
 	tex_col2				0		0		0
 	tex_col3				0.5		0.5		0.5
 	z_min					0
-	z_max					9
+	z_max					1
 
 object
 	name					verre_tronc
@@ -62,7 +62,7 @@ object
 
 object
 	name					verre_ballon
-	type					sphere
+	type					cone
 	color_rgb				1		1		1
 	scale					1.8
 	translate_xyz			10		7		0
@@ -104,48 +104,51 @@ object
 	square					1
 
 
-	object
-		name					plan
-		type					plane
-		color_rgb				0.9		0.9		0.9
-		scale					1
-		translate_xyz			0		50		0
-		rotation_xyz			0		180		90
-		k_ads					0.2		0.9		0
-		i						0
-		t						0
-		shininess				65
-		refraction_index		1.33
-		tex_texture				1
-		tex_bump				0
-		tex_transp				0
-		tex_col1				1		1		1
-		tex_col2				0		0		0
-		tex_col3				0.5		0.5		0.5
-		square					1
+object
+	name					plan
+	type					plane
+	color_rgb				0.9		0.9		0.9
+	scale					1
+	translate_xyz			0		50		0
+	rotation_xyz			0		180		90
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				65
+	refraction_index		1.33
+	tex_texture				1
+	tex_bump				0
+	tex_transp				0
+	tex_col1				1		1		1
+	tex_col2				0		0		0
+	tex_col3				0.5		0.5		0.5
+	square					1
 
 light
 	name					red
 	type					sphere
+	typel					0
 	color_rgb				1		0		0
 	scale					1
-	translate_xyz			0		5		-15
+	translate_xyz			-5		5		-15
 	rotation_xyz			0		0		-20
 
 
 light
 	name					green
 	type					sphere
+	typel					0
 	color_rgb				0		1		0
 	scale					1
-	translate_xyz			0		5		15
+	translate_xyz			-5		5		15
 	rotation_xyz			0		0		-20
 
 
 light
 	name					blue
 	type					sphere
+	typel					0
 	color_rgb				0		0		1
 	scale					1
-	translate_xyz			0		5		0
+	translate_xyz			-5		5		0
 	rotation_xyz			0		0		-20
