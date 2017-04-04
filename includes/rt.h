@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/03 22:54:55 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/04 16:23:05 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ t_vec3d		compute_normal_vec(t_no no);
 t_ray		imaginary_ray(t_ray ray, t_transform t);
 
 int			get_nearest_obj(t_ray ray, t_list *list, t_no *no);
+t_vec3d		set_inter_point(float dist, t_ray ray);
+t_vec3d		inver_origin(t_vec3d origin, t_transform t);
+t_vec3d		inver_dir(t_vec3d dir, t_transform t);
+
 t_vec3d		rota_vect(t_vec3d old, t_vec3d rot);
 int			expose_hook(t_env *e);
 int			key_release(int keycode, t_env *e);
@@ -79,6 +83,9 @@ t_matrix	rotation_z(float angle);
 t_vec3d		normalizevec(t_vec3d old);
 
 t_color		compute_color(t_no no, t_scene s, t_vec3d n, t_vec3d origin);
+t_color		cc_l(t_obj lum, t_no no, t_vec3d n, t_vec3d origin);
+float		get_int_one_obj(t_ray ray, t_obj obj);
+
 
 t_vec3d		vector_sub(t_vec3d a, t_vec3d b);
 float		vector_dot(t_vec3d a, t_vec3d b);

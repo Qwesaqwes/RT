@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/04/03 18:51:21 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/04/04 16:23:32 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,10 @@ SRC			=	main.c\
 				raytracing/compute_ray.c\
 				raytracing/compute_normal_vec.c \
 				raytracing/compute_color.c \
+				raytracing/compute_color2.c\
 				raytracing/raytracing.c\
+				raytracing/set_black_white.c\
+				raytracing/inver_origin_dir.c\
 				raytracing/ft_lstdelfirst.c\
 				raytracing/multi_thread.c\
 				raytracing/set_cam_ray.c\

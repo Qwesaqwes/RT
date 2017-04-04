@@ -6,31 +6,11 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 05:10:57 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/03 22:57:47 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/04 16:20:42 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt.h"
-
-t_color		set_black(void)
-{
-	t_color	c;
-
-	c.red = 0;
-	c.green = 0;
-	c.blue = 0;
-	return (c);
-}
-
-t_color		set_white_color(void)
-{
-	t_color	c;
-
-	c.red = 1;
-	c.green = 1;
-	c.blue = 1;
-	return (c);
-}
 
 void		modif_refr_index(t_cv cv, t_no no, t_values *v, int i)
 {
