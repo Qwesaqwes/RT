@@ -11,7 +11,7 @@ scene
 	antialiasing			1
 
 camera
-	origin_xyz				-6		10		0
+	origin_xyz				-6		12		0
 	rotation_xyz			0		0		-25
 	distance_viewplane		1
 
@@ -62,11 +62,11 @@ object
 
 object
 	name					verre_ballon
-	type					sphere
+	type					cone
 	color_rgb				1		1		1
 	scale					1.8
-	translate_xyz			10		7		0
-	rotation_xyz			90		0		90
+	translate_xyz			10		5.3		0
+	rotation_xyz			-90		0		-90
 	k_ads					0.2		0.9		0
 	i						0
 	t						0.9
@@ -79,7 +79,7 @@ object
 	tex_col2				0		0		0
 	tex_col3				0.5		0.5		0.5
 	z_min					0
-	z_max					1.5
+	z_max					1.3
 
 
 
@@ -104,25 +104,6 @@ object
 	square					1
 
 
-object
-	name					plan
-	type					plane
-	color_rgb				0.9		0.9		0.9
-	scale					1
-	translate_xyz			0		50		0
-	rotation_xyz			0		180		90
-	k_ads					0.2		0.9		0
-	i						0
-	t						0
-	shininess				65
-	refraction_index		1.33
-	tex_texture				1
-	tex_bump				0
-	tex_transp				0
-	tex_col1				1		1		1
-	tex_col2				0		0		0
-	tex_col3				0.5		0.5		0.5
-	square					1
 
 light
 	name					red
