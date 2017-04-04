@@ -25,7 +25,7 @@ object
 	rotation_xyz			90		0		0
 	k_ads					0.2		0.9		0
 	i						0
-	t						1
+	t						0.9
 	shininess				65
 	refraction_index		1.33
 	tex_texture				0
@@ -46,7 +46,7 @@ object
 	rotation_xyz			90		0		0
 	k_ads					0.2		0.9		0
 	i						0
-	t						1
+	t						0.9
 	shininess				65
 	refraction_index		1.33
 	tex_texture				0
@@ -62,14 +62,14 @@ object
 
 object
 	name					verre_ballon
-	type					cone
+	type					sphere
 	color_rgb				1		1		1
 	scale					1.8
 	translate_xyz			10		7		0
 	rotation_xyz			90		0		90
 	k_ads					0.2		0.9		0
 	i						0
-	t						1
+	t						0.9
 	shininess				65
 	refraction_index		1.33
 	tex_texture				0
@@ -79,7 +79,7 @@ object
 	tex_col2				0		0		0
 	tex_col3				0.5		0.5		0.5
 	z_min					0
-	z_max					1
+	z_max					1.5
 
 
 
@@ -128,27 +128,8 @@ light
 	name					red
 	type					sphere
 	typel					0
-	color_rgb				1		0		0
+	color_rgb				1		1		1
 	scale					1
-	translate_xyz			-5		5		-15
+	translate_xyz			-5		7		0
 	rotation_xyz			0		0		-20
 
-
-light
-	name					green
-	type					sphere
-	typel					0
-	color_rgb				0		1		0
-	scale					1
-	translate_xyz			-5		5		15
-	rotation_xyz			0		0		-20
-
-
-light
-	name					blue
-	type					sphere
-	typel					0
-	color_rgb				0		0		1
-	scale					1
-	translate_xyz			-5		5		0
-	rotation_xyz			0		0		-20

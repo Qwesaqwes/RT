@@ -154,8 +154,6 @@ light
 	rotation_xyz			0		0		0
 
 
-
-
 light
 	name					salut
 	type					sphere
