@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fill_lum.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gahubaul <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/04 22:03:35 by gahubaul          #+#    #+#             */
+/*   Updated: 2017/04/04 22:03:36 by gahubaul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/parsing.h"
 
-static char ft_verif_type(t_e *e, char *type)
+static char			ft_verif_type(t_e *e, char *type)
 {
 	if (ft_strcmp(type, "sphere") == 0)
 		return (0);
@@ -22,25 +34,7 @@ static char ft_verif_type(t_e *e, char *type)
 	return (0);
 }
 
-static void		ft_fill_info_lum4(t_obj *obj, t_e *e)
-{
-	if (ft_strcmp(e->split[0], "translate_xyz") == 0 && e->split[1] != NULL
-		&& e->split[2] != NULL && e->split[3] != NULL)
-	{
-		e->vobject.translate_xyz++;
-		e->tmp = atof(e->split[1]);
-		obj->transform.transl.x = e->tmp;
-		e->tmp = atof(e->split[2]);
-		obj->transform.transl.y = e->tmp;
-		e->tmp = atof(e->split[3]);
-		obj->transform.transl.z = e->tmp;
-	}
-	else
-		ft_puterror(e, ft_strjoin("Wrong Info Light line ",
-		ft_itoa(e->save_i + 1)));
-}
-
-static void		ft_fill_info_lum3(t_obj *obj, t_e *e)
+static void			ft_fill_info_lum4(t_obj *obj, t_e *e)
 {
 	if (ft_strcmp(e->split[0], "rotation_xyz") == 0 && e->split[1] != NULL
 		&& e->split[2] != NULL && e->split[3] != NULL)
@@ -60,12 +54,13 @@ static void		ft_fill_info_lum3(t_obj *obj, t_e *e)
 		obj->transform.rot.z = e->tmp;
 	}
 	else
-		ft_fill_info_lum4(obj, e);
+		ft_fill_info_lum5(obj, e);
 }
 
-static void		ft_fill_info_lum2(t_obj *obj, t_e *e)
+static void			ft_fill_info_lum3(t_obj *obj, t_e *e)
 {
-	if (ft_strcmp(e->split[0], "color_rgb") == 0 && e->split[1] != NULL && e->split[2] != NULL && e->split[3] != NULL)
+	if (ft_strcmp(e->split[0], "color_rgb") == 0 && e->split[1] != NULL &&
+		e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vobject.color_rgb++;
 		e->tmp = atof(e->split[1]);
@@ -82,11 +77,28 @@ static void		ft_fill_info_lum2(t_obj *obj, t_e *e)
 		obj->color.blue = (e->tmp);
 	}
 	else
+		ft_fill_info_lum4(obj, e);
+}
+
+static void			ft_fill_info_lum2(t_obj *obj, t_e *e)
+{
+	if (ft_strcmp(e->split[0], "scale") == 0 && e->split[1] != NULL)
+	{
+		e->vobject.scale_xyz++;
+		e->tmp = atof(e->split[1]);
+		if (e->tmp <= 0)
+			ft_puterror(e, "Wrong Info in Light - scale");
+		if (e->tmp > 1.8)
+			e->tmp = 1.8;
+		obj->transform.scale.x = e->tmp;
+		obj->transform.scale.y = e->tmp;
+		obj->transform.scale.z = e->tmp;
+	}
+	else
 		ft_fill_info_lum3(obj, e);
 }
 
-
-void		ft_fill_info_lum(t_obj *obj, t_e *e)
+void				ft_fill_info_lum(t_obj *obj, t_e *e)
 {
 	e->tmp = 0;
 	if (ft_strcmp(e->split[0], "name") == 0 && e->split[1] != NULL)
@@ -106,18 +118,6 @@ void		ft_fill_info_lum(t_obj *obj, t_e *e)
 		if (e->tmp != 1 && e->tmp != 0)
 			ft_puterror(e, "Wrong Info in Light - typel");
 		obj->typel = e->tmp;
-	}
-	else if (ft_strcmp(e->split[0], "scale") == 0 && e->split[1] != NULL)
-	{
-		e->vobject.scale_xyz++;
-		e->tmp = atof(e->split[1]);
-		if (e->tmp <= 0)
-			ft_puterror(e, "Wrong Info in Light - scale");
-		if (e->tmp > 1.8)
-			e->tmp = 1.8;
-		obj->transform.scale.x = e->tmp;
-		obj->transform.scale.y = e->tmp;
-		obj->transform.scale.z = e->tmp;
 	}
 	else
 		ft_fill_info_lum2(obj, e);

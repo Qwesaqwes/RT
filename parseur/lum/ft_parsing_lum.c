@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parsing_lum.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gahubaul <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/04 21:41:10 by gahubaul          #+#    #+#             */
+/*   Updated: 2017/04/04 21:41:12 by gahubaul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/parsing.h"
 
 static void			ft_verif_lum(t_e *e)
@@ -29,10 +41,19 @@ static void			ft_verif_nbr_lum(t_e *e)
 		ft_puterror(e, "Wrong Info Light - rotation_xyz");
 }
 
+static void			ft_free_lum(t_e *e)
+{
+	int				j;
+
+	j = -1;
+	while (e->split[++j])
+		free(e->split[j]);
+	free(e->split);
+}
+
 t_obj				ft_parsing_lum(t_e *e, int i)
 {
-	int j;
-	t_obj tmp;
+	t_obj			tmp;
 
 	tmp.refr_index = 0.1;
 	i++;
@@ -48,10 +69,7 @@ t_obj				ft_parsing_lum(t_e *e, int i)
 				ft_fill_info_lum(&tmp, e);
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) != 0)
 				i = -2;
-			j = -1;
-			while (e->split[++j])
-				free(e->split[j]);
-			free(e->split);
+			ft_free_lum(e);
 		}
 		i++;
 	}

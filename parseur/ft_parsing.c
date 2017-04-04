@@ -100,8 +100,7 @@ void		ft_parsing_camera(t_env *rt, t_e *e)
 				&& (ft_strcmp(e->split[0], "camera")) == 0 && e->nb_camera == 0)
 			{
 				e->nb_camera++;
-				ft_parsing_camera_after(rt, e, i);
-				i = e->line - 1;
+				i = ft_parsing_camera_after(rt, e, i) - 1;
 			}
 			else if (e->split[0] && e->split[0][0]
 				&& (ft_strcmp(e->split[0], "camera")) == 0 && e->nb_camera == 1)

@@ -104,12 +104,18 @@ SRC			=	main.c\
 				gtk/gtk_add_obj_limit.c\
 				gtk/gtk_add_obj_limit1.c\
 				gtk/gtk_modif_obj_limit.c\
-				../parseur/object/ft_fill_info_object.c\
-				../parseur/lum/ft_fill_lum.c\
+				../parseur/camera/ft_fill_info_camera.c\
+				../parseur/camera/ft_parsing_camera.c\
 				../parseur/faces/face.c\
+				../parseur/lum/ft_fill_lum_next.c\
+				../parseur/lum/ft_fill_lum.c\
 				../parseur/lum/ft_parsing_lum.c\
 				../parseur/object/ft_parsing_object.c\
-				../parseur/camera/ft_parsing_camera.c\
+				../parseur/object/ft_parsing_object_next.c\
+				../parseur/object/ft_fill_info_object.c\
+				../parseur/object/ft_fill_info_object_2.c\
+				../parseur/object/ft_fill_info_object_3.c\
+				../parseur/object/ft_fill_info_object_4.c\
 				../parseur/scene/ft_parsing_scene.c\
 				../parseur/ft_parsing.c\
 				../parseur/reader/ft_read_parsing.c\

@@ -46,7 +46,7 @@ void			ft_read_file(char *file, t_e *e)
 	}
 	if (res == -1 || (res == 0 && e->nbr_line == 0))
 		ft_puterror(e, "error file void");
-	// free(line);
+	free(line);
 	if (e->nbr_line >= 1 && e->error == 0)
 		e->file = (char **)ft_memalloc(sizeof(char *) * e->nbr_line);
 	if ((fd2 = open(file, O_RDONLY)) < 0)

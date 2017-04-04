@@ -64,6 +64,7 @@ typedef	struct		s_parsing
 	char			**split;
 	char			**split_face;
 	char			*file_name;
+	char			*fn;
 	char 			*file_name_bump;
 	char 			*file_name_transp;
 	char 			*tmpc;
@@ -79,6 +80,7 @@ typedef	struct		s_parsing
 	char			*name;
 	int 			error;
 	int				faceend;
+	int				ii;
 
 
 
@@ -102,6 +104,45 @@ typedef	struct		s_parsing
 
 }				t_e;
 
+
+
+/*
+**		camera
+*/
+void				ft_fill_info_camera(t_env *rt, t_e *e);
+int					ft_parsing_camera_after(t_env *rt, t_e *e, int i);
+
+/*
+**		face
+*/
+t_face				*ft_parsing_face_after(t_e *e, int i, int k);
+
+/*
+**		lum
+*/
+void				ft_fill_info_lum5(t_obj *obj, t_e *e);
+void				ft_fill_info_lum(t_obj *obj, t_e *e);
+t_obj				ft_parsing_lum(t_e *e, int i);
+
+/*
+**		object
+*/
+t_obj				ft_parsing_obj_after(t_e *e, int i);
+void				ft_verif_nbr_object(t_e *e, t_obj obj);
+void				ft_verif_nbr_object_v2(t_e *e, t_obj obj);
+void				ft_verif_object_texture_4(t_e *e, int i);
+void				ft_norme_object(t_e *e, t_obj *tmp, int i);
+void				ft_verif_limit_exist(t_e *e, t_obj *tmp);
+void				ft_fill_info_object(t_obj *obj, t_e *e);
+void				ft_fill_info_object_6(t_obj *obj, t_e *e);
+void				ft_fill_info_object_12(t_obj *obj, t_e *e);
+void				ft_fill_info_object_18(t_obj *obj, t_e *e);
+
+
+
+
+
+
 /*
 **		main.c
 */
@@ -113,10 +154,8 @@ void			ft_split_parsing(t_e *e, char *line);
 float		ft_atof(char	*str);
 t_scene		ft_parsing(t_e	*e);
 
-t_obj		ft_parsing_obj_after(t_e *e, int i);
 t_obj		ft_parsing_lum(t_e	*e,	int	i);
 
-void			ft_fill_info_object(t_obj	*obj,	t_e	*e);
 void			ft_fill_info_scene(t_scene	*scene,	t_e	*e);
 void			ft_print_xx(char	**tab);
 int			ft_verif_line(char	*str,	int	x);
@@ -127,13 +166,11 @@ t_list		*ft_parsing_obj(t_e *e);
 void 		ft_parsing_camera(t_env *rt, t_e *e);
 t_list		*ft_parsing_light(t_e *e);
 
-void			ft_parsing_camera_after(t_env *rt, t_e *e, int i);
 void			ft_parsing_scene_after(t_env *rt, t_e *e, int i);
 void 		ft_parsing_scene(t_env *rt, t_e *e);
 int			ft_fill_parce(t_env *e, char *name);
 void 		ft_search_source(t_e *e, int i);
 void 		ft_fill_info_lum(t_obj *obj, t_e *e);
-t_face		*ft_parsing_face_after(t_e *e, int i);
 
 
 
