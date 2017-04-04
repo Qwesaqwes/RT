@@ -382,7 +382,6 @@ static char ft_verif_type(t_e *e, char *type)
 
 void		ft_fill_info_object(t_obj *obj, t_e *e)
 {
-	ft_putendl(e->split[0]);
 	int i;
 
 	e->tmp = 0;

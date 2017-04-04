@@ -155,7 +155,6 @@ t_obj				ft_parsing_obj_after(t_e *e, int i)
 			j = -1;
 			while (e->split && e->split[++j])
 				free(e->split[j]);
-			ft_putendl("salut");
 			if (e->split)
 				free(e->split);
 		}
