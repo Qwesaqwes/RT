@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/02 20:40:32 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/03 22:54:55 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ t_color		color_mult_fact(t_color a, t_color b, float k);
 t_color		reflection(t_no no, t_scene s, t_vec3d n, t_values v);
 t_color		refraction(t_no no, t_scene s, t_vec3d n, t_values v);
 
-t_color		set_black_color(void);
+t_color		set_black(void);
 t_color		set_white_color(void);
 
 void		init_calculed_values(t_cv *cv, float n1, float n2);
@@ -167,7 +167,6 @@ t_rgb		get_color_pixel(guchar *pixel, t_gtk *gtk, int line, int col);
 const char	*get_selected_row(t_env *e, t_list 	*list);
 void		init_modif_obj_e(t_gtk *gtk, const char *object, t_list **list);
 int			put_tex_obj(t_gtk *gtk, t_tex *texture);
-// int			put_tex_obj(t_gtk *gtk, t_obj *obj, const char *object, t_list *l);
 void		put_normal(t_vec3d *normal);
 int			put_info_tex(t_gtk *gtk, t_tex *tex);
 void		get_type(char *type, t_list *list, const char *object);
@@ -208,6 +207,15 @@ float		transp_mapping(t_no no);
 t_vec3d		euler_angles(t_matrix m);
 t_matrix	axe_angle_to_matrix(float angle, t_vec3d axe);
 t_color		get_pixel(int tmp, GdkPixbuf *map);
+
+
+
+void		data_for_thread(t_thread_data *data, t_env *e);
+void		*ft_task(void *p_data);
+t_ray		set_ray(t_camera cam, t_vp vp, float i, float j);
+t_rgb		color_to_rgb(t_color old);
+void		set_camera(t_camera *cam);
+void		set_camera_stereo(t_camera *cam_origin, float fac);
 
 
 
