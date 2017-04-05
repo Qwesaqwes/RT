@@ -63,8 +63,7 @@ int				ft_fill_parce(t_env *rt, char *name)
 		ft_parseur(&tmp, &e, 2);
 	if (e.error == 0)
 		tmp.scene.obj = ft_parseur(rt, &e, 3);
-	ft_putendl("salut");
-	while (1);
+
 	if (e.error == 0)
 		tmp.scene.lum = ft_parseur(rt, &e, 4);
 	if (e.error == 0)

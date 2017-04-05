@@ -111,6 +111,5 @@ t_obj				ft_parsing_obj_after(t_e *e, int i)
 	}
 	ft_norme_object(e, &tmp, 2);
 	ft_free_object(e);
-	while(1);
 	return (tmp);
 }
