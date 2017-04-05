@@ -40,15 +40,15 @@ static void			ft_fill_info_lum4(t_obj *obj, t_e *e)
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vobject.rotation_xyz++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < -360 || e->tmp > 360)
 			ft_puterror(e, "Wrong Info in Object - rotation_x");
 		obj->transform.rot.x = e->tmp;
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		if (e->tmp < -360 || e->tmp > 360)
 			ft_puterror(e, "Wrong Info in Object - rotation_y");
 		obj->transform.rot.y = e->tmp;
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		if (e->tmp < -360 || e->tmp > 360)
 			ft_puterror(e, "Wrong Info in Object - rotation_z");
 		obj->transform.rot.z = e->tmp;
@@ -63,15 +63,15 @@ static void			ft_fill_info_lum3(t_obj *obj, t_e *e)
 		e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vobject.color_rgb++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Light - color_green");
 		obj->color.red = e->tmp;
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Light - color_blue");
 		obj->color.green = e->tmp;
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Light - color_red");
 		obj->color.blue = (e->tmp);
@@ -85,7 +85,7 @@ static void			ft_fill_info_lum2(t_obj *obj, t_e *e)
 	if (ft_strcmp(e->split[0], "scale") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.scale_xyz++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp <= 0)
 			ft_puterror(e, "Wrong Info in Light - scale");
 		if (e->tmp > 1.8)
@@ -114,7 +114,7 @@ void				ft_fill_info_lum(t_obj *obj, t_e *e)
 	else if (ft_strcmp(e->split[0], "typel") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.typel++;
-		e->tmp = atoi(e->split[1]);
+		e->tmp = ft_atoi(e->split[1]);
 		if (e->tmp != 1 && e->tmp != 0)
 			ft_puterror(e, "Wrong Info in Light - typel");
 		obj->typel = e->tmp;

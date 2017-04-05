@@ -17,7 +17,7 @@ static void				ft_next_fill_scene_3(t_scene *scene, t_e *e)
 	if (ft_strcmp(e->split[0], "refr_index") == 0 && e->split[1] != NULL)
 	{
 		e->vscene.refr_index++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in scene - refr_index");
 		scene->refr_index = (e->tmp);
@@ -32,15 +32,15 @@ static void				ft_next_fill_scene_2(t_scene *scene, t_e *e)
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vscene.background_rgb++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in scene - background_red");
 		scene->background.red = (e->tmp);
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in scene - background_green");
 		scene->background.green = (e->tmp);
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in scene - background_blue");
 		scene->background.blue = (e->tmp);
@@ -55,15 +55,15 @@ static void				ft_next_fill_scene_1(t_scene *scene, t_e *e)
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vscene.ambiant_rgb++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in scene - ambiant red");
 		scene->ambiant.red = (e->tmp);
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in scene - ambiant green");
 		scene->ambiant.green = (e->tmp);
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in scene - ambiant blue");
 		scene->ambiant.blue = (e->tmp);
@@ -77,7 +77,7 @@ void					ft_fill_info_scene(t_scene *scene, t_e *e)
 	if (ft_strcmp(e->split[0], "refr_index") == 0 && e->split[1] != NULL)
 	{
 		e->vscene.refr_index++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in scene - refr_index");
 		scene->refr_index = (e->tmp);
@@ -85,7 +85,7 @@ void					ft_fill_info_scene(t_scene *scene, t_e *e)
 	else if (ft_strcmp(e->split[0], "antialiasing") == 0 && e->split[1] != NULL)
 	{
 		e->vscene.antialiasing++;
-		e->tmp = atoi(e->split[1]);
+		e->tmp = ft_atoi(e->split[1]);
 		if (e->tmp < 1 || e->tmp > 4)
 			ft_puterror(e, "Wrong Info in scene - antialiasing");
 		scene->antialiasing = (e->tmp);

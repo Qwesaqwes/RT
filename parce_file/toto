@@ -1,12 +1,12 @@
 scene
-	ambiant_rgb				1		1		1
+	ambiant_rgb				0.7		0.7		0.7
 	refr_index				1
 	background_rgb			0.5		0.2		0.5
 	antialiasing			1
 
 camera
-	origin_xyz				-3		7		0
-	rotation_xyz			0		0		-10
+	origin_xyz				-10		15		0
+	rotation_xyz			0		0		-20
 	distance_viewplane		1
 
 light
@@ -15,7 +15,7 @@ light
 	typel					0
 	color_rgb				1		1		1
 	scale					1
-	translate_xyz			-5		10		0
+	translate_xyz			-10		10		0
 	rotation_xyz			0		0		-20
 
  object
@@ -39,66 +39,43 @@ light
 	square					2
 
 object
-   	name					plan
-   	type					sphere
-   	color_rgb				0.2		0.7		0.3
-   	scale					1.5
-   	translate_xyz			10		5		0
-   	rotation_xyz			0		0		0
-   	k_ads					0.2		0.9		0
-   	i						0
-   	t						0
-   	shininess				50
-   	refraction_index		1.33
-   	tex_texture				5
-   	tex_bump				0
-   	tex_transp				0
-	map_buf					./maps/moon.jpg
-
-
-object
-	name					cube
-	type					polygone3d
-	color_rgb				1		1		0
-	scale					1
-	translate_xyz			10		1		-1
-	rotation_xyz			0		0		0
+	name					cone1
+	type					cone
+	color_rgb				0.2		0.7		0.3
+	scale					1.5
+	translate_xyz			30		0		0
+	rotation_xyz			-90		0		0
 	k_ads					0.2		0.9		0
 	i						0
 	t						0
 	shininess				0
-	refraction_index		1.33
-	tex_texture				5
+	refraction_index		1
+	tex_texture				0
 	tex_bump				0
 	tex_transp				0
-	face
-		vertex				15		0		0
-		vertex				15		-3		0
-		vertex				15		-3		3
-		vertex				15		0		3
-	face
-		vertex				18		0		0
-		vertex				15		0		0
-		vertex				15		0		3
-		vertex				18		0		3
-	face
-		vertex				18		0		0
-		vertex				18		-3		0
-		vertex				15		-3		0
-		vertex				15		0		0
-	face
-		vertex				15		0		3
-		vertex				15		-3		3
-		vertex				18		-3		3
-		vertex				18		0		3
-	face
-		vertex				18		0		3
-		vertex				18		-3		3
-		vertex				18		-3		0
-		vertex				18		0		0
-	face
-		vertex				15		-3		0
-		vertex				18		-3		0
-		vertex				18		-3		3
-		vertex				15		-3		3
-	map_buf					./maps/monde.jpg
+	tex_col1				1		1		1
+	tex_col2				0		0		0
+	tex_col3				0.5		0.5		0.5
+	z_min					0
+	z_max					3
+
+object
+	name					cone1
+	type					cone
+	color_rgb				0.2		0.7		0.3
+	scale					1.5
+	translate_xyz			30		9		0
+	rotation_xyz			90		0		0
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				0
+	refraction_index		1
+	tex_texture				0
+	tex_bump				0
+	tex_transp				0
+	tex_col1				1		1		1
+	tex_col2				0		0		0
+	tex_col3				0.5		0.5		0.5
+	z_min					0
+	z_max					3

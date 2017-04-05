@@ -17,7 +17,7 @@ static void		ft_fill_info_object_17(t_obj *obj, t_e *e)
 	if (ft_strcmp(e->split[0], "tex_bump") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.tex_bump++;
-		e->tmp = atoi(e->split[1]);
+		e->tmp = ft_atoi(e->split[1]);
 		if (e->tmp != 1 && e->tmp != 0)
 			ft_puterror(e, "Wrong Info in Object - tex_bump");
 		obj->tex.bump = e->tmp;
@@ -25,7 +25,7 @@ static void		ft_fill_info_object_17(t_obj *obj, t_e *e)
 	else if (ft_strcmp(e->split[0], "tex_transp") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.tex_transp++;
-		e->tmp = atoi(e->split[1]);
+		e->tmp = ft_atoi(e->split[1]);
 		if (e->tmp != 1 && e->tmp != 0)
 			ft_puterror(e, "Wrong Info in Object - tex_transp");
 		obj->tex.transp = e->tmp;
@@ -33,7 +33,7 @@ static void		ft_fill_info_object_17(t_obj *obj, t_e *e)
 	else if (ft_strcmp(e->split[0], "square") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.square++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		obj->tex.square = e->tmp;
 	}
 	else
@@ -74,15 +74,15 @@ static void		ft_fill_info_object_14(t_obj *obj, t_e *e)
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vobject.tex_col3++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - tex_col3_red");
 		obj->tex.tex_col3.red = e->tmp;
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - tex_col3_green");
 		obj->tex.tex_col3.green = e->tmp;
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - tex_col3_blue");
 		obj->tex.tex_col3.blue = e->tmp;
@@ -97,15 +97,15 @@ static void		ft_fill_info_object_13(t_obj *obj, t_e *e)
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vobject.tex_col2++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - tex_col2_red");
 		obj->tex.tex_col2.red = e->tmp;
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - tex_col2_green");
 		obj->tex.tex_col2.green = e->tmp;
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - tex_col2_blue");
 		obj->tex.tex_col2.blue = e->tmp;
@@ -120,15 +120,15 @@ void			ft_fill_info_object_12(t_obj *obj, t_e *e)
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vobject.tex_col1++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - tex_col1_red");
 		obj->tex.tex_col1.red = e->tmp;
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - tex_col1_green");
 		obj->tex.tex_col1.green = e->tmp;
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - tex_col1_blue");
 		obj->tex.tex_col1.blue = e->tmp;

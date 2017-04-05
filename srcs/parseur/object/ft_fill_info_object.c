@@ -18,11 +18,11 @@ static void		ft_fill_info_object_4(t_obj *obj, t_e *e)
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vobject.translate_xyz++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		obj->transform.transl.x = e->tmp;
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		obj->transform.transl.y = e->tmp;
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		obj->transform.transl.z = e->tmp;
 	}
 	else
@@ -34,7 +34,7 @@ static void		ft_fill_info_object_3(t_obj *obj, t_e *e)
 	if (ft_strcmp(e->split[0], "scale") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.scale_xyz++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp <= 0)
 			ft_puterror(e, "Wrong Info in Object - scale");
 		if (e->tmp > 1.8)
@@ -53,15 +53,15 @@ static void		ft_fill_info_object_2(t_obj *obj, t_e *e)
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vobject.color_rgb++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - color_green");
 		obj->color.red = e->tmp;
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - color_blue");
 		obj->color.green = e->tmp;
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - color_red");
 		obj->color.blue = (e->tmp);

@@ -20,15 +20,15 @@ static void			ft_fill_info_camera_next(t_env *rt, t_e *e)
 		if (e->split[4] != NULL)
 			ft_puterror(e, "Wrong Info in Camera - rotation_xyz");
 		e->vcamera.rotation_xyz++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < -360 || e->tmp > 360)
 			ft_puterror(e, "Wrong Info in Camera - rotation_x");
 		rt->camera.rot.x = (e->tmp);
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		if (e->tmp < -360 || e->tmp > 360)
 			ft_puterror(e, "Wrong Info in Camera - rotation_y");
 		rt->camera.rot.y = (e->tmp);
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		if (e->tmp < -360 || e->tmp > 360)
 			ft_puterror(e, "Wrong Info in Camera - rotation_z");
 		rt->camera.rot.z = (e->tmp);
@@ -44,18 +44,18 @@ void				ft_fill_info_camera(t_env *rt, t_e *e)
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vcamera.origin_xyz++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		rt->camera.origin.x = (e->tmp);
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		rt->camera.origin.y = (e->tmp);
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		rt->camera.origin.z = (e->tmp);
 	}
 	else if (ft_strcmp(e->split[0], "distance_viewplane") == 0
 		&& e->split[1] != NULL)
 	{
 		e->vcamera.distance_viewplane++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp <= 0)
 			ft_puterror(e, "Wrong Info in Camera - distance_viewplane");
 		rt->vp.dist = (e->tmp);

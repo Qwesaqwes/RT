@@ -19,7 +19,7 @@ static void		ft_fill_info_object_11(t_obj *obj, t_e *e)
 	if (ft_strcmp(e->split[0], "tex_texture") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.tex_texture++;
-		e->tmp = atoi(e->split[1]);
+		e->tmp = ft_atoi(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 5)
 			ft_puterror(e, "Wrong Info in Object - tex_texture");
 		if (e->tmp == 5)
@@ -45,7 +45,7 @@ static void		ft_fill_info_object_10(t_obj *obj, t_e *e)
 	if (ft_strcmp(e->split[0], "shininess") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.shininess++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0)
 			ft_puterror(e, "Wrong Info in Object - shininess");
 		obj->shininess = e->tmp;
@@ -54,7 +54,7 @@ static void		ft_fill_info_object_10(t_obj *obj, t_e *e)
 		e->split[1] != NULL)
 	{
 		e->vobject.refraction_index++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 1)
 			ft_puterror(e, "Wrong Info in Object - refraction_index");
 		obj->refr_index = e->tmp;
@@ -68,7 +68,7 @@ static void		ft_fill_info_object_9(t_obj *obj, t_e *e)
 	if (ft_strcmp(e->split[0], "i") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.i++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - i");
 		obj->i = e->tmp;
@@ -76,7 +76,7 @@ static void		ft_fill_info_object_9(t_obj *obj, t_e *e)
 	else if (ft_strcmp(e->split[0], "t") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.t++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - t");
 		obj->t = e->tmp;
@@ -91,15 +91,15 @@ static void		ft_fill_info_object_7(t_obj *obj, t_e *e)
 		e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vobject.k_ads++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - k_a");
 		obj->ka = e->tmp;
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - k_d");
 		obj->kd = e->tmp;
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		if (e->tmp < 0 || e->tmp > 1)
 			ft_puterror(e, "Wrong Info in Object - k_s");
 		obj->ks = e->tmp;
@@ -114,15 +114,15 @@ void			ft_fill_info_object_6(t_obj *obj, t_e *e)
 		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vobject.rotation_xyz++;
-		e->tmp = atof(e->split[1]);
+		e->tmp = stof(e->split[1]);
 		if (e->tmp < -360 || e->tmp > 360)
 			ft_puterror(e, "Wrong Info in Object - rotation_x");
 		obj->transform.rot.x = e->tmp;
-		e->tmp = atof(e->split[2]);
+		e->tmp = stof(e->split[2]);
 		if (e->tmp < -360 || e->tmp > 360)
 			ft_puterror(e, "Wrong Info in Object - rotation_y");
 		obj->transform.rot.y = e->tmp;
-		e->tmp = atof(e->split[3]);
+		e->tmp = stof(e->split[3]);
 		if (e->tmp < -360 || e->tmp > 360)
 			ft_puterror(e, "Wrong Info in Object - rotation_z");
 		obj->transform.rot.z = e->tmp;

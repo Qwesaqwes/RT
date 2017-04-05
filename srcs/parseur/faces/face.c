@@ -21,9 +21,9 @@ static void			ft_fill_info_face(t_face *face, t_e *e)
 		&& e->split_face[2] != NULL && e->split_face[3] != NULL)
 	{
 		vertex = (t_vertex*)ft_memalloc(sizeof(t_vertex));
-		vertex->coord.x = atof(e->split_face[1]);
-		vertex->coord.y = atof(e->split_face[2]);
-		vertex->coord.z = atof(e->split_face[3]);
+		vertex->coord.x = stof(e->split_face[1]);
+		vertex->coord.y = stof(e->split_face[2]);
+		vertex->coord.z = stof(e->split_face[3]);
 		vertex->coord.w = 1;
 		vertex->next = NULL;
 		add_after_vertex(vertex, &face->vertex);
@@ -31,9 +31,9 @@ static void			ft_fill_info_face(t_face *face, t_e *e)
 	else if (ft_strcmp(e->split_face[0], "normal") == 0 && e->split_face[1]
 		!= NULL && e->split[2] != NULL && e->split[3] != NULL)
 	{
-		face->normal.x = atof(e->split_face[1]);
-		face->normal.y = atof(e->split_face[2]);
-		face->normal.z = atof(e->split_face[3]);
+		face->normal.x = stof(e->split_face[1]);
+		face->normal.y = stof(e->split_face[2]);
+		face->normal.z = stof(e->split_face[3]);
 		face->normal.w = 1;
 	}
 }
