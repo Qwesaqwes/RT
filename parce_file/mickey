@@ -45,7 +45,7 @@ scene
 
 
 object
-	name					sphere14
+	name					sphere15
 	type					sphere
 	color_rgb				0		0		1
 	scale					1
@@ -62,7 +62,7 @@ object
 	map_buf					./maps/mickey.jpg
 
 object
-	name					sphere15
+	name					sphere16
 	type					sphere
 	color_rgb				0		0		1
 	scale					1
@@ -79,7 +79,7 @@ object
 	map_buf					./maps/mickey.jpg
 
 object
-	name					sphere15
+	name					sphere14
 	type					sphere
 	color_rgb				0		0		1
 	scale					1.8
@@ -88,7 +88,7 @@ object
 	k_ads					0.2		0.9		1
 	i						0
 	t						0
-	shininess				50
+	shininess				100
 	refraction_index		10
 	tex_texture				5
 	tex_bump				0
