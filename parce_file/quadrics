@@ -5,8 +5,8 @@
 #
 
 camera
-	origin_xyz				-8		12		0
-	rotation_xyz			0		0		-20
+	origin_xyz				-50		0		0
+	rotation_xyz			0		0		0
 	distance_viewplane		1
 
 light
@@ -56,13 +56,12 @@ object
 	shininess				50
 	refraction_index		1.33
 	tex_texture				1
-	quadrics				1	1	-1	0	0	0	0	0	0	-1
+	quadrics				1	1	-1	0	0	0	0	0	0	-30
 	tex_bump				0
 	tex_transp				0
 	tex_col1				1		0		0
 	tex_col2				0		1		0
 	tex_col3				0		0		1
 	square					3
-	z_min					-3
-	z_max					3
-	
+	z_min					-20
+	z_max					20
