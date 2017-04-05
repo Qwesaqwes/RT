@@ -1,10 +1,21 @@
-#ifndef	PARSING_H
-#	define	PARSING_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/05 22:46:13 by jichen-m          #+#    #+#             */
+/*   Updated: 2017/04/05 22:49:29 by jichen-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#	include	"../libft/includes/libft.h"
+#ifndef PARSING_H
+# define PARSING_H
 
-#	include	<fcntl.h>
-#	include	"rt.h"
+# include "../libft/includes/libft.h"
+# include <fcntl.h>
+# include "rt.h"
 
 typedef	struct		s_verif_scene
 {
@@ -55,9 +66,7 @@ typedef	struct		s_verif_object
 	int				quadrics;
 }					t_verif_object;
 
-
-
-typedef	struct		s_parsing
+typedef struct		s_parsing
 {
 	int				i;
 	char			**file;
@@ -67,9 +76,9 @@ typedef	struct		s_parsing
 	int				fd2;
 	char			*file_name;
 	char			*fn;
-	char 			*file_name_bump;
-	char 			*file_name_transp;
-	char 			*tmpc;
+	char			*file_name_bump;
+	char			*file_name_transp;
+	char			*tmpc;
 	float			tmp;
 	int				nbr_line;
 	int				start;
@@ -80,34 +89,23 @@ typedef	struct		s_parsing
 	int				id_o;
 	int				id_l;
 	char			*name;
-	int 			error;
+	int				error;
 	int				faceend;
 	int				ii;
 	int				verif;
-
-
-
-
 	int				source_exist;
 	int				texture_5;
-
 	char			*source_jpeg;
 	int				nbr_source;
-
 	t_camera		camera;
 	t_vp			vp;
 	t_scene			scene;
 	t_obj			obj;
 	t_obj			lum;
-	t_verif_camera  vcamera;
+	t_verif_camera	vcamera;
 	t_verif_scene	vscene;
 	t_verif_object	vobject;
-
-
-
-}				t_e;
-
-
+}					t_e;
 
 /*
 **		camera
@@ -168,6 +166,3 @@ void				ft_parsing_camera(t_env *rt, t_e *e);
 t_list				*ft_parsing_light(t_e *e);
 
 #endif
-
-
-/*	float					+/-1.175494351	E	–	38					+/-3.402823466	E	+	38	*/

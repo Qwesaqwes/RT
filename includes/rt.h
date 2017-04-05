@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/04 16:23:05 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/05 23:43:36 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,9 @@ float		schlick(t_cv cv);
 
 void		modify_refr_list(t_cv *cv, t_list **list);
 void		ft_lstdelfirst(t_list **alst);
-
-
+/*
+**GTK
+*/
 void		gtk_s_img(GtkWidget	*button, gpointer buffer);
 void		gtk_zoom(GtkWidget *button, t_env *e);
 void		gtk_dezoom(GtkWidget *button, t_env *e);
@@ -171,7 +172,7 @@ void		stereo_effect(t_env *e);
 int			ygrad(guchar *pixel, int line, int col, t_gtk *gtk);
 int			xgrad(guchar *pixel, int line, int col, t_gtk *gtk);
 t_rgb		get_color_pixel(guchar *pixel, t_gtk *gtk, int line, int col);
-const char	*get_selected_row(t_env *e, t_list 	*list);
+const char	*get_selected_row(t_env *e, t_list *list);
 void		init_modif_obj_e(t_gtk *gtk, const char *object, t_list **list);
 int			put_tex_obj(t_gtk *gtk, t_tex *texture);
 void		put_normal(t_vec3d *normal);
@@ -232,15 +233,22 @@ GdkPixbuf	*gray_scale(GdkPixbuf *old);
 
 t_list		*init_test(void);
 t_list		*init_test_lum(void);
+void		add_face1(t_face *faces);
+void		add_face2(t_face *faces);
+void		add_face3(t_face *faces);
+void		add_face4(t_face *faces);
+void		add_face5(t_face *faces);
+void		add_face6(t_face *faces);
+
 
 t_vec3d		inter_point_to_zero(t_obj obj, t_vec3d ip);
 
-void 			ft_free_obj(void  *obj, size_t size);
-void 			ft_free_float(void *content, size_t size);
+void		ft_free_obj(void *obj, size_t size);
+void		ft_free_float(void *content, size_t size);
 
 void		add_after_vertex(t_vertex *el, t_vertex **list);
 void		add_after_face(t_face *el, t_face **list);
-t_face		*face_cuting(t_face *old);
+void		face_cuting(t_face **old);
 
 void		init_cam_vp_scene(t_env *e);
 

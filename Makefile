@@ -6,7 +6,7 @@
 #    By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/14 16:44:32 by opandolf          #+#    #+#              #
-#    Updated: 2017/04/04 16:23:32 by jichen-m         ###   ########.fr        #
+#    Updated: 2017/04/05 22:37:28 by jichen-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ DIRPLUM		=	./objs/parseur/lum
 DIRPOBJ		=	./objs/parseur/object
 DIRPREAD	=	./objs/parseur/reader
 DIRPSCENE	=	./objs/parseur/scene
+DIRINIT		=	./objs/init_scene
 
 
 
@@ -37,7 +38,9 @@ SUB_MAKE	=	./libft/
 GTK_FLAG	=	$$(pkg-config --cflags gtk+-3.0)
 LD_FLAG		=	$$(pkg-config --libs gtk+-3.0)
 SRC			=	main.c\
-				init_test.c\
+				init_scene/init_test.c\
+				init_scene/cube_faces.c\
+				init_scene/cube_faces1.c\
 				camera/init_camera.c\
 				raytracing/reflection_refraction_functions.c\
 				raytracing/pixelput.c\
@@ -198,4 +201,5 @@ $(DIROBJ)%.o		:		$(DIRSRC)%.c
 				@if [ ! -d $(DIRPOBJ) ]; then $(MKDIR) $(DIRPOBJ); fi
 				@if [ ! -d $(DIRPREAD) ]; then $(MKDIR) $(DIRPREAD); fi
 				@if [ ! -d $(DIRPSCENE) ]; then $(MKDIR) $(DIRPSCENE); fi
+				@if [ ! -d $(DIRINIT) ]; then $(MKDIR) $(DIRINIT); fi
 				$(CC) $(INCLUDE) $(GTK_FLAG) $(CFLAGS) -o $@ -c $<

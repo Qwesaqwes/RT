@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/02 18:17:23 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/02 20:23:39 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/05 19:29:11 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_color		texture_mapping(t_no no)
 		uv_sphere(no, &u, &v, &rot_angle);
 		return (get_pixel(map_value(u, v, no.obj.map_buf), no.obj.map_buf));
 	}
-	else if (no.obj.type == 5)
+	else if (no.obj.type == 5 || no.obj.type == 6)
 	{
 		uv_polygone(no, &u, &v, &rot_angle);
 		return (get_pixel(map_value(u, v, no.obj.map_buf), no.obj.map_buf));

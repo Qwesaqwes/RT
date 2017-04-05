@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:16:25 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/01 18:26:13 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/05 21:55:37 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,24 @@ void	init_vp(t_vp *vp)
 
 void	init_cam(t_camera *cam)
 {
-	cam->baseU.x = 1;
-	cam->baseU.y = 0;
-	cam->baseU.z = 0;
-	cam->baseU.w = 1;
-	cam->baseV.x = 0;
-	cam->baseV.y = 1;
-	cam->baseV.z = 0;
-	cam->baseV.w = 1;
-	cam->baseW.x = 0;
-	cam->baseW.y = 0;
-	cam->baseW.z = 1;
-	cam->baseW.w = 1;
-	cam->origin.x = -10;
-	cam->origin.y = 0;
-	cam->origin.z = 0;
+	cam->base_u.x = 1;
+	cam->base_u.y = 0;
+	cam->base_u.z = 0;
+	cam->base_u.w = 1;
+	cam->base_v.x = 0;
+	cam->base_v.y = 1;
+	cam->base_v.z = 0;
+	cam->base_v.w = 1;
+	cam->base_w.x = 0;
+	cam->base_w.y = 0;
+	cam->base_w.z = 1;
+	cam->base_w.w = 1;
+	cam->origin.x = 6;
+	cam->origin.y = 3;
+	cam->origin.z = 10;
 	cam->origin.w = 1;
 	cam->rot.x = 0;
-	cam->rot.y = 0;
-	cam->rot.z = 0;
+	cam->rot.y = 35;
+	cam->rot.z = -22.5;
 	cam->rot.w = 1;
 }

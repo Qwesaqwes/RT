@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 18:37:55 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/01 13:24:03 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/05 22:02:19 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void		add_after_face(t_face *el, t_face **list)
 		*list = el;
 	else
 	{
-		while (tmp != NULL && tmp->next)
-			tmp = tmp->next;
-		tmp->next = el;
+		while (tmp != NULL && tmp->n)
+			tmp = tmp->n;
+		tmp->n = el;
 	}
 }
 
@@ -77,17 +77,17 @@ t_face		*face_cuting2(t_face *old)
 	return (list);
 }
 
-t_face		*face_cuting(t_face *old)
+void		face_cuting(t_face **old)
 {
 	t_face		*new;
 	t_face		*tmp;
 
 	new = NULL;
-	tmp = old;
+	tmp = *old;
 	while (tmp)
 	{
 		add_after_face(face_cuting2(tmp), &new);
-		tmp = tmp->next;
+		tmp = tmp->n;
 	}
-	return (new);
+	*old = new;
 }

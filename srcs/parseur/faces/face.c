@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   face.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gahubaul <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gahubaul <gahubaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 21:24:35 by gahubaul          #+#    #+#             */
-/*   Updated: 2017/04/04 21:24:37 by gahubaul         ###   ########.fr       */
+/*   Updated: 2017/04/05 23:16:50 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_face				*ft_parsing_face_after(t_e *e, int i, int k)
 
 	face = (t_face*)ft_memalloc(sizeof(t_face));
 	face->vertex = NULL;
-	face->next = NULL;
+	face->n = NULL;
 	i++;
 	while (i < e->nbr_line && k != -2)
 	{

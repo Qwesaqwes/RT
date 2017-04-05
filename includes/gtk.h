@@ -6,13 +6,12 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:29:11 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/02 16:12:57 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/05 22:45:55 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GTK_H
 # define GTK_H
-
 
 # define MOTION_KERNEL 20
 # define BLUR_KERNEL 15
@@ -42,20 +41,19 @@ typedef	struct		s_gtk
 	GtkWidget		*n_effect;
 	GtkWidget		*antial;
 	GtkWidget		*n_antial;
-
-	GtkWidget		*l_obj;		/*label for type of object (Combo_box)*/
-	GtkWidget		*l_nobj;	/*label for name of object*/
-	GtkWidget		*l_pos;		/*label for position of object (x, y, z)*/
-	GtkWidget		*l_scale;	/*label for scale of object (x, y, z)*/
-	GtkWidget		*l_rot;		/*label for rotation of object (x, y, z)*/
-	GtkWidget		*l_color;	/*label for color of object (wanna use a graf to put color)*/
-	GtkWidget		*l_shine;	/*label for shininess of object*/
-	GtkWidget		*l_refrac;	/*label for reflection of object*/
-	GtkWidget		*l_ka;		/*label for ambient coefficient*/
-	GtkWidget		*l_kd;		/*label for diffuse coefficient*/
-	GtkWidget		*l_ks;		/*label for specular coefficient*/
-	GtkWidget		*l_i;		/*label for intensity of light*/
-	GtkWidget		*l_tr;		/*label for transparence*/
+	GtkWidget		*l_obj;
+	GtkWidget		*l_nobj;
+	GtkWidget		*l_pos;
+	GtkWidget		*l_scale;
+	GtkWidget		*l_rot;
+	GtkWidget		*l_color;
+	GtkWidget		*l_shine;
+	GtkWidget		*l_refrac;
+	GtkWidget		*l_ka;
+	GtkWidget		*l_kd;
+	GtkWidget		*l_ks;
+	GtkWidget		*l_i;
+	GtkWidget		*l_tr;
 	GtkWidget		*l_x;
 	GtkWidget		*l_y;
 	GtkWidget		*l_z;
@@ -65,11 +63,11 @@ typedef	struct		s_gtk
 	GtkWidget		*l_x2;
 	GtkWidget		*l_y2;
 	GtkWidget		*l_z2;
-	GtkWidget		*l_tex;		/*label for texture*/
-	GtkWidget		*l_che1;	/*label for color checker*/
-	GtkWidget		*l_che2;	/*label for color checker*/
-	GtkWidget		*l_che3;	/*label for color checker*/
-	GtkWidget		*l_square;	/*label for square checker*/
+	GtkWidget		*l_tex;
+	GtkWidget		*l_che1;
+	GtkWidget		*l_che2;
+	GtkWidget		*l_che3;
+	GtkWidget		*l_square;
 	GtkWidget		*l_limit;
 	GtkWidget		*l_xmin;
 	GtkWidget		*l_xmax;
@@ -78,45 +76,37 @@ typedef	struct		s_gtk
 	GtkWidget		*l_zmin;
 	GtkWidget		*l_zmax;
 	GtkWidget		*l_info_limit;
-
-
-
-
-	GtkWidget		*c_obj;		/*Combo_box for object*/
-	GtkWidget		*c_tex;		/*Combo_box for texture*/
-	GtkWidget		*e_nobj;	/*entry for type of object*/
-	GtkWidget		*e_posx;	/*entry for position of object (x, y, z)*/
-	GtkWidget		*e_posy;	/*entry for position of object (x, y, z)*/
-	GtkWidget		*e_posz;	/*entry for position of object (x, y, z)*/
-
-	GtkWidget		*e_scalex;	/*entry for scale of object (x, y, z)*/
-	GtkWidget		*e_scaley;	/*entry for scale of object (x, y, z)*/
-	GtkWidget		*e_scalez;	/*entry for scale of object (x, y, z)*/
-
-	GtkWidget		*e_rotx;		/*entry for rotation of object (x, y, z)*/
-	GtkWidget		*e_roty;		/*entry for rotation of object (x, y, z)*/
-	GtkWidget		*e_rotz;		/*entry for rotation of object (x, y, z)*/
-
-	GtkWidget		*e_color;	/*entry for color of object (wanna use a graf to put color)*/
-	GtkWidget		*e_shine;	/*entry for shininess of object*/
-	GtkWidget		*e_refrac;	/*entry for reflection of object*/
-	GtkWidget		*e_ka;		/*entry for ambient coefficient*/
-	GtkWidget		*e_kd;		/*entry for diffuse coefficient*/
-	GtkWidget		*e_ks;		/*entry for specular coefficient*/
-	GtkWidget		*e_i;		/*entry for intensity of light*/
-	GtkWidget		*e_tr;		/*entry for transparence*/
-	GtkWidget		*e_che1;	/*entry for color texture*/
-	GtkWidget		*e_che2;	/*entry for color texture*/
-	GtkWidget		*e_che3;	/*entry for color texture*/
-	GtkWidget		*e_square;	/*entry for Square texture*/
+	GtkWidget		*c_obj;
+	GtkWidget		*c_tex;
+	GtkWidget		*e_nobj;
+	GtkWidget		*e_posx;
+	GtkWidget		*e_posy;
+	GtkWidget		*e_posz;
+	GtkWidget		*e_scalex;
+	GtkWidget		*e_scaley;
+	GtkWidget		*e_scalez;
+	GtkWidget		*e_rotx;
+	GtkWidget		*e_roty;
+	GtkWidget		*e_rotz;
+	GtkWidget		*e_color;
+	GtkWidget		*e_shine;
+	GtkWidget		*e_refrac;
+	GtkWidget		*e_ka;
+	GtkWidget		*e_kd;
+	GtkWidget		*e_ks;
+	GtkWidget		*e_i;
+	GtkWidget		*e_tr;
+	GtkWidget		*e_che1;
+	GtkWidget		*e_che2;
+	GtkWidget		*e_che3;
+	GtkWidget		*e_square;
 	GtkWidget		*e_xmin;
 	GtkWidget		*e_xmax;
 	GtkWidget		*e_ymin;
 	GtkWidget		*e_ymax;
 	GtkWidget		*e_zmin;
 	GtkWidget		*e_zmax;
-
-	GtkWidget		*obj_box;	/*boxes for dialog of Add object*/
+	GtkWidget		*obj_box;
 	GtkWidget		*obj_box2;
 	GtkWidget		*obj_box3;
 	GtkWidget		*obj_box4;
@@ -132,25 +122,18 @@ typedef	struct		s_gtk
 	GtkWidget		*obj_box14;
 	GtkWidget		*obj_box15;
 	GtkWidget		*obj_box16;
-
 	GtkWidget		*obj_gbox;
-
 	GtkWidget		*view_obj;
 	GtkWidget		*windowscr;
 	GtkWidget		*gtklist;
-
 	GtkWidget		*choose_f;
-
 }					t_gtk;
 
 enum
 {
-					OBJ_COLUMN,
-					TYPE_COLUMN,
-					ID_COLUMN,
-					N_COLUMNS
+	OBJ_COLUMN,
+	TYPE_COLUMN,
+	ID_COLUMN,
+	N_COLUMNS
 };
-
-
-
 #endif
