@@ -6,7 +6,7 @@
 /*   By: JimmyChe <JimmyChe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 19:51:40 by JimmyChe          #+#    #+#             */
-/*   Updated: 2017/03/13 16:01:08 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/05 21:23:16 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,16 @@ void		add_to_list(GtkListStore *store, t_list *obj_list)
 	while (tmp != NULL)
 	{
 		tmp_obj = (t_obj*)tmp->content;
-		gtk_list_store_append(store, &iter);
-		gtk_list_store_set(store, &iter, OBJ_COLUMN, tmp_obj->name, TYPE_COLUMN,
-		put_type(tmp_obj->type), ID_COLUMN, itof((float)tmp_obj->id), -1);
-		tmp = tmp->next;
+		if (tmp_obj->type == 5 || tmp_obj->type == 6)
+			tmp = tmp->next;
+		else
+		{
+			gtk_list_store_append(store, &iter);
+			gtk_list_store_set(store, &iter, OBJ_COLUMN, tmp_obj->name,
+			TYPE_COLUMN, put_type(tmp_obj->type), ID_COLUMN,
+			itof((float)tmp_obj->id), -1);
+			tmp = tmp->next;
+		}
 	}
 }
 

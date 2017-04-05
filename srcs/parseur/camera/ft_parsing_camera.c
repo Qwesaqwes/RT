@@ -31,18 +31,18 @@ static void			ft_verif_nbr_camera(t_e *e)
 
 static void			ft_fill_info_brut(t_env *rt)
 {
-	rt->camera.baseU.x = 1;
-	rt->camera.baseU.y = 0;
-	rt->camera.baseU.z = 0;
-	rt->camera.baseU.w = 1;
-	rt->camera.baseV.x = 0;
-	rt->camera.baseV.y = 1;
-	rt->camera.baseV.z = 0;
-	rt->camera.baseV.w = 1;
-	rt->camera.baseW.x = 0;
-	rt->camera.baseW.y = 0;
-	rt->camera.baseW.z = 1;
-	rt->camera.baseW.w = 1;
+	rt->camera.base_u.x = 1;
+	rt->camera.base_u.y = 0;
+	rt->camera.base_u.z = 0;
+	rt->camera.base_u.w = 1;
+	rt->camera.base_v.x = 0;
+	rt->camera.base_v.y = 1;
+	rt->camera.base_v.z = 0;
+	rt->camera.base_v.w = 1;
+	rt->camera.base_w.x = 0;
+	rt->camera.base_w.y = 0;
+	rt->camera.base_w.z = 1;
+	rt->camera.base_w.w = 1;
 	rt->camera.origin.z = 1;
 	rt->camera.rot.w = 1;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: opandolf <opandolf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dsusheno <dsusheno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/26 17:21:40 by dsusheno          #+#    #+#             */
-/*   Updated: 2017/04/05 14:43:29 by opandolf         ###   ########.fr       */
+/*   Updated: 2017/04/05 22:04:00 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	free_face(t_face **face)
 	copy = *face;
 	while (copy)
 	{
-		nextlist = copy->next;
+		nextlist = copy->n;
 		free_vertex(&copy->vertex);
 		free(copy);
 		copy = nextlist;

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 15:27:26 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/09 22:00:09 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/05 22:02:43 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_pret		polygone_dist(t_ray ray, t_obj obj)
 	while (tmp)
 	{
 		polygone_dist2(ray, &ret, tmp);
-		tmp = tmp->next;
+		tmp = tmp->n;
 	}
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 22:33:31 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/17 22:33:52 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/05 21:37:04 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	gtk_rot_camera_left(GtkWidget *button, t_env *e)
 {
 	(void)button;
 	e->camera.rot.y += 2.5;
+	printf("roty: %f\n", e->camera.rot.y);
 	raytracing(e);
 }
 
@@ -23,6 +24,7 @@ void	gtk_rot_camera_right(GtkWidget *button, t_env *e)
 {
 	(void)button;
 	e->camera.rot.y -= 2.5;
+	printf("roty: %f\n", e->camera.rot.y);
 	raytracing(e);
 }
 
@@ -30,6 +32,7 @@ void	gtk_rot_camera_up(GtkWidget *button, t_env *e)
 {
 	(void)button;
 	e->camera.rot.z += 2.5;
+	printf("rotz: %f\n", e->camera.rot.z);
 	raytracing(e);
 }
 
@@ -37,6 +40,7 @@ void	gtk_rot_camera_down(GtkWidget *button, t_env *e)
 {
 	(void)button;
 	e->camera.rot.z -= 2.5;
+	printf("rotz: %f\n", e->camera.rot.z);
 	raytracing(e);
 }
 

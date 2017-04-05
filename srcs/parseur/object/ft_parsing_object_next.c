@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_object_next.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gahubaul <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gahubaul <gahubaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 22:16:32 by gahubaul          #+#    #+#             */
-/*   Updated: 2017/04/04 22:16:34 by gahubaul         ###   ########.fr       */
+/*   Updated: 2017/04/05 23:17:47 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,6 @@ void			ft_norme_object(t_e *e, t_obj *tmp, int i)
 		ft_verif_object(e);
 		ft_fill_info_brut(tmp);
 		e->texture_5 = 0;
-	}
-	if (i == 2)
-	{
-		ft_verif_nbr_object(e, *tmp);
-		ft_verif_limit_exist(e, tmp);
-		if (e->vobject.faces != 0 && tmp->faces != NULL)
-			tmp->faces = face_cuting(tmp->faces);
 	}
 }
 

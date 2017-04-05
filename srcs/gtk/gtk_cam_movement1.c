@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 22:30:26 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/03/17 22:54:44 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/05 21:38:05 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	gtk_camera_forward(GtkWidget *button, t_env *e)
 {
 	(void)button;
 	e->camera.origin.x += 1;
+	printf("x: %f\n", e->camera.origin.x);
 	raytracing(e);
 }
 
@@ -23,6 +24,7 @@ void	gtk_camera_backward(GtkWidget *button, t_env *e)
 {
 	(void)button;
 	e->camera.origin.x -= 1;
+	printf("x: %f\n", e->camera.origin.x);
 	raytracing(e);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:47:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/02 19:02:48 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/05 22:53:50 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,12 @@ typedef struct		s_limit
 typedef struct		s_camera
 {
 	t_vec3d			origin;
-	t_vec3d			vectorU;
-	t_vec3d			vectorV;
-	t_vec3d			vectorW;
-	t_vec3d			baseU;
-	t_vec3d			baseV;
-	t_vec3d			baseW;
+	t_vec3d			vector_u;
+	t_vec3d			vector_v;
+	t_vec3d			vector_w;
+	t_vec3d			base_u;
+	t_vec3d			base_v;
+	t_vec3d			base_w;
 	t_vec3d			rot;
 }					t_camera;
 
@@ -144,7 +144,7 @@ typedef struct		s_face
 {
 	t_vertex		*vertex;
 	t_vec3d			normal;
-	struct s_face	*next;
+	struct s_face	*n;
 }					t_face;
 
 typedef	struct		s_poly_return
@@ -233,10 +233,10 @@ typedef struct		s_calculated_values
 	float			n1;
 	float			n2;
 	float			n;
-	float			cosI;
-	float			sinT2;
-	char			TIR;
-	float			cosT;
+	float			cosi;
+	float			sint2;
+	char			tir;
+	float			cost;
 	char			action;
 	char			sign;
 }					t_cv;
@@ -272,6 +272,6 @@ typedef struct		s_thread_data
 	int			h_start;
 	int			h_end;
 	t_env		*e;
-}				t_thread_data;
+}					t_thread_data;
 
 #endif

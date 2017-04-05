@@ -50,7 +50,7 @@ t_color		indirect_color(t_scene s, t_values v, t_cv cv, t_no no)
 	modif_refr_index(cv, no, &v, 0);
 	init_calculed_values(&cv, *(float*)(*v.refr_index)->content,
 	no.obj.refr_index);
-	if (cv.sinT2 > 1.0 || no.t == 0)
+	if (cv.sint2 > 1.0 || no.t == 0)
 	{
 		if (cv.action == 2 && !(no.obj.type == 2 || no.obj.type == 5 ||
 			no.obj.type == 4))
@@ -84,7 +84,7 @@ void		negative_cos(t_cv *cv, t_no *no, t_values v)
 		sizeof(float)));
 	cv->sign = -1;
 	no->normal = vector_fact(no->normal, -1);
-	cv->cosI = -vector_dot(no->normal, no->origin.dir);
+	cv->cosi = -vector_dot(no->normal, no->origin.dir);
 }
 
 t_color		compute_ray(t_ray ray, t_scene s, t_values v)
@@ -102,7 +102,7 @@ t_color		compute_ray(t_ray ray, t_scene s, t_values v)
 		{
 			texture_no(&no, ray);
 			color = compute_color(no, s, no.normal, ray.origin);
-			if ((cv.cosI = -vector_dot(no.normal, no.origin.dir)) < 0)
+			if ((cv.cosi = -vector_dot(no.normal, no.origin.dir)) < 0)
 				negative_cos(&cv, &no, v);
 			else
 				cv.sign = 1;
