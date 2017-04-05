@@ -242,4 +242,7 @@ void		add_after_vertex(t_vertex *el, t_vertex **list);
 void		add_after_face(t_face *el, t_face **list);
 t_face		*face_cuting(t_face *old);
 
+void		init_cam_vp_scene(t_env *e);
+
+
 #endif

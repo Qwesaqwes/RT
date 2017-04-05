@@ -52,9 +52,11 @@ static void			ft_free_parse(t_e *e)
 	int				j;
 
 	j = -1;
-	while (e->split[++j])
+	while (e->split && e->split[++j] != NULL)
 		free(e->split[j]);
-	free(e->split);
+	if (e->split)
+		free(e->split);
+	e->split = NULL;
 }
 
 int					ft_parsing_camera_after(t_env *rt, t_e *e, int i)
@@ -65,11 +67,13 @@ int					ft_parsing_camera_after(t_env *rt, t_e *e, int i)
 	i++;
 	ft_verif_camera(e);
 	ft_fill_info_brut(rt);
-	e->split = NULL;
+	ft_free_parse(e);
 	while (i < e->nbr_line && i != -1 && verif == 0)
 	{
 		if (e->file[i] && e->file[i][0] != '#' && (ft_strlen(e->file[i]) > 1))
 		{
+			if (e->split)
+				ft_free_parse(e);
 			e->split = ft_strsplit(e->file[i], '\t');
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) == 0)
 				ft_fill_info_camera(rt, e);
@@ -78,8 +82,9 @@ int					ft_parsing_camera_after(t_env *rt, t_e *e, int i)
 				verif++;
 				i = i - 2;
 			}
-			ft_free_parse(e);
 		}
+		if (e->split)
+			ft_free_parse(e);
 		i++;
 	}
 	ft_verif_nbr_camera(e);

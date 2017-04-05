@@ -86,7 +86,10 @@ object
 		vertex				18		-3		3
 		vertex				15		-3		3
 		normal				0		-1		0
-	tex_texture				5
+	tex_texture				1
 	tex_bump				0
 	tex_transp				0
-	map_buf					./maps/monde.jpg
+	tex_col1				1		1		1
+	tex_col2				0		0		0
+	tex_col3				0		1		0
+	square					0.5

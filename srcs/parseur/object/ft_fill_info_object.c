@@ -82,9 +82,9 @@ static char		ft_verif_type(t_e *e, char *type)
 		return (3);
 	else if (ft_strcmp(type, "triangle") == 0)
 		return (4);
-	else if (ft_strcmp(type, "polygone3d") == 0)
-		return (5);
 	else if (ft_strcmp(type, "polygone2d") == 0)
+		return (5);
+	else if (ft_strcmp(type, "polygone3d") == 0)
 		return (6);
 	else if (ft_strcmp(type, "circle") == 0)
 		return (7);

@@ -24,6 +24,7 @@ static void				ft_next_fill_scene_3(t_scene *scene, t_e *e)
 	}
 	else
 		ft_puterror(e, "Wrong Info Scene");
+	ft_putendl("Wrong Info Scene");
 }
 
 static void				ft_next_fill_scene_2(t_scene *scene, t_e *e)

@@ -12,6 +12,18 @@
 
 #include "parsing.h"
 
+static void			ft_free_scene(t_e *e)
+{
+	int				j;
+
+	j = -1;
+	while (e->split && e->split[++j] != NULL)
+		free(e->split[j]);
+	if (e->split)
+		free(e->split);
+	e->split = NULL;
+}
+
 t_list			*ft_parsing_obj(t_e *e)
 {
 	t_list		*list;
@@ -19,12 +31,14 @@ t_list			*ft_parsing_obj(t_e *e)
 
 	e->ii = 0;
 	list = NULL;
-	e->split = NULL;
 	e->id_o = -1;
+	ft_free_scene(e);
 	while (e->file[e->ii] && e->ii < e->nbr_line)
 	{
 		if (e->file[e->ii] && e->file[e->ii][0] != '#')
 		{
+			if (e->split)
+				ft_free_scene(e);
 			e->split = ft_strsplit(e->file[e->ii], '\t');
 			if (e->split[0] && e->split[0][0] &&
 				(ft_strcmp(e->split[0], "object")) == 0)
@@ -35,9 +49,11 @@ t_list			*ft_parsing_obj(t_e *e)
 				ft_lstadd(&list, ft_lstnew(&obj, sizeof(t_obj)));
 				e->ii = e->line - 1;
 			}
+			ft_free_scene(e);
 		}
 		e->ii++;
 	}
+	ft_free_scene(e);
 	return (list);
 }
 
@@ -51,6 +67,8 @@ void			ft_parsing_scene(t_env *rt, t_e *p)
 	{
 		if (p->file[p->ii] && p->file[p->ii][0] != '#')
 		{
+			if (p->split)
+				ft_free_scene(p);
 			p->split = ft_strsplit(p->file[p->ii], '\t');
 			if (p->split[0] && p->split[0][0]
 				&& (ft_strcmp(p->split[0], "scene")) == 0 && p->nb_scene == 0)
@@ -73,12 +91,13 @@ void			ft_parsing_camera(t_env *rt, t_e *e)
 
 	i = 0;
 	e->line = 0;
-	e->split = NULL;
 	e->nb_camera = 0;
 	while (e->file[i] && i < e->nbr_line)
 	{
 		if (e->file[i] && e->file[i][0] != '#')
 		{
+			if (e->split)
+				ft_free_scene(e);
 			e->split = ft_strsplit(e->file[i], '\t');
 			if (e->split[0] && e->split[0][0]
 				&& (ft_strcmp(e->split[0], "camera")) == 0 && e->nb_camera == 0)
@@ -90,6 +109,7 @@ void			ft_parsing_camera(t_env *rt, t_e *e)
 				&& (ft_strcmp(e->split[0], "camera")) == 0 && e->nb_camera == 1)
 				ft_puterror(e, "Too much given camera");
 		}
+		ft_free_scene(e);
 		i++;
 	}
 	if (e->nb_camera != 1)

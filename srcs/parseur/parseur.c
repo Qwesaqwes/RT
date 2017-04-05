@@ -39,11 +39,11 @@ static t_list	*ft_parseur(t_env *rt, t_e *e, int type)
 	list = NULL;
 	if (type == 1)
 		ft_parsing_scene(rt, e);
-	if (type == 5)
+	else if (type == 2)
 		ft_parsing_camera(rt, e);
-	if (type == 2)
+	else if (type == 3)
 		list = ft_parsing_obj(e);
-	if (type == 3)
+	else if (type == 4)
 		list = ft_parsing_light(e);
 	return (list);
 }
@@ -55,17 +55,22 @@ int				ft_fill_parce(t_env *rt, char *name)
 
 	e.error = 0;
 	e.name = name;
+	e.split = NULL;
 	ft_read_file(e.name, &e);
 	if (e.error == 0)
 		ft_parseur(&tmp, &e, 1);
 	if (e.error == 0)
-		ft_parseur(&tmp, &e, 5);
+		ft_parseur(&tmp, &e, 2);
 	if (e.error == 0)
-		tmp.scene.obj = ft_parseur(rt, &e, 2);
+		tmp.scene.obj = ft_parseur(rt, &e, 3);
+	ft_putendl("salut");
+	while (1);
 	if (e.error == 0)
-		tmp.scene.lum = ft_parseur(rt, &e, 3);
+		tmp.scene.lum = ft_parseur(rt, &e, 4);
 	if (e.error == 0)
 	{
+		ft_lstdel(&rt->scene.obj, ft_free_obj);
+		ft_lstdel(&rt->scene.lum, ft_free_obj);
 		rt->scene = tmp.scene;
 		rt->camera = tmp.camera;
 		rt->vp = tmp.vp;

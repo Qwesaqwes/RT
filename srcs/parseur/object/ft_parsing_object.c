@@ -76,10 +76,11 @@ static void			ft_free_object(t_e *e)
 	int				j;
 
 	j = -1;
-	while (e->split && e->split[++j])
+	while (e->split && e->split[++j] != NULL)
 		free(e->split[j]);
 	if (e->split)
 		free(e->split);
+	e->split = NULL;
 }
 
 t_obj				ft_parsing_obj_after(t_e *e, int i)
@@ -88,6 +89,7 @@ t_obj				ft_parsing_obj_after(t_e *e, int i)
 
 	i++;
 	ft_norme_object(e, &tmp, 1);
+	ft_free_object(e);
 	while (i < e->nbr_line && i != -1)
 	{
 		e->line = i;
@@ -100,13 +102,15 @@ t_obj				ft_parsing_obj_after(t_e *e, int i)
 			{
 				ft_fill_info_object(&tmp, e);
 				i = e->faceend - 1;
+				ft_free_object(e);
 			}
-			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) != 0)
+			else if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) != 0)
 				i = -2;
-			ft_free_object(e);
 		}
 		i++;
 	}
 	ft_norme_object(e, &tmp, 2);
+	ft_free_object(e);
+	while(1);
 	return (tmp);
 }
