@@ -21,6 +21,15 @@ DIRRAYTRAC	=	./objs/raytracing
 DIRFREE		=	./objs/free
 DIRCAM		=	./objs/camera
 DIRMISC		=	./objs/misc
+DIRPASEUR	=	./objs/parseur
+DIRPCAM		=	./objs/parseur/camera
+DIRPFACE	=	./objs/parseur/faces
+DIRPLUM		=	./objs/parseur/lum
+DIRPOBJ		=	./objs/parseur/object
+DIRPREAD	=	./objs/parseur/reader
+DIRPSCENE	=	./objs/parseur/scene
+
+
 
 LIBA		=	./libft/libft.a
 INCLUDE		=	-I./includes/ -I./libft/includes/
@@ -104,23 +113,23 @@ SRC			=	main.c\
 				gtk/gtk_add_obj_limit.c\
 				gtk/gtk_add_obj_limit1.c\
 				gtk/gtk_modif_obj_limit.c\
-				../parseur/camera/ft_fill_info_camera.c\
-				../parseur/camera/ft_parsing_camera.c\
-				../parseur/faces/face.c\
-				../parseur/lum/ft_fill_lum_next.c\
-				../parseur/lum/ft_fill_lum.c\
-				../parseur/lum/ft_parsing_lum.c\
-				../parseur/object/ft_parsing_object.c\
-				../parseur/object/ft_parsing_object_next.c\
-				../parseur/object/ft_fill_info_object.c\
-				../parseur/object/ft_fill_info_object_2.c\
-				../parseur/object/ft_fill_info_object_3.c\
-				../parseur/object/ft_fill_info_object_4.c\
-				../parseur/reader/ft_read_parsing.c\
-				../parseur/scene/ft_parsing_scene.c\
-				../parseur/scene/ft_parsing_scene_2.c\
-				../parseur/ft_parsing.c\
-				../parseur/parseur.c\
+				parseur/camera/ft_fill_info_camera.c\
+				parseur/camera/ft_parsing_camera.c\
+				parseur/faces/face.c\
+				parseur/lum/ft_fill_lum_next.c\
+				parseur/lum/ft_fill_lum.c\
+				parseur/lum/ft_parsing_lum.c\
+				parseur/object/ft_parsing_object.c\
+				parseur/object/ft_parsing_object_next.c\
+				parseur/object/ft_fill_info_object.c\
+				parseur/object/ft_fill_info_object_2.c\
+				parseur/object/ft_fill_info_object_3.c\
+				parseur/object/ft_fill_info_object_4.c\
+				parseur/reader/ft_read_parsing.c\
+				parseur/scene/ft_parsing_scene.c\
+				parseur/scene/ft_parsing_scene_2.c\
+				parseur/ft_parsing.c\
+				parseur/parseur.c\
 				free/free.c
 
 FLAGS		=	debug
@@ -182,4 +191,11 @@ $(DIROBJ)%.o		:		$(DIRSRC)%.c
 				@if [ ! -d $(DIRFREE) ]; then $(MKDIR) $(DIRFREE); fi
 				@if [ ! -d $(DIRCAM) ]; then $(MKDIR) $(DIRCAM); fi
 				@if [ ! -d $(DIRMISC) ]; then $(MKDIR) $(DIRMISC); fi
+				@if [ ! -d $(DIRPASEUR) ]; then $(MKDIR) $(DIRPASEUR); fi
+				@if [ ! -d $(DIRPCAM) ]; then $(MKDIR) $(DIRPCAM); fi
+				@if [ ! -d $(DIRPFACE) ]; then $(MKDIR) $(DIRPFACE); fi
+				@if [ ! -d $(DIRPLUM) ]; then $(MKDIR) $(DIRPLUM); fi
+				@if [ ! -d $(DIRPOBJ) ]; then $(MKDIR) $(DIRPOBJ); fi
+				@if [ ! -d $(DIRPREAD) ]; then $(MKDIR) $(DIRPREAD); fi
+				@if [ ! -d $(DIRPSCENE) ]; then $(MKDIR) $(DIRPSCENE); fi
 				$(CC) $(INCLUDE) $(GTK_FLAG) $(CFLAGS) -o $@ -c $<

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parsing.h"
+#include "parsing.h"
 
 static void		ft_fill_info_lum6(t_obj *obj, t_e *e)
 {

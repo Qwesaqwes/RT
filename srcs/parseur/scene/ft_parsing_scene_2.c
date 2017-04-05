@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/parsing.h"
+#include "parsing.h"
 
 static void				ft_next_fill_scene_3(t_scene *scene, t_e *e)
 {
