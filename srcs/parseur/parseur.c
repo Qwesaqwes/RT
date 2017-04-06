@@ -12,6 +12,23 @@
 
 #include "parsing.h"
 
+static void			ft_free_file(t_e *e)
+{
+	int				j;
+
+	j = 0;
+	if (e->file)
+	{
+		while (e->file[j] != NULL)
+		{
+			free(e->file[j]);
+			j++;
+		}
+		free(e->file);
+		e->file = NULL;
+	}
+}
+
 void			ft_puterror(t_e *e, char *str)
 {
 	e->error++;
@@ -63,7 +80,6 @@ int				ft_fill_parce(t_env *rt, char *name)
 		ft_parseur(&tmp, &e, 2);
 	if (e.error == 0)
 		tmp.scene.obj = ft_parseur(rt, &e, 3);
-
 	if (e.error == 0)
 		tmp.scene.lum = ft_parseur(rt, &e, 4);
 	if (e.error == 0)
@@ -75,6 +91,7 @@ int				ft_fill_parce(t_env *rt, char *name)
 		rt->vp = tmp.vp;
 		rt->scene.obj = tmp.scene.obj;
 		rt->scene.lum = tmp.scene.lum;
+		ft_free_file(&e);
 	}
 	return (e.error);
 }

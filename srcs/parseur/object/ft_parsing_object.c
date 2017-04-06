@@ -75,12 +75,17 @@ static void			ft_free_object(t_e *e)
 {
 	int				j;
 
-	j = -1;
-	while (e->split && e->split[++j] != NULL)
-		free(e->split[j]);
+	j = 0;
 	if (e->split)
+	{
+		while (e->split[j] != NULL)
+		{
+			free(e->split[j]);
+			j++;
+		}
 		free(e->split);
-	e->split = NULL;
+		e->split = NULL;
+	}
 }
 
 t_obj				ft_parsing_obj_after(t_e *e, int i)
@@ -102,10 +107,10 @@ t_obj				ft_parsing_obj_after(t_e *e, int i)
 			{
 				ft_fill_info_object(&tmp, e);
 				i = e->faceend - 1;
-				ft_free_object(e);
 			}
 			else if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) != 0)
 				i = -2;
+			ft_free_object(e);
 		}
 		i++;
 	}

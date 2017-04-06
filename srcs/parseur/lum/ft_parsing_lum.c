@@ -45,10 +45,17 @@ static void			ft_free_lum(t_e *e)
 {
 	int				j;
 
-	j = -1;
-	while (e->split[++j])
-		free(e->split[j]);
-	free(e->split);
+	j = 0;
+	if (e->split)
+	{
+		while (e->split[j] != NULL)
+		{
+			free(e->split[j]);
+			j++;
+		}
+		free(e->split);
+		e->split = NULL;
+	}
 }
 
 t_obj				ft_parsing_lum(t_e *e, int i)
@@ -69,8 +76,8 @@ t_obj				ft_parsing_lum(t_e *e, int i)
 				ft_fill_info_lum(&tmp, e);
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) != 0)
 				i = -2;
-			ft_free_lum(e);
 		}
+		ft_free_lum(e);
 		i++;
 	}
 	ft_verif_nbr_lum(e);
