@@ -19,7 +19,7 @@ static void			ft_free_file(t_e *e)
 	j = 0;
 	if (e->file)
 	{
-		while (e->file[j] != NULL)
+		while (e->file[j] != NULL && j < e->nbr_line)
 		{
 			free(e->file[j]);
 			j++;
@@ -91,7 +91,8 @@ int				ft_fill_parce(t_env *rt, char *name)
 		rt->vp = tmp.vp;
 		rt->scene.obj = tmp.scene.obj;
 		rt->scene.lum = tmp.scene.lum;
-		ft_free_file(&e);
 	}
+	ft_free_file(&e);
+	while(1);
 	return (e.error);
 }
