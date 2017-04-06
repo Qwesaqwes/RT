@@ -6,7 +6,7 @@
 /*   By: dsusheno <dsusheno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/26 17:21:40 by dsusheno          #+#    #+#             */
-/*   Updated: 2017/04/05 22:04:00 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/06 16:51:50 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,13 @@ void	free_face(t_face **face)
 
 void	ft_free_obj2(t_obj *obj)
 {
-	if (obj->type == 5 || obj->type == 6)
+	if (obj->name != NULL)
 	{
-		free_face(&obj->faces);
+		free(obj->name);
+		obj->name = NULL;
 	}
+	if (obj->type == 5 || obj->type == 6)
+		free_face(&obj->faces);
 	free(obj);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 19:14:08 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/02 17:23:52 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/06 16:14:41 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	put_id_ob(t_list *obj, int *i)
 	*i = j + 1;
 }
 
-int		put_name_obj(t_gtk *gtk, const char **name, t_list *obj, int *i)
+int		put_name_obj(t_gtk *gtk, char **name, t_list *obj, int *i)
 {
 	t_list	*tmp;
 	t_obj	*tmp_obj;

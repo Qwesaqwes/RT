@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_lum.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gahubaul <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gahubaul <gahubaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 22:03:35 by gahubaul          #+#    #+#             */
-/*   Updated: 2017/04/04 22:03:36 by gahubaul         ###   ########.fr       */
+/*   Updated: 2017/04/06 16:08:07 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void				ft_fill_info_lum(t_obj *obj, t_e *e)
 	if (ft_strcmp(e->split[0], "name") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.name++;
-		obj->name = e->split[1];
+		obj->name = ft_strdup(e->split[1]);
 	}
 	else if (ft_strcmp(e->split[0], "type") == 0 && e->split[1] != NULL)
 	{

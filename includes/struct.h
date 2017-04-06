@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:47:02 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/05 22:53:50 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/06 16:12:09 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ typedef struct		s_quadrics
 typedef struct		s_obj
 {
 	int				id;
-	const char		*name;
+	char			*name;
 	char			type;
 	char			typel;
 	t_color			color;

@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/05 22:37:47 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/06 16:48:53 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_cube(t_obj *cube)
 {
 	cube->id = 7;
-	cube->name = "triangle1";
+	cube->name = ft_strdup("triangle1");
 	cube->transform.scale = (t_vec3d){1, 1, 1, 1};
 	cube->type = 5;
 	cube->transform.transl = (t_vec3d){15, 1, 1, 1};
@@ -40,7 +40,7 @@ void	init_cube(t_obj *cube)
 void	init_plan(t_obj *plan)
 {
 	plan->id = 4;
-	plan->name = "plane1";
+	plan->name = ft_strdup("plane1");
 	plan->transform.scale = (t_vec3d){1, 1, 1, 1};
 	plan->type = 2;
 	plan->transform.transl = (t_vec3d){50, 0, -20, 1};
@@ -97,6 +97,7 @@ t_list	*init_test_lum(void)
 
 	list = NULL;
 	lum1.id = 0;
+	lum1.name = ft_strdup("lum1");
 	lum1.transform.scale = (t_vec3d){1, 1, 1, 1};
 	lum1.type = 0;
 	lum1.typel = 0;

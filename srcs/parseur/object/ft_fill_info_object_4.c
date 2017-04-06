@@ -21,9 +21,9 @@ static void			ft_fill_info_object_20(t_obj *obj, t_e *e)
 	{
 		e->vobject.quadrics++;
 		obj->quadrics = (t_quadrics){ stof(e->split[1]), stof(e->split[2]),
-			atof(e->split[3]), stof(e->split[4]), stof(e->split[5]),
-			atof(e->split[6]), stof(e->split[7]), stof(e->split[8]),
-			atof(e->split[9]), stof(e->split[10])};
+			stof(e->split[3]), stof(e->split[4]), stof(e->split[5]),
+			stof(e->split[6]), stof(e->split[7]), stof(e->split[8]),
+			stof(e->split[9]), stof(e->split[10])};
 	}
 	else
 		ft_puterror(e, ft_strjoin("Wrong Info Object line ",

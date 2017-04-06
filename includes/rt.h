@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/19 02:17:56 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/05 23:43:36 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/06 16:51:23 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include "gtk.h"
 # include "struct.h"
 # include "parsing.h"
-
-# include <stdio.h>
 
 # define H 600
 # define W 900
@@ -135,7 +133,7 @@ int			create_new_obj(t_env *e);
 int			put_scale_obj(t_gtk *gtk, t_vec3d *scale);
 int			check_if_digit(const char *str);
 int			put_rotation_obj(t_gtk *gtk, t_vec3d *rot);
-int			put_name_obj(t_gtk *gtk, const char **name, t_list *obj, int *i);
+int			put_name_obj(t_gtk *gtk, char **name, t_list *obj, int *i);
 int			put_pos_obj(t_gtk *gtk, t_vec3d *pos);
 void		put_id_ob(t_list *obj, int *i);
 void		put_color_obj(t_gtk *gtk, t_color *color);
