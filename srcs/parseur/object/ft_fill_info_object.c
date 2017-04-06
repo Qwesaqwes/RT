@@ -110,11 +110,6 @@ void			ft_fill_info_object(t_obj *obj, t_e *e)
 		e->vobject.type++;
 		obj->type = ft_verif_type(e, e->split[1]);
 	}
-	else if (ft_strcmp(e->split[0], "face") == 0)
-	{
-		e->vobject.faces++;
-		add_after_face(ft_parsing_face_after(e, e->save_i, 0), &obj->faces);
-	}
 	else
 		ft_fill_info_object_2(obj, e);
 }

@@ -97,6 +97,7 @@ typedef struct		s_parsing
 	int				texture_5;
 	char			*source_jpeg;
 	int				nbr_source;
+	int				verifc;
 	t_camera		camera;
 	t_vp			vp;
 	t_scene			scene;
@@ -133,6 +134,7 @@ void				ft_verif_nbr_object(t_e *e, t_obj obj);
 void				ft_verif_nbr_object_v2(t_e *e, t_obj obj);
 void				ft_verif_object_texture_4(t_e *e, int i);
 void				ft_norme_object(t_e *e, t_obj *tmp, int i);
+void				ft_free_object(t_e *e);
 void				ft_verif_limit_exist(t_e *e, t_obj *tmp);
 void				ft_fill_info_object(t_obj *obj, t_e *e);
 void				ft_fill_info_object_6(t_obj *obj, t_e *e);

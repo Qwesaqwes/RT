@@ -12,6 +12,13 @@
 
 #include "rt.h"
 
+void		ft_puterror(t_e *e, char *str)
+{
+	e->error++;
+	write(2, str, ft_strlen(str));
+	write(2, "\n", 1);
+}
+
 void		init_cam_vp_scene(t_env *e)
 {
 	init_cam(&e->camera);

@@ -62,6 +62,7 @@ t_obj				ft_parsing_lum(t_e *e, int i)
 {
 	t_obj			tmp;
 
+	e->id_l++;
 	tmp.refr_index = 0.1;
 	i++;
 	ft_verif_lum(e);

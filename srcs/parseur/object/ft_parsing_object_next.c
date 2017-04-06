@@ -75,6 +75,13 @@ void			ft_norme_object(t_e *e, t_obj *tmp, int i)
 		ft_verif_object(e);
 		ft_fill_info_brut(tmp);
 		e->texture_5 = 0;
+		e->id_o++;
+		ft_free_object(e);
+	}
+	else if (i == 2)
+	{
+		ft_verif_nbr_object(e, *tmp);
+		ft_verif_limit_exist(e, tmp);
 	}
 }
 

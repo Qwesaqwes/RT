@@ -14,7 +14,6 @@
 
 static void			ft_verif_scene(t_e *e)
 {
-	//e->split = NULL;
 	e->vscene.ambiant_rgb = 0;
 	e->vscene.refr_index = 0;
 	e->vscene.background_rgb = 0;

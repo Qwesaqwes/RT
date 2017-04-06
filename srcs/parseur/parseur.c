@@ -12,9 +12,9 @@
 
 #include "parsing.h"
 
-static void			ft_free_file(t_e *e)
+static void		ft_free_file(t_e *e)
 {
-	int				j;
+	int			j;
 
 	j = 0;
 	if (e->file)
@@ -27,13 +27,6 @@ static void			ft_free_file(t_e *e)
 		free(e->file);
 		e->file = NULL;
 	}
-}
-
-void			ft_puterror(t_e *e, char *str)
-{
-	e->error++;
-	write(2, str, ft_strlen(str));
-	write(2, "\n", 1);
 }
 
 int				ft_verif_scene_object(char *str)
@@ -65,6 +58,17 @@ static t_list	*ft_parseur(t_env *rt, t_e *e, int type)
 	return (list);
 }
 
+static void		ft_norme_parseur(t_env *rt, t_env *tmp)
+{
+	ft_lstdel(&rt->scene.obj, ft_free_obj);
+	ft_lstdel(&rt->scene.lum, ft_free_obj);
+	rt->scene = tmp->scene;
+	rt->camera = tmp->camera;
+	rt->vp = tmp->vp;
+	rt->scene.obj = tmp->scene.obj;
+	rt->scene.lum = tmp->scene.lum;
+}
+
 int				ft_fill_parce(t_env *rt, char *name)
 {
 	t_e			e;
@@ -83,16 +87,7 @@ int				ft_fill_parce(t_env *rt, char *name)
 	if (e.error == 0)
 		tmp.scene.lum = ft_parseur(rt, &e, 4);
 	if (e.error == 0)
-	{
-		ft_lstdel(&rt->scene.obj, ft_free_obj);
-		ft_lstdel(&rt->scene.lum, ft_free_obj);
-		rt->scene = tmp.scene;
-		rt->camera = tmp.camera;
-		rt->vp = tmp.vp;
-		rt->scene.obj = tmp.scene.obj;
-		rt->scene.lum = tmp.scene.lum;
-	}
+		ft_norme_parseur(rt, &tmp);
 	ft_free_file(&e);
-	while(1);
 	return (e.error);
 }

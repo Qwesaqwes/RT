@@ -71,7 +71,7 @@ void				ft_verif_nbr_object(t_e *e, t_obj obj)
 	ft_verif_nbr_object_v2(e, obj);
 }
 
-static void			ft_free_object(t_e *e)
+void				ft_free_object(t_e *e)
 {
 	int				j;
 
@@ -94,7 +94,6 @@ t_obj				ft_parsing_obj_after(t_e *e, int i)
 
 	i++;
 	ft_norme_object(e, &tmp, 1);
-	ft_free_object(e);
 	while (i < e->nbr_line && i != -1)
 	{
 		e->line = i;
@@ -104,11 +103,9 @@ t_obj				ft_parsing_obj_after(t_e *e, int i)
 			e->split = ft_strsplit(e->file[i], '\t');
 			e->faceend = i + 1;
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) == 0)
-			{
 				ft_fill_info_object(&tmp, e);
-				i = e->faceend - 1;
-			}
-			else if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) != 0)
+			else if (e->split[0] != NULL && ft_verif_scene_object(e->split[0])
+				!= 0)
 				i = -2;
 			ft_free_object(e);
 		}

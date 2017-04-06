@@ -12,13 +12,6 @@
 
 #include "parsing.h"
 
-static void			ft_verif_camera(t_e *e)
-{
-	e->vcamera.origin_xyz = 0;
-	e->vcamera.rotation_xyz = 0;
-	e->vcamera.distance_viewplane = 0;
-}
-
 static void			ft_verif_nbr_camera(t_e *e)
 {
 	if (e->vcamera.origin_xyz != 1)
@@ -29,22 +22,31 @@ static void			ft_verif_nbr_camera(t_e *e)
 		ft_puterror(e, "Wrong Info Camera - distance_camera");
 }
 
-static void			ft_fill_info_brut(t_env *rt)
+static void			ft_fill_info_brut(t_env *rt, t_e *e, int i)
 {
-	rt->camera.base_u.x = 1;
-	rt->camera.base_u.y = 0;
-	rt->camera.base_u.z = 0;
-	rt->camera.base_u.w = 1;
-	rt->camera.base_v.x = 0;
-	rt->camera.base_v.y = 1;
-	rt->camera.base_v.z = 0;
-	rt->camera.base_v.w = 1;
-	rt->camera.base_w.x = 0;
-	rt->camera.base_w.y = 0;
-	rt->camera.base_w.z = 1;
-	rt->camera.base_w.w = 1;
-	rt->camera.origin.z = 1;
-	rt->camera.rot.w = 1;
+	if (i == 1)
+	{
+		rt->camera.base_u.x = 1;
+		rt->camera.base_u.y = 0;
+		rt->camera.base_u.z = 0;
+		rt->camera.base_u.w = 1;
+		rt->camera.base_v.x = 0;
+		rt->camera.base_v.y = 1;
+		rt->camera.base_v.z = 0;
+		rt->camera.base_v.w = 1;
+		rt->camera.base_w.x = 0;
+		rt->camera.base_w.y = 0;
+		rt->camera.base_w.z = 1;
+		rt->camera.base_w.w = 1;
+		rt->camera.origin.z = 1;
+		rt->camera.rot.w = 1;
+	}
+	else if (i == 2)
+	{
+		e->vcamera.origin_xyz = 0;
+		e->vcamera.rotation_xyz = 0;
+		e->vcamera.distance_viewplane = 0;
+	}
 }
 
 static void			ft_free_parse(t_e *e)
@@ -59,16 +61,20 @@ static void			ft_free_parse(t_e *e)
 	e->split = NULL;
 }
 
+static void			ft_norme(t_e *e, t_env *rt)
+{
+	e->verifc = 0;
+	ft_fill_info_brut(rt, e, 1);
+	ft_fill_info_brut(rt, e, 2);
+	ft_free_parse(e);
+}
+
 int					ft_parsing_camera_after(t_env *rt, t_e *e, int i)
 {
-	int				verif;
-
-	verif = 0;
 	i++;
-	ft_verif_camera(e);
-	ft_fill_info_brut(rt);
-	ft_free_parse(e);
-	while (i < e->nbr_line && i != -1 && verif == 0)
+	e->nb_camera++;
+	ft_norme(e, rt);
+	while (i < e->nbr_line && i != -1 && e->verifc == 0)
 	{
 		if (e->file[i] && e->file[i][0] != '#' && (ft_strlen(e->file[i]) > 1))
 		{
@@ -79,7 +85,7 @@ int					ft_parsing_camera_after(t_env *rt, t_e *e, int i)
 				ft_fill_info_camera(rt, e);
 			else if (ft_verif_scene_object(e->split[0]) == 1)
 			{
-				verif++;
+				e->verifc++;
 				i = i - 2;
 			}
 		}
