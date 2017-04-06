@@ -10,9 +10,6 @@ camera
 	distance_viewplane		1
 
 
-
-
-
 object
 	name					plan
 	type					plane

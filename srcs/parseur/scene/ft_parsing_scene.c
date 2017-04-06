@@ -37,12 +37,17 @@ static void			ft_free_scene(t_e *e)
 {
 	int				j;
 
-	j = -1;
-	while (e->split && e->split[++j] != NULL)
-		free(e->split[j]);
+	j = 0;
 	if (e->split)
+	{
+		while (e->split[j] != NULL)
+		{
+			free(e->split[j]);
+			j++;
+		}
 		free(e->split);
-	e->split = NULL;
+		e->split = NULL;
+	}
 }
 
 void				ft_parsing_scene_after(t_env *rt, t_e *e, int i)
@@ -55,18 +60,15 @@ void				ft_parsing_scene_after(t_env *rt, t_e *e, int i)
 	{
 		if (e->file[i] && e->file[i][0] != '#' && (ft_strlen(e->file[i]) > 1))
 		{
-			e->split = NULL;
 			e->split = ft_strsplit(e->file[i], '\t');
 			if (e->split[0] != NULL && ft_verif_scene_object(e->split[0]) == 0)
-			{
 				ft_fill_info_scene(&rt->scene, e);
-				ft_free_scene(e);
-			}
 			else if (ft_verif_scene_object(e->split[0]) == 1)
 			{
 				e->verif++;
 				i = i - 2;
 			}
+			ft_free_scene(e);
 		}
 		i++;
 	}

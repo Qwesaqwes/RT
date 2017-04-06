@@ -103,7 +103,7 @@ void			ft_fill_info_object(t_obj *obj, t_e *e)
 	if (ft_strcmp(e->split[0], "name") == 0 && e->split[1] != NULL)
 	{
 		e->vobject.name++;
-		obj->name = *ft_strsplit(e->split[1], ' ');
+		obj->name = e->split[1];
 	}
 	else if (ft_strcmp(e->split[0], "type") == 0 && e->split[1] != NULL)
 	{
