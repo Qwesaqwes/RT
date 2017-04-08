@@ -149,7 +149,7 @@ void				ft_fill_info_object_18(t_obj *obj, t_e *e);
 /*
 **		reader
 */
-void				ft_read_file(char *file, t_e *e);
+int					ft_read_file(char *file, t_e *e);
 
 /*
 **		source

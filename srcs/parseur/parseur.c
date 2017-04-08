@@ -85,11 +85,12 @@ int				ft_fill_parce(t_env *rt, char *name)
 {
 	t_e			e;
 	t_env		tmp;
+	int			read;
 
 	e.error = 0;
 	e.name = name;
 	e.split = NULL;
-	ft_read_file(e.name, &e);
+	read = ft_read_file(e.name, &e);
 	if (e.error == 0)
 		ft_parseur(&tmp, &e, 1);
 	if (e.error == 0)
@@ -100,7 +101,8 @@ int				ft_fill_parce(t_env *rt, char *name)
 		tmp.scene.lum = ft_parseur(rt, &e, 4);
 	if (e.error == 0)
 		ft_norme_parseur(rt, &tmp, 1, e.error);
-	ft_free_file(&e);
+	if (read == 0)
+		ft_free_file(&e);
 	ft_norme_parseur(rt, &tmp, 2, e.error);
 	return (e.error);
 }

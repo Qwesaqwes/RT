@@ -46,7 +46,8 @@ void			ft_read_file_2(t_e *e)
 
 	close(e->fd1);
 	i = -1;
-	while ((res = get_next_line(e->fd2, &line)) > 0 && e->error == 0)
+	while (e->file && (res = get_next_line(e->fd2, &line)) > 0 &&
+		e->error == 0)
 		e->file[++i] = line;
 	if (res == -1)
 		ft_puterror(e, "error gnl/fichier inexistant ou pas les droits");
@@ -54,7 +55,7 @@ void			ft_read_file_2(t_e *e)
 		ft_change_space(e);
 }
 
-void			ft_read_file(char *file, t_e *e)
+int				ft_read_file(char *file, t_e *e)
 {
 	int			res;
 	char		*line;
@@ -73,7 +74,10 @@ void			ft_read_file(char *file, t_e *e)
 		ft_puterror(e, "error file void");
 	if (e->nbr_line >= 1 && e->error == 0)
 		e->file = (char **)ft_memalloc(sizeof(char *) * e->nbr_line);
-	if ((e->fd2 = open(file, O_RDONLY)) < 0)
+	if (e->file && (e->fd2 = open(file, O_RDONLY)) < 0)
 		ft_puterror(e, "error file given");
 	ft_read_file_2(e);
+	if (e->error == 0)
+		return (0);
+	return (1);
 }

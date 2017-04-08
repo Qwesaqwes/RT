@@ -1,5 +1,5 @@
 scene
-	ambiant_rgb				0.7		0.7		0.7
+	ambiant_rgb				0.2		0.2		0.2
 	refr_index				1
 	background_rgb			0.5		0.2		0.5
 	antialiasing			1
@@ -13,12 +13,29 @@ light
 	name					red
 	type					sphere
 	typel					0
-	color_rgb				1		1		1
+	color_rgb				1		0		0
+	scale					1
+	translate_xyz			-10		10		10
+	rotation_xyz			0		0		-20
+
+light
+	name					red
+	type					sphere
+	typel					0
+	color_rgb				0		1		0
 	scale					1
 	translate_xyz			-10		10		0
 	rotation_xyz			0		0		-20
-	normal_xyz				1		0		0
-	
+
+light
+	name					red
+	type					sphere
+	typel					0
+	color_rgb				0		0		1
+	scale					1
+	translate_xyz			-10		10		-10
+	rotation_xyz			0		0		-20
+
  object
 	name					plan
 	type					plane
@@ -40,7 +57,7 @@ light
 	square					2
 
 object
-	name					cone1
+	name					bas
 	type					cone
 	color_rgb				0.2		0.7		0.3
 	scale					1.5
@@ -61,7 +78,7 @@ object
 	z_max					3
 
 object
-	name					cone1
+	name					haut
 	type					cone
 	color_rgb				0.2		0.7		0.3
 	scale					1.5
@@ -78,5 +95,5 @@ object
 	tex_col1				1		1		1
 	tex_col2				0		0		0
 	tex_col3				0.5		0.5		0.5
-	z_min					0
+	z_min					2
 	z_max					3

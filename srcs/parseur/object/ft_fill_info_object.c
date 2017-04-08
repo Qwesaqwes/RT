@@ -37,8 +37,6 @@ static void		ft_fill_info_object_3(t_obj *obj, t_e *e)
 		e->tmp = stof(e->split[1]);
 		if (e->tmp <= 0)
 			ft_puterror(e, "Wrong Info in Object - scale");
-		if (e->tmp > 1.8)
-			e->tmp = 1.8;
 		obj->transform.scale.x = e->tmp;
 		obj->transform.scale.y = e->tmp;
 		obj->transform.scale.z = e->tmp;
