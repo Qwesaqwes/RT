@@ -72,10 +72,12 @@ static void		ft_norme_parseur(t_env *rt, t_env *tmp, int i, int error)
 	}
 	else
 	{
+		ft_putstr_fd("\033[32;01m-------------------\n\033[00m", 2);
 		if (error == 0)
 			ft_putstr_fd("\033[32;01mSuccessful parser\n\033[00m", 2);
 		else
 			ft_putstr_fd("\033[31;01mFailed Parser\033[00m\n", 2);
+		ft_putstr_fd("\033[32;01m-------------------\n\033[00m", 2);
 	}
 }
 

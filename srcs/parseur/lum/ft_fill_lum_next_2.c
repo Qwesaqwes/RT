@@ -16,19 +16,18 @@ void			ft_verif_limit_exist_lum(t_e *e, t_obj *tmp)
 {
 	if (e->vobject.x_min > 1 || e->vobject.x_max > 1 || e->vobject.y_min > 1
 		|| e->vobject.y_max > 1 || e->vobject.z_min > 1 || e->vobject.z_max > 1)
-		ft_puterror(e, "Wrong Info Object - Min Max");
+		ft_puterror(e, "Wrong Info Lum - Min Max");
 	if (e->vobject.x_min == 1 && e->vobject.x_max == 1)
 		if (tmp->limit.x_min >= tmp->limit.x_max)
 			ft_puterror(e,
-			"Wrong Info Object  x_min must to be less than x_max");
+			"Wrong Info Lum  x_min must to be less than x_max");
 	if (e->vobject.y_min == 1 && e->vobject.y_max == 1)
 		if (tmp->limit.y_min >= tmp->limit.y_max)
 			ft_puterror(e,
-			"Wrong Info Object 	y_min must to be less than y_max");
+			"Wrong Info Lum 	y_min must to be less than y_max");
 	if (e->vobject.z_min == 1 && e->vobject.z_max == 1)
 		if (tmp->limit.z_min >= tmp->limit.z_max)
-			ft_puterror(e,
-			"Wrong Info Object  z_min must to be less than z_max");
+			ft_puterror(e, "Wrong Info Lum  z_min must to be less than z_max");
 }
 
 static void		ft_fill_info_lum9(t_obj *obj, t_e *e)

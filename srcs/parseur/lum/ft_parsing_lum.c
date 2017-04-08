@@ -22,6 +22,12 @@ static void			ft_verif_lum(t_e *e)
 	e->vobject.translate_xyz = 0;
 	e->vobject.rotation_xyz = 0;
 	e->vobject.normal_xyz = 0;
+	e->vobject.x_min = 0;
+	e->vobject.x_max = 0;
+	e->vobject.y_min = 0;
+	e->vobject.y_max = 0;
+	e->vobject.z_min = 0;
+	e->vobject.z_max = 0;
 }
 
 static void			ft_verif_nbr_lum(t_e *e, t_obj *tmp)

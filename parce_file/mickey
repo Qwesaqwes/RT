@@ -96,7 +96,7 @@ object
 	tex_texture				5
 	tex_bump				0
 	tex_transp				0
-	map_buf					./maps/visage.jpg
+	map_buf					./maps/mickey.jpg
 
 object
 	name					plan

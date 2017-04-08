@@ -53,7 +53,7 @@ light
 	name					red
 	type					sphere
 	typel					0
-	color_rgb				0		1		0
+	color_rgb				1		1		1
 	scale					1
 	translate_xyz			10		4		0
 	rotation_xyz			0		0		-20
