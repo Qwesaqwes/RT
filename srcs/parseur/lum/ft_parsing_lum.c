@@ -21,9 +21,10 @@ static void			ft_verif_lum(t_e *e)
 	e->vobject.scale_xyz = 0;
 	e->vobject.translate_xyz = 0;
 	e->vobject.rotation_xyz = 0;
+	e->vobject.normal_xyz = 0;
 }
 
-static void			ft_verif_nbr_lum(t_e *e)
+static void			ft_verif_nbr_lum(t_e *e, t_obj *tmp)
 {
 	if (e->vobject.name != 1)
 		ft_puterror(e, "Wrong Info Light - name");
@@ -39,6 +40,16 @@ static void			ft_verif_nbr_lum(t_e *e)
 		ft_puterror(e, "Wrong Info Light - translate_xyz");
 	if (e->vobject.rotation_xyz != 1)
 		ft_puterror(e, "Wrong Info Light - rotation_xyz");
+	if (tmp->typel != 1 && e->vobject.normal_xyz == 1)
+	{
+		tmp->normal.x = -1;
+		tmp->normal.y = 0;
+		tmp->normal.z = 0;
+		tmp->normal.w = 1;
+	}
+	if (tmp->typel == 1 && e->vobject.normal_xyz != 1)
+		ft_puterror(e, "Wrong Info Light - normal_xyz");
+	ft_verif_limit_exist_lum(e, tmp);
 }
 
 static void			ft_free_lum(t_e *e)
@@ -81,6 +92,6 @@ t_obj				ft_parsing_lum(t_e *e, int i)
 		ft_free_lum(e);
 		i++;
 	}
-	ft_verif_nbr_lum(e);
+	ft_verif_nbr_lum(e, &tmp);
 	return (tmp);
 }

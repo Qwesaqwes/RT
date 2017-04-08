@@ -18,6 +18,7 @@ light
 	scale					1
 	translate_xyz			0		5		-15
 	rotation_xyz			0		0		-20
+	normal_xyz				1		0		0
 
 light
 	name					green
@@ -27,6 +28,7 @@ light
 	scale					1
 	translate_xyz			0		5		15
 	rotation_xyz			0		0		-20
+	normal_xyz				1		0		0
 
 light
 	name					blue
@@ -36,6 +38,7 @@ light
 	scale					1
 	translate_xyz			0		5		0
 	rotation_xyz			0		0		-20
+	normal_xyz				1		0		0
 
 scene
 	ambiant_rgb				0.2		0.2		0.2
@@ -93,7 +96,7 @@ object
 	tex_texture				5
 	tex_bump				0
 	tex_transp				0
-	map_buf					./maps/mickey.jpg
+	map_buf					./maps/visage.jpg
 
 object
 	name					plan

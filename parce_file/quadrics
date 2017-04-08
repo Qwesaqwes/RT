@@ -17,6 +17,7 @@ light
 	scale					1
 	translate_xyz			0		5		-15
 	rotation_xyz			0		0		-20
+	normal_xyz				1		0		0
 
 light
 	name					green
@@ -26,6 +27,7 @@ light
 	scale					1
 	translate_xyz			0		5		15
 	rotation_xyz			0		0		-20
+	normal_xyz				1		0		0
 
 light
 	name					blue
@@ -35,7 +37,8 @@ light
 	scale					1
 	translate_xyz			0		5		0
 	rotation_xyz			0		0		-20
-
+	normal_xyz				1		0		0
+	
 scene
 	ambiant_rgb				0.2		0.2		0.2
 	refr_index				1

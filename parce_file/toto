@@ -17,7 +17,8 @@ light
 	scale					1
 	translate_xyz			-10		10		0
 	rotation_xyz			0		0		-20
-
+	normal_xyz				1		0		0
+	
  object
 	name					plan
 	type					plane

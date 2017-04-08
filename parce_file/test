@@ -49,45 +49,13 @@ object
 	tex_col2				0		1		0
 	tex_col3				0		0		1
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 light
 	name					red
-	type					sphere
-	typel					0
-	color_rgb				1		0		0
-	scale					1
-	translate_xyz			10		4		0
-	rotation_xyz			0		0		-20
-
-
-light
-	name					green
 	type					sphere
 	typel					0
 	color_rgb				0		1		0
 	scale					1
 	translate_xyz			10		4		0
 	rotation_xyz			0		0		-20
+	normal_xyz				1		0		0
 
-
-light
-	name					blue
-	type					sphere
-	typel					0
-	color_rgb				0		0		1
-	scale					1
-	translate_xyz			10		4		0
-	rotation_xyz			0		0		-20

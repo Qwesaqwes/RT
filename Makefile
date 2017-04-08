@@ -120,6 +120,7 @@ SRC			=	main.c\
 				parseur/camera/ft_parsing_camera.c\
 				parseur/faces/face.c\
 				parseur/lum/ft_fill_lum_next.c\
+				parseur/lum/ft_fill_lum_next_2.c\
 				parseur/lum/ft_fill_lum.c\
 				parseur/lum/ft_parsing_lum.c\
 				parseur/object/ft_parsing_object.c\

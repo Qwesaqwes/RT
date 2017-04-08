@@ -64,6 +64,7 @@ typedef	struct		s_verif_object
 	int				z_min;
 	int				z_max;
 	int				quadrics;
+	int				normal_xyz;
 }					t_verif_object;
 
 typedef struct		s_parsing
@@ -106,6 +107,7 @@ typedef struct		s_parsing
 	t_verif_camera	vcamera;
 	t_verif_scene	vscene;
 	t_verif_object	vobject;
+	t_vec3d			normal;
 }					t_e;
 
 /*
@@ -122,9 +124,12 @@ t_face				*ft_parsing_face_after(t_e *e, int i, int k);
 /*
 **		lum
 */
+void				ft_fill_info_lum8(t_obj *obj, t_e *e);
 void				ft_fill_info_lum5(t_obj *obj, t_e *e);
 void				ft_fill_info_lum(t_obj *obj, t_e *e);
 t_obj				ft_parsing_lum(t_e *e, int i);
+void				ft_verif_limit_exist_lum(t_e *e, t_obj *tmp);
+
 
 /*
 **		object

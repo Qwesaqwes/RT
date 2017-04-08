@@ -30,7 +30,7 @@ void	init_cube(t_obj *cube)
 	cube->shininess = 0;
 	cube->refr_index = 1.33;
 	cube->tex.texture = 5;
-	cube->tex.bump = 1;
+	cube->tex.bump = 0;
 	cube->tex.transp = 0;
 	cube->map_buf = gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL);
 	cube->bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/golf.jpg",

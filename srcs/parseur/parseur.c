@@ -58,15 +58,25 @@ static t_list	*ft_parseur(t_env *rt, t_e *e, int type)
 	return (list);
 }
 
-static void		ft_norme_parseur(t_env *rt, t_env *tmp)
+static void		ft_norme_parseur(t_env *rt, t_env *tmp, int i, int error)
 {
-	ft_lstdel(&rt->scene.obj, ft_free_obj);
-	ft_lstdel(&rt->scene.lum, ft_free_obj);
-	rt->scene = tmp->scene;
-	rt->camera = tmp->camera;
-	rt->vp = tmp->vp;
-	rt->scene.obj = tmp->scene.obj;
-	rt->scene.lum = tmp->scene.lum;
+	if (i == 1)
+	{
+		ft_lstdel(&rt->scene.obj, ft_free_obj);
+		ft_lstdel(&rt->scene.lum, ft_free_obj);
+		rt->scene = tmp->scene;
+		rt->camera = tmp->camera;
+		rt->vp = tmp->vp;
+		rt->scene.obj = tmp->scene.obj;
+		rt->scene.lum = tmp->scene.lum;
+	}
+	else
+	{
+		if (error == 0)
+			ft_putstr_fd("\033[32;01mSuccessful parser\n\033[00m", 2);
+		else
+			ft_putstr_fd("\033[31;01mFailed Parser\033[00m\n", 2);
+	}
 }
 
 int				ft_fill_parce(t_env *rt, char *name)
@@ -87,7 +97,8 @@ int				ft_fill_parce(t_env *rt, char *name)
 	if (e.error == 0)
 		tmp.scene.lum = ft_parseur(rt, &e, 4);
 	if (e.error == 0)
-		ft_norme_parseur(rt, &tmp);
+		ft_norme_parseur(rt, &tmp, 1, e.error);
 	ft_free_file(&e);
+	ft_norme_parseur(rt, &tmp, 2, e.error);
 	return (e.error);
 }
