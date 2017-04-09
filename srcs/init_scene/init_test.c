@@ -6,7 +6,7 @@
 /*   By: jichen-m <jichen-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:21:24 by jichen-m          #+#    #+#             */
-/*   Updated: 2017/04/06 16:48:53 by jichen-m         ###   ########.fr       */
+/*   Updated: 2017/04/10 00:28:28 by jichen-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		protect_cube(t_obj *cube)
 	char		*str2;
 
 	str = "./maps/monde.jpg";
-	str2 = "./maps/golf1.jpg";
+	str2 = "./maps/golf.jpg";
 	fd = open(str, O_RDONLY);
 	fd2 = open(str2, O_RDONLY);
 	if (fd < 3 || fd2 < 3)

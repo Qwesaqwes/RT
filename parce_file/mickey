@@ -52,7 +52,7 @@ object
 	name					sphere15
 	type					sphere
 	color_rgb				0		0		1
-	scale					1
+	scale_xyz				1		1		1
 	translate_xyz			10		9		2
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
