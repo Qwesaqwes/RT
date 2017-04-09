@@ -31,14 +31,21 @@ static void		ft_fill_info_object_4(t_obj *obj, t_e *e)
 
 static void		ft_fill_info_object_3(t_obj *obj, t_e *e)
 {
-	if (ft_strcmp(e->split[0], "scale") == 0 && e->split[1] != NULL)
+	if (ft_strcmp(e->split[0], "scale_xyz") == 0 && e->split[1] != NULL
+		&& e->split[2] != NULL && e->split[3] != NULL)
 	{
 		e->vobject.scale_xyz++;
 		e->tmp = stof(e->split[1]);
 		if (e->tmp <= 0)
-			ft_puterror(e, "Wrong Info in Object - scale");
+			ft_puterror(e, "Wrong Info in Object - scale_x");
 		obj->transform.scale.x = e->tmp;
+		e->tmp = stof(e->split[2]);
+		if (e->tmp <= 0)
+			ft_puterror(e, "Wrong Info in Object - scale_y");
 		obj->transform.scale.y = e->tmp;
+		e->tmp = stof(e->split[3]);
+		if (e->tmp <= 0)
+			ft_puterror(e, "Wrong Info in Object - scale_z");
 		obj->transform.scale.z = e->tmp;
 	}
 	else

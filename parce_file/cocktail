@@ -28,7 +28,7 @@ object
 	name					olive
 	type					sphere
 	color_rgb				0.827	0.827	0.443
-	scale					0.7
+	scale_xyz				0.7		0.7		0.7
 	translate_xyz			10		6.5		0
 	rotation_xyz			90		0		0
 	k_ads					0.2		0.9		0
@@ -47,7 +47,7 @@ object
 	name					cure_dent
 	type					cylindre
 	color_rgb				0.796	0.686	0.592
-	scale					0.04
+	scale_xyz				0.04	0.04	0.04
 	translate_xyz			10		6.5		0
 	rotation_xyz			-35		-10		0
 	k_ads					0.2		0.9		0
@@ -69,7 +69,7 @@ object
 	name					verre_pied
 	type					cone
 	color_rgb				0.8		0.8		0.8
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			10		1.5		0
 	rotation_xyz			90		0		0
 	k_ads					0.2		0.9		0
@@ -90,7 +90,7 @@ object
 	name					verre_tronc
 	type					cylindre
 	color_rgb				0.8		0.8		0.8
-	scale					0.15
+	scale_xyz				0.15	0.15	0.15
 	translate_xyz			10		5.5		0
 	rotation_xyz			90		0		0
 	k_ads					0.2		0.9		0
@@ -113,7 +113,7 @@ object
 	name					verre_ballon
 	type					cone
 	color_rgb				1		1		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			10		5.3		0
 	rotation_xyz			-90		0		-90
 	k_ads					0.2		0.9		0
@@ -134,7 +134,7 @@ object
 	name					plan
 	type					plane
 	color_rgb				0.9		0.9		0.9
-	scale					1
+	scale_xyz				1		1		1
 	translate_xyz			0		0		0
 	rotation_xyz			0		180		90
 	k_ads					0.2		0.9		0

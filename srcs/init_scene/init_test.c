@@ -12,7 +12,32 @@
 
 #include "rt.h"
 
-void	init_cube(t_obj *cube)
+static void		protect_cube(t_obj *cube)
+{
+	int			fd;
+	int			fd2;
+	char		*str;
+	char		*str2;
+
+	str = "./maps/monde.jpg";
+	str2 = "./maps/golf1.jpg";
+	fd = open(str, O_RDONLY);
+	fd2 = open(str2, O_RDONLY);
+	if (fd < 3 || fd2 < 3)
+	{
+		ft_putstr_fd("Invalid Map\n", 2);
+		if (fd < 3)
+			cube->tex.texture = 0;
+		if (fd2 < 3)
+			cube->tex.bump = 0;
+	}
+	if (cube->tex.texture == 5)
+		cube->map_buf = gdk_pixbuf_new_from_file(str, NULL);
+	if (cube->tex.bump == 1)
+		cube->bump_buf = gray_scale(gdk_pixbuf_new_from_file(str2, NULL));
+}
+
+void			init_cube(t_obj *cube)
 {
 	cube->id = 7;
 	cube->name = ft_strdup("triangle1");
@@ -30,14 +55,12 @@ void	init_cube(t_obj *cube)
 	cube->shininess = 0;
 	cube->refr_index = 1.33;
 	cube->tex.texture = 5;
-	cube->tex.bump = 0;
+	cube->tex.bump = 1;
 	cube->tex.transp = 0;
-	cube->map_buf = gdk_pixbuf_new_from_file("./maps/monde.jpg", NULL);
-	cube->bump_buf = gray_scale(gdk_pixbuf_new_from_file("./maps/golf.jpg",
-	NULL));
+	protect_cube(cube);
 }
 
-void	init_plan(t_obj *plan)
+void			init_plan(t_obj *plan)
 {
 	plan->id = 4;
 	plan->name = ft_strdup("plane1");
@@ -63,11 +86,11 @@ void	init_plan(t_obj *plan)
 	plan->tex.square = 3;
 }
 
-t_list	*init_test(void)
+t_list			*init_test(void)
 {
-	t_list	*list;
-	t_obj	obj1;
-	t_obj	obj2;
+	t_list		*list;
+	t_obj		obj1;
+	t_obj		obj2;
 
 	list = NULL;
 	init_cube(&obj1);
@@ -90,10 +113,10 @@ t_list	*init_test(void)
 	return (list);
 }
 
-t_list	*init_test_lum(void)
+t_list			*init_test_lum(void)
 {
-	t_list	*list;
-	t_obj	lum1;
+	t_list		*list;
+	t_obj		lum1;
 
 	list = NULL;
 	lum1.id = 0;

@@ -68,7 +68,7 @@ object
 	name					sphere16
 	type					sphere
 	color_rgb				0		0		1
-	scale					1
+	scale_xyz				1		1		1
 	translate_xyz			10		9		-2
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -85,7 +85,7 @@ object
 	name					sphere14
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			10		7		0
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -102,7 +102,7 @@ object
 	name					plan
 	type					plane
 	color_rgb				0.2		0.7		0.3
-	scale					1
+	scale_xyz				1		1		1
 	translate_xyz			0		0		0
 	rotation_xyz			0		180		90
 	k_ads					0.2		0.9		0

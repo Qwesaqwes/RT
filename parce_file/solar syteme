@@ -14,7 +14,7 @@ object
 	name					sun
 	type					sphere
 	color_rgb				1		1		0
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			10		5		-9
 	rotation_xyz			90		0		0
 	k_ads					0.2		0.9		0
@@ -34,7 +34,7 @@ object
 	name					mercure
 	type					sphere
 	color_rgb				1		1		0
-	scale					0.1
+	scale_xyz				0.1		0.1		0.1
 	translate_xyz			10		5		-5
 	rotation_xyz			90		0		0
 	k_ads					0.2		0.9		0
@@ -54,7 +54,7 @@ object
 	name					venus
 	type					sphere
 	color_rgb				1		1		0
-	scale					0.3
+	scale_xyz				0.3		0.3		0.3
 	translate_xyz			10		5		-2
 	rotation_xyz			90		0		0
 	k_ads					0.2		0.9		0
@@ -74,7 +74,7 @@ object
 	name					monde
 	type					sphere
 	color_rgb				1		1		0
-	scale					0.5
+	scale_xyz				0.5		0.5		0.5
 	translate_xyz			10		5		2
 	rotation_xyz			90		0		0
 	k_ads					0.2		0.9		0
@@ -94,7 +94,7 @@ object
 	name					moon
 	type					sphere
 	color_rgb				1		1		0
-	scale					0.04
+	scale_xyz				0.04	0.04	0.04
 	translate_xyz			10		5.5		1.5
 	rotation_xyz			90		0		0
 	k_ads					0.2		0.9		0
@@ -114,7 +114,7 @@ object
 	name					mars
 	type					sphere
 	color_rgb				1		1		0
-	scale					0.4
+	scale_xyz				0.4		0.4		0.4
 	translate_xyz			10		5		6
 	rotation_xyz			90		0		0
 	k_ads					0.2		0.9		0

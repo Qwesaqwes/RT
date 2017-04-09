@@ -50,7 +50,7 @@ object
 	name					sphere1
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			25		1.5		0
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -69,7 +69,7 @@ object
 	name					sphere2
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			25		1.5		-4
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -89,7 +89,7 @@ object
 	name					sphere3
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			25		1.5		-8
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -109,7 +109,7 @@ object
 	name					sphere5
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			21		1.5		0
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -128,7 +128,7 @@ object
 	name					sphere6
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			21		1.5		-4
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -147,7 +147,7 @@ object
 	name					sphere7
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			21		1.5		-8
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -166,7 +166,7 @@ object
 	name					sphere8
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			17		1.5		0
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -185,7 +185,7 @@ object
 	name					sphere9
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			17		1.5		-4
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -204,7 +204,7 @@ object
 	name					sphere10
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			17		1.5		-8
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -224,7 +224,7 @@ object
 	name					sphere11
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			19		4.5		-2
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -243,7 +243,7 @@ object
 	name					sphere12
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			19		4.5		-6
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -262,7 +262,7 @@ object
 	name					sphere13
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			23		4.5		-2
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -281,7 +281,7 @@ object
 	name					sphere14
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			23		4.5		-6
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -300,7 +300,7 @@ object
 	name					sphere15
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			20		7.5		-4
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -321,7 +321,7 @@ object
 	name					plan
 	type					plane
 	color_rgb				0.2		0.7		0.3
-	scale					1
+	scale_xyz				1		1		1
 	translate_xyz			0		0		0
 	rotation_xyz			0		180		90
 	k_ads					0.2		0.9		0

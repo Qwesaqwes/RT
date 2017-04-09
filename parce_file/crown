@@ -19,7 +19,7 @@ object
 	name					sphere1
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.8
+	scale_xyz				1.8		1.8		1.8
 	translate_xyz			25		1.5		0
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -38,7 +38,7 @@ object
 	name					sphere2
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.5
+	scale_xyz				1.5		1.5		1.5
 	translate_xyz			20		1.5		3
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -57,7 +57,7 @@ object
 	name					sphere3
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.2
+	scale_xyz				1.2		1.2		1.2
 	translate_xyz			17		1		5.1
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -76,8 +76,8 @@ object
 	name					sphere4
 	type					sphere
 	color_rgb				0		0		1
-	scale					0.8
-	translate_xyz			12.5		1		5.2
+	scale_xyz				0.8		0.8		0.8
+	translate_xyz			12.5	1		5.2
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
 	i						0
@@ -95,7 +95,7 @@ object
 	name					sphere5
 	type					sphere
 	color_rgb				0		0		1
-	scale					0.6
+	scale_xyz				0.6		0.6		0.6
 	translate_xyz			10		0.9		4
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -115,7 +115,7 @@ object
 	name					sphere5
 	type					sphere
 	color_rgb				0		0		1
-	scale					0.4
+	scale_xyz				0.4		0.4		0.4
 	translate_xyz			9		0.7		3
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -135,7 +135,7 @@ object
 	name					sphere2
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.5
+	scale_xyz				1.5		1.5		1.5
 	translate_xyz			20		1.5		-3
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -154,7 +154,7 @@ object
 	name					sphere3
 	type					sphere
 	color_rgb				0		0		1
-	scale					1.2
+	scale_xyz				1.2		1.2		1.2
 	translate_xyz			17		1		-5.1
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -173,8 +173,8 @@ object
 	name					sphere4
 	type					sphere
 	color_rgb				0		0		1
-	scale					0.8
-	translate_xyz			12.5		1		-5.2
+	scale_xyz				0.8		0.8		0.8
+	translate_xyz			12.5	1		-5.2
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
 	i						0
@@ -192,7 +192,7 @@ object
 	name					sphere5
 	type					sphere
 	color_rgb				0		0		1
-	scale					0.6
+	scale_xyz				0.6		0.6		0.6
 	translate_xyz			10		0.9		-4
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -212,7 +212,7 @@ object
 	name					sphere5
 	type					sphere
 	color_rgb				0		0		1
-	scale					0.4
+	scale_xyz				0.4		0.4		0.4
 	translate_xyz			9		0.7		-3
 	rotation_xyz			0		0		0
 	k_ads					0.2		0.9		1
@@ -231,7 +231,7 @@ object
 	name					plan
 	type					plane
 	color_rgb				0.2		0.7		0.3
-	scale					1
+	scale_xyz				1		1		1
 	translate_xyz			0		0		0
 	rotation_xyz			0		180		90
 	k_ads					0.2		0.9		0
