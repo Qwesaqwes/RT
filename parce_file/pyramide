@@ -1,3 +1,4 @@
+RT
 #
 #		QUAND IL Y A UN	'#' DANS
 #			   LA LIGNE, ELLE
@@ -316,6 +317,26 @@ object
 	tex_col3				0.8		0		0
 
 
+
+object
+	name					plan
+	type					plane
+	color_rgb				0.2		0.7		0.3
+	scale_xyz				1		1		1
+	translate_xyz			0		0		0
+	rotation_xyz			0		180		90
+	k_ads					0.2		0.9		0
+	i						0
+	t						0
+	shininess				50
+	refraction_index		1.33
+	tex_texture				1
+	tex_bump				0
+	tex_transp				0
+	tex_col1				1		1		1
+	tex_col2				0		0		0
+	tex_col3				0.5		0.5		0.5
+	square					2
 
 object
 	name					plan

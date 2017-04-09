@@ -55,6 +55,17 @@ void			ft_read_file_2(t_e *e)
 		ft_change_space(e);
 }
 
+static void		ft_verif_first_lign(t_e *e, char *str)
+{
+	char		*str2;
+	int			res;
+
+	str2 = "RT";
+	res = ft_strcmp(str2, str);
+	if (res != 0)
+		e->error++;
+}
+
 int				ft_read_file(char *file, t_e *e)
 {
 	int			res;
@@ -64,9 +75,11 @@ int				ft_read_file(char *file, t_e *e)
 		ft_puterror(e, "error file given");
 	res = 0;
 	e->nbr_line = 0;
-	while ((res = get_next_line(e->fd1, &line)) > 0 && e->error == 0)
+	while (e->error == 0 && (res = get_next_line(e->fd1, &line)) > 0)
 	{
 		e->nbr_line++;
+		if (e->nbr_line == 1)
+			ft_verif_first_lign(e, line);
 		if (res == 1)
 			free(line);
 	}
