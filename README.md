@@ -7,6 +7,7 @@ RT is mostly coded in C and for the interface we used GTK+3.
 
 1. [Install Homebrew](https://brew.sh/index_fr.html)
 2. After instalation use this command `brew install gtk+3`
+3. DONE! :D
 
 Examples:
 
