@@ -1,7 +1,7 @@
 WELCOME TO RT
 =================
 
-Le RT c'est un programme qui génére des images de synthèse selon la méthode
-du Ray-Tracing. Ces images de synthèse représentent une scène, vue d’une
-position et d’un angle spécifiques, définie par des objets géométriques
-simples, entiers ou partiels, et disposant d’un système d’éclairage.
+RT is a programe that use a technique called Ray-Tracing to generate an image by tracing the path of light through pixels in an image and simulating the effects of its encounters with virtual objects.
+
+Examples:
+![alt text](http://url/to/pira.jpg)
